@@ -340,17 +340,26 @@
     <ClCompile Include="src\gen\BoundingBox.cpp" />
     <ClCompile Include="src\gen\BoundingVolume.cpp" />
     <ClCompile Include="src\gen\BoxBV.cpp" />
+    <ClCompile Include="src\gen\BSConnectPoint.cpp" />
     <ClCompile Include="src\gen\BSPackedAdditionalDataBlock.cpp" />
     <ClCompile Include="src\gen\BSSegment.cpp" />
     <ClCompile Include="src\gen\BSSegmentedTriangle.cpp" />
+    <ClCompile Include="src\gen\BSSIMaterial.cpp" />
+    <ClCompile Include="src\gen\BSSIMaterialSection.cpp" />
+    <ClCompile Include="src\gen\BSSITSSegment.cpp" />
+    <ClCompile Include="src\gen\BSSITSSubSegment.cpp" />
+    <ClCompile Include="src\gen\BSSkinBoneTrans.cpp" />
     <ClCompile Include="src\gen\BSTreadTransfInfo.cpp" />
     <ClCompile Include="src\gen\BSTreadTransform.cpp" />
     <ClCompile Include="src\gen\BSTreadTransformData.cpp" />
     <ClCompile Include="src\gen\BSTreadTransfSubInfo.cpp" />
+    <ClCompile Include="src\gen\BSVertexData.cpp" />
     <ClCompile Include="src\gen\ByteArray.cpp" />
     <ClCompile Include="src\gen\ByteColor3.cpp" />
     <ClCompile Include="src\gen\ByteColor4.cpp" />
     <ClCompile Include="src\gen\ByteMatrix.cpp" />
+    <ClCompile Include="src\gen\ByteVector3.cpp" />
+    <ClCompile Include="src\gen\ByteVector4.cpp" />
     <ClCompile Include="src\gen\CapsuleBV.cpp" />
     <ClCompile Include="src\gen\ChannelData.cpp" />
     <ClCompile Include="src\gen\ControllerLink.cpp" />
@@ -363,6 +372,8 @@
     <ClCompile Include="src\gen\Footer.cpp" />
     <ClCompile Include="src\gen\FurniturePosition.cpp" />
     <ClCompile Include="src\gen\HalfSpaceBV.cpp" />
+    <ClCompile Include="src\gen\HalfTexCoord.cpp" />
+    <ClCompile Include="src\gen\HalfVector3.cpp" />
     <ClCompile Include="src\gen\Header.cpp" />
     <ClCompile Include="src\gen\HingeDescriptor.cpp" />
     <ClCompile Include="src\gen\hkTriangle.cpp" />
@@ -406,6 +417,7 @@
     <ClCompile Include="src\gen\TexSource.cpp" />
     <ClCompile Include="src\gen\UnionBV.cpp" />
     <ClCompile Include="src\gen\UnknownMatrix1.cpp" />
+    <ClCompile Include="src\half.cpp" />
     <ClCompile Include="src\Inertia.cpp" />
     <ClCompile Include="src\kfm.cpp" />
     <ClCompile Include="src\MatTexCollection.cpp" />
@@ -445,12 +457,15 @@
     <ClCompile Include="src\obj\bhkMultiSphereShape.cpp" />
     <ClCompile Include="src\obj\bhkNiCollisionObject.cpp" />
     <ClCompile Include="src\obj\bhkNiTriStripsShape.cpp" />
+    <ClCompile Include="src\obj\bhkNPCollisionObject.cpp" />
     <ClCompile Include="src\obj\bhkOrientHingedBodyAction.cpp" />
     <ClCompile Include="src\obj\bhkPackedNiTriStripsShape.cpp" />
     <ClCompile Include="src\obj\bhkPCollisionObject.cpp" />
     <ClCompile Include="src\obj\bhkPhantom.cpp" />
+    <ClCompile Include="src\obj\bhkPhysicsSystem.cpp" />
     <ClCompile Include="src\obj\bhkPrismaticConstraint.cpp" />
     <ClCompile Include="src\obj\bhkRagdollConstraint.cpp" />
+    <ClCompile Include="src\obj\bhkRagdollSystem.cpp" />
     <ClCompile Include="src\obj\bhkRefObject.cpp" />
     <ClCompile Include="src\obj\bhkRigidBody.cpp" />
     <ClCompile Include="src\obj\bhkRigidBodyT.cpp" />
@@ -470,6 +485,9 @@
     <ClCompile Include="src\obj\BSBlastNode.cpp" />
     <ClCompile Include="src\obj\BSBoneLODExtraData.cpp" />
     <ClCompile Include="src\obj\BSBound.cpp" />
+    <ClCompile Include="src\obj\BSClothExtraData.cpp" />
+    <ClCompile Include="src\obj\BSConnectPoint__Children.cpp" />
+    <ClCompile Include="src\obj\BSConnectPoint__Parents.cpp" />
     <ClCompile Include="src\obj\BSDamageStage.cpp" />
     <ClCompile Include="src\obj\BSDebrisNode.cpp" />
     <ClCompile Include="src\obj\BSDecalPlacementVectorExtraData.cpp" />
@@ -478,6 +496,8 @@
     <ClCompile Include="src\obj\BSEffectShaderProperty.cpp" />
     <ClCompile Include="src\obj\BSEffectShaderPropertyColorController.cpp" />
     <ClCompile Include="src\obj\BSEffectShaderPropertyFloatController.cpp" />
+    <ClCompile Include="src\obj\BSExtraData.cpp" />
+    <ClCompile Include="src\obj\BSEyeCenterExtraData.cpp" />
     <ClCompile Include="src\obj\BSFadeNode.cpp" />
     <ClCompile Include="src\obj\BSFrustumFOVController.cpp" />
     <ClCompile Include="src\obj\BSFurnitureMarker.cpp" />
@@ -492,6 +512,7 @@
     <ClCompile Include="src\obj\BSLODTriShape.cpp" />
     <ClCompile Include="src\obj\BSMasterParticleSystem.cpp" />
     <ClCompile Include="src\obj\BSMaterialEmittanceMultController.cpp" />
+    <ClCompile Include="src\obj\BSMeshLODTriShape.cpp" />
     <ClCompile Include="src\obj\BSMultiBound.cpp" />
     <ClCompile Include="src\obj\BSMultiBoundAABB.cpp" />
     <ClCompile Include="src\obj\BSMultiBoundData.cpp" />
@@ -502,6 +523,7 @@
     <ClCompile Include="src\obj\BSOrderedNode.cpp" />
     <ClCompile Include="src\obj\BSPackedAdditionalGeometryData.cpp" />
     <ClCompile Include="src\obj\BSParentVelocityModifier.cpp" />
+    <ClCompile Include="src\obj\BSPositionData.cpp" />
     <ClCompile Include="src\obj\BSProceduralLightningController.cpp" />
     <ClCompile Include="src\obj\BSPSysArrayEmitter.cpp" />
     <ClCompile Include="src\obj\BSPSysHavokUpdateModifier.cpp" />
@@ -522,11 +544,16 @@
     <ClCompile Include="src\obj\BSShaderPPLightingProperty.cpp" />
     <ClCompile Include="src\obj\BSShaderProperty.cpp" />
     <ClCompile Include="src\obj\BSShaderTextureSet.cpp" />
+    <ClCompile Include="src\obj\BSShape.cpp" />
+    <ClCompile Include="src\obj\BSSkin__BoneData.cpp" />
+    <ClCompile Include="src\obj\BSSkin__Instance.cpp" />
     <ClCompile Include="src\obj\BSSkyShaderProperty.cpp" />
     <ClCompile Include="src\obj\BSStripParticleSystem.cpp" />
     <ClCompile Include="src\obj\BSStripPSysData.cpp" />
+    <ClCompile Include="src\obj\BSSubIndexTriShape.cpp" />
     <ClCompile Include="src\obj\BSTreadTransfInterpolator.cpp" />
     <ClCompile Include="src\obj\BSTreeNode.cpp" />
+    <ClCompile Include="src\obj\BSTriShape.cpp" />
     <ClCompile Include="src\obj\BSValueNode.cpp" />
     <ClCompile Include="src\obj\BSWArray.cpp" />
     <ClCompile Include="src\obj\BSWaterShaderProperty.cpp" />
@@ -636,6 +663,7 @@
     <ClCompile Include="src\obj\NiLightColorController.cpp" />
     <ClCompile Include="src\obj\NiLightDimmerController.cpp" />
     <ClCompile Include="src\obj\NiLightIntensityController.cpp" />
+    <ClCompile Include="src\obj\NiLightRadiusController.cpp" />
     <ClCompile Include="src\obj\NiLines.cpp" />
     <ClCompile Include="src\obj\NiLinesData.cpp" />
     <ClCompile Include="src\obj\NiLODData.cpp" />
@@ -855,22 +883,8 @@
     <ClCompile Include="src\obj\VolumetricFogShaderProperty.cpp" />
     <ClCompile Include="src\obj\WaterShaderProperty.cpp" />
     <ClCompile Include="src\pch.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug - DLL|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug - DLL|Win32'">pch.h</PrecompiledHeaderFile>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug - DLL|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug - DLL|x64'">pch.h</PrecompiledHeaderFile>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug - Static|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug - Static|Win32'">pch.h</PrecompiledHeaderFile>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug - Static|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug - Static|x64'">pch.h</PrecompiledHeaderFile>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release - DLL|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release - DLL|Win32'">pch.h</PrecompiledHeaderFile>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release - DLL|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release - DLL|x64'">pch.h</PrecompiledHeaderFile>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release - Static|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release - Static|Win32'">pch.h</PrecompiledHeaderFile>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release - Static|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release - Static|x64'">pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeader>Create</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="src\RefObject.cpp" />
     <ClCompile Include="src\Type.cpp" />
@@ -899,17 +913,26 @@
     <ClInclude Include="include\gen\BoundingBox.h" />
     <ClInclude Include="include\gen\BoundingVolume.h" />
     <ClInclude Include="include\gen\BoxBV.h" />
+    <ClInclude Include="include\gen\BSConnectPoint.h" />
     <ClInclude Include="include\gen\BSPackedAdditionalDataBlock.h" />
     <ClInclude Include="include\gen\BSSegment.h" />
     <ClInclude Include="include\gen\BSSegmentedTriangle.h" />
+    <ClInclude Include="include\gen\BSSIMaterial.h" />
+    <ClInclude Include="include\gen\BSSIMaterialSection.h" />
+    <ClInclude Include="include\gen\BSSITSSegment.h" />
+    <ClInclude Include="include\gen\BSSITSSubSegment.h" />
+    <ClInclude Include="include\gen\BSSkinBoneTrans.h" />
     <ClInclude Include="include\gen\BSTreadTransfInfo.h" />
     <ClInclude Include="include\gen\BSTreadTransform.h" />
     <ClInclude Include="include\gen\BSTreadTransformData.h" />
     <ClInclude Include="include\gen\BSTreadTransfSubInfo.h" />
+    <ClInclude Include="include\gen\BSVertexData.h" />
     <ClInclude Include="include\gen\ByteArray.h" />
     <ClInclude Include="include\gen\ByteColor3.h" />
     <ClInclude Include="include\gen\ByteColor4.h" />
     <ClInclude Include="include\gen\ByteMatrix.h" />
+    <ClInclude Include="include\gen\ByteVector3.h" />
+    <ClInclude Include="include\gen\ByteVector4.h" />
     <ClInclude Include="include\gen\CapsuleBV.h" />
     <ClInclude Include="include\gen\ChannelData.h" />
     <ClInclude Include="include\gen\ControllerLink.h" />
@@ -923,6 +946,8 @@
     <ClInclude Include="include\gen\Footer.h" />
     <ClInclude Include="include\gen\FurniturePosition.h" />
     <ClInclude Include="include\gen\HalfSpaceBV.h" />
+    <ClInclude Include="include\gen\HalfTexCoord.h" />
+    <ClInclude Include="include\gen\HalfVector3.h" />
     <ClInclude Include="include\gen\Header.h" />
     <ClInclude Include="include\gen\HingeDescriptor.h" />
     <ClInclude Include="include\gen\hkTriangle.h" />
@@ -946,6 +971,7 @@
     <ClInclude Include="include\gen\ParticleDesc.h" />
     <ClInclude Include="include\gen\physXMaterialRef.h" />
     <ClInclude Include="include\gen\Polygon.h" />
+    <ClInclude Include="include\gen\PosKeyGroup.h" />
     <ClInclude Include="include\gen\QTransform.h" />
     <ClInclude Include="include\gen\QuaternionXYZW.h" />
     <ClInclude Include="include\gen\RagDollDescriptor.h" />
@@ -967,6 +993,7 @@
     <ClInclude Include="include\gen\TexSource.h" />
     <ClInclude Include="include\gen\UnionBV.h" />
     <ClInclude Include="include\gen\UnknownMatrix1.h" />
+    <ClInclude Include="include\half.h" />
     <ClInclude Include="include\Inertia.h" />
     <ClInclude Include="include\Key.h" />
     <ClInclude Include="include\kfm.h" />
@@ -1009,12 +1036,15 @@
     <ClInclude Include="include\obj\bhkMultiSphereShape.h" />
     <ClInclude Include="include\obj\bhkNiCollisionObject.h" />
     <ClInclude Include="include\obj\bhkNiTriStripsShape.h" />
+    <ClInclude Include="include\obj\bhkNPCollisionObject.h" />
     <ClInclude Include="include\obj\bhkOrientHingedBodyAction.h" />
     <ClInclude Include="include\obj\bhkPackedNiTriStripsShape.h" />
     <ClInclude Include="include\obj\bhkPCollisionObject.h" />
     <ClInclude Include="include\obj\bhkPhantom.h" />
+    <ClInclude Include="include\obj\bhkPhysicsSystem.h" />
     <ClInclude Include="include\obj\bhkPrismaticConstraint.h" />
     <ClInclude Include="include\obj\bhkRagdollConstraint.h" />
+    <ClInclude Include="include\obj\bhkRagdollSystem.h" />
     <ClInclude Include="include\obj\bhkRefObject.h" />
     <ClInclude Include="include\obj\bhkRigidBody.h" />
     <ClInclude Include="include\obj\bhkRigidBodyT.h" />
@@ -1034,6 +1064,9 @@
     <ClInclude Include="include\obj\BSBlastNode.h" />
     <ClInclude Include="include\obj\BSBoneLODExtraData.h" />
     <ClInclude Include="include\obj\BSBound.h" />
+    <ClInclude Include="include\obj\BSClothExtraData.h" />
+    <ClInclude Include="include\obj\BSConnectPoint__Children.h" />
+    <ClInclude Include="include\obj\BSConnectPoint__Parents.h" />
     <ClInclude Include="include\obj\BSDamageStage.h" />
     <ClInclude Include="include\obj\BSDebrisNode.h" />
     <ClInclude Include="include\obj\BSDecalPlacementVectorExtraData.h" />
@@ -1042,6 +1075,8 @@
     <ClInclude Include="include\obj\BSEffectShaderProperty.h" />
     <ClInclude Include="include\obj\BSEffectShaderPropertyColorController.h" />
     <ClInclude Include="include\obj\BSEffectShaderPropertyFloatController.h" />
+    <ClInclude Include="include\obj\BSExtraData.h" />
+    <ClInclude Include="include\obj\BSEyeCenterExtraData.h" />
     <ClInclude Include="include\obj\BSFadeNode.h" />
     <ClInclude Include="include\obj\BSFrustumFOVController.h" />
     <ClInclude Include="include\obj\BSFurnitureMarker.h" />
@@ -1056,6 +1091,7 @@
     <ClInclude Include="include\obj\BSLODTriShape.h" />
     <ClInclude Include="include\obj\BSMasterParticleSystem.h" />
     <ClInclude Include="include\obj\BSMaterialEmittanceMultController.h" />
+    <ClInclude Include="include\obj\BSMeshLODTriShape.h" />
     <ClInclude Include="include\obj\BSMultiBound.h" />
     <ClInclude Include="include\obj\BSMultiBoundAABB.h" />
     <ClInclude Include="include\obj\BSMultiBoundData.h" />
@@ -1066,6 +1102,7 @@
     <ClInclude Include="include\obj\BSOrderedNode.h" />
     <ClInclude Include="include\obj\BSPackedAdditionalGeometryData.h" />
     <ClInclude Include="include\obj\BSParentVelocityModifier.h" />
+    <ClInclude Include="include\obj\BSPositionData.h" />
     <ClInclude Include="include\obj\BSProceduralLightningController.h" />
     <ClInclude Include="include\obj\BSPSysArrayEmitter.h" />
     <ClInclude Include="include\obj\BSPSysHavokUpdateModifier.h" />
@@ -1086,11 +1123,16 @@
     <ClInclude Include="include\obj\BSShaderPPLightingProperty.h" />
     <ClInclude Include="include\obj\BSShaderProperty.h" />
     <ClInclude Include="include\obj\BSShaderTextureSet.h" />
+    <ClInclude Include="include\obj\BSShape.h" />
+    <ClInclude Include="include\obj\BSSkin__BoneData.h" />
+    <ClInclude Include="include\obj\BSSkin__Instance.h" />
     <ClInclude Include="include\obj\BSSkyShaderProperty.h" />
     <ClInclude Include="include\obj\BSStripParticleSystem.h" />
     <ClInclude Include="include\obj\BSStripPSysData.h" />
+    <ClInclude Include="include\obj\BSSubIndexTriShape.h" />
     <ClInclude Include="include\obj\BSTreadTransfInterpolator.h" />
     <ClInclude Include="include\obj\BSTreeNode.h" />
+    <ClInclude Include="include\obj\BSTriShape.h" />
     <ClInclude Include="include\obj\BSValueNode.h" />
     <ClInclude Include="include\obj\BSWArray.h" />
     <ClInclude Include="include\obj\BSWaterShaderProperty.h" />
@@ -1200,6 +1242,7 @@
     <ClInclude Include="include\obj\NiLightColorController.h" />
     <ClInclude Include="include\obj\NiLightDimmerController.h" />
     <ClInclude Include="include\obj\NiLightIntensityController.h" />
+    <ClInclude Include="include\obj\NiLightRadiusController.h" />
     <ClInclude Include="include\obj\NiLines.h" />
     <ClInclude Include="include\obj\NiLinesData.h" />
     <ClInclude Include="include\obj\NiLODData.h" />
