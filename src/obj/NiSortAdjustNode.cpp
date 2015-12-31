@@ -78,7 +78,7 @@ std::string NiSortAdjustNode::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiNode::asString();
+	out << NiNode::asString(verbose);
 	out << "  Sorting Mode:  " << sortingMode << endl;
 	out << "  Unknown Int 2:  " << unknownInt2 << endl;
 	return out.str();

@@ -62,7 +62,7 @@ std::string NiAmbientLight::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiLight::asString();
+	out << NiLight::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

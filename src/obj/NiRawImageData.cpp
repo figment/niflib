@@ -115,7 +115,7 @@ std::string NiRawImageData::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	height = (unsigned int)((rgbImageData.size() > 0) ? rgbImageData[0].size() : 0);
 	width = (unsigned int)(rgbImageData.size());
 	out << "  Width:  " << width << endl;

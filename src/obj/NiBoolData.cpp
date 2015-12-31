@@ -80,7 +80,7 @@ std::string NiBoolData::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	data.numKeys = (unsigned int)(data.keys.size());
 	out << "  Num Keys:  " << data.numKeys << endl;
 	if ( (data.numKeys != 0) ) {

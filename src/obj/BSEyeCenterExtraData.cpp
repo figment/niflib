@@ -81,7 +81,7 @@ std::string BSEyeCenterExtraData::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiExtraData::asString();
+	out << NiExtraData::asString(verbose);
 	numData = (int)(data.size());
 	out << "  Num Data:  " << numData << endl;
 	array_output_count = 0;

@@ -78,7 +78,7 @@ std::string BSInvMarker::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiExtraData::asString();
+	out << NiExtraData::asString(verbose);
 	out << "  Rotation X:  " << rotationX << endl;
 	out << "  Rotation Y:  " << rotationY << endl;
 	out << "  Rotation Z:  " << rotationZ << endl;

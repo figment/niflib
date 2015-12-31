@@ -70,7 +70,7 @@ std::string NiMorphController::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiInterpController::asString();
+	out << NiInterpController::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

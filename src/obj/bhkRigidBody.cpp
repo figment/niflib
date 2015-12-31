@@ -218,7 +218,7 @@ std::string bhkRigidBody::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << bhkEntity::asString();
+	out << bhkEntity::asString(verbose);
 	numConstraints = (unsigned int)(constraints.size());
 	out << "  Unknown Int 1:  " << unknownInt1 << endl;
 	out << "  Unknown Int 2:  " << unknownInt2 << endl;

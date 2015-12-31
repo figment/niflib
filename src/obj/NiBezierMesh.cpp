@@ -143,7 +143,7 @@ std::string NiBezierMesh::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiAVObject::asString();
+	out << NiAVObject::asString(verbose);
 	count2 = (unsigned short)(data2.size());
 	count1 = (unsigned short)(points1.size());
 	numBezierTriangles = (unsigned int)(bezierTriangle.size());

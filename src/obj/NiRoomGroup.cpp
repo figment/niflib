@@ -120,7 +120,7 @@ std::string NiRoomGroup::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiNode::asString();
+	out << NiNode::asString(verbose);
 	numRooms = (int)(rooms.size());
 	out << "  Shell Link:  " << shellLink << endl;
 	out << "  Num Rooms:  " << numRooms << endl;

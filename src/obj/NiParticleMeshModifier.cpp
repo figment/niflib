@@ -92,7 +92,7 @@ std::string NiParticleMeshModifier::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiParticleModifier::asString();
+	out << NiParticleModifier::asString(verbose);
 	numParticleMeshes = (unsigned int)(particleMeshes.size());
 	out << "  Num Particle Meshes:  " << numParticleMeshes << endl;
 	array_output_count = 0;

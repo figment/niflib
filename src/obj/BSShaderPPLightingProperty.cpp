@@ -113,7 +113,7 @@ std::string BSShaderPPLightingProperty::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << BSShaderLightingProperty::asString();
+	out << BSShaderLightingProperty::asString(verbose);
 	out << "  Texture Set:  " << textureSet << endl;
 	out << "  Unknown Float 2:  " << unknownFloat2 << endl;
 	out << "  Refraction Period:  " << refractionPeriod << endl;

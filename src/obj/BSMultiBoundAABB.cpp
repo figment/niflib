@@ -74,7 +74,7 @@ std::string BSMultiBoundAABB::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << BSMultiBoundData::asString();
+	out << BSMultiBoundData::asString(verbose);
 	out << "  Position:  " << position << endl;
 	out << "  Extent:  " << extent << endl;
 	return out.str();

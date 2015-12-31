@@ -95,7 +95,7 @@ std::string BSRefractionFirePeriodController::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiTimeController::asString();
+	out << NiTimeController::asString(verbose);
 	out << "  Interpolator:  " << interpolator << endl;
 	return out.str();
 

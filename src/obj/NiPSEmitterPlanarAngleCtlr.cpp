@@ -70,7 +70,7 @@ std::string NiPSEmitterPlanarAngleCtlr::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSysModifierCtlr::asString();
+	out << NiPSysModifierCtlr::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

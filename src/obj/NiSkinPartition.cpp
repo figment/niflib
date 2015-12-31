@@ -337,7 +337,7 @@ std::string NiSkinPartition::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	numSkinPartitionBlocks = (unsigned int)(skinPartitionBlocks.size());
 	out << "  Num Skin Partition Blocks:  " << numSkinPartitionBlocks << endl;
 	array_output_count = 0;

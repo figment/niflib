@@ -130,7 +130,7 @@ std::string bhkMeshShape::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << bhkShape::asString();
+	out << bhkShape::asString(verbose);
 	numStripsData = (unsigned int)(stripsData.size());
 	numUnknownFloats = (int)(unknownFloats.size());
 	array_output_count = 0;

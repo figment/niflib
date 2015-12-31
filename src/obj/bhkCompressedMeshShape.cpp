@@ -129,7 +129,7 @@ std::string bhkCompressedMeshShape::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << bhkShape::asString();
+	out << bhkShape::asString(verbose);
 	out << "  Target:  " << target << endl;
 	out << "  Skyrim Material:  " << skyrimMaterial << endl;
 	out << "  Unknown Float 1:  " << unknownFloat1 << endl;

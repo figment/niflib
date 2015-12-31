@@ -70,7 +70,7 @@ std::string NiPSysAirFieldSpreadCtlr::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSysModifierFloatCtlr::asString();
+	out << NiPSysModifierFloatCtlr::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

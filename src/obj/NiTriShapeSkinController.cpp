@@ -118,7 +118,7 @@ std::string NiTriShapeSkinController::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiTimeController::asString();
+	out << NiTimeController::asString(verbose);
 	for (unsigned int i1 = 0; i1 < boneData.size(); i1++)
 		vertexCounts[i1] = (unsigned int)(boneData[i1].size());
 	numBones = (unsigned int)(vertexCounts.size());

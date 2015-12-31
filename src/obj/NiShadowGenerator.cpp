@@ -138,7 +138,7 @@ std::string NiShadowGenerator::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	numUnknownLinks1 = (unsigned int)(unknownLinks1.size());
 	out << "  Name:  " << name << endl;
 	out << "  Unknown Flags:  " << unknownFlags << endl;

@@ -74,7 +74,7 @@ std::string BSDebrisNode::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiNode::asString();
+	out << NiNode::asString(verbose);
 	out << "  Unknown byte 1:  " << unknownByte1 << endl;
 	out << "  Unknown Short 2:  " << unknownShort2 << endl;
 	return out.str();

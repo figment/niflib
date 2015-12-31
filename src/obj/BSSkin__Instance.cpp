@@ -132,7 +132,7 @@ std::string BSSkin__Instance::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	numVector31 = (unsigned int)(vector31.size());
 	numBones = (unsigned int)(bones.size());
 	out << "  Unknown Int 1:  " << unknownInt1 << endl;

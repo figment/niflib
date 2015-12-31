@@ -62,7 +62,7 @@ std::string FxButton::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << FxWidget::asString();
+	out << FxWidget::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

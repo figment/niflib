@@ -114,7 +114,7 @@ std::string NiParticleModifier::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	out << "  Next Modifier:  " << nextModifier << endl;
 	out << "  Controller:  " << controller << endl;
 	return out.str();

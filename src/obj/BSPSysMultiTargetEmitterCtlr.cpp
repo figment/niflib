@@ -123,7 +123,7 @@ std::string BSPSysMultiTargetEmitterCtlr::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSysModifierCtlr::asString();
+	out << NiPSysModifierCtlr::asString(verbose);
 	out << "  Data:  " << data << endl;
 	out << "  Visibility Interpolator:  " << visibilityInterpolator << endl;
 	out << "  Unknown Short 1:  " << unknownShort1 << endl;

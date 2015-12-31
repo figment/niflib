@@ -62,7 +62,7 @@ std::string NiAutoNormalParticlesData::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiParticlesData::asString();
+	out << NiParticlesData::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

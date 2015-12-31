@@ -72,7 +72,7 @@ std::string BSPSysStripUpdateModifier::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSysModifier::asString();
+	out << NiPSysModifier::asString(verbose);
 	out << "  Update Delta Time:  " << updateDeltaTime << endl;
 	return out.str();
 

@@ -78,7 +78,7 @@ std::string NiPSMeshParticleSystem::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSParticleSystem::asString();
+	out << NiPSParticleSystem::asString(verbose);
 	out << "  Unknown 23:  " << unknown23 << endl;
 	out << "  Unknown 24:  " << unknown24 << endl;
 	out << "  Unknown 25:  " << unknown25 << endl;

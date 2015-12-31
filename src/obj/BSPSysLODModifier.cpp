@@ -78,7 +78,7 @@ std::string BSPSysLODModifier::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSysModifier::asString();
+	out << NiPSysModifier::asString(verbose);
 	out << "  Uknown Float 1:  " << uknownFloat1 << endl;
 	out << "  Uknown Float 2:  " << uknownFloat2 << endl;
 	out << "  Uknown Float 3:  " << uknownFloat3 << endl;

@@ -70,7 +70,7 @@ std::string BSShape::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiAVObject::asString();
+	out << NiAVObject::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

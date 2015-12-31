@@ -83,7 +83,7 @@ std::string NiParticleColorModifier::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiParticleModifier::asString();
+	out << NiParticleModifier::asString(verbose);
 	out << "  Color Data:  " << colorData << endl;
 	return out.str();
 

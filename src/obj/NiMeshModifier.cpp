@@ -91,7 +91,7 @@ std::string NiMeshModifier::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	numCompletePoints = (unsigned int)(completePoints.size());
 	numSubmitPoints = (unsigned int)(submitPoints.size());
 	out << "  Num Submit Points:  " << numSubmitPoints << endl;

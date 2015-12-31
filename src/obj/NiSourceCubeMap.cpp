@@ -70,7 +70,7 @@ std::string NiSourceCubeMap::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiSourceTexture::asString();
+	out << NiSourceTexture::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

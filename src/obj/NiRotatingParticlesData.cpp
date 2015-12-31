@@ -80,7 +80,7 @@ std::string NiRotatingParticlesData::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiParticlesData::asString();
+	out << NiParticlesData::asString(verbose);
 	out << "  Has Rotations 2:  " << hasRotations2 << endl;
 	if ( hasRotations2 ) {
 		array_output_count = 0;

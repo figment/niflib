@@ -62,7 +62,7 @@ std::string bhkSerializable::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << bhkRefObject::asString();
+	out << bhkRefObject::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

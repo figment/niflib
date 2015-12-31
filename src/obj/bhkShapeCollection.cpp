@@ -62,7 +62,7 @@ std::string bhkShapeCollection::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << bhkShape::asString();
+	out << bhkShape::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

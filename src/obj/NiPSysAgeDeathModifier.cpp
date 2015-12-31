@@ -85,7 +85,7 @@ std::string NiPSysAgeDeathModifier::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSysModifier::asString();
+	out << NiPSysModifier::asString(verbose);
 	out << "  Spawn on Death:  " << spawnOnDeath << endl;
 	out << "  Spawn Modifier:  " << spawnModifier << endl;
 	return out.str();

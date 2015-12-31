@@ -132,7 +132,7 @@ std::string NiCollisionData::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiCollisionObject::asString();
+	out << NiCollisionObject::asString(verbose);
 	out << "  Propagation Mode:  " << propagationMode << endl;
 	out << "  Collision Mode:  " << collisionMode << endl;
 	out << "  Use ABV:  " << useAbv << endl;

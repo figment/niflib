@@ -117,7 +117,7 @@ std::string BSTreadTransfInterpolator::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiInterpolator::asString();
+	out << NiInterpolator::asString(verbose);
 	numTreadTransforms = (int)(treadTransforms.size());
 	out << "  Num Tread Transforms:  " << numTreadTransforms << endl;
 	array_output_count = 0;

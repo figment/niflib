@@ -62,7 +62,7 @@ std::string RootCollisionNode::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiNode::asString();
+	out << NiNode::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

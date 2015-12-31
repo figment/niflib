@@ -261,7 +261,7 @@ std::string BSTriShape::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << BSShape::asString();
+	out << BSShape::asString(verbose);
 	numVertices = (unsigned short)(vertexData.size());
 	numTriangles = (unsigned int)(triangles.size());
 	out << "  Center:  " << bound.center << endl;

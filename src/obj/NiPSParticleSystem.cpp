@@ -213,7 +213,7 @@ std::string NiPSParticleSystem::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiAVObject::asString();
+	out << NiAVObject::asString(verbose);
 	unknown3 = (int)(unknown38.size());
 	out << "  Unknown 3:  " << unknown3 << endl;
 	array_output_count = 0;

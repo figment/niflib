@@ -224,7 +224,7 @@ std::string bhkCompressedMeshShapeData::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << bhkRefObject::asString();
+	out << bhkRefObject::asString(verbose);
 	numChunks = (unsigned int)(chunks.size());
 	numBigTris = (unsigned int)(bigTris.size());
 	numBigVerts = (unsigned int)(bigVerts.size());

@@ -83,7 +83,7 @@ std::string NiParticleMeshesData::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiRotatingParticlesData::asString();
+	out << NiRotatingParticlesData::asString(verbose);
 	out << "  Unknown Link 2:  " << unknownLink2 << endl;
 	return out.str();
 

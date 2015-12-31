@@ -115,7 +115,7 @@ std::string NiControllerManager::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiTimeController::asString();
+	out << NiTimeController::asString(verbose);
 	numControllerSequences = (unsigned int)(controllerSequences.size());
 	out << "  Cumulative:  " << cumulative << endl;
 	out << "  Num Controller Sequences:  " << numControllerSequences << endl;

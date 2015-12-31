@@ -130,7 +130,7 @@ std::string NiTriStripsData::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiTriBasedGeomData::asString();
+	out << NiTriBasedGeomData::asString(verbose);
 	for (unsigned int i1 = 0; i1 < points.size(); i1++)
 		stripLengths[i1] = (unsigned short)(points[i1].size());
 	numStrips = (unsigned short)(stripLengths.size());

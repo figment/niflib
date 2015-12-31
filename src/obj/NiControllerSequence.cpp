@@ -213,7 +213,7 @@ std::string NiControllerSequence::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiSequence::asString();
+	out << NiSequence::asString(verbose);
 	out << "  Weight:  " << weight << endl;
 	out << "  Text Keys:  " << textKeys << endl;
 	out << "  Cycle Type:  " << cycleType << endl;

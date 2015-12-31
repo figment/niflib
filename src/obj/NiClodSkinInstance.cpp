@@ -62,7 +62,7 @@ std::string NiClodSkinInstance::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiSkinInstance::asString();
+	out << NiSkinInstance::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

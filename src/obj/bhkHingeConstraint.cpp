@@ -97,7 +97,7 @@ std::string bhkHingeConstraint::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << bhkConstraint::asString();
+	out << bhkConstraint::asString(verbose);
 	out << "  Pivot A:  " << hinge.pivotA << endl;
 	out << "  Perp2 Axle In A1:  " << hinge.perp2AxleInA1 << endl;
 	out << "  Perp2 Axle In A2:  " << hinge.perp2AxleInA2 << endl;

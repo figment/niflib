@@ -94,7 +94,7 @@ std::string NiPSFacingQuadGenerator::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	out << "  Unknown 1:  " << unknown1 << endl;
 	out << "  Unknown 2:  " << unknown2 << endl;
 	out << "  Unknown 3:  " << unknown3 << endl;

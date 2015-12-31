@@ -98,7 +98,7 @@ std::string NiPSysMeshEmitter::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiPSysEmitter::asString();
+	out << NiPSysEmitter::asString(verbose);
 	numEmitterMeshes = (unsigned int)(emitterMeshes.size());
 	out << "  Num Emitter Meshes:  " << numEmitterMeshes << endl;
 	array_output_count = 0;

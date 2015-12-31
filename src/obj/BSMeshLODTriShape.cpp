@@ -76,7 +76,7 @@ std::string BSMeshLODTriShape::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << BSTriShape::asString();
+	out << BSTriShape::asString(verbose);
 	out << "  Level 0 Size:  " << level0Size << endl;
 	out << "  Level 1 Size:  " << level1Size << endl;
 	out << "  Level 2 Size:  " << level2Size << endl;

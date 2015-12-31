@@ -100,7 +100,7 @@ std::string NiTransformInterpolator::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiKeyBasedInterpolator::asString();
+	out << NiKeyBasedInterpolator::asString(verbose);
 	out << "  Translation:  " << translation << endl;
 	out << "  Rotation:  " << rotation << endl;
 	out << "  Scale:  " << scale << endl;

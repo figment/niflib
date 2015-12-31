@@ -64,7 +64,7 @@ std::string BSWindModifier::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSysModifier::asString();
+	out << NiPSysModifier::asString(verbose);
 	out << "  Strength:  " << strength << endl;
 	return out.str();
 

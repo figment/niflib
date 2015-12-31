@@ -93,7 +93,7 @@ std::string NiArkImporterExtraData::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiExtraData::asString();
+	out << NiExtraData::asString(verbose);
 	out << "  Unknown Int 1:  " << unknownInt1 << endl;
 	out << "  Unknown Int 2:  " << unknownInt2 << endl;
 	out << "  Importer Name:  " << importerName << endl;

@@ -70,7 +70,7 @@ std::string WaterShaderProperty::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << BSShaderProperty::asString();
+	out << BSShaderProperty::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

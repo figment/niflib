@@ -107,7 +107,7 @@ std::string NiScreenElementsData::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiTriShapeData::asString();
+	out << NiTriShapeData::asString(verbose);
 	maxPolygons = (unsigned short)(polygons.size());
 	out << "  Max Polygons:  " << maxPolygons << endl;
 	array_output_count = 0;

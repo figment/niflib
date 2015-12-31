@@ -72,7 +72,7 @@ std::string NiSpotLight::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPointLight::asString();
+	out << NiPointLight::asString(verbose);
 	out << "  Cutoff Angle:  " << cutoffAngle << endl;
 	out << "  Unknown Float:  " << unknownFloat << endl;
 	out << "  Exponent:  " << exponent << endl;

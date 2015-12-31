@@ -62,7 +62,7 @@ std::string NiBlendTransformInterpolator::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiBlendInterpolator::asString();
+	out << NiBlendInterpolator::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

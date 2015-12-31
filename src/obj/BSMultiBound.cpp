@@ -91,7 +91,7 @@ std::string BSMultiBound::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	out << "  Data:  " << data << endl;
 	return out.str();
 

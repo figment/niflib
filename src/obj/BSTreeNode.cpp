@@ -127,7 +127,7 @@ std::string BSTreeNode::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiNode::asString();
+	out << NiNode::asString(verbose);
 	numBones2 = (unsigned int)(bones.size());
 	numBones1 = (unsigned int)(bones1.size());
 	out << "  Num Bones 1:  " << numBones1 << endl;

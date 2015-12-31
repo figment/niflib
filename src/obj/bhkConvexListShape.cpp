@@ -122,7 +122,7 @@ std::string bhkConvexListShape::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << bhkShape::asString();
+	out << bhkShape::asString(verbose);
 	numSubShapes = (unsigned int)(subShapes.size());
 	out << "  Num Sub Shapes:  " << numSubShapes << endl;
 	array_output_count = 0;

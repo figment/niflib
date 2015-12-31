@@ -76,7 +76,7 @@ std::string BSShaderLightingProperty::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << BSShaderProperty::asString();
+	out << BSShaderProperty::asString(verbose);
 	out << "  Unknown Int 3:  " << unknownInt3 << endl;
 	return out.str();
 

@@ -62,7 +62,7 @@ std::string bhkPCollisionObject::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << bhkNiCollisionObject::asString();
+	out << bhkNiCollisionObject::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

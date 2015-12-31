@@ -106,7 +106,7 @@ std::string NiPortal::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiAVObject::asString();
+	out << NiAVObject::asString(verbose);
 	numVertices = (unsigned short)(vertices.size());
 	out << "  Unknown Flags:  " << unknownFlags << endl;
 	out << "  Unknown Short 2:  " << unknownShort2 << endl;

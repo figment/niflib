@@ -72,7 +72,7 @@ std::string BSEffectShaderPropertyFloatController::asString( bool verbose ) cons
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiFloatInterpController::asString();
+	out << NiFloatInterpController::asString(verbose);
 	out << "  Type of Controlled Variable:  " << typeOfControlledVariable << endl;
 	return out.str();
 

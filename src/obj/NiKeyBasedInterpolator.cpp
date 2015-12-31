@@ -62,7 +62,7 @@ std::string NiKeyBasedInterpolator::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiInterpolator::asString();
+	out << NiInterpolator::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

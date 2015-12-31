@@ -174,12 +174,12 @@
     <TargetName>$(ProjectName)_static_$(PlatformShortName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release - Static|x64'">
-    <OutDir>$(SolutionDir)StaticLibraries</OutDir>
+    <OutDir>$(SolutionDir)StaticLibraries\</OutDir>
     <IntDir>$(SolutionDir)NifLibIntermediate\obj\$(Platform)\$(PlatformToolset)\$(Configuration)\</IntDir>
     <TargetName>$(ProjectName)_static_$(PlatformShortName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-ShowIncludes|x64'">
-    <OutDir>$(SolutionDir)StaticLibraries</OutDir>
+    <OutDir>$(SolutionDir)StaticLibraries\</OutDir>
     <IntDir>$(SolutionDir)NifLibIntermediate\obj\$(Platform)\$(PlatformToolset)\$(Configuration)\</IntDir>
     <TargetName>$(ProjectName)_static_$(PlatformShortName)</TargetName>
   </PropertyGroup>

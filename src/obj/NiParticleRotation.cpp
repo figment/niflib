@@ -68,7 +68,7 @@ std::string NiParticleRotation::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiParticleModifier::asString();
+	out << NiParticleModifier::asString(verbose);
 	out << "  Random Initial Axis?:  " << randomInitialAxis_ << endl;
 	out << "  Initial Axis?:  " << initialAxis_ << endl;
 	out << "  Rotation Speed?:  " << rotationSpeed_ << endl;

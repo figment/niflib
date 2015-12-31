@@ -99,7 +99,7 @@ std::string BSDecalPlacementVectorExtraData::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiExtraData::asString();
+	out << NiExtraData::asString(verbose);
 	numVectorBlocks = (short)(vectorBlocks.size());
 	out << "  Unknown Float 1:  " << unknownFloat1 << endl;
 	out << "  Num Vector Blocks:  " << numVectorBlocks << endl;

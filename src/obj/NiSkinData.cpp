@@ -169,7 +169,7 @@ std::string NiSkinData::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	numBones = (unsigned int)(boneList.size());
 	out << "  Rotation:  " << skinTransform.rotation << endl;
 	out << "  Translation:  " << skinTransform.translation << endl;

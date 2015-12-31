@@ -82,7 +82,7 @@ std::string BSSkyShaderProperty::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiProperty::asString();
+	out << NiProperty::asString(verbose);
 	out << "  Shader Flags 1:  " << shaderFlags1 << endl;
 	out << "  Shader Flags 2:  " << shaderFlags2 << endl;
 	out << "  UV Offset:  " << uvOffset << endl;

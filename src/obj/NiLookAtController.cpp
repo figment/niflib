@@ -89,7 +89,7 @@ std::string NiLookAtController::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiTimeController::asString();
+	out << NiTimeController::asString(verbose);
 	out << "  Unknown1:  " << unknown1 << endl;
 	out << "  Look At Node:  " << lookAtNode << endl;
 	return out.str();

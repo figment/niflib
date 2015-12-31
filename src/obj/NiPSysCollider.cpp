@@ -148,7 +148,7 @@ std::string NiPSysCollider::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	out << "  Bounce:  " << bounce << endl;
 	out << "  Spawn on Collide:  " << spawnOnCollide << endl;
 	out << "  Die on Collide:  " << dieOnCollide << endl;

@@ -132,7 +132,7 @@ std::string bhkLimitedHingeConstraint::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << bhkConstraint::asString();
+	out << bhkConstraint::asString(verbose);
 	out << "  Pivot A:  " << limitedHinge.pivotA << endl;
 	out << "  Axle A:  " << limitedHinge.axleA << endl;
 	out << "  Perp2 Axle In A1:  " << limitedHinge.perp2AxleInA1 << endl;

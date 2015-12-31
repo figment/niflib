@@ -121,7 +121,7 @@ std::string NiPhysXShapeDesc::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	out << "  Unknown Int 1:  " << unknownInt1 << endl;
 	out << "  Unknown Quat 1:  " << unknownQuat1 << endl;
 	out << "  Unknown Quat 2:  " << unknownQuat2 << endl;

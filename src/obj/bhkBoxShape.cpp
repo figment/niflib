@@ -75,7 +75,7 @@ std::string bhkBoxShape::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << bhkConvexShape::asString();
+	out << bhkConvexShape::asString(verbose);
 	array_output_count = 0;
 	for (unsigned int i1 = 0; i1 < 8; i1++) {
 		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {

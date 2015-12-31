@@ -180,7 +180,7 @@ std::string ATextureRenderData::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	numMipmaps = (unsigned int)(mipmaps.size());
 	out << "  Pixel Format:  " << pixelFormat << endl;
 	out << "  Red Mask:  " << redMask << endl;

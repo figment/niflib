@@ -74,7 +74,7 @@ std::string BSOrderedNode::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiNode::asString();
+	out << NiNode::asString(verbose);
 	out << "  Alpha Sort Bound:  " << alphaSortBound << endl;
 	out << "  Is Static Bound:  " << isStaticBound << endl;
 	return out.str();

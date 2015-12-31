@@ -87,7 +87,7 @@ std::string NiPSysVolumeEmitter::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSysEmitter::asString();
+	out << NiPSysEmitter::asString(verbose);
 	out << "  Emitter Object:  " << emitterObject << endl;
 	return out.str();
 

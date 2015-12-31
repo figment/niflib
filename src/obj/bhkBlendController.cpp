@@ -64,7 +64,7 @@ std::string bhkBlendController::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiTimeController::asString();
+	out << NiTimeController::asString(verbose);
 	out << "  Unknown Int:  " << unknownInt << endl;
 	return out.str();
 

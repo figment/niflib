@@ -62,7 +62,7 @@ std::string NiParticles::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiGeometry::asString();
+	out << NiGeometry::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

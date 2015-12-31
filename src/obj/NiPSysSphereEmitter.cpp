@@ -64,7 +64,7 @@ std::string NiPSysSphereEmitter::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSysVolumeEmitter::asString();
+	out << NiPSysVolumeEmitter::asString(verbose);
 	out << "  Radius:  " << radius << endl;
 	return out.str();
 

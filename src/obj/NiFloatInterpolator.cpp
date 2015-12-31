@@ -85,7 +85,7 @@ std::string NiFloatInterpolator::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiKeyBasedInterpolator::asString();
+	out << NiKeyBasedInterpolator::asString(verbose);
 	out << "  Float Value:  " << floatValue << endl;
 	out << "  Data:  " << data << endl;
 	return out.str();

@@ -74,7 +74,7 @@ std::string BSValueNode::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiNode::asString();
+	out << NiNode::asString(verbose);
 	out << "  Value:  " << value << endl;
 	out << "  Unknown byte:  " << unknownByte << endl;
 	return out.str();

@@ -70,7 +70,7 @@ std::string NiZBufferProperty::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiProperty::asString();
+	out << NiProperty::asString(verbose);
 	out << "  Flags:  " << flags << endl;
 	out << "  Function:  " << function << endl;
 	return out.str();

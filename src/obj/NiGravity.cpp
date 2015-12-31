@@ -76,7 +76,7 @@ std::string NiGravity::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiParticleModifier::asString();
+	out << NiParticleModifier::asString(verbose);
 	out << "  Unknown Float 1:  " << unknownFloat1 << endl;
 	out << "  Force:  " << force << endl;
 	out << "  Type:  " << type << endl;

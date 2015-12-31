@@ -73,7 +73,7 @@ std::string NiFloatsExtraData::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiExtraData::asString();
+	out << NiExtraData::asString(verbose);
 	numFloats = (unsigned int)(data.size());
 	out << "  Num Floats:  " << numFloats << endl;
 	array_output_count = 0;

@@ -84,7 +84,7 @@ std::string BSPSysSubTexModifier::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSysModifier::asString();
+	out << NiPSysModifier::asString(verbose);
 	out << "  Start Frame:  " << startFrame << endl;
 	out << "  Start Frame Fudge:  " << startFrameFudge << endl;
 	out << "  End Frame:  " << endFrame << endl;

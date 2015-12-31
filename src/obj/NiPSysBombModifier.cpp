@@ -93,7 +93,7 @@ std::string NiPSysBombModifier::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSysModifier::asString();
+	out << NiPSysModifier::asString(verbose);
 	out << "  Bomb Object:  " << bombObject << endl;
 	out << "  Bomb Axis:  " << bombAxis << endl;
 	out << "  Decay:  " << decay << endl;

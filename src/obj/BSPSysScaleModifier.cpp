@@ -81,7 +81,7 @@ std::string BSPSysScaleModifier::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiPSysModifier::asString();
+	out << NiPSysModifier::asString(verbose);
 	numFloats = (unsigned int)(floats.size());
 	out << "  Num Floats:  " << numFloats << endl;
 	array_output_count = 0;

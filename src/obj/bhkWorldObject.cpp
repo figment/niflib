@@ -101,7 +101,7 @@ std::string bhkWorldObject::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << bhkSerializable::asString();
+	out << bhkSerializable::asString(verbose);
 	out << "  Shape:  " << shape << endl;
 	out << "  Layer:  " << layer << endl;
 	out << "  Col Filter:  " << colFilter << endl;

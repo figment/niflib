@@ -139,7 +139,7 @@ std::string bhkMoppBvTreeShape::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << bhkBvTreeShape::asString();
+	out << bhkBvTreeShape::asString(verbose);
 	out << "  Shape:  " << shape << endl;
 	out << "  Material:  " << material << endl;
 	out << "  Skyrim Material:  " << skyrimMaterial << endl;

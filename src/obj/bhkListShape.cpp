@@ -121,7 +121,7 @@ std::string bhkListShape::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << bhkShapeCollection::asString();
+	out << bhkShapeCollection::asString(verbose);
 	numUnknownInts = (unsigned int)(unknownInts.size());
 	numSubShapes = (unsigned int)(subShapes.size());
 	out << "  Num Sub Shapes:  " << numSubShapes << endl;

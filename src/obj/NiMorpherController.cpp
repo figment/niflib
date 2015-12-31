@@ -91,7 +91,7 @@ std::string NiMorpherController::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiInterpController::asString();
+	out << NiInterpController::asString(verbose);
 	out << "  Data:  " << data << endl;
 	return out.str();
 

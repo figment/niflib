@@ -127,7 +127,7 @@ std::string NiMultiTextureProperty::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiProperty::asString();
+	out << NiProperty::asString(verbose);
 	out << "  Flags:  " << flags << endl;
 	out << "  Unknown Int:  " << unknownInt << endl;
 	array_output_count = 0;

@@ -89,7 +89,7 @@ std::string BSPSysSimpleColorModifier::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiPSysModifier::asString();
+	out << NiPSysModifier::asString(verbose);
 	out << "  Fade In Percent:  " << fadeInPercent << endl;
 	out << "  Fade out Percent:  " << fadeOutPercent << endl;
 	out << "  Color 1 End Percent:  " << color1EndPercent << endl;

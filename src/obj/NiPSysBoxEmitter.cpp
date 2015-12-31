@@ -68,7 +68,7 @@ std::string NiPSysBoxEmitter::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSysVolumeEmitter::asString();
+	out << NiPSysVolumeEmitter::asString(verbose);
 	out << "  Width:  " << width << endl;
 	out << "  Height:  " << height << endl;
 	out << "  Depth:  " << depth << endl;

@@ -62,7 +62,7 @@ std::string NiBSplineCompPoint3Interpolator::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiBSplinePoint3Interpolator::asString();
+	out << NiBSplinePoint3Interpolator::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

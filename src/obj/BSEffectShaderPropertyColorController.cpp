@@ -72,7 +72,7 @@ std::string BSEffectShaderPropertyColorController::asString( bool verbose ) cons
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiFloatInterpController::asString();
+	out << NiFloatInterpController::asString(verbose);
 	out << "  Type of Controlled Color:  " << typeOfControlledColor << endl;
 	return out.str();
 

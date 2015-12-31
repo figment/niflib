@@ -121,7 +121,7 @@ std::string NiTriShapeData::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiTriBasedGeomData::asString();
+	out << NiTriBasedGeomData::asString(verbose);
 	numMatchGroups = (unsigned short)(matchGroups.size());
 	out << "  Num Triangle Points:  " << numTrianglePoints << endl;
 	out << "  Has Triangles:  " << hasTriangles << endl;

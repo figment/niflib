@@ -62,7 +62,7 @@ std::string BSXFlags::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiIntegerExtraData::asString();
+	out << NiIntegerExtraData::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

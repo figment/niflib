@@ -62,7 +62,7 @@ std::string NiLightDimmerController::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiFloatInterpController::asString();
+	out << NiFloatInterpController::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

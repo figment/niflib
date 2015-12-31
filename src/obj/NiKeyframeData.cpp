@@ -152,7 +152,7 @@ std::string NiKeyframeData::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	out << "  Num Rotation Keys:  " << numRotationKeys << endl;
 	if ( (numRotationKeys != 0) ) {
 		out << "    Rotation Type:  " << rotationType << endl;

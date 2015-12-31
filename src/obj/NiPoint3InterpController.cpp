@@ -93,7 +93,7 @@ std::string NiPoint3InterpController::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiSingleInterpController::asString();
+	out << NiSingleInterpController::asString(verbose);
 	out << "  Target Color:  " << targetColor << endl;
 	out << "  Data:  " << data << endl;
 	return out.str();

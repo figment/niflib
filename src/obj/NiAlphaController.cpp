@@ -88,7 +88,7 @@ std::string NiAlphaController::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiFloatInterpController::asString();
+	out << NiFloatInterpController::asString(verbose);
 	out << "  Data:  " << data << endl;
 	return out.str();
 

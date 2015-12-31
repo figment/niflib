@@ -107,7 +107,7 @@ std::string NiBSplineInterpolator::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiInterpolator::asString();
+	out << NiInterpolator::asString(verbose);
 	out << "  Start Time:  " << startTime << endl;
 	out << "  Stop Time:  " << stopTime << endl;
 	out << "  Spline Data:  " << splineData << endl;

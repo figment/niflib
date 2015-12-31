@@ -143,7 +143,7 @@ std::string NiEnvMappedTriShape::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiObjectNET::asString();
+	out << NiObjectNET::asString(verbose);
 	numChildren = (unsigned int)(children.size());
 	out << "  Unknown 1:  " << unknown1 << endl;
 	out << "  Unknown Matrix:  " << unknownMatrix << endl;

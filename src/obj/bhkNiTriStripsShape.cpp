@@ -136,7 +136,7 @@ std::string bhkNiTriStripsShape::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << bhkShapeCollection::asString();
+	out << bhkShapeCollection::asString(verbose);
 	numDataLayers = (unsigned int)(dataLayers.size());
 	numStripsData = (unsigned int)(stripsData.size());
 	out << "  Material:  " << material << endl;

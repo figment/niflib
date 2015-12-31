@@ -76,7 +76,7 @@ std::string NiPSysGrowFadeModifier::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSysModifier::asString();
+	out << NiPSysModifier::asString(verbose);
 	out << "  Grow Time:  " << growTime << endl;
 	out << "  Grow Generation:  " << growGeneration << endl;
 	out << "  Fade Time:  " << fadeTime << endl;

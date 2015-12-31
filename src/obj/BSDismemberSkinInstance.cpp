@@ -80,7 +80,7 @@ std::string BSDismemberSkinInstance::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiSkinInstance::asString();
+	out << NiSkinInstance::asString(verbose);
 	numPartitions = (int)(partitions.size());
 	out << "  Num Partitions:  " << numPartitions << endl;
 	array_output_count = 0;

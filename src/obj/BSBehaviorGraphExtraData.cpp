@@ -74,7 +74,7 @@ std::string BSBehaviorGraphExtraData::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiExtraData::asString();
+	out << NiExtraData::asString(verbose);
 	out << "  Behaviour Graph File:  " << behaviourGraphFile << endl;
 	out << "  Controls Base Skeleton:  " << controlsBaseSkeleton << endl;
 	return out.str();

@@ -139,7 +139,7 @@ std::string NiFlipController::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiFloatInterpController::asString();
+	out << NiFloatInterpController::asString(verbose);
 	numSources = (unsigned int)(sources.size());
 	out << "  Texture Slot:  " << textureSlot << endl;
 	out << "  Unknown Int 2:  " << unknownInt2 << endl;

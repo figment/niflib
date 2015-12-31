@@ -87,7 +87,7 @@ std::string NiVisController::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiBoolInterpController::asString();
+	out << NiBoolInterpController::asString(verbose);
 	out << "  Data:  " << data << endl;
 	return out.str();
 

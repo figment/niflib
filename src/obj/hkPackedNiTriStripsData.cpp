@@ -121,7 +121,7 @@ std::string hkPackedNiTriStripsData::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << bhkShapeCollection::asString();
+	out << bhkShapeCollection::asString(verbose);
 	numSubShapes = (unsigned short)(subShapes.size());
 	numVertices = (unsigned int)(vertices.size());
 	numTriangles = (unsigned int)(triangles.size());

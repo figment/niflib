@@ -64,7 +64,7 @@ std::string NiIntegerExtraData::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiExtraData::asString();
+	out << NiExtraData::asString(verbose);
 	out << "  Integer Data:  " << integerData << endl;
 	return out.str();
 

@@ -70,7 +70,7 @@ std::string NiPSEmitParticlesCtlr::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSysEmitterCtlr::asString();
+	out << NiPSysEmitterCtlr::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

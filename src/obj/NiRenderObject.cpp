@@ -88,7 +88,7 @@ std::string NiRenderObject::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiAVObject::asString();
+	out << NiAVObject::asString(verbose);
 	numMaterials = (unsigned int)(materialData.size());
 	out << "  Num Materials:  " << numMaterials << endl;
 	array_output_count = 0;

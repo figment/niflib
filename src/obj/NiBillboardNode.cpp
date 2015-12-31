@@ -68,7 +68,7 @@ std::string NiBillboardNode::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiNode::asString();
+	out << NiNode::asString(verbose);
 	out << "  Billboard Mode:  " << billboardMode << endl;
 	return out.str();
 

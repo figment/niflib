@@ -79,7 +79,7 @@ std::string NiTextKeyExtraData::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiExtraData::asString();
+	out << NiExtraData::asString(verbose);
 	numTextKeys = (unsigned int)(textKeys.size());
 	out << "  Unknown Int 1:  " << unknownInt1 << endl;
 	out << "  Num Text Keys:  " << numTextKeys << endl;

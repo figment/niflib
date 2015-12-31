@@ -112,7 +112,7 @@ std::string NiDataStream::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	numComponents = (unsigned int)(componentFormats.size());
 	numRegions = (unsigned int)(regions.size());
 	numBytes = (unsigned int)(data.size());

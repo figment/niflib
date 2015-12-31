@@ -76,7 +76,7 @@ std::string NiVertexColorProperty::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiProperty::asString();
+	out << NiProperty::asString(verbose);
 	out << "  Flags:  " << flags << endl;
 	out << "  Vertex Mode:  " << vertexMode << endl;
 	out << "  Lighting Mode:  " << lightingMode << endl;

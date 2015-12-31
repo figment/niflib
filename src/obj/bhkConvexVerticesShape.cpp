@@ -90,7 +90,7 @@ std::string bhkConvexVerticesShape::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << bhkConvexShape::asString();
+	out << bhkConvexShape::asString(verbose);
 	numNormals = (unsigned int)(normals.size());
 	numVertices = (unsigned int)(vertices.size());
 	array_output_count = 0;

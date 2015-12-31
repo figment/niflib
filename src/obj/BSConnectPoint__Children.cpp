@@ -83,7 +83,7 @@ std::string BSConnectPoint__Children::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiExtraData::asString();
+	out << NiExtraData::asString(verbose);
 	numTargets = (int)(target.size());
 	out << "  Unknown Byte:  " << unknownByte << endl;
 	out << "  Num Targets:  " << numTargets << endl;

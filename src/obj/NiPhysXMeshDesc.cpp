@@ -135,7 +135,7 @@ std::string NiPhysXMeshDesc::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	numVertices = (int)(vertices.size());
 	out << "  Unknown Short 1:  " << unknownShort1 << endl;
 	out << "  Unknown Float 1:  " << unknownFloat1 << endl;

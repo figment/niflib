@@ -98,7 +98,7 @@ std::string CStreamableAssetData::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	out << "  Root:  " << root << endl;
 	array_output_count = 0;
 	for (unsigned int i1 = 0; i1 < 5; i1++) {

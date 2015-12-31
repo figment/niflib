@@ -219,7 +219,7 @@ std::string NiGeometry::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiAVObject::asString();
+	out << NiAVObject::asString(verbose);
 	numMaterials = (unsigned int)(materialName.size());
 	if ( (!IsDerivedType(NiParticleSystem::TYPE)) ) {
 		out << "    Data:  " << data << endl;

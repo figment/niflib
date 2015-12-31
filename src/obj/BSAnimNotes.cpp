@@ -72,7 +72,7 @@ std::string BSAnimNotes::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	out << "  Unknown Short 1:  " << unknownShort1 << endl;
 	return out.str();
 

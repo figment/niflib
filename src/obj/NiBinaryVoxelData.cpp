@@ -111,7 +111,7 @@ std::string NiBinaryVoxelData::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	numUnknownBytes2 = (unsigned int)(unknownBytes2.size());
 	numUnknownVectors = (unsigned int)(unknownVectors.size());
 	out << "  Unknown Short 1:  " << unknownShort1 << endl;

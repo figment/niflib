@@ -84,7 +84,7 @@ std::string BSPSysRecycleBoundModifier::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSysModifier::asString();
+	out << NiPSysModifier::asString(verbose);
 	out << "  Unknown Float 1:  " << unknownFloat1 << endl;
 	out << "  Unknown Float 2:  " << unknownFloat2 << endl;
 	out << "  Unknown Float 3:  " << unknownFloat3 << endl;

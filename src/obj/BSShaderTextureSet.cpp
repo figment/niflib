@@ -81,7 +81,7 @@ std::string BSShaderTextureSet::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	numTextures = (int)(textures.size());
 	out << "  Num Textures:  " << numTextures << endl;
 	array_output_count = 0;

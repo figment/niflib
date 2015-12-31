@@ -108,7 +108,7 @@ std::string NiPSPlanarCollider::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	out << "  Name:  " << name << endl;
 	out << "  Unknown Int 1:  " << unknownInt1 << endl;
 	out << "  Unknown Int 2:  " << unknownInt2 << endl;

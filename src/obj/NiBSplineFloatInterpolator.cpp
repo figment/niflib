@@ -62,7 +62,7 @@ std::string NiBSplineFloatInterpolator::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiBSplineInterpolator::asString();
+	out << NiBSplineInterpolator::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

@@ -70,7 +70,7 @@ std::string BSFurnitureMarkerNode::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << BSFurnitureMarker::asString();
+	out << BSFurnitureMarker::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

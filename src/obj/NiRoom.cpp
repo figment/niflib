@@ -165,7 +165,7 @@ std::string NiRoom::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiNode::asString();
+	out << NiNode::asString(verbose);
 	numItems = (int)(items.size());
 	numPortals2 = (int)(portals2.size());
 	numInPortals = (int)(inPortals.size());

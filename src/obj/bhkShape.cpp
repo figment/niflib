@@ -62,7 +62,7 @@ std::string bhkShape::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << bhkSerializable::asString();
+	out << bhkSerializable::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

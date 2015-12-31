@@ -73,7 +73,7 @@ std::string NiVisData::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	numKeys = (unsigned int)(keys.size());
 	out << "  Num Keys:  " << numKeys << endl;
 	array_output_count = 0;

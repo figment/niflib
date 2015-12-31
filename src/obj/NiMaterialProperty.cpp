@@ -90,7 +90,7 @@ std::string NiMaterialProperty::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiProperty::asString();
+	out << NiProperty::asString(verbose);
 	out << "  Flags:  " << flags << endl;
 	out << "  Ambient Color:  " << ambientColor << endl;
 	out << "  Diffuse Color:  " << diffuseColor << endl;

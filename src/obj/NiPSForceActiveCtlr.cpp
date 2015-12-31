@@ -93,7 +93,7 @@ std::string NiPSForceActiveCtlr::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiTimeController::asString();
+	out << NiTimeController::asString(verbose);
 	out << "  Interpolator:  " << interpolator << endl;
 	out << "  Unknown 2:  " << unknown2 << endl;
 	return out.str();

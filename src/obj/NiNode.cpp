@@ -140,7 +140,7 @@ std::string NiNode::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiAVObject::asString();
+	out << NiAVObject::asString(verbose);
 	numEffects = (unsigned int)(effects.size());
 	numChildren = (unsigned int)(children.size());
 	out << "  Num Children:  " << numChildren << endl;
@@ -310,18 +310,18 @@ void NiNode::AddEffect( NiDynamicEffect * obj ) {
 void NiNode::RemoveEffect( NiDynamicEffect * obj ) {
    //Search Effect list for the one to remove
    for ( vector< NiDynamicEffectRef >::iterator it = effects.begin(); it != effects.end(); ) {
-      if ( *it == obj ) {
-         (*it)->SetParent(NULL);
-         it = effects.erase( it );
-      } else {
-         ++it;
-      }
+	  if ( *it == obj ) {
+		 (*it)->SetParent(NULL);
+		 it = effects.erase( it );
+	  } else {
+		 ++it;
+	  }
    }
 }
 
 void NiNode::ClearEffects() {
    for ( vector< NiDynamicEffectRef >::iterator it = effects.begin(); it != effects.end(); ++it) {
-      if (*it) (*it)->SetParent(NULL);
+	  if (*it) (*it)->SetParent(NULL);
    }
    effects.clear();
 }

@@ -86,7 +86,7 @@ std::string BSSegmentedTriShape::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiTriShape::asString();
+	out << NiTriShape::asString(verbose);
 	numSegments = (int)(segment.size());
 	out << "  Num Segments:  " << numSegments << endl;
 	array_output_count = 0;

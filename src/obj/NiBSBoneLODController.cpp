@@ -62,7 +62,7 @@ std::string NiBSBoneLODController::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiBoneLODController::asString();
+	out << NiBoneLODController::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

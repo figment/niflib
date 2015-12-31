@@ -73,7 +73,7 @@ std::string NiStringsExtraData::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiExtraData::asString();
+	out << NiExtraData::asString(verbose);
 	numStrings = (unsigned int)(data.size());
 	out << "  Num Strings:  " << numStrings << endl;
 	array_output_count = 0;

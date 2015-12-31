@@ -120,7 +120,7 @@ std::string BSPSysHavokUpdateModifier::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiPSysModifier::asString();
+	out << NiPSysModifier::asString(verbose);
 	numNodes = (unsigned int)(nodes.size());
 	out << "  Num Nodes:  " << numNodes << endl;
 	array_output_count = 0;

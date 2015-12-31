@@ -97,7 +97,7 @@ std::string NiDefaultAVObjectPalette::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiAVObjectPalette::asString();
+	out << NiAVObjectPalette::asString(verbose);
 	numObjs = (unsigned int)(objs.size());
 	out << "  Unknown Int:  " << unknownInt << endl;
 	out << "  Num Objs:  " << numObjs << endl;

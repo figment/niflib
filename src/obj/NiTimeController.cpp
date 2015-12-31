@@ -122,7 +122,7 @@ std::string NiTimeController::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	out << "  Next Controller:  " << nextController << endl;
 	out << "  Flags:  " << flags << endl;
 	out << "  Frequency:  " << frequency << endl;

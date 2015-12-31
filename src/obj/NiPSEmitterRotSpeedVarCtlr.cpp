@@ -70,7 +70,7 @@ std::string NiPSEmitterRotSpeedVarCtlr::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSEmitterRotSpeedCtlr::asString();
+	out << NiPSEmitterRotSpeedCtlr::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

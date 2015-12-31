@@ -72,7 +72,7 @@ std::string NiPSysRadialFieldModifier::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSysFieldModifier::asString();
+	out << NiPSysFieldModifier::asString(verbose);
 	out << "  Radial Type:  " << radialType << endl;
 	return out.str();
 

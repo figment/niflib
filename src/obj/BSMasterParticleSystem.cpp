@@ -102,7 +102,7 @@ std::string BSMasterParticleSystem::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiNode::asString();
+	out << NiNode::asString(verbose);
 	numParticleSystems = (int)(particleSystems.size());
 	out << "  Max Emitter Objects:  " << maxEmitterObjects << endl;
 	out << "  Num Particle Systems:  " << numParticleSystems << endl;

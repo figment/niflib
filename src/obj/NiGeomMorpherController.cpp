@@ -199,7 +199,7 @@ std::string NiGeomMorpherController::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiInterpController::asString();
+	out << NiInterpController::asString(verbose);
 	numUnknownInts = (unsigned int)(unknownInts.size());
 	numInterpolators = (unsigned int)(interpolators.size());
 	out << "  Extra Flags:  " << extraFlags << endl;

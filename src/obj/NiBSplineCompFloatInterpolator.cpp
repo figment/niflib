@@ -73,7 +73,7 @@ std::string NiBSplineCompFloatInterpolator::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiBSplineFloatInterpolator::asString();
+	out << NiBSplineFloatInterpolator::asString(verbose);
 	out << "  Base:  " << base << endl;
 	out << "  Offset:  " << offset << endl;
 	out << "  Bias:  " << bias << endl;

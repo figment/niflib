@@ -70,7 +70,7 @@ std::string NiPSEmitterDeclinationVarCtlr::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSEmitterDeclinationCtlr::asString();
+	out << NiPSEmitterDeclinationCtlr::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

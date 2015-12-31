@@ -102,7 +102,7 @@ std::string NiMeshPSysData::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiPSysData::asString();
+	out << NiPSysData::asString(verbose);
 	numUnknownInts1 = (unsigned int)(unknownInts1.size());
 	out << "  Unknown Int 2:  " << unknownInt2 << endl;
 	out << "  Unknown Byte 3:  " << unknownByte3 << endl;

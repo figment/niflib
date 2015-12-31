@@ -100,7 +100,7 @@ std::string NiPSSimulatorForcesStep::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiPSSimulatorStep::asString();
+	out << NiPSSimulatorStep::asString(verbose);
 	numForces = (unsigned int)(forces.size());
 	out << "  Num Forces:  " << numForces << endl;
 	array_output_count = 0;

@@ -79,7 +79,7 @@ std::string BSShaderProperty::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiProperty::asString();
+	out << NiProperty::asString(verbose);
 	out << "  Flags:  " << flags << endl;
 	out << "  Shader Type:  " << shaderType << endl;
 	out << "  Shader Flags:  " << shaderFlags << endl;

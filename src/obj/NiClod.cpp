@@ -62,7 +62,7 @@ std::string NiClod::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiTriBasedGeom::asString();
+	out << NiTriBasedGeom::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

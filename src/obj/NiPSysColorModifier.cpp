@@ -83,7 +83,7 @@ std::string NiPSysColorModifier::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSysModifier::asString();
+	out << NiPSysModifier::asString(verbose);
 	out << "  Data:  " << data << endl;
 	return out.str();
 

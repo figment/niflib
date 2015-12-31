@@ -62,7 +62,7 @@ std::string NiTexture::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiObjectNET::asString();
+	out << NiObjectNET::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

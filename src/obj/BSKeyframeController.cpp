@@ -83,7 +83,7 @@ std::string BSKeyframeController::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiKeyframeController::asString();
+	out << NiKeyframeController::asString(verbose);
 	out << "  Data 2:  " << data2 << endl;
 	return out.str();
 

@@ -231,7 +231,7 @@ std::string NiParticlesData::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiGeometryData::asString();
+	out << NiGeometryData::asString(verbose);
 	numUvQuadrants = (byte)(uvQuadrants.size());
 	out << "  Num Particles:  " << numParticles << endl;
 	out << "  Particle Radius:  " << particleRadius << endl;

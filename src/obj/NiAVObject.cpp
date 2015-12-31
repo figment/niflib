@@ -188,7 +188,7 @@ std::string NiAVObject::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiObjectNET::asString();
+	out << NiObjectNET::asString(verbose);
 	numProperties = (unsigned int)(properties.size());
 	out << "  Flags:  " << flags << endl;
 	out << "  Unknown Short 1:  " << unknownShort1 << endl;

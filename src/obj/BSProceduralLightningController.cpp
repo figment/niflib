@@ -266,7 +266,7 @@ std::string BSProceduralLightningController::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiFloatInterpController::asString();
+	out << NiFloatInterpController::asString(verbose);
 	out << "  Interpolator 2: Mutation:  " << interpolator2_Mutation << endl;
 	out << "  Interpolator 3:  " << interpolator3 << endl;
 	out << "  Interpolator 4:  " << interpolator4 << endl;

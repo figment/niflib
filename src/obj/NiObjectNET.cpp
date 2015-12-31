@@ -179,7 +179,7 @@ std::string NiObjectNET::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	numExtraDataList = (unsigned int)(extraDataList.size());
 	if ( IsDerivedType(BSLightingShaderProperty::TYPE) ) {
 		out << "    Skyrim Shader Type:  " << skyrimShaderType << endl;

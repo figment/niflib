@@ -154,7 +154,7 @@ std::string NiSkinningMeshModifier::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiMeshModifier::asString();
+	out << NiMeshModifier::asString(verbose);
 	numBones = (unsigned int)(bones.size());
 	out << "  Flags:  " << flags << endl;
 	out << "  Skeleton Root:  " << skeletonRoot << endl;

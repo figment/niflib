@@ -64,7 +64,7 @@ std::string NiBlendPoint3Interpolator::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiBlendInterpolator::asString();
+	out << NiBlendInterpolator::asString(verbose);
 	out << "  Point Value:  " << pointValue << endl;
 	return out.str();
 

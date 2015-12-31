@@ -1300,7 +1300,7 @@ std::string NiTexturingProperty::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiProperty::asString();
+	out << NiProperty::asString(verbose);
 	numShaderTextures = (unsigned int)(shaderTextures.size());
 	out << "  Flags:  " << flags << endl;
 	out << "  Apply Mode:  " << applyMode << endl;

@@ -113,7 +113,7 @@ std::string bhkPrismaticConstraint::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << bhkConstraint::asString();
+	out << bhkConstraint::asString(verbose);
 	out << "  Pivot A:  " << pivotA << endl;
 	array_output_count = 0;
 	for (unsigned int i1 = 0; i1 < 4; i1++) {

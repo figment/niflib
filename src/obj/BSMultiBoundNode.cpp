@@ -97,7 +97,7 @@ std::string BSMultiBoundNode::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiNode::asString();
+	out << NiNode::asString(verbose);
 	out << "  Multi Bound:  " << multiBound << endl;
 	out << "  Unknown Int:  " << unknownInt << endl;
 	return out.str();

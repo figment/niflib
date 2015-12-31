@@ -83,7 +83,7 @@ std::string NiBSplineData::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	numShortControlPoints = (unsigned int)(shortControlPoints.size());
 	numFloatControlPoints = (unsigned int)(floatControlPoints.size());
 	out << "  Num Float Control Points:  " << numFloatControlPoints << endl;

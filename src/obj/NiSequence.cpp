@@ -330,7 +330,7 @@ std::string NiSequence::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	numControlledBlocks = (unsigned int)(controlledBlocks.size());
 	out << "  Name:  " << name << endl;
 	out << "  Text Keys Name:  " << textKeysName << endl;

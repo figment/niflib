@@ -90,7 +90,7 @@ std::string NiPSysEmitterCtlrData::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	numVisibilityKeys_ = (unsigned int)(visibilityKeys_.size());
 	floatKeys_.numKeys = (unsigned int)(floatKeys_.keys.size());
 	out << "  Num Keys:  " << floatKeys_.numKeys << endl;

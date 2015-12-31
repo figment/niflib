@@ -76,7 +76,7 @@ std::string BSMultiBoundOBB::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << BSMultiBoundData::asString();
+	out << BSMultiBoundData::asString(verbose);
 	out << "  Center:  " << center << endl;
 	out << "  Size:  " << size << endl;
 	out << "  Rotation:  " << rotation << endl;

@@ -71,7 +71,7 @@ std::string FxWidget::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiNode::asString();
+	out << NiNode::asString(verbose);
 	out << "  Unknown 3:  " << unknown3 << endl;
 	array_output_count = 0;
 	for (unsigned int i1 = 0; i1 < 292; i1++) {

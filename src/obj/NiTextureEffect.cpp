@@ -149,7 +149,7 @@ std::string NiTextureEffect::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiDynamicEffect::asString();
+	out << NiDynamicEffect::asString(verbose);
 	out << "  Model Projection Matrix:  " << modelProjectionMatrix << endl;
 	out << "  Model Projection Transform:  " << modelProjectionTransform << endl;
 	out << "  Texture Filtering:  " << textureFiltering << endl;

@@ -66,7 +66,7 @@ std::string NiParticleGrowFade::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiParticleModifier::asString();
+	out << NiParticleModifier::asString(verbose);
 	out << "  Grow:  " << grow << endl;
 	out << "  Fade:  " << fade << endl;
 	return out.str();

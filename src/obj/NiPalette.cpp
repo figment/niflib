@@ -80,7 +80,7 @@ std::string NiPalette::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	out << "  Unknown Byte:  " << unknownByte << endl;
 	out << "  Num Entries:  " << numEntries << endl;
 	array_output_count = 0;

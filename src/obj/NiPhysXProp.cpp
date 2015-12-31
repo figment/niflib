@@ -158,7 +158,7 @@ std::string NiPhysXProp::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiObjectNET::asString();
+	out << NiObjectNET::asString(verbose);
 	numDests = (int)(transformDests.size());
 	unknownInt1 = (unsigned int)(unknownRefs1.size());
 	out << "  Unknown Float 1:  " << unknownFloat1 << endl;

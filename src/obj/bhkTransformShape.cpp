@@ -106,7 +106,7 @@ std::string bhkTransformShape::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << bhkShape::asString();
+	out << bhkShape::asString(verbose);
 	out << "  Shape:  " << shape << endl;
 	out << "  Material:  " << material << endl;
 	out << "  Skyrim Material:  " << skyrimMaterial << endl;

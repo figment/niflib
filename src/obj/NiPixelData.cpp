@@ -103,7 +103,7 @@ std::string NiPixelData::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << ATextureRenderData::asString();
+	out << ATextureRenderData::asString(verbose);
 	numFaces = (unsigned int)(pixelData.size());
 	numPixels = (unsigned int)((pixelData.size() > 0) ? pixelData[0].size() : 0);
 	out << "  Num Pixels:  " << numPixels << endl;

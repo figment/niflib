@@ -124,7 +124,7 @@ std::string Ni3dsAnimationNode::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	count = (unsigned int)(unknownArray.size());
 	out << "  Name:  " << name << endl;
 	out << "  Has Data:  " << hasData << endl;

@@ -74,7 +74,7 @@ std::string NiPSGravityStrengthCtlr::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiTimeController::asString();
+	out << NiTimeController::asString(verbose);
 	out << "  Unknown 2:  " << unknown2 << endl;
 	out << "  Unknown 3:  " << unknown3 << endl;
 	return out.str();

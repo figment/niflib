@@ -265,7 +265,7 @@ std::string NiMesh::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiRenderObject::asString();
+	out << NiRenderObject::asString(verbose);
 	unknown350 = (int)(unknown351.size());
 	unknown302 = (int)(unknown303.size());
 	unknown250 = (int)(unknown251.size());

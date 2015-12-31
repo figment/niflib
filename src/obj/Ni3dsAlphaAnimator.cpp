@@ -116,7 +116,7 @@ std::string Ni3dsAlphaAnimator::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	num2 = (unsigned int)((unknown2.size() > 0) ? unknown2[0].size() : 0);
 	num1 = (unsigned int)(unknown2.size());
 	array_output_count = 0;

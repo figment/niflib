@@ -62,7 +62,7 @@ std::string NiMeshParticleSystem::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiParticleSystem::asString();
+	out << NiParticleSystem::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

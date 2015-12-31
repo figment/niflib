@@ -91,7 +91,7 @@ std::string NiPSysDragModifier::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSysModifier::asString();
+	out << NiPSysModifier::asString(verbose);
 	out << "  Parent:  " << parent << endl;
 	out << "  Drag Axis:  " << dragAxis << endl;
 	out << "  Percentage:  " << percentage << endl;

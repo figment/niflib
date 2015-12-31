@@ -116,7 +116,7 @@ std::string NiDynamicEffect::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiAVObject::asString();
+	out << NiAVObject::asString(verbose);
 	numAffectedNodes = (unsigned int)(affectedNodes.size());
 	numAffectedNodeListPointers = (unsigned int)(affectedNodeListPointers.size());
 	out << "  Switch State:  " << switchState << endl;

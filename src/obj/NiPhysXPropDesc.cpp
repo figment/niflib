@@ -177,7 +177,7 @@ std::string NiPhysXPropDesc::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	numMaterials = (unsigned int)(materialDescs.size());
 	numJoints = (unsigned int)(jointDescs.size());
 	numDests = (int)(actorDescs.size());

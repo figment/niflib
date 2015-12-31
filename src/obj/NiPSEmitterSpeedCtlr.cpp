@@ -93,7 +93,7 @@ std::string NiPSEmitterSpeedCtlr::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiTimeController::asString();
+	out << NiTimeController::asString(verbose);
 	out << "  Interpolator:  " << interpolator << endl;
 	out << "  Unknown 3:  " << unknown3 << endl;
 	return out.str();

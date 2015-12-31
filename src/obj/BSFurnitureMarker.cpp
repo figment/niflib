@@ -94,7 +94,7 @@ std::string BSFurnitureMarker::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiExtraData::asString();
+	out << NiExtraData::asString(verbose);
 	numPositions = (unsigned int)(positions.size());
 	out << "  Num Positions:  " << numPositions << endl;
 	array_output_count = 0;

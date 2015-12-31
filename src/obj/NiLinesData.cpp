@@ -85,7 +85,7 @@ std::string NiLinesData::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiGeometryData::asString();
+	out << NiGeometryData::asString(verbose);
 	array_output_count = 0;
 	for (unsigned int i1 = 0; i1 < lines.size(); i1++) {
 		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {

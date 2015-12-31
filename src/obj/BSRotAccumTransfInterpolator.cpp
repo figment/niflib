@@ -70,7 +70,7 @@ std::string BSRotAccumTransfInterpolator::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiTransformInterpolator::asString();
+	out << NiTransformInterpolator::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

@@ -131,7 +131,7 @@ std::string NiFurSpringController::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiTimeController::asString();
+	out << NiTimeController::asString(verbose);
 	numBones2 = (unsigned int)(bones2.size());
 	numBones = (unsigned int)(bones.size());
 	out << "  Unknown Float:  " << unknownFloat << endl;

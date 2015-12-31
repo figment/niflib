@@ -64,7 +64,7 @@ std::string NiPSysSphericalCollider::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSysCollider::asString();
+	out << NiPSysCollider::asString(verbose);
 	out << "  Radius:  " << radius << endl;
 	return out.str();
 

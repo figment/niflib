@@ -70,7 +70,7 @@ std::string NiPSSimulatorFinalStep::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSSimulatorStep::asString();
+	out << NiPSSimulatorStep::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

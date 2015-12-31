@@ -89,7 +89,7 @@ std::string NiPSysModifier::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	out << "  Name:  " << name << endl;
 	out << "  Order:  " << order << endl;
 	out << "  Target:  " << target << endl;

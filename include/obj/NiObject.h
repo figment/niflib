@@ -82,7 +82,7 @@ public:
 	
 public:
 	/*! Block number in the nif file. Only set when you read
-            blocks from the file. */
+			blocks from the file. */
 	int internal_block_number;
 
 	//--END CUSTOM CODE--//

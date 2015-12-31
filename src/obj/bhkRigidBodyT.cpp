@@ -62,7 +62,7 @@ std::string bhkRigidBodyT::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << bhkRigidBody::asString();
+	out << bhkRigidBody::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

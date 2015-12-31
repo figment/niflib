@@ -64,7 +64,7 @@ std::string NiBlendFloatInterpolator::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiBlendInterpolator::asString();
+	out << NiBlendInterpolator::asString(verbose);
 	out << "  Float Value:  " << floatValue << endl;
 	return out.str();
 

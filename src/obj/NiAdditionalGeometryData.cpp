@@ -146,7 +146,7 @@ std::string NiAdditionalGeometryData::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << AbstractAdditionalGeometryData::asString();
+	out << AbstractAdditionalGeometryData::asString(verbose);
 	numBlocks = (int)(blocks.size());
 	numBlockInfos = (unsigned int)(blockInfos.size());
 	out << "  Num Vertices:  " << numVertices << endl;

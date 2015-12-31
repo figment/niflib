@@ -74,7 +74,7 @@ std::string NiArkShaderExtraData::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiExtraData::asString();
+	out << NiExtraData::asString(verbose);
 	out << "  Unknown Int:  " << unknownInt << endl;
 	out << "  Unknown String:  " << unknownString << endl;
 	return out.str();

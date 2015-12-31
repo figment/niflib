@@ -68,7 +68,7 @@ std::string NiPointLight::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiLight::asString();
+	out << NiLight::asString(verbose);
 	out << "  Constant Attenuation:  " << constantAttenuation << endl;
 	out << "  Linear Attenuation:  " << linearAttenuation << endl;
 	out << "  Quadratic Attenuation:  " << quadraticAttenuation << endl;

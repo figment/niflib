@@ -74,7 +74,7 @@ std::string BSBlastNode::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiNode::asString();
+	out << NiNode::asString(verbose);
 	out << "  Unknown Byte 1:  " << unknownByte1 << endl;
 	out << "  Unknown Short 2:  " << unknownShort2 << endl;
 	return out.str();

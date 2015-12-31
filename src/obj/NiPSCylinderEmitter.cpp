@@ -72,7 +72,7 @@ std::string NiPSCylinderEmitter::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSSphereEmitter::asString();
+	out << NiPSSphereEmitter::asString(verbose);
 	out << "  Unknown 23:  " << unknown23 << endl;
 	return out.str();
 

@@ -84,7 +84,7 @@ std::string BSBoneLODExtraData::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiExtraData::asString();
+	out << NiExtraData::asString(verbose);
 	bonelodCount = (unsigned int)(bonelodInfo.size());
 	out << "  BoneLOD Count:  " << bonelodCount << endl;
 	array_output_count = 0;

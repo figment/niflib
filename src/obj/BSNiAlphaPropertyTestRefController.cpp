@@ -70,7 +70,7 @@ std::string BSNiAlphaPropertyTestRefController::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiAlphaController::asString();
+	out << NiAlphaController::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

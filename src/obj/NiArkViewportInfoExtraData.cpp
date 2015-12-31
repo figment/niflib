@@ -77,7 +77,7 @@ std::string NiArkViewportInfoExtraData::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiExtraData::asString();
+	out << NiExtraData::asString(verbose);
 	array_output_count = 0;
 	for (unsigned int i1 = 0; i1 < 13; i1++) {
 		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {

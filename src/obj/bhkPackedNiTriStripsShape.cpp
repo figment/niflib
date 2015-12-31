@@ -126,7 +126,7 @@ std::string bhkPackedNiTriStripsShape::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << bhkShapeCollection::asString();
+	out << bhkShapeCollection::asString(verbose);
 	numSubShapes = (unsigned short)(subShapes.size());
 	out << "  Num Sub Shapes:  " << numSubShapes << endl;
 	array_output_count = 0;

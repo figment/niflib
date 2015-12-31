@@ -72,7 +72,7 @@ std::string NiPSysTurbulenceFieldModifier::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSysFieldModifier::asString();
+	out << NiPSysFieldModifier::asString(verbose);
 	out << "  Frequency:  " << frequency << endl;
 	return out.str();
 

@@ -83,7 +83,7 @@ std::string NiCollisionObject::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	out << "  Target:  " << target << endl;
 	return out.str();
 

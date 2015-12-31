@@ -163,7 +163,7 @@ std::string NiSourceTexture::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiTexture::asString();
+	out << NiTexture::asString(verbose);
 	out << "  Use External:  " << useExternal << endl;
 	if ( (useExternal == 1) ) {
 		out << "    File Name:  " << fileName << endl;

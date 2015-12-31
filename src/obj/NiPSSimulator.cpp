@@ -100,7 +100,7 @@ std::string NiPSSimulator::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiMeshModifier::asString();
+	out << NiMeshModifier::asString(verbose);
 	numSimulationSteps = (unsigned int)(simulationSteps.size());
 	out << "  Num Simulation Steps:  " << numSimulationSteps << endl;
 	array_output_count = 0;

@@ -62,7 +62,7 @@ std::string NiBSPArrayController::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiParticleSystemController::asString();
+	out << NiParticleSystemController::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

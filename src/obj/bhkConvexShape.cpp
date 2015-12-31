@@ -62,7 +62,7 @@ std::string bhkConvexShape::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << bhkSphereRepShape::asString();
+	out << bhkSphereRepShape::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

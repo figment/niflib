@@ -88,7 +88,7 @@ std::string NiSingleInterpController::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiInterpController::asString();
+	out << NiInterpController::asString(verbose);
 	out << "  Interpolator:  " << interpolator << endl;
 	return out.str();
 

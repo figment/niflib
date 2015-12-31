@@ -99,7 +99,7 @@ std::string NiPSysFieldModifier::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSysModifier::asString();
+	out << NiPSysModifier::asString(verbose);
 	out << "  Field Object:  " << fieldObject << endl;
 	out << "  Magnitude:  " << magnitude << endl;
 	out << "  Attenuation:  " << attenuation << endl;

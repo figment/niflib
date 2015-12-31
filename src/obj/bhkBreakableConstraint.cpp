@@ -138,7 +138,7 @@ std::string bhkBreakableConstraint::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << bhkConstraint::asString();
+	out << bhkConstraint::asString(verbose);
 	numEntities2 = (unsigned int)(entities2.size());
 	array_output_count = 0;
 	for (unsigned int i1 = 0; i1 < 41; i1++) {

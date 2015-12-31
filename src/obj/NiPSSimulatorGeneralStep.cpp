@@ -133,7 +133,7 @@ std::string NiPSSimulatorGeneralStep::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiPSSimulatorStep::asString();
+	out << NiPSSimulatorStep::asString(verbose);
 	numRotationKeys = (byte)(rotationKeys.size());
 	numColorKeys = (byte)(colorKeys.size());
 	numSizeKeys = (byte)(sizeKeys.size());

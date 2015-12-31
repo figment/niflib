@@ -66,7 +66,7 @@ std::string bhkBlendCollisionObject::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << bhkCollisionObject::asString();
+	out << bhkCollisionObject::asString(verbose);
 	out << "  Unknown Float 1:  " << unknownFloat1 << endl;
 	out << "  Unknown Float 2:  " << unknownFloat2 << endl;
 	return out.str();

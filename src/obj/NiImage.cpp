@@ -103,7 +103,7 @@ std::string NiImage::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	out << "  Use External:  " << useExternal << endl;
 	if ( (useExternal != 0) ) {
 		out << "    File Name:  " << fileName << endl;

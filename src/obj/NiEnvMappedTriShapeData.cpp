@@ -70,7 +70,7 @@ std::string NiEnvMappedTriShapeData::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiTriShapeData::asString();
+	out << NiTriShapeData::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

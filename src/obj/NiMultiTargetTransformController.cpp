@@ -93,7 +93,7 @@ std::string NiMultiTargetTransformController::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiInterpController::asString();
+	out << NiInterpController::asString(verbose);
 	numExtraTargets = (unsigned short)(extraTargets.size());
 	out << "  Num Extra Targets:  " << numExtraTargets << endl;
 	array_output_count = 0;

@@ -315,7 +315,7 @@ std::string NiBoneLODController::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiTimeController::asString();
+	out << NiTimeController::asString(verbose);
 	numShapeGroups2 = (unsigned int)(shapeGroups2.size());
 	numShapeGroups = (unsigned int)(shapeGroups1.size());
 	numNodeGroups = (unsigned int)(nodeGroups.size());

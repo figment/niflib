@@ -117,7 +117,7 @@ std::string NiPathController::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiTimeController::asString();
+	out << NiTimeController::asString(verbose);
 	out << "  Unknown Short 2:  " << unknownShort2 << endl;
 	out << "  Unknown Int 1:  " << unknownInt1 << endl;
 	out << "  Unknown Float 2:  " << unknownFloat2 << endl;

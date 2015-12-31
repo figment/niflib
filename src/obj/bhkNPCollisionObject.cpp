@@ -72,7 +72,7 @@ std::string bhkNPCollisionObject::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << bhkCollisionObject::asString();
+	out << bhkCollisionObject::asString(verbose);
 	out << "  Unknown Int 2:  " << unknownInt2 << endl;
 	return out.str();
 

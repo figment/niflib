@@ -91,7 +91,7 @@ std::string BSSkin__BoneData::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	numBones = (unsigned int)(bones.size());
 	out << "  Num Bones:  " << numBones << endl;
 	array_output_count = 0;

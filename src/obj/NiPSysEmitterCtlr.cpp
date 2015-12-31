@@ -111,7 +111,7 @@ std::string NiPSysEmitterCtlr::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSysModifierCtlr::asString();
+	out << NiPSysModifierCtlr::asString(verbose);
 	out << "  Data:  " << data << endl;
 	out << "  Visibility Interpolator:  " << visibilityInterpolator << endl;
 	return out.str();

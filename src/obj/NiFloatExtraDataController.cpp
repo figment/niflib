@@ -89,7 +89,7 @@ std::string NiFloatExtraDataController::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiExtraDataController::asString();
+	out << NiExtraDataController::asString(verbose);
 	numExtraBytes = (byte)(unknownExtraBytes.size());
 	out << "  Controller Data:  " << controllerData << endl;
 	out << "  Num Extra Bytes:  " << numExtraBytes << endl;

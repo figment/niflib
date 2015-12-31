@@ -107,7 +107,7 @@ std::string NiClodData::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiTriBasedGeomData::asString();
+	out << NiTriBasedGeomData::asString(verbose);
 	unknownCount3 = (unsigned short)(unknownClodShorts3.size());
 	unknownCount2 = (unsigned short)(unknownClodShorts2.size());
 	unknownCount1 = (unsigned short)(unknownClodShorts1.size());

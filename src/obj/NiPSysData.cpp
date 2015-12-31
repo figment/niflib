@@ -150,7 +150,7 @@ std::string NiPSysData::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiRotatingParticlesData::asString();
+	out << NiRotatingParticlesData::asString(verbose);
 	numSubtextureOffsetUvs = (unsigned int)(subtextureOffsetUvs.size());
 	array_output_count = 0;
 	for (unsigned int i1 = 0; i1 < particleDescriptions.size(); i1++) {

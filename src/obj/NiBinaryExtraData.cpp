@@ -74,7 +74,7 @@ std::string NiBinaryExtraData::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiExtraData::asString();
+	out << NiExtraData::asString(verbose);
 	binaryData.dataSize = (unsigned int)(binaryData.data.size());
 	out << "  Data Size:  " << binaryData.dataSize << endl;
 	array_output_count = 0;

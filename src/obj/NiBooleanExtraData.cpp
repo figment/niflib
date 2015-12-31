@@ -64,7 +64,7 @@ std::string NiBooleanExtraData::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiExtraData::asString();
+	out << NiExtraData::asString(verbose);
 	out << "  Boolean Data:  " << booleanData << endl;
 	return out.str();
 

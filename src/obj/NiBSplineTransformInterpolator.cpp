@@ -80,7 +80,7 @@ std::string NiBSplineTransformInterpolator::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiBSplineInterpolator::asString();
+	out << NiBSplineInterpolator::asString(verbose);
 	out << "  Translation:  " << translation << endl;
 	out << "  Rotation:  " << rotation << endl;
 	out << "  Scale:  " << scale << endl;

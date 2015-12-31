@@ -156,7 +156,7 @@ std::string NiLookAtInterpolator::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiInterpolator::asString();
+	out << NiInterpolator::asString(verbose);
 	out << "  Unknown Short:  " << unknownShort << endl;
 	out << "  Look At:  " << lookAt << endl;
 	out << "  Target:  " << target << endl;

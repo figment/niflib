@@ -117,7 +117,7 @@ std::string NiMorphData::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	numMorphs = (unsigned int)(morphs.size());
 	out << "  Num Morphs:  " << numMorphs << endl;
 	out << "  Num Vertices:  " << numVertices << endl;

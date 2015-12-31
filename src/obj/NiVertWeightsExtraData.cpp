@@ -75,7 +75,7 @@ std::string NiVertWeightsExtraData::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiExtraData::asString();
+	out << NiExtraData::asString(verbose);
 	numVertices = (unsigned short)(weight.size());
 	out << "  Num Bytes:  " << numBytes << endl;
 	out << "  Num Vertices:  " << numVertices << endl;

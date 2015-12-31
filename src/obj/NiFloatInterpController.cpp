@@ -62,7 +62,7 @@ std::string NiFloatInterpController::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiSingleInterpController::asString();
+	out << NiSingleInterpController::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

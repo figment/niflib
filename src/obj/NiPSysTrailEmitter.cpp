@@ -92,7 +92,7 @@ std::string NiPSysTrailEmitter::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSysEmitter::asString();
+	out << NiPSysEmitter::asString(verbose);
 	out << "  Unknown Int 1:  " << unknownInt1 << endl;
 	out << "  Unknown Float 1:  " << unknownFloat1 << endl;
 	out << "  Unknown Float 2:  " << unknownFloat2 << endl;

@@ -64,7 +64,7 @@ std::string NiColorExtraData::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiExtraData::asString();
+	out << NiExtraData::asString(verbose);
 	out << "  Data:  " << data << endl;
 	return out.str();
 

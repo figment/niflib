@@ -112,7 +112,7 @@ std::string NiMorphWeightsController::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiInterpController::asString();
+	out << NiInterpController::asString(verbose);
 	numTargets = (unsigned int)(targetNames.size());
 	numInterpolators = (unsigned int)(interpolators.size());
 	out << "  Unknown 2:  " << unknown2 << endl;

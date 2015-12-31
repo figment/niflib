@@ -92,7 +92,7 @@ std::string NiPSysMeshUpdateModifier::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiPSysModifier::asString();
+	out << NiPSysModifier::asString(verbose);
 	numMeshes = (unsigned int)(meshes.size());
 	out << "  Num Meshes:  " << numMeshes << endl;
 	array_output_count = 0;

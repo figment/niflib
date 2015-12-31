@@ -85,7 +85,7 @@ std::string NiUVController::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiTimeController::asString();
+	out << NiTimeController::asString(verbose);
 	out << "  Unknown Short:  " << unknownShort << endl;
 	out << "  Data:  " << data << endl;
 	return out.str();

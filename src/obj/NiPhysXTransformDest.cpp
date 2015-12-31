@@ -95,7 +95,7 @@ std::string NiPhysXTransformDest::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	out << "  Unknown Byte 1:  " << unknownByte1 << endl;
 	out << "  Unknown Byte 2:  " << unknownByte2 << endl;
 	out << "  Node:  " << node << endl;

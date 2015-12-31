@@ -64,7 +64,7 @@ std::string NiTriBasedGeomData::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiGeometryData::asString();
+	out << NiGeometryData::asString(verbose);
 	out << "  Num Triangles:  " << numTriangles << endl;
 	return out.str();
 

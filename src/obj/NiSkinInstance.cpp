@@ -168,7 +168,7 @@ std::string NiSkinInstance::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	numBones = (unsigned int)(bones.size());
 	out << "  Data:  " << data << endl;
 	out << "  Skin Partition:  " << skinPartition << endl;

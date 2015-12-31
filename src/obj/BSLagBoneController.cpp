@@ -76,7 +76,7 @@ std::string BSLagBoneController::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiTimeController::asString();
+	out << NiTimeController::asString(verbose);
 	out << "  Linear Velocity:  " << linearVelocity << endl;
 	out << "  Linear Rotation:  " << linearRotation << endl;
 	out << "  Maximum Distance:  " << maximumDistance << endl;

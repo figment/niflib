@@ -85,7 +85,7 @@ std::string NiBinaryVoxelExtraData::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiExtraData::asString();
+	out << NiExtraData::asString(verbose);
 	out << "  Unknown Int:  " << unknownInt << endl;
 	out << "  Data:  " << data << endl;
 	return out.str();

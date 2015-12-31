@@ -80,7 +80,7 @@ std::string bhkMultiSphereShape::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << bhkSphereRepShape::asString();
+	out << bhkSphereRepShape::asString(verbose);
 	numSpheres = (unsigned int)(spheres.size());
 	out << "  Unknown Float 1:  " << unknownFloat1 << endl;
 	out << "  Unknown Float 2:  " << unknownFloat2 << endl;

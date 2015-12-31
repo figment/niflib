@@ -81,7 +81,7 @@ std::string bhkPhysicsSystem::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << BSExtraData::asString();
+	out << BSExtraData::asString(verbose);
 	numBytes = (unsigned int)(data.size());
 	out << "  Num Bytes:  " << numBytes << endl;
 	array_output_count = 0;

@@ -74,7 +74,7 @@ std::string NiAlphaProperty::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiProperty::asString();
+	out << NiProperty::asString(verbose);
 	out << "  Flags:  " << flags << endl;
 	out << "  Threshold:  " << threshold << endl;
 	out << "  Unknown Short 1:  " << unknownShort1 << endl;

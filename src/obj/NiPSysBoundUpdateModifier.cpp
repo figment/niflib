@@ -64,7 +64,7 @@ std::string NiPSysBoundUpdateModifier::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSysModifier::asString();
+	out << NiPSysModifier::asString(verbose);
 	out << "  Update Skip:  " << updateSkip << endl;
 	return out.str();
 

@@ -83,7 +83,7 @@ std::string NiPSSimulatorMeshAlignStep::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiPSSimulatorStep::asString();
+	out << NiPSSimulatorStep::asString(verbose);
 	numRotationKeys = (byte)(rotationKeys.size());
 	out << "  Num Rotation Keys:  " << numRotationKeys << endl;
 	array_output_count = 0;

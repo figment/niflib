@@ -84,7 +84,7 @@ std::string bhkLiquidAction::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << bhkSerializable::asString();
+	out << bhkSerializable::asString(verbose);
 	out << "  Unknown Int 1:  " << unknownInt1 << endl;
 	out << "  Unknown Int 2:  " << unknownInt2 << endl;
 	out << "  Unknown Int 3:  " << unknownInt3 << endl;

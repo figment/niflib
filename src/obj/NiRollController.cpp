@@ -83,7 +83,7 @@ std::string NiRollController::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiSingleInterpController::asString();
+	out << NiSingleInterpController::asString(verbose);
 	out << "  Data:  " << data << endl;
 	return out.str();
 

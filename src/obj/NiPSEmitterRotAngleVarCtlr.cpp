@@ -70,7 +70,7 @@ std::string NiPSEmitterRotAngleVarCtlr::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSEmitterRotAngleCtlr::asString();
+	out << NiPSEmitterRotAngleCtlr::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

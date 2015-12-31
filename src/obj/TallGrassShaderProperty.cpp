@@ -72,7 +72,7 @@ std::string TallGrassShaderProperty::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << BSShaderProperty::asString();
+	out << BSShaderProperty::asString(verbose);
 	out << "  File Name:  " << fileName << endl;
 	return out.str();
 

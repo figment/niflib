@@ -84,7 +84,7 @@ std::string BSShaderNoLightingProperty::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << BSShaderLightingProperty::asString();
+	out << BSShaderLightingProperty::asString(verbose);
 	out << "  File Name:  " << fileName << endl;
 	out << "  Unknown Float 2:  " << unknownFloat2 << endl;
 	out << "  Unknown Float 3:  " << unknownFloat3 << endl;

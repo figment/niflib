@@ -147,7 +147,7 @@ std::string bhkBallSocketConstraintChain::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << bhkSerializable::asString();
+	out << bhkSerializable::asString(verbose);
 	numLinks2 = (unsigned int)(links2.size());
 	numLinks = (unsigned int)(links.size());
 	numFloats = (unsigned int)(floats1.size());

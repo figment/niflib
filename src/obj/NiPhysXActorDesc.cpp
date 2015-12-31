@@ -196,7 +196,7 @@ std::string NiPhysXActorDesc::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	unknownInt6 = (int)(unknownRefs3.size());
 	out << "  Unknown Int 1:  " << unknownInt1 << endl;
 	out << "  Unknown Int 2:  " << unknownInt2 << endl;

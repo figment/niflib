@@ -83,7 +83,7 @@ std::string NiPSysColliderManager::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSysModifier::asString();
+	out << NiPSysModifier::asString(verbose);
 	out << "  Collider:  " << collider << endl;
 	return out.str();
 

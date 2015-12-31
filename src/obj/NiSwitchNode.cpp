@@ -70,7 +70,7 @@ std::string NiSwitchNode::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiNode::asString();
+	out << NiNode::asString(verbose);
 	out << "  Unknown Flags 1:  " << unknownFlags1 << endl;
 	out << "  Unknown Int 1:  " << unknownInt1 << endl;
 	return out.str();

@@ -94,7 +94,7 @@ std::string bhkConstraint::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << bhkSerializable::asString();
+	out << bhkSerializable::asString(verbose);
 	numEntities = (unsigned int)(entities.size());
 	out << "  Num Entities:  " << numEntities << endl;
 	array_output_count = 0;

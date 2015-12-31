@@ -66,7 +66,7 @@ std::string NiVectorExtraData::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiExtraData::asString();
+	out << NiExtraData::asString(verbose);
 	out << "  Vector Data:  " << vectorData << endl;
 	out << "  Unknown Float:  " << unknownFloat << endl;
 	return out.str();

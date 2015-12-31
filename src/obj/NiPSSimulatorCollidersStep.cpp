@@ -100,7 +100,7 @@ std::string NiPSSimulatorCollidersStep::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiPSSimulatorStep::asString();
+	out << NiPSSimulatorStep::asString(verbose);
 	numColliders = (unsigned int)(colliders.size());
 	out << "  Num Colliders:  " << numColliders << endl;
 	array_output_count = 0;

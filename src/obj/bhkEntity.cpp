@@ -62,7 +62,7 @@ std::string bhkEntity::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << bhkWorldObject::asString();
+	out << bhkWorldObject::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

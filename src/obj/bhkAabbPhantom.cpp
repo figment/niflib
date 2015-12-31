@@ -77,7 +77,7 @@ std::string bhkAabbPhantom::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << bhkShapePhantom::asString();
+	out << bhkShapePhantom::asString(verbose);
 	array_output_count = 0;
 	for (unsigned int i1 = 0; i1 < 15; i1++) {
 		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {

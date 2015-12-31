@@ -136,7 +136,7 @@ std::string NiParticleSystem::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiParticles::asString();
+	out << NiParticles::asString(verbose);
 	numModifiers = (unsigned int)(modifiers.size());
 	out << "  Unknown Short 2:  " << unknownShort2 << endl;
 	out << "  Unknown Short 3:  " << unknownShort3 << endl;

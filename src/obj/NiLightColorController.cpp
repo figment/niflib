@@ -62,7 +62,7 @@ std::string NiLightColorController::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPoint3InterpController::asString();
+	out << NiPoint3InterpController::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

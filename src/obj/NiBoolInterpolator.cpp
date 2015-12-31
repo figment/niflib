@@ -85,7 +85,7 @@ std::string NiBoolInterpolator::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiKeyBasedInterpolator::asString();
+	out << NiKeyBasedInterpolator::asString(verbose);
 	out << "  Bool Value:  " << boolValue << endl;
 	out << "  Data:  " << data << endl;
 	return out.str();

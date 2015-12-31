@@ -88,7 +88,7 @@ std::string NiPSysEmitter::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSysModifier::asString();
+	out << NiPSysModifier::asString(verbose);
 	out << "  Speed:  " << speed << endl;
 	out << "  Speed Variation:  " << speedVariation << endl;
 	out << "  Declination:  " << declination << endl;

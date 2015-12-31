@@ -81,7 +81,7 @@ std::string NiScreenLODData::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiLODData::asString();
+	out << NiLODData::asString(verbose);
 	proportionCount = (unsigned int)(proportionLevels.size());
 	out << "  Bound Center:  " << boundCenter << endl;
 	out << "  Bound Radius:  " << boundRadius << endl;

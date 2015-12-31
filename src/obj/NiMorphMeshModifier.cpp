@@ -91,7 +91,7 @@ std::string NiMorphMeshModifier::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiMeshModifier::asString();
+	out << NiMeshModifier::asString(verbose);
 	numElements = (unsigned int)(elements.size());
 	out << "  Flags:  " << flags << endl;
 	out << "  Num Targets:  " << numTargets << endl;

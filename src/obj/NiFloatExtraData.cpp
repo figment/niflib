@@ -64,7 +64,7 @@ std::string NiFloatExtraData::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiExtraData::asString();
+	out << NiExtraData::asString(verbose);
 	out << "  Float Data:  " << floatData << endl;
 	return out.str();
 

@@ -62,7 +62,7 @@ std::string bhkShapePhantom::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << bhkPhantom::asString();
+	out << bhkPhantom::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

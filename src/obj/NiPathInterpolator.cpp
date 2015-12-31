@@ -113,7 +113,7 @@ std::string NiPathInterpolator::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiKeyBasedInterpolator::asString();
+	out << NiKeyBasedInterpolator::asString(verbose);
 	out << "  Unknown Short:  " << unknownShort << endl;
 	out << "  Unknown Int:  " << unknownInt << endl;
 	out << "  Unknown Float 1:  " << unknownFloat1 << endl;

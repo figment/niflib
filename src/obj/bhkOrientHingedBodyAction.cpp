@@ -77,7 +77,7 @@ std::string bhkOrientHingedBodyAction::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << bhkSerializable::asString();
+	out << bhkSerializable::asString(verbose);
 	array_output_count = 0;
 	for (unsigned int i1 = 0; i1 < 17; i1++) {
 		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {

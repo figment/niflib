@@ -77,7 +77,7 @@ std::string NiTransparentProperty::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiProperty::asString();
+	out << NiProperty::asString(verbose);
 	array_output_count = 0;
 	for (unsigned int i1 = 0; i1 < 6; i1++) {
 		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {

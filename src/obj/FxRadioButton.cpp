@@ -97,7 +97,7 @@ std::string FxRadioButton::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << FxWidget::asString();
+	out << FxWidget::asString(verbose);
 	numButtons = (unsigned int)(buttons.size());
 	out << "  Unknown Int 1:  " << unknownInt1 << endl;
 	out << "  Unknown Int  2:  " << unknownInt2 << endl;

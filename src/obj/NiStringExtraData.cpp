@@ -70,7 +70,7 @@ std::string NiStringExtraData::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiExtraData::asString();
+	out << NiExtraData::asString(verbose);
 	out << "  Bytes Remaining:  " << bytesRemaining << endl;
 	out << "  String Data:  " << stringData << endl;
 	return out.str();

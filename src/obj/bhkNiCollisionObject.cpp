@@ -85,7 +85,7 @@ std::string bhkNiCollisionObject::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiCollisionObject::asString();
+	out << NiCollisionObject::asString(verbose);
 	out << "  Flags:  " << flags << endl;
 	out << "  Body:  " << body << endl;
 	return out.str();

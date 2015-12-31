@@ -161,7 +161,7 @@ std::string BSSubIndexTriShape::asString( bool verbose ) const {
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << BSTriShape::asString();
+	out << BSTriShape::asString(verbose);
 	numSegments = (unsigned int)(segments.size());
 	if ( (dataSize > 0) ) {
 		out << "    Num Triangles 2:  " << numTriangles2 << endl;
