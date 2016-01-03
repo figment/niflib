@@ -19,6 +19,8 @@ All rights reserved.  Please see niflib.h for license. */
 #include "../../include/gen/BSTreadTransformData.h"
 #include "../../include/gen/BSTreadTransformData.h"
 #include "../../include/obj/NiFloatData.h"
+//#include "../GlobalCode/NiflibStringFunctions.h"
+
 using namespace Niflib;
 
 //Definition of TYPE constant
@@ -133,6 +135,15 @@ std::string BSTreadTransfInterpolator::asString( bool verbose ) const {
 		out << "    Translation:  " << treadTransforms[i1].transform2.translation << endl;
 		out << "    Rotation:  " << treadTransforms[i1].transform2.rotation << endl;
 		out << "    Scale:  " << treadTransforms[i1].transform2.scale << endl;
+		////---New version-----------
+		//out << "    Name:  " << treadTransforms[i1].name << endl;
+		//out << "    Translation:  " << NiflibStringFunctions::DisplayFullValues_Vector(treadTransforms[i1].transform1.translation.x,treadTransforms[i1].transform1.translation.y,treadTransforms[i1].transform1.translation.z) << endl;
+		//out << "    Rotation:  " << treadTransforms[i1].transform1.rotation << endl;
+		//out << "    Scale:  " << NiflibStringFunctions::FloatToStringConversion(treadTransforms[i1].transform1.scale) << endl;
+		//out << "    Translation:  " << NiflibStringFunctions::DisplayFullValues_Vector(treadTransforms[i1].transform2.translation.x,treadTransforms[i1].transform2.translation.y,treadTransforms[i1].transform2.translation.z) << endl;
+		//out << "    Rotation:  " << treadTransforms[i1].transform2.rotation << endl;
+		//out << "    Scale:  " << NiflibStringFunctions::FloatToStringConversion(treadTransforms[i1].transform2.scale) << endl;
+		////--------------------------------------------------------
 	};
 	out << "  Data:  " << data << endl;
 	return out.str();

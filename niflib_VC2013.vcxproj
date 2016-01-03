@@ -398,6 +398,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GlobalCode\StringFunctions.cpp" />
     <ClCompile Include="NvTriStrip\NvTriStrip.cpp" />
     <ClCompile Include="NvTriStrip\NvTriStripObjects.cpp" />
     <ClCompile Include="NvTriStrip\VertexCache.cpp" />
@@ -972,6 +973,7 @@
     <ClCompile Include="TriStripper\tri_stripper.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GlobalCode\StringFunctions.h" />
     <ClInclude Include="include\ComplexShape.h" />
     <ClInclude Include="include\dll_export.h" />
     <ClInclude Include="include\FixLink.h" />
