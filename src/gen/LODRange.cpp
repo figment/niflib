@@ -12,12 +12,14 @@ using namespace Niflib;
 LODRange::LODRange() : nearExtent(0.0f), farExtent(0.0f) {};
 
 //Copy Constructor
-LODRange::LODRange( const LODRange & src ) {
+LODRange::LODRange(const LODRange & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-LODRange & LODRange::operator=( const LODRange & src ) {
+LODRange & LODRange::operator=(const LODRange & src)
+{
 	this->nearExtent = src.nearExtent;
 	this->farExtent = src.farExtent;
 	this->unknownInts = src.unknownInts;

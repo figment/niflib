@@ -10,26 +10,25 @@ All rights reserved.  Please see niflib.h for license. */
 
 #include "../NIF_IO.h"
 
-namespace Niflib {
-
-
-/*! A list of \\0 terminated strings. */
-struct StringPalette {
-	/*! Default Constructor */
-	NIFLIB_API StringPalette();
-	/*! Default Destructor */
-	NIFLIB_API ~StringPalette();
-	/*! Copy Constructor */
-	NIFLIB_API StringPalette( const StringPalette & src );
-	/*! Copy Operator */
-	NIFLIB_API StringPalette & operator=( const StringPalette & src );
-	/*! A bunch of 0x00 seperated strings. */
-	string palette;
-	/*! Length of the palette string is repeated here. */
-	unsigned int length;
-	//--BEGIN MISC CUSTOM CODE--//
-	//--END CUSTOM CODE--//
-};
-
+namespace Niflib
+{
+	/*! A list of \\0 terminated strings. */
+	struct StringPalette
+	{
+		/*! Default Constructor */
+		NIFLIB_API StringPalette();
+		/*! Default Destructor */
+		NIFLIB_API ~StringPalette();
+		/*! Copy Constructor */
+		NIFLIB_API StringPalette(const StringPalette & src);
+		/*! Copy Operator */
+		NIFLIB_API StringPalette & operator=(const StringPalette & src);
+		/*! A bunch of 0x00 seperated strings. */
+		string palette;
+		/*! Length of the palette string is repeated here. */
+		unsigned int length;
+		//--BEGIN MISC CUSTOM CODE--//
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

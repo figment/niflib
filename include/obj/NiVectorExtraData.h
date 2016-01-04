@@ -14,93 +14,93 @@ All rights reserved.  Please see niflib.h for license. */
 //--END CUSTOM CODE--//
 
 #include "NiExtraData.h"
-namespace Niflib {
+namespace Niflib
+{
+	class NiVectorExtraData;
+	typedef Ref<NiVectorExtraData> NiVectorExtraDataRef;
 
-class NiVectorExtraData;
-typedef Ref<NiVectorExtraData> NiVectorExtraDataRef;
+	/*! Extra vector data. */
+	class NiVectorExtraData : public NiExtraData
+	{
+	public:
+		/*! Constructor */
+		NIFLIB_API NiVectorExtraData();
 
-/*! Extra vector data. */
-class NiVectorExtraData : public NiExtraData {
-public:
-	/*! Constructor */
-	NIFLIB_API NiVectorExtraData();
+		/*! Destructor */
+		NIFLIB_API virtual ~NiVectorExtraData();
 
-	/*! Destructor */
-	NIFLIB_API virtual ~NiVectorExtraData();
+		/*!
+		 * A constant value which uniquly identifies objects of this type.
+		 */
+		NIFLIB_API static const Type TYPE;
 
-	/*!
-	 * A constant value which uniquly identifies objects of this type.
-	 */
-	NIFLIB_API static const Type TYPE;
+		/*!
+		 * A factory function used during file reading to create an instance of this type of object.
+		 * \return A pointer to a newly allocated instance of this type of object.
+		 */
+		NIFLIB_API static NiObject * Create();
 
-	/*!
-	 * A factory function used during file reading to create an instance of this type of object.
-	 * \return A pointer to a newly allocated instance of this type of object.
-	 */
-	NIFLIB_API static NiObject * Create();
+		/*!
+		 * Summarizes the information contained in this object in English.
+		 * \param[in] verbose Determines whether or not detailed information about large areas of data will be printed out.
+		 * \return A string containing a summary of the information within the object in English.  This is the function that Niflyze calls to generate its analysis, so the output is the same.
+		 */
+		NIFLIB_API virtual string asString(bool verbose = false) const;
 
-	/*!
-	 * Summarizes the information contained in this object in English.
-	 * \param[in] verbose Determines whether or not detailed information about large areas of data will be printed out.
-	 * \return A string containing a summary of the information within the object in English.  This is the function that Niflyze calls to generate its analysis, so the output is the same.
-	 */
-	NIFLIB_API virtual string asString( bool verbose = false ) const;
+		/*!
+		 * Used to determine the type of a particular instance of this object.
+		 * \return The type constant for the actual type of the object.
+		 */
+		NIFLIB_API virtual const Type & GetType() const;
 
-	/*!
-	 * Used to determine the type of a particular instance of this object.
-	 * \return The type constant for the actual type of the object.
-	 */
-	NIFLIB_API virtual const Type & GetType() const;
+		/***Begin Example Naive Implementation****
 
-	/***Begin Example Naive Implementation****
+		// The vector data.
+		// \return The current value.
+		Vector3 GetVectorData() const;
 
-	// The vector data.
-	// \return The current value.
-	Vector3 GetVectorData() const;
+		// The vector data.
+		// \param[in] value The new value.
+		void SetVectorData( const Vector3 & value );
 
-	// The vector data.
-	// \param[in] value The new value.
-	void SetVectorData( const Vector3 & value );
+		****End Example Naive Implementation***/
 
-	****End Example Naive Implementation***/
+		//--BEGIN MISC CUSTOM CODE--//
 
-	//--BEGIN MISC CUSTOM CODE--//
+		/*!
+		 * Retrieves the vector value stored in this object.
+		 * \return The vector value stored in this object.
+		 */
+		NIFLIB_API Vector3 GetData() const;
 
-	/*!
-	 * Retrieves the vector value stored in this object.
-	 * \return The vector value stored in this object.
-	 */
-	NIFLIB_API Vector3 GetData() const;
+		/*!
+		 * Sets the vector value stored in this object.
+		 * \param[in] n The new vector value to store in this object.
+		 */
+		NIFLIB_API void SetData(const Vector3 & n);
 
-	/*!
-	 * Sets the vector value stored in this object.
-	 * \param[in] n The new vector value to store in this object.
-	 */
-	NIFLIB_API void SetData( const Vector3 & n );
+		//TODO:  There is an unknown member in this class
 
-	//TODO:  There is an unknown member in this class
+		//--END CUSTOM CODE--//
+	protected:
+		/*! The vector data. */
+		Vector3 vectorData;
+		/*! Not sure whether this comes before or after the vector data. */
+		float unknownFloat;
+	public:
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info);
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const;
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info);
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual list<NiObjectRef> GetRefs() const;
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual list<NiObject *> GetPtrs() const;
+	};
 
+	//--BEGIN FILE FOOT CUSTOM CODE--//
 	//--END CUSTOM CODE--//
-protected:
-	/*! The vector data. */
-	Vector3 vectorData;
-	/*! Not sure whether this comes before or after the vector data. */
-	float unknownFloat;
-public:
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const;
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info );
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual list<NiObjectRef> GetRefs() const;
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual list<NiObject *> GetPtrs() const;
-};
-
-//--BEGIN FILE FOOT CUSTOM CODE--//
-//--END CUSTOM CODE--//
-
 } //End Niflib namespace
 #endif

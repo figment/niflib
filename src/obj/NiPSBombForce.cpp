@@ -18,75 +18,82 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiPSBombForce::TYPE("NiPSBombForce", &NiObject::TYPE );
+const Type NiPSBombForce::TYPE("NiPSBombForce", &NiObject::TYPE);
 
-NiPSBombForce::NiPSBombForce() : unknown1((byte)0), unknown2((int)0), unknown3((int)0), unknown4((int)0), unknown5((int)0), unknown6((int)0), unknown7((int)0), unknown8((int)0), unknown9((int)0), unknown10((int)0) {
+NiPSBombForce::NiPSBombForce() : unknown1((byte) 0), unknown2((int) 0), unknown3((int) 0), unknown4((int) 0), unknown5((int) 0), unknown6((int) 0), unknown7((int) 0), unknown8((int) 0), unknown9((int) 0), unknown10((int) 0)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-NiPSBombForce::~NiPSBombForce() {
+NiPSBombForce::~NiPSBombForce()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiPSBombForce::GetType() const {
+const Type & NiPSBombForce::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiPSBombForce::Create() {
+NiObject * NiPSBombForce::Create()
+{
 	return new NiPSBombForce;
 }
 
-void NiPSBombForce::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiPSBombForce::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiObject::Read( in, link_stack, info );
-	NifStream( name, in, info );
-	NifStream( unknown1, in, info );
-	NifStream( unknown2, in, info );
-	NifStream( unknown3, in, info );
-	NifStream( unknown4, in, info );
-	NifStream( unknown5, in, info );
-	NifStream( unknown6, in, info );
-	NifStream( unknown7, in, info );
-	NifStream( unknown8, in, info );
-	NifStream( unknown9, in, info );
-	NifStream( unknown10, in, info );
+	NiObject::Read(in, link_stack, info);
+	NifStream(name, in, info);
+	NifStream(unknown1, in, info);
+	NifStream(unknown2, in, info);
+	NifStream(unknown3, in, info);
+	NifStream(unknown4, in, info);
+	NifStream(unknown5, in, info);
+	NifStream(unknown6, in, info);
+	NifStream(unknown7, in, info);
+	NifStream(unknown8, in, info);
+	NifStream(unknown9, in, info);
+	NifStream(unknown10, in, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-void NiPSBombForce::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiPSBombForce::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiObject::Write( out, link_map, missing_link_stack, info );
-	NifStream( name, out, info );
-	NifStream( unknown1, out, info );
-	NifStream( unknown2, out, info );
-	NifStream( unknown3, out, info );
-	NifStream( unknown4, out, info );
-	NifStream( unknown5, out, info );
-	NifStream( unknown6, out, info );
-	NifStream( unknown7, out, info );
-	NifStream( unknown8, out, info );
-	NifStream( unknown9, out, info );
-	NifStream( unknown10, out, info );
+	NiObject::Write(out, link_map, missing_link_stack, info);
+	NifStream(name, out, info);
+	NifStream(unknown1, out, info);
+	NifStream(unknown2, out, info);
+	NifStream(unknown3, out, info);
+	NifStream(unknown4, out, info);
+	NifStream(unknown5, out, info);
+	NifStream(unknown6, out, info);
+	NifStream(unknown7, out, info);
+	NifStream(unknown8, out, info);
+	NifStream(unknown9, out, info);
+	NifStream(unknown10, out, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::string NiPSBombForce::asString( bool verbose ) const {
+std::string NiPSBombForce::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -111,25 +118,28 @@ std::string NiPSBombForce::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiPSBombForce::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiPSBombForce::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiObject::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiObject::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiPSBombForce::GetRefs() const {
+std::list<NiObjectRef> NiPSBombForce::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiObject::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiPSBombForce::GetPtrs() const {
+std::list<NiObject *> NiPSBombForce::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiObject::GetPtrs();
 	return ptrs;
@@ -138,11 +148,11 @@ std::list<NiObject *> NiPSBombForce::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 IndexString NiPSBombForce::GetName() const {
-	return name;
+return name;
 }
 
 void NiPSBombForce::SetName( const IndexString & value ) {
-	name = value;
+name = value;
 }
 
 ****End Example Naive Implementation***/

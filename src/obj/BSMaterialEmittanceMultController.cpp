@@ -18,53 +18,60 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type BSMaterialEmittanceMultController::TYPE("BSMaterialEmittanceMultController", &NiFloatInterpController::TYPE );
+const Type BSMaterialEmittanceMultController::TYPE("BSMaterialEmittanceMultController", &NiFloatInterpController::TYPE);
 
-BSMaterialEmittanceMultController::BSMaterialEmittanceMultController() {
+BSMaterialEmittanceMultController::BSMaterialEmittanceMultController()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-BSMaterialEmittanceMultController::~BSMaterialEmittanceMultController() {
+BSMaterialEmittanceMultController::~BSMaterialEmittanceMultController()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & BSMaterialEmittanceMultController::GetType() const {
+const Type & BSMaterialEmittanceMultController::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * BSMaterialEmittanceMultController::Create() {
+NiObject * BSMaterialEmittanceMultController::Create()
+{
 	return new BSMaterialEmittanceMultController;
 }
 
-void BSMaterialEmittanceMultController::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void BSMaterialEmittanceMultController::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiFloatInterpController::Read( in, link_stack, info );
+	NiFloatInterpController::Read(in, link_stack, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-void BSMaterialEmittanceMultController::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void BSMaterialEmittanceMultController::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiFloatInterpController::Write( out, link_map, missing_link_stack, info );
+	NiFloatInterpController::Write(out, link_map, missing_link_stack, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::string BSMaterialEmittanceMultController::asString( bool verbose ) const {
+std::string BSMaterialEmittanceMultController::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -78,25 +85,28 @@ std::string BSMaterialEmittanceMultController::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void BSMaterialEmittanceMultController::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void BSMaterialEmittanceMultController::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiFloatInterpController::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiFloatInterpController::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> BSMaterialEmittanceMultController::GetRefs() const {
+std::list<NiObjectRef> BSMaterialEmittanceMultController::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiFloatInterpController::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> BSMaterialEmittanceMultController::GetPtrs() const {
+std::list<NiObject *> BSMaterialEmittanceMultController::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiFloatInterpController::GetPtrs();
 	return ptrs;

@@ -9,15 +9,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-BoundingBox::BoundingBox() : unknownInt((unsigned int)1) {};
+BoundingBox::BoundingBox() : unknownInt((unsigned int) 1) {};
 
 //Copy Constructor
-BoundingBox::BoundingBox( const BoundingBox & src ) {
+BoundingBox::BoundingBox(const BoundingBox & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-BoundingBox & BoundingBox::operator=( const BoundingBox & src ) {
+BoundingBox & BoundingBox::operator=(const BoundingBox & src)
+{
 	this->unknownInt = src.unknownInt;
 	this->translation = src.translation;
 	this->rotation = src.rotation;

@@ -10,29 +10,28 @@ All rights reserved.  Please see niflib.h for license. */
 
 #include "../NIF_IO.h"
 
-namespace Niflib {
+namespace Niflib
+{
+	/*! per-chunk material, used in bhkCompressedMeshShapeData */
+	struct bhkCMSDMaterial
+	{
+		/*! Default Constructor */
+		NIFLIB_API bhkCMSDMaterial();
+		/*! Default Destructor */
+		NIFLIB_API ~bhkCMSDMaterial();
+		/*! Copy Constructor */
+		NIFLIB_API bhkCMSDMaterial(const bhkCMSDMaterial & src);
+		/*! Copy Operator */
+		NIFLIB_API bhkCMSDMaterial & operator=(const bhkCMSDMaterial & src);
+		/*! Material. */
+		SkyrimHavokMaterial skyrimMaterial;
+		/*! Copy of Skyrim Layer from bhkRigidBody */
+		SkyrimLayer skyrimLayer;
+		/*! This is padding. */
+		array<3, byte > unknownArray;
+		//--BEGIN MISC CUSTOM CODE--//
 
-
-/*! per-chunk material, used in bhkCompressedMeshShapeData */
-struct bhkCMSDMaterial {
-	/*! Default Constructor */
-	NIFLIB_API bhkCMSDMaterial();
-	/*! Default Destructor */
-	NIFLIB_API ~bhkCMSDMaterial();
-	/*! Copy Constructor */
-	NIFLIB_API bhkCMSDMaterial( const bhkCMSDMaterial & src );
-	/*! Copy Operator */
-	NIFLIB_API bhkCMSDMaterial & operator=( const bhkCMSDMaterial & src );
-	/*! Material. */
-	SkyrimHavokMaterial skyrimMaterial;
-	/*! Copy of Skyrim Layer from bhkRigidBody */
-	SkyrimLayer skyrimLayer;
-	/*! This is padding. */
-	array<3,byte > unknownArray;
-	//--BEGIN MISC CUSTOM CODE--//
-
-	//--END CUSTOM CODE--//
-};
-
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

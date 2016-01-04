@@ -10,15 +10,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-ArkTexture::ArkTexture() : unknownInt3((int)0), unknownInt4((int)0), texturingProperty(NULL) {};
+ArkTexture::ArkTexture() : unknownInt3((int) 0), unknownInt4((int) 0), texturingProperty(NULL) {};
 
 //Copy Constructor
-ArkTexture::ArkTexture( const ArkTexture & src ) {
+ArkTexture::ArkTexture(const ArkTexture & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-ArkTexture & ArkTexture::operator=( const ArkTexture & src ) {
+ArkTexture & ArkTexture::operator=(const ArkTexture & src)
+{
 	this->textureName = src.textureName;
 	this->unknownInt3 = src.unknownInt3;
 	this->unknownInt4 = src.unknownInt4;

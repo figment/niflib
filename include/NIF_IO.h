@@ -5,7 +5,7 @@ All rights reserved.  Please see niflib.h for license. */
 #define _NIF_IO_H
 
 //--Includes--//
-#include <string>
+#include <cstring>
 #include <sstream>
 #include <vector>
 #include "Key.h"
@@ -316,7 +316,6 @@ namespace Niflib
 	template <> void NifStream(Key<IndexString> & key, istream& file, const NifInfo & info, KeyType type);
 	template <> void NifStream(Key<IndexString> const & key, ostream& file, const NifInfo & info, KeyType type);
 
-
 	//The HexString function creates a formatted hex display of the given data for use in printing
 	//a debug string for information that is not understood
 	string HexString(const byte * src, unsigned int len);
@@ -341,7 +340,6 @@ namespace Niflib
 			return (NifInfo *) str.pword(infoIdx);
 		}
 	};
-
 
 	// hdrInfo
 	struct Header;
@@ -389,6 +387,5 @@ namespace Niflib
 		NifSizeStream() : std::ostream(&_buf) {}
 		void reset() { _buf.reset(); }
 	};
-
 }
 #endif

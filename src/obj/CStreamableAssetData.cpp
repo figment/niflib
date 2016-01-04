@@ -19,39 +19,45 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type CStreamableAssetData::TYPE("CStreamableAssetData", &NiObject::TYPE );
+const Type CStreamableAssetData::TYPE("CStreamableAssetData", &NiObject::TYPE);
 
-CStreamableAssetData::CStreamableAssetData() : root(NULL) {
+CStreamableAssetData::CStreamableAssetData() : root(NULL)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-CStreamableAssetData::~CStreamableAssetData() {
+CStreamableAssetData::~CStreamableAssetData()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & CStreamableAssetData::GetType() const {
+const Type & CStreamableAssetData::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * CStreamableAssetData::Create() {
+NiObject * CStreamableAssetData::Create()
+{
 	return new CStreamableAssetData;
 }
 
-void CStreamableAssetData::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void CStreamableAssetData::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
 	unsigned int block_num;
-	NiObject::Read( in, link_stack, info );
-	NifStream( block_num, in, info );
-	link_stack.push_back( block_num );
-	for (unsigned int i1 = 0; i1 < 5; i1++) {
-		NifStream( unknownBytes[i1], in, info );
+	NiObject::Read(in, link_stack, info);
+	NifStream(block_num, in, info);
+	link_stack.push_back(block_num);
+	for(unsigned int i1 = 0; i1 < 5; i1++)
+	{
+		NifStream(unknownBytes[i1], in, info);
 	};
 
 	//--BEGIN POST-READ CUSTOM CODE--//
@@ -59,31 +65,42 @@ void CStreamableAssetData::Read( istream& in, list<unsigned int> & link_stack, c
 	//--END CUSTOM CODE--//
 }
 
-void CStreamableAssetData::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void CStreamableAssetData::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiObject::Write( out, link_map, missing_link_stack, info );
-	if ( info.version < VER_3_3_0_13 ) {
-		WritePtr32( &(*root), out );
-	} else {
-		if ( root != NULL ) {
-			map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(root) );
-			if (it != link_map.end()) {
-				NifStream( it->second, out, info );
-				missing_link_stack.push_back( NULL );
-			} else {
-				NifStream( 0xFFFFFFFF, out, info );
-				missing_link_stack.push_back( root );
+	NiObject::Write(out, link_map, missing_link_stack, info);
+	if(info.version < VER_3_3_0_13)
+	{
+		WritePtr32(&(*root), out);
+	}
+	else
+	{
+		if(root != NULL)
+		{
+			map<NiObjectRef, unsigned int>::const_iterator it = link_map.find(StaticCast<NiObject>(root));
+			if(it != link_map.end())
+			{
+				NifStream(it->second, out, info);
+				missing_link_stack.push_back(NULL);
 			}
-		} else {
-			NifStream( 0xFFFFFFFF, out, info );
-			missing_link_stack.push_back( NULL );
+			else
+			{
+				NifStream(0xFFFFFFFF, out, info);
+				missing_link_stack.push_back(root);
+			}
+		}
+		else
+		{
+			NifStream(0xFFFFFFFF, out, info);
+			missing_link_stack.push_back(NULL);
 		}
 	}
-	for (unsigned int i1 = 0; i1 < 5; i1++) {
-		NifStream( unknownBytes[i1], out, info );
+	for(unsigned int i1 = 0; i1 < 5; i1++)
+	{
+		NifStream(unknownBytes[i1], out, info);
 	};
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
@@ -91,7 +108,8 @@ void CStreamableAssetData::Write( ostream& out, const map<NiObjectRef,unsigned i
 	//--END CUSTOM CODE--//
 }
 
-std::string CStreamableAssetData::asString( bool verbose ) const {
+std::string CStreamableAssetData::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -101,12 +119,15 @@ std::string CStreamableAssetData::asString( bool verbose ) const {
 	out << NiObject::asString(verbose);
 	out << "  Root:  " << root << endl;
 	array_output_count = 0;
-	for (unsigned int i1 = 0; i1 < 5; i1++) {
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+	for(unsigned int i1 = 0; i1 < 5; i1++)
+	{
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 			break;
 		};
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			break;
 		};
 		out << "    Unknown Bytes[" << i1 << "]:  " << unknownBytes[i1] << endl;
@@ -119,28 +140,31 @@ std::string CStreamableAssetData::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void CStreamableAssetData::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void CStreamableAssetData::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiObject::FixLinks( objects, link_stack, missing_link_stack, info );
-	root = FixLink<NiNode>( objects, link_stack, missing_link_stack, info );
+	NiObject::FixLinks(objects, link_stack, missing_link_stack, info);
+	root = FixLink<NiNode>(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> CStreamableAssetData::GetRefs() const {
+std::list<NiObjectRef> CStreamableAssetData::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiObject::GetRefs();
-	if ( root != NULL )
+	if(root != NULL)
 		refs.push_back(StaticCast<NiObject>(root));
 	return refs;
 }
 
-std::list<NiObject *> CStreamableAssetData::GetPtrs() const {
+std::list<NiObject *> CStreamableAssetData::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiObject::GetPtrs();
 	return ptrs;
@@ -149,11 +173,11 @@ std::list<NiObject *> CStreamableAssetData::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 Ref<NiNode > CStreamableAssetData::GetRoot() const {
-	return root;
+return root;
 }
 
 void CStreamableAssetData::SetRoot( Ref<NiNode > value ) {
-	root = value;
+root = value;
 }
 
 ****End Example Naive Implementation***/

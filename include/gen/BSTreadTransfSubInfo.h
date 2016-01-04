@@ -10,38 +10,37 @@ All rights reserved.  Please see niflib.h for license. */
 
 #include "../NIF_IO.h"
 
-namespace Niflib {
-
-
-/*! Bethesda-specific node. */
-struct BSTreadTransfSubInfo {
-	/*! Default Constructor */
-	NIFLIB_API BSTreadTransfSubInfo();
-	/*! Default Destructor */
-	NIFLIB_API ~BSTreadTransfSubInfo();
-	/*! Copy Constructor */
-	NIFLIB_API BSTreadTransfSubInfo( const BSTreadTransfSubInfo & src );
-	/*! Copy Operator */
-	NIFLIB_API BSTreadTransfSubInfo & operator=( const BSTreadTransfSubInfo & src );
-	/*! Unknown */
-	int unknownInt1;
-	/*! Unknown */
-	int unknownInt2;
-	/*! Unknown */
-	int unknownInt3;
-	/*! Unknown */
-	int unknownInt4;
-	/*! Unknown */
-	int unknownInt5;
-	/*! Unknown */
-	int unknownInt6;
-	/*! Unknown */
-	int unknownInt7;
-	/*! Unknown */
-	int unknownInt8;
-	//--BEGIN MISC CUSTOM CODE--//
-	//--END CUSTOM CODE--//
-};
-
+namespace Niflib
+{
+	/*! Bethesda-specific node. */
+	struct BSTreadTransfSubInfo
+	{
+		/*! Default Constructor */
+		NIFLIB_API BSTreadTransfSubInfo();
+		/*! Default Destructor */
+		NIFLIB_API ~BSTreadTransfSubInfo();
+		/*! Copy Constructor */
+		NIFLIB_API BSTreadTransfSubInfo(const BSTreadTransfSubInfo & src);
+		/*! Copy Operator */
+		NIFLIB_API BSTreadTransfSubInfo & operator=(const BSTreadTransfSubInfo & src);
+		/*! Unknown */
+		int unknownInt1;
+		/*! Unknown */
+		int unknownInt2;
+		/*! Unknown */
+		int unknownInt3;
+		/*! Unknown */
+		int unknownInt4;
+		/*! Unknown */
+		int unknownInt5;
+		/*! Unknown */
+		int unknownInt6;
+		/*! Unknown */
+		int unknownInt7;
+		/*! Unknown */
+		int unknownInt8;
+		//--BEGIN MISC CUSTOM CODE--//
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

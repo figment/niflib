@@ -10,29 +10,28 @@ All rights reserved.  Please see niflib.h for license. */
 
 #include "../NIF_IO.h"
 
-namespace Niflib {
+namespace Niflib
+{
+	/*!  */
+	struct QTransform
+	{
+		/*! Default Constructor */
+		NIFLIB_API QTransform();
+		/*! Default Destructor */
+		NIFLIB_API ~QTransform();
+		/*! Copy Constructor */
+		NIFLIB_API QTransform(const QTransform & src);
+		/*! Copy Operator */
+		NIFLIB_API QTransform & operator=(const QTransform & src);
+		/*! Translation. */
+		Vector3 translation;
+		/*! Rotation. */
+		Quaternion rotation;
+		/*! Scale. */
+		float scale;
+		//--BEGIN MISC CUSTOM CODE--//
 
-
-/*!  */
-struct QTransform {
-	/*! Default Constructor */
-	NIFLIB_API QTransform();
-	/*! Default Destructor */
-	NIFLIB_API ~QTransform();
-	/*! Copy Constructor */
-	NIFLIB_API QTransform( const QTransform & src );
-	/*! Copy Operator */
-	NIFLIB_API QTransform & operator=( const QTransform & src );
-	/*! Translation. */
-	Vector3 translation;
-	/*! Rotation. */
-	Quaternion rotation;
-	/*! Scale. */
-	float scale;
-	//--BEGIN MISC CUSTOM CODE--//
-
-	//--END CUSTOM CODE--//
-};
-
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

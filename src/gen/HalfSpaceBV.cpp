@@ -12,12 +12,14 @@ using namespace Niflib;
 HalfSpaceBV::HalfSpaceBV() : unknownFloat1(0.0f) {};
 
 //Copy Constructor
-HalfSpaceBV::HalfSpaceBV( const HalfSpaceBV & src ) {
+HalfSpaceBV::HalfSpaceBV(const HalfSpaceBV & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-HalfSpaceBV & HalfSpaceBV::operator=( const HalfSpaceBV & src ) {
+HalfSpaceBV & HalfSpaceBV::operator=(const HalfSpaceBV & src)
+{
 	this->normal = src.normal;
 	this->center = src.center;
 	this->unknownFloat1 = src.unknownFloat1;

@@ -10,28 +10,27 @@ All rights reserved.  Please see niflib.h for license. */
 
 #include "../NIF_IO.h"
 
-namespace Niflib {
-
-
-/*! Box Bounding Volume */
-struct BoxBV {
-	/*! Default Constructor */
-	NIFLIB_API BoxBV();
-	/*! Default Destructor */
-	NIFLIB_API ~BoxBV();
-	/*! Copy Constructor */
-	NIFLIB_API BoxBV( const BoxBV & src );
-	/*! Copy Operator */
-	NIFLIB_API BoxBV & operator=( const BoxBV & src );
-	/*! Center */
-	Vector3 center;
-	/*! Axis */
-	array<3,Vector3 > axis;
-	/*! Extent */
-	array<3,float > extent;
-	//--BEGIN MISC CUSTOM CODE--//
-	//--END CUSTOM CODE--//
-};
-
+namespace Niflib
+{
+	/*! Box Bounding Volume */
+	struct BoxBV
+	{
+		/*! Default Constructor */
+		NIFLIB_API BoxBV();
+		/*! Default Destructor */
+		NIFLIB_API ~BoxBV();
+		/*! Copy Constructor */
+		NIFLIB_API BoxBV(const BoxBV & src);
+		/*! Copy Operator */
+		NIFLIB_API BoxBV & operator=(const BoxBV & src);
+		/*! Center */
+		Vector3 center;
+		/*! Axis */
+		array<3, Vector3 > axis;
+		/*! Extent */
+		array<3, float > extent;
+		//--BEGIN MISC CUSTOM CODE--//
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

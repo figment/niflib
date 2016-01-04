@@ -18,59 +18,66 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type BSMultiBoundOBB::TYPE("BSMultiBoundOBB", &BSMultiBoundData::TYPE );
+const Type BSMultiBoundOBB::TYPE("BSMultiBoundOBB", &BSMultiBoundData::TYPE);
 
-BSMultiBoundOBB::BSMultiBoundOBB() {
+BSMultiBoundOBB::BSMultiBoundOBB()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-BSMultiBoundOBB::~BSMultiBoundOBB() {
+BSMultiBoundOBB::~BSMultiBoundOBB()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & BSMultiBoundOBB::GetType() const {
+const Type & BSMultiBoundOBB::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * BSMultiBoundOBB::Create() {
+NiObject * BSMultiBoundOBB::Create()
+{
 	return new BSMultiBoundOBB;
 }
 
-void BSMultiBoundOBB::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void BSMultiBoundOBB::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	BSMultiBoundData::Read( in, link_stack, info );
-	NifStream( center, in, info );
-	NifStream( size, in, info );
-	NifStream( rotation, in, info );
+	BSMultiBoundData::Read(in, link_stack, info);
+	NifStream(center, in, info);
+	NifStream(size, in, info);
+	NifStream(rotation, in, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-void BSMultiBoundOBB::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void BSMultiBoundOBB::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	BSMultiBoundData::Write( out, link_map, missing_link_stack, info );
-	NifStream( center, out, info );
-	NifStream( size, out, info );
-	NifStream( rotation, out, info );
+	BSMultiBoundData::Write(out, link_map, missing_link_stack, info);
+	NifStream(center, out, info);
+	NifStream(size, out, info);
+	NifStream(rotation, out, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::string BSMultiBoundOBB::asString( bool verbose ) const {
+std::string BSMultiBoundOBB::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -87,25 +94,28 @@ std::string BSMultiBoundOBB::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void BSMultiBoundOBB::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void BSMultiBoundOBB::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	BSMultiBoundData::FixLinks( objects, link_stack, missing_link_stack, info );
+	BSMultiBoundData::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> BSMultiBoundOBB::GetRefs() const {
+std::list<NiObjectRef> BSMultiBoundOBB::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = BSMultiBoundData::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> BSMultiBoundOBB::GetPtrs() const {
+std::list<NiObject *> BSMultiBoundOBB::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = BSMultiBoundData::GetPtrs();
 	return ptrs;
@@ -114,27 +124,27 @@ std::list<NiObject *> BSMultiBoundOBB::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 Vector3 BSMultiBoundOBB::GetCenter() const {
-	return center;
+return center;
 }
 
 void BSMultiBoundOBB::SetCenter( const Vector3 & value ) {
-	center = value;
+center = value;
 }
 
 Vector3 BSMultiBoundOBB::GetSize() const {
-	return size;
+return size;
 }
 
 void BSMultiBoundOBB::SetSize( const Vector3 & value ) {
-	size = value;
+size = value;
 }
 
 Matrix33 BSMultiBoundOBB::GetRotation() const {
-	return rotation;
+return rotation;
 }
 
 void BSMultiBoundOBB::SetRotation( const Matrix33 & value ) {
-	rotation = value;
+rotation = value;
 }
 
 ****End Example Naive Implementation***/

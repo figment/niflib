@@ -15,32 +15,31 @@ All rights reserved.  Please see niflib.h for license. */
 #include "BoxBV.h"
 #include "CapsuleBV.h"
 #include "HalfSpaceBV.h"
-namespace Niflib {
-
-
-/*!  */
-struct BoundingVolume {
-	/*! Default Constructor */
-	NIFLIB_API BoundingVolume();
-	/*! Default Destructor */
-	NIFLIB_API ~BoundingVolume();
-	/*! Copy Constructor */
-	NIFLIB_API BoundingVolume( const BoundingVolume & src );
-	/*! Copy Operator */
-	NIFLIB_API BoundingVolume & operator=( const BoundingVolume & src );
-	/*! Type of collision data. */
-	BoundVolumeType collisionType;
-	/*! Sphere */
-	SphereBV sphere;
-	/*! Box */
-	BoxBV box;
-	/*! Capsule */
-	CapsuleBV capsule;
-	/*! Half Space */
-	HalfSpaceBV halfspace;
-	//--BEGIN MISC CUSTOM CODE--//
-	//--END CUSTOM CODE--//
-};
-
+namespace Niflib
+{
+	/*!  */
+	struct BoundingVolume
+	{
+		/*! Default Constructor */
+		NIFLIB_API BoundingVolume();
+		/*! Default Destructor */
+		NIFLIB_API ~BoundingVolume();
+		/*! Copy Constructor */
+		NIFLIB_API BoundingVolume(const BoundingVolume & src);
+		/*! Copy Operator */
+		NIFLIB_API BoundingVolume & operator=(const BoundingVolume & src);
+		/*! Type of collision data. */
+		BoundVolumeType collisionType;
+		/*! Sphere */
+		SphereBV sphere;
+		/*! Box */
+		BoxBV box;
+		/*! Capsule */
+		CapsuleBV capsule;
+		/*! Half Space */
+		HalfSpaceBV halfspace;
+		//--BEGIN MISC CUSTOM CODE--//
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

@@ -12,29 +12,28 @@ All rights reserved.  Please see niflib.h for license. */
 
 // Include structures
 #include "SkinShape.h"
-namespace Niflib {
-
-
-/*! Unknown. */
-struct SkinShapeGroup {
-	/*! Default Constructor */
-	NIFLIB_API SkinShapeGroup();
-	/*! Default Destructor */
-	NIFLIB_API ~SkinShapeGroup();
-	/*! Copy Constructor */
-	NIFLIB_API SkinShapeGroup( const SkinShapeGroup & src );
-	/*! Copy Operator */
-	NIFLIB_API SkinShapeGroup & operator=( const SkinShapeGroup & src );
-	/*! Counts unknown. */
-	mutable unsigned int numLinkPairs;
-	/*!
-	 * First link is a NiTriShape object.
-	 *             Second link is a NiSkinInstance object.
-	 */
-	vector<SkinShape > linkPairs;
-	//--BEGIN MISC CUSTOM CODE--//
-	//--END CUSTOM CODE--//
-};
-
+namespace Niflib
+{
+	/*! Unknown. */
+	struct SkinShapeGroup
+	{
+		/*! Default Constructor */
+		NIFLIB_API SkinShapeGroup();
+		/*! Default Destructor */
+		NIFLIB_API ~SkinShapeGroup();
+		/*! Copy Constructor */
+		NIFLIB_API SkinShapeGroup(const SkinShapeGroup & src);
+		/*! Copy Operator */
+		NIFLIB_API SkinShapeGroup & operator=(const SkinShapeGroup & src);
+		/*! Counts unknown. */
+		mutable unsigned int numLinkPairs;
+		/*!
+		 * First link is a NiTriShape object.
+		 *             Second link is a NiSkinInstance object.
+		 */
+		vector<SkinShape > linkPairs;
+		//--BEGIN MISC CUSTOM CODE--//
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

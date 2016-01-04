@@ -12,12 +12,14 @@ using namespace Niflib;
 HingeDescriptor::HingeDescriptor() {};
 
 //Copy Constructor
-HingeDescriptor::HingeDescriptor( const HingeDescriptor & src ) {
+HingeDescriptor::HingeDescriptor(const HingeDescriptor & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-HingeDescriptor & HingeDescriptor::operator=( const HingeDescriptor & src ) {
+HingeDescriptor & HingeDescriptor::operator=(const HingeDescriptor & src)
+{
 	this->pivotA = src.pivotA;
 	this->perp2AxleInA1 = src.perp2AxleInA1;
 	this->perp2AxleInA2 = src.perp2AxleInA2;

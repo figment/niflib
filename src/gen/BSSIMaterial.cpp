@@ -9,15 +9,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-BSSIMaterial::BSSIMaterial() : bodyPartIndex((unsigned int)0), materialHash((unsigned int)0), numData((unsigned int)0) {};
+BSSIMaterial::BSSIMaterial() : bodyPartIndex((unsigned int) 0), materialHash((unsigned int) 0), numData((unsigned int) 0) {};
 
 //Copy Constructor
-BSSIMaterial::BSSIMaterial( const BSSIMaterial & src ) {
+BSSIMaterial::BSSIMaterial(const BSSIMaterial & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-BSSIMaterial & BSSIMaterial::operator=( const BSSIMaterial & src ) {
+BSSIMaterial & BSSIMaterial::operator=(const BSSIMaterial & src)
+{
 	this->bodyPartIndex = src.bodyPartIndex;
 	this->materialHash = src.materialHash;
 	this->numData = src.numData;

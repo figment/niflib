@@ -18,61 +18,68 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type BSInvMarker::TYPE("BSInvMarker", &NiExtraData::TYPE );
+const Type BSInvMarker::TYPE("BSInvMarker", &NiExtraData::TYPE);
 
-BSInvMarker::BSInvMarker() : rotationX((unsigned short)4712), rotationY((unsigned short)6283), rotationZ((unsigned short)0), zoom(1.0f) {
+BSInvMarker::BSInvMarker() : rotationX((unsigned short) 4712), rotationY((unsigned short) 6283), rotationZ((unsigned short) 0), zoom(1.0f)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-BSInvMarker::~BSInvMarker() {
+BSInvMarker::~BSInvMarker()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & BSInvMarker::GetType() const {
+const Type & BSInvMarker::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * BSInvMarker::Create() {
+NiObject * BSInvMarker::Create()
+{
 	return new BSInvMarker;
 }
 
-void BSInvMarker::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void BSInvMarker::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiExtraData::Read( in, link_stack, info );
-	NifStream( rotationX, in, info );
-	NifStream( rotationY, in, info );
-	NifStream( rotationZ, in, info );
-	NifStream( zoom, in, info );
+	NiExtraData::Read(in, link_stack, info);
+	NifStream(rotationX, in, info);
+	NifStream(rotationY, in, info);
+	NifStream(rotationZ, in, info);
+	NifStream(zoom, in, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-void BSInvMarker::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void BSInvMarker::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiExtraData::Write( out, link_map, missing_link_stack, info );
-	NifStream( rotationX, out, info );
-	NifStream( rotationY, out, info );
-	NifStream( rotationZ, out, info );
-	NifStream( zoom, out, info );
+	NiExtraData::Write(out, link_map, missing_link_stack, info);
+	NifStream(rotationX, out, info);
+	NifStream(rotationY, out, info);
+	NifStream(rotationZ, out, info);
+	NifStream(zoom, out, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::string BSInvMarker::asString( bool verbose ) const {
+std::string BSInvMarker::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -90,25 +97,28 @@ std::string BSInvMarker::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void BSInvMarker::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void BSInvMarker::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiExtraData::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiExtraData::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> BSInvMarker::GetRefs() const {
+std::list<NiObjectRef> BSInvMarker::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiExtraData::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> BSInvMarker::GetPtrs() const {
+std::list<NiObject *> BSInvMarker::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiExtraData::GetPtrs();
 	return ptrs;
@@ -117,35 +127,35 @@ std::list<NiObject *> BSInvMarker::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 unsigned short BSInvMarker::GetRotationX() const {
-	return rotationX;
+return rotationX;
 }
 
 void BSInvMarker::SetRotationX( unsigned short value ) {
-	rotationX = value;
+rotationX = value;
 }
 
 unsigned short BSInvMarker::GetRotationY() const {
-	return rotationY;
+return rotationY;
 }
 
 void BSInvMarker::SetRotationY( unsigned short value ) {
-	rotationY = value;
+rotationY = value;
 }
 
 unsigned short BSInvMarker::GetRotationZ() const {
-	return rotationZ;
+return rotationZ;
 }
 
 void BSInvMarker::SetRotationZ( unsigned short value ) {
-	rotationZ = value;
+rotationZ = value;
 }
 
 float BSInvMarker::GetZoom() const {
-	return zoom;
+return zoom;
 }
 
 void BSInvMarker::SetZoom( float value ) {
-	zoom = value;
+zoom = value;
 }
 
 ****End Example Naive Implementation***/

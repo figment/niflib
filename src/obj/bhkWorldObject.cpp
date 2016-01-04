@@ -18,85 +18,105 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type bhkWorldObject::TYPE("bhkWorldObject", &bhkSerializable::TYPE );
+const Type bhkWorldObject::TYPE("bhkWorldObject", &bhkSerializable::TYPE);
 
-bhkWorldObject::bhkWorldObject() : shape(NULL), layer((OblivionLayer)OL_STATIC), colFilter((byte)0), skyrimLayer((SkyrimLayer)SKYL_STATIC), flagsAndPartNumber((byte)0), unknownShort((unsigned short)0) {
+bhkWorldObject::bhkWorldObject() : shape(NULL), layer((OblivionLayer) OL_STATIC), colFilter((byte) 0), skyrimLayer((SkyrimLayer) SKYL_STATIC), flagsAndPartNumber((byte) 0), unknownShort((unsigned short) 0)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-bhkWorldObject::~bhkWorldObject() {
+bhkWorldObject::~bhkWorldObject()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & bhkWorldObject::GetType() const {
+const Type & bhkWorldObject::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * bhkWorldObject::Create() {
+NiObject * bhkWorldObject::Create()
+{
 	return new bhkWorldObject;
 }
 
-void bhkWorldObject::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void bhkWorldObject::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
 	unsigned int block_num;
-	bhkSerializable::Read( in, link_stack, info );
-	NifStream( block_num, in, info );
-	link_stack.push_back( block_num );
-	if ( (info.userVersion < 12) ) {
-		NifStream( layer, in, info );
-		NifStream( colFilter, in, info );
+	bhkSerializable::Read(in, link_stack, info);
+	NifStream(block_num, in, info);
+	link_stack.push_back(block_num);
+	if((info.userVersion < 12))
+	{
+		NifStream(layer, in, info);
+		NifStream(colFilter, in, info);
 	};
-	if ( (info.userVersion >= 12) ) {
-		NifStream( skyrimLayer, in, info );
-		NifStream( flagsAndPartNumber, in, info );
+	if((info.userVersion >= 12))
+	{
+		NifStream(skyrimLayer, in, info);
+		NifStream(flagsAndPartNumber, in, info);
 	};
-	NifStream( unknownShort, in, info );
+	NifStream(unknownShort, in, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void bhkWorldObject::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void bhkWorldObject::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	bhkSerializable::Write( out, link_map, missing_link_stack, info );
-	if ( info.version < VER_3_3_0_13 ) {
-		WritePtr32( &(*shape), out );
-	} else {
-		if ( shape != NULL ) {
-			map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(shape) );
-			if (it != link_map.end()) {
-				NifStream( it->second, out, info );
-				missing_link_stack.push_back( NULL );
-			} else {
-				NifStream( 0xFFFFFFFF, out, info );
-				missing_link_stack.push_back( shape );
+	bhkSerializable::Write(out, link_map, missing_link_stack, info);
+	if(info.version < VER_3_3_0_13)
+	{
+		WritePtr32(&(*shape), out);
+	}
+	else
+	{
+		if(shape != NULL)
+		{
+			map<NiObjectRef, unsigned int>::const_iterator it = link_map.find(StaticCast<NiObject>(shape));
+			if(it != link_map.end())
+			{
+				NifStream(it->second, out, info);
+				missing_link_stack.push_back(NULL);
 			}
-		} else {
-			NifStream( 0xFFFFFFFF, out, info );
-			missing_link_stack.push_back( NULL );
+			else
+			{
+				NifStream(0xFFFFFFFF, out, info);
+				missing_link_stack.push_back(shape);
+			}
+		}
+		else
+		{
+			NifStream(0xFFFFFFFF, out, info);
+			missing_link_stack.push_back(NULL);
 		}
 	}
-	if ( (info.userVersion < 12) ) {
-		NifStream( layer, out, info );
-		NifStream( colFilter, out, info );
+	if((info.userVersion < 12))
+	{
+		NifStream(layer, out, info);
+		NifStream(colFilter, out, info);
 	};
-	if ( (info.userVersion >= 12) ) {
-		NifStream( skyrimLayer, out, info );
-		NifStream( flagsAndPartNumber, out, info );
+	if((info.userVersion >= 12))
+	{
+		NifStream(skyrimLayer, out, info);
+		NifStream(flagsAndPartNumber, out, info);
 	};
-	NifStream( unknownShort, out, info );
+	NifStream(unknownShort, out, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string bhkWorldObject::asString( bool verbose ) const {
+std::string bhkWorldObject::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
@@ -114,26 +134,29 @@ std::string bhkWorldObject::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void bhkWorldObject::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void bhkWorldObject::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	bhkSerializable::FixLinks( objects, link_stack, missing_link_stack, info );
-	shape = FixLink<bhkShape>( objects, link_stack, missing_link_stack, info );
+	bhkSerializable::FixLinks(objects, link_stack, missing_link_stack, info);
+	shape = FixLink<bhkShape>(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> bhkWorldObject::GetRefs() const {
+std::list<NiObjectRef> bhkWorldObject::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = bhkSerializable::GetRefs();
-	if ( shape != NULL )
+	if(shape != NULL)
 		refs.push_back(StaticCast<NiObject>(shape));
 	return refs;
 }
 
-std::list<NiObject *> bhkWorldObject::GetPtrs() const {
+std::list<NiObject *> bhkWorldObject::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = bhkSerializable::GetPtrs();
 	return ptrs;
@@ -142,70 +165,76 @@ std::list<NiObject *> bhkWorldObject::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 Ref<bhkShape > bhkWorldObject::GetShape() const {
-	return shape;
+return shape;
 }
 
 void bhkWorldObject::SetShape( Ref<bhkShape > value ) {
-	shape = value;
+shape = value;
 }
 
 OblivionLayer bhkWorldObject::GetLayer() const {
-	return layer;
+return layer;
 }
 
 void bhkWorldObject::SetLayer( const OblivionLayer & value ) {
-	layer = value;
+layer = value;
 }
 
 byte bhkWorldObject::GetColFilter() const {
-	return colFilter;
+return colFilter;
 }
 
 void bhkWorldObject::SetColFilter( byte value ) {
-	colFilter = value;
+colFilter = value;
 }
 
 SkyrimLayer bhkWorldObject::GetSkyrimLayer() const {
-	return skyrimLayer;
+return skyrimLayer;
 }
 
 void bhkWorldObject::SetSkyrimLayer( const SkyrimLayer & value ) {
-	skyrimLayer = value;
+skyrimLayer = value;
 }
 
 byte bhkWorldObject::GetFlagsAndPartNumber() const {
-	return flagsAndPartNumber;
+return flagsAndPartNumber;
 }
 
 void bhkWorldObject::SetFlagsAndPartNumber( byte value ) {
-	flagsAndPartNumber = value;
+flagsAndPartNumber = value;
 }
 
 ****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 
-Ref<bhkShape > bhkWorldObject::GetShape() const {
+Ref<bhkShape > bhkWorldObject::GetShape() const
+{
 	return shape;
 }
 
-void bhkWorldObject::SetShape( bhkShape * value ) {
+void bhkWorldObject::SetShape(bhkShape * value)
+{
 	shape = value;
 }
 
-OblivionLayer bhkWorldObject::GetLayer() const {
+OblivionLayer bhkWorldObject::GetLayer() const
+{
 	return layer;
 }
 
-void bhkWorldObject::SetLayer( OblivionLayer value ) {
+void bhkWorldObject::SetLayer(OblivionLayer value)
+{
 	layer = value;
 }
 
-SkyrimLayer bhkWorldObject::GetSkyrimLayer() const {
+SkyrimLayer bhkWorldObject::GetSkyrimLayer() const
+{
 	return skyrimLayer;
 }
 
-void bhkWorldObject::SetSkyrimLayer(SkyrimLayer value) {
+void bhkWorldObject::SetSkyrimLayer(SkyrimLayer value)
+{
 	skyrimLayer = value;
 }
 

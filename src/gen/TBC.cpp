@@ -12,12 +12,14 @@ using namespace Niflib;
 TBC::TBC() : t(0.0f), b(0.0f), c(0.0f) {};
 
 //Copy Constructor
-TBC::TBC( const TBC & src ) {
+TBC::TBC(const TBC & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-TBC & TBC::operator=( const TBC & src ) {
+TBC & TBC::operator=(const TBC & src)
+{
 	this->t = src.t;
 	this->b = src.b;
 	this->c = src.c;

@@ -12,42 +12,42 @@ All rights reserved.  Please see niflib.h for license. */
 
 // Include structures
 #include "../Ref.h"
-namespace Niflib {
+namespace Niflib
+{
+	// Forward define of referenced NIF objects
+	class NiObject;
+	class NiPixelData;
 
-// Forward define of referenced NIF objects
-class NiObject;
-class NiPixelData;
-
-/*! A texture source. */
-struct TexSource {
-	/*! Default Constructor */
-	NIFLIB_API TexSource();
-	/*! Default Destructor */
-	NIFLIB_API ~TexSource();
-	/*! Copy Constructor */
-	NIFLIB_API TexSource( const TexSource & src );
-	/*! Copy Operator */
-	NIFLIB_API TexSource & operator=( const TexSource & src );
-	/*! Is the texture external? */
-	byte useExternal;
-	/*!
-	 * The external texture file name.
-	 * 
-	 *             Note: all original morrowind nifs use name.ext only for addressing
-	 * the textures, but most mods use something like textures/[subdir/]name.ext. This
-	 * is due to a feature in Morrowind resource manager: it loads name.ext,
-	 * textures/name.ext and textures/subdir/name.ext but NOT subdir/name.ext.
-	 */
-	IndexString fileName;
-	/*! Unknown. */
-	Ref<NiObject > unknownLink;
-	/*! Unknown. */
-	byte unknownByte;
-	/*! Pixel data object index. */
-	Ref<NiPixelData > pixelData;
-	//--BEGIN MISC CUSTOM CODE--//
-	//--END CUSTOM CODE--//
-};
-
+	/*! A texture source. */
+	struct TexSource
+	{
+		/*! Default Constructor */
+		NIFLIB_API TexSource();
+		/*! Default Destructor */
+		NIFLIB_API ~TexSource();
+		/*! Copy Constructor */
+		NIFLIB_API TexSource(const TexSource & src);
+		/*! Copy Operator */
+		NIFLIB_API TexSource & operator=(const TexSource & src);
+		/*! Is the texture external? */
+		byte useExternal;
+		/*!
+		 * The external texture file name.
+		 *
+		 *             Note: all original morrowind nifs use name.ext only for addressing
+		 * the textures, but most mods use something like textures/[subdir/]name.ext. This
+		 * is due to a feature in Morrowind resource manager: it loads name.ext,
+		 * textures/name.ext and textures/subdir/name.ext but NOT subdir/name.ext.
+		 */
+		IndexString fileName;
+		/*! Unknown. */
+		Ref<NiObject > unknownLink;
+		/*! Unknown. */
+		byte unknownByte;
+		/*! Pixel data object index. */
+		Ref<NiPixelData > pixelData;
+		//--BEGIN MISC CUSTOM CODE--//
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

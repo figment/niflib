@@ -12,19 +12,15 @@
 
 #include <vector>
 
-
-
-
 namespace triangle_stripper
 {
-
 	typedef std::size_t index;
 	typedef std::vector<index> indices;
 
 	enum primitive_type
 	{
-		TRIANGLES		= 0x0004,	// = GL_TRIANGLES
-		TRIANGLE_STRIP	= 0x0005	// = GL_TRIANGLE_STRIP
+		TRIANGLES = 0x0004,	// = GL_TRIANGLES
+		TRIANGLE_STRIP = 0x0005	// = GL_TRIANGLE_STRIP
 	};
 
 	struct primitive_group
@@ -34,10 +30,6 @@ namespace triangle_stripper
 	};
 
 	typedef std::vector<primitive_group> primitive_vector;
-
 }
-
-
-
 
 #endif // TRI_STRIPPER_HEADER_GUARD_PUBLIC_TYPES_H

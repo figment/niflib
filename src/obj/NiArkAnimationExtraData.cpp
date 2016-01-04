@@ -18,40 +18,48 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiArkAnimationExtraData::TYPE("NiArkAnimationExtraData", &NiExtraData::TYPE );
+const Type NiArkAnimationExtraData::TYPE("NiArkAnimationExtraData", &NiExtraData::TYPE);
 
-NiArkAnimationExtraData::NiArkAnimationExtraData() {
+NiArkAnimationExtraData::NiArkAnimationExtraData()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-NiArkAnimationExtraData::~NiArkAnimationExtraData() {
+NiArkAnimationExtraData::~NiArkAnimationExtraData()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiArkAnimationExtraData::GetType() const {
+const Type & NiArkAnimationExtraData::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiArkAnimationExtraData::Create() {
+NiObject * NiArkAnimationExtraData::Create()
+{
 	return new NiArkAnimationExtraData;
 }
 
-void NiArkAnimationExtraData::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiArkAnimationExtraData::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiExtraData::Read( in, link_stack, info );
-	for (unsigned int i1 = 0; i1 < 4; i1++) {
-		NifStream( unknownInts[i1], in, info );
+	NiExtraData::Read(in, link_stack, info);
+	for(unsigned int i1 = 0; i1 < 4; i1++)
+	{
+		NifStream(unknownInts[i1], in, info);
 	};
-	if ( info.version <= 0x0401000C ) {
-		for (unsigned int i2 = 0; i2 < 37; i2++) {
-			NifStream( unknownBytes[i2], in, info );
+	if(info.version <= 0x0401000C)
+	{
+		for(unsigned int i2 = 0; i2 < 37; i2++)
+		{
+			NifStream(unknownBytes[i2], in, info);
 		};
 	};
 
@@ -60,18 +68,22 @@ void NiArkAnimationExtraData::Read( istream& in, list<unsigned int> & link_stack
 	//--END CUSTOM CODE--//
 }
 
-void NiArkAnimationExtraData::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiArkAnimationExtraData::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiExtraData::Write( out, link_map, missing_link_stack, info );
-	for (unsigned int i1 = 0; i1 < 4; i1++) {
-		NifStream( unknownInts[i1], out, info );
+	NiExtraData::Write(out, link_map, missing_link_stack, info);
+	for(unsigned int i1 = 0; i1 < 4; i1++)
+	{
+		NifStream(unknownInts[i1], out, info);
 	};
-	if ( info.version <= 0x0401000C ) {
-		for (unsigned int i2 = 0; i2 < 37; i2++) {
-			NifStream( unknownBytes[i2], out, info );
+	if(info.version <= 0x0401000C)
+	{
+		for(unsigned int i2 = 0; i2 < 37; i2++)
+		{
+			NifStream(unknownBytes[i2], out, info);
 		};
 	};
 
@@ -80,7 +92,8 @@ void NiArkAnimationExtraData::Write( ostream& out, const map<NiObjectRef,unsigne
 	//--END CUSTOM CODE--//
 }
 
-std::string NiArkAnimationExtraData::asString( bool verbose ) const {
+std::string NiArkAnimationExtraData::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -89,24 +102,30 @@ std::string NiArkAnimationExtraData::asString( bool verbose ) const {
 	unsigned int array_output_count = 0;
 	out << NiExtraData::asString(verbose);
 	array_output_count = 0;
-	for (unsigned int i1 = 0; i1 < 4; i1++) {
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+	for(unsigned int i1 = 0; i1 < 4; i1++)
+	{
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 			break;
 		};
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			break;
 		};
 		out << "    Unknown Ints[" << i1 << "]:  " << unknownInts[i1] << endl;
 		array_output_count++;
 	};
 	array_output_count = 0;
-	for (unsigned int i1 = 0; i1 < 37; i1++) {
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+	for(unsigned int i1 = 0; i1 < 37; i1++)
+	{
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 			break;
 		};
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			break;
 		};
 		out << "    Unknown Bytes[" << i1 << "]:  " << unknownBytes[i1] << endl;
@@ -119,25 +138,28 @@ std::string NiArkAnimationExtraData::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiArkAnimationExtraData::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiArkAnimationExtraData::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiExtraData::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiExtraData::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiArkAnimationExtraData::GetRefs() const {
+std::list<NiObjectRef> NiArkAnimationExtraData::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiExtraData::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiArkAnimationExtraData::GetPtrs() const {
+std::list<NiObject *> NiArkAnimationExtraData::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiExtraData::GetPtrs();
 	return ptrs;

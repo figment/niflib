@@ -9,15 +9,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-bhkCMSDData::bhkCMSDData() : unknownInt1((unsigned int)0) {};
+bhkCMSDData::bhkCMSDData() : unknownInt1((unsigned int) 0) {};
 
 //Copy Constructor
-bhkCMSDData::bhkCMSDData( const bhkCMSDData & src ) {
+bhkCMSDData::bhkCMSDData(const bhkCMSDData & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-bhkCMSDData & bhkCMSDData::operator=( const bhkCMSDData & src ) {
+bhkCMSDData & bhkCMSDData::operator=(const bhkCMSDData & src)
+{
 	this->unknownFloats1 = src.unknownFloats1;
 	this->unknownInt1 = src.unknownInt1;
 	return *this;

@@ -17,125 +17,125 @@ All rights reserved.  Please see niflib.h for license. */
 
 // Include structures
 #include "../Ref.h"
-namespace Niflib {
+namespace Niflib
+{
+	// Forward define of referenced NIF objects
+	class NiPosData;
+	class NiPoint3Interpolator;
+	typedef Ref<NiPoint3Interpolator> NiPoint3InterpolatorRef;
 
-// Forward define of referenced NIF objects
-class NiPosData;
-class NiPoint3Interpolator;
-typedef Ref<NiPoint3Interpolator> NiPoint3InterpolatorRef;
+	/*! Unknown. */
+	class NiPoint3Interpolator : public NiKeyBasedInterpolator
+	{
+	public:
+		/*! Constructor */
+		NIFLIB_API NiPoint3Interpolator();
 
-/*! Unknown. */
-class NiPoint3Interpolator : public NiKeyBasedInterpolator {
-public:
-	/*! Constructor */
-	NIFLIB_API NiPoint3Interpolator();
+		/*! Destructor */
+		NIFLIB_API virtual ~NiPoint3Interpolator();
 
-	/*! Destructor */
-	NIFLIB_API virtual ~NiPoint3Interpolator();
+		/*!
+		 * A constant value which uniquly identifies objects of this type.
+		 */
+		NIFLIB_API static const Type TYPE;
 
-	/*!
-	 * A constant value which uniquly identifies objects of this type.
-	 */
-	NIFLIB_API static const Type TYPE;
+		/*!
+		 * A factory function used during file reading to create an instance of this type of object.
+		 * \return A pointer to a newly allocated instance of this type of object.
+		 */
+		NIFLIB_API static NiObject * Create();
 
-	/*!
-	 * A factory function used during file reading to create an instance of this type of object.
-	 * \return A pointer to a newly allocated instance of this type of object.
-	 */
-	NIFLIB_API static NiObject * Create();
+		/*!
+		 * Summarizes the information contained in this object in English.
+		 * \param[in] verbose Determines whether or not detailed information about large areas of data will be printed out.
+		 * \return A string containing a summary of the information within the object in English.  This is the function that Niflyze calls to generate its analysis, so the output is the same.
+		 */
+		NIFLIB_API virtual string asString(bool verbose = false) const;
 
-	/*!
-	 * Summarizes the information contained in this object in English.
-	 * \param[in] verbose Determines whether or not detailed information about large areas of data will be printed out.
-	 * \return A string containing a summary of the information within the object in English.  This is the function that Niflyze calls to generate its analysis, so the output is the same.
-	 */
-	NIFLIB_API virtual string asString( bool verbose = false ) const;
+		/*!
+		 * Used to determine the type of a particular instance of this object.
+		 * \return The type constant for the actual type of the object.
+		 */
+		NIFLIB_API virtual const Type & GetType() const;
 
-	/*!
-	 * Used to determine the type of a particular instance of this object.
-	 * \return The type constant for the actual type of the object.
-	 */
-	NIFLIB_API virtual const Type & GetType() const;
+		/***Begin Example Naive Implementation****
 
-	/***Begin Example Naive Implementation****
+		// Value when posed?  Value at time 0?
+		// \return The current value.
+		Vector3 GetPoint3Value() const;
 
-	// Value when posed?  Value at time 0?
-	// \return The current value.
-	Vector3 GetPoint3Value() const;
+		// Value when posed?  Value at time 0?
+		// \param[in] value The new value.
+		void SetPoint3Value( const Vector3 & value );
 
-	// Value when posed?  Value at time 0?
-	// \param[in] value The new value.
-	void SetPoint3Value( const Vector3 & value );
+		// Reference to NiPosData.
+		// \return The current value.
+		Ref<NiPosData > GetData() const;
 
-	// Reference to NiPosData.
-	// \return The current value.
-	Ref<NiPosData > GetData() const;
+		// Reference to NiPosData.
+		// \param[in] value The new value.
+		void SetData( Ref<NiPosData > value );
 
-	// Reference to NiPosData.
-	// \param[in] value The new value.
-	void SetData( Ref<NiPosData > value );
+		****End Example Naive Implementation***/
 
-	****End Example Naive Implementation***/
+		//--BEGIN MISC CUSTOM CODE--//
 
-	//--BEGIN MISC CUSTOM CODE--//
+		/*!
+		 * Gets the 3D point value stored in this object.  Perhaps this is the current interpolated value, the value when posed, or at time index 0.
+		 * \return The 3D point value stored in this object.
+		 */
+		NIFLIB_API Vector3 GetPoint3Value() const;
 
-	/*!
-	 * Gets the 3D point value stored in this object.  Perhaps this is the current interpolated value, the value when posed, or at time index 0.
-	 * \return The 3D point value stored in this object.
-	 */
-	NIFLIB_API Vector3 GetPoint3Value() const;
+		/*!
+		 * Sets the 3D point value stored in this object.  Perhaps this is the current interpolated value, the value when posed, or at time index 0.
+		 * \param[in] value The new 3D point value to store in this object.
+		 */
+		NIFLIB_API void SetPoint3Value(Vector3 value);
 
-	/*!
-	 * Sets the 3D point value stored in this object.  Perhaps this is the current interpolated value, the value when posed, or at time index 0.
-	 * \param[in] value The new 3D point value to store in this object.
-	 */
-	NIFLIB_API void SetPoint3Value( Vector3 value );
+		/*!
+		 * Gets the NiPosData object that this interpolator links to, if any.
+		 * \return The NiPosData object that this interpolator links to, or NULL if one is not linked.
+		 */
+		NIFLIB_API Ref<NiPosData> GetData() const;
 
-	/*!
-	 * Gets the NiPosData object that this interpolator links to, if any.
-	 * \return The NiPosData object that this interpolator links to, or NULL if one is not linked.
-	 */
-	NIFLIB_API Ref<NiPosData> GetData() const;
+		/*!
+		 * Sets the NiPosData object that this interpolator links to, if any.
+		 * \return The NiPosData object that this interpolator should now link to, or NULL to clear the current one.
+		 */
+		NIFLIB_API void SetData(NiPosData * value);
 
-	/*!
-	 * Sets the NiPosData object that this interpolator links to, if any.
-	 * \return The NiPosData object that this interpolator should now link to, or NULL to clear the current one.
-	 */
-	NIFLIB_API void SetData( NiPosData * value );
+		/*!
+		 * This function will adjust the times in all the keys stored in the data
+		 * objects referenced by this interpolator such that phase will equal 0 and
+		 * frequency will equal one.  In other words, it will cause the key times
+		 * to be in seconds starting from zero.
+		 * \param[in] phase The phase shift to remove from any keys stored in this
+		 * object.
+		 * \param[in] frequency The frequency to normalize to 1.0 for any keys
+		 * stored in this object
+		 */
+		NIFLIB_API virtual void NormalizeKeys(float phase, float frequency);
 
-	/*!
-	 * This function will adjust the times in all the keys stored in the data
-	 * objects referenced by this interpolator such that phase will equal 0 and
-	 * frequency will equal one.  In other words, it will cause the key times
-	 * to be in seconds starting from zero.
-	 * \param[in] phase The phase shift to remove from any keys stored in this
-	 * object.
-	 * \param[in] frequency The frequency to normalize to 1.0 for any keys
-	 * stored in this object
-	 */
-	NIFLIB_API virtual void NormalizeKeys( float phase, float frequency );
+		//--END CUSTOM CODE--//
+	protected:
+		/*! Value when posed?  Value at time 0? */
+		Vector3 point3Value;
+		/*! Reference to NiPosData. */
+		Ref<NiPosData > data;
+	public:
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info);
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const;
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info);
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual list<NiObjectRef> GetRefs() const;
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual list<NiObject *> GetPtrs() const;
+	};
 
+	//--BEGIN FILE FOOT CUSTOM CODE--//
 	//--END CUSTOM CODE--//
-protected:
-	/*! Value when posed?  Value at time 0? */
-	Vector3 point3Value;
-	/*! Reference to NiPosData. */
-	Ref<NiPosData > data;
-public:
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const;
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info );
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual list<NiObjectRef> GetRefs() const;
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual list<NiObject *> GetPtrs() const;
-};
-
-//--BEGIN FILE FOOT CUSTOM CODE--//
-//--END CUSTOM CODE--//
-
 } //End Niflib namespace
 #endif

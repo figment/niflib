@@ -14,199 +14,199 @@ All rights reserved.  Please see niflib.h for license. */
 //--END CUSTOM CODE--//
 
 #include "NiPSysModifier.h"
-namespace Niflib {
-
-// Forward define of referenced NIF objects
-class NiNode;
-class NiPSysGravityModifier;
-typedef Ref<NiPSysGravityModifier> NiPSysGravityModifierRef;
-
-/*!
- * Adds gravity to a particle system, when linked to a NiNode to use as a Gravity
- * Object.
- */
-class NiPSysGravityModifier : public NiPSysModifier {
-public:
-	/*! Constructor */
-	NIFLIB_API NiPSysGravityModifier();
-
-	/*! Destructor */
-	NIFLIB_API virtual ~NiPSysGravityModifier();
+namespace Niflib
+{
+	// Forward define of referenced NIF objects
+	class NiNode;
+	class NiPSysGravityModifier;
+	typedef Ref<NiPSysGravityModifier> NiPSysGravityModifierRef;
 
 	/*!
-	 * A constant value which uniquly identifies objects of this type.
+	 * Adds gravity to a particle system, when linked to a NiNode to use as a Gravity
+	 * Object.
 	 */
-	NIFLIB_API static const Type TYPE;
+	class NiPSysGravityModifier : public NiPSysModifier
+	{
+	public:
+		/*! Constructor */
+		NIFLIB_API NiPSysGravityModifier();
 
-	/*!
-	 * A factory function used during file reading to create an instance of this type of object.
-	 * \return A pointer to a newly allocated instance of this type of object.
-	 */
-	NIFLIB_API static NiObject * Create();
+		/*! Destructor */
+		NIFLIB_API virtual ~NiPSysGravityModifier();
 
-	/*!
-	 * Summarizes the information contained in this object in English.
-	 * \param[in] verbose Determines whether or not detailed information about large areas of data will be printed out.
-	 * \return A string containing a summary of the information within the object in English.  This is the function that Niflyze calls to generate its analysis, so the output is the same.
-	 */
-	NIFLIB_API virtual string asString( bool verbose = false ) const;
+		/*!
+		 * A constant value which uniquly identifies objects of this type.
+		 */
+		NIFLIB_API static const Type TYPE;
 
-	/*!
-	 * Used to determine the type of a particular instance of this object.
-	 * \return The type constant for the actual type of the object.
-	 */
-	NIFLIB_API virtual const Type & GetType() const;
+		/*!
+		 * A factory function used during file reading to create an instance of this type of object.
+		 * \return A pointer to a newly allocated instance of this type of object.
+		 */
+		NIFLIB_API static NiObject * Create();
 
-	/***Begin Example Naive Implementation****
+		/*!
+		 * Summarizes the information contained in this object in English.
+		 * \param[in] verbose Determines whether or not detailed information about large areas of data will be printed out.
+		 * \return A string containing a summary of the information within the object in English.  This is the function that Niflyze calls to generate its analysis, so the output is the same.
+		 */
+		NIFLIB_API virtual string asString(bool verbose = false) const;
 
-	// Refers to a NiNode for gravity location.
-	// \return The current value.
-	NiNode * GetGravityObject() const;
+		/*!
+		 * Used to determine the type of a particular instance of this object.
+		 * \return The type constant for the actual type of the object.
+		 */
+		NIFLIB_API virtual const Type & GetType() const;
 
-	// Refers to a NiNode for gravity location.
-	// \param[in] value The new value.
-	void SetGravityObject( NiNode * value );
+		/***Begin Example Naive Implementation****
 
-	// Orientation of gravity.
-	// \return The current value.
-	Vector3 GetGravityAxis() const;
+		// Refers to a NiNode for gravity location.
+		// \return The current value.
+		NiNode * GetGravityObject() const;
 
-	// Orientation of gravity.
-	// \param[in] value The new value.
-	void SetGravityAxis( const Vector3 & value );
+		// Refers to a NiNode for gravity location.
+		// \param[in] value The new value.
+		void SetGravityObject( NiNode * value );
 
-	// Falloff range.
-	// \return The current value.
-	float GetDecay() const;
+		// Orientation of gravity.
+		// \return The current value.
+		Vector3 GetGravityAxis() const;
 
-	// Falloff range.
-	// \param[in] value The new value.
-	void SetDecay( float value );
+		// Orientation of gravity.
+		// \param[in] value The new value.
+		void SetGravityAxis( const Vector3 & value );
 
-	// The strength of gravity.
-	// \return The current value.
-	float GetStrength() const;
+		// Falloff range.
+		// \return The current value.
+		float GetDecay() const;
 
-	// The strength of gravity.
-	// \param[in] value The new value.
-	void SetStrength( float value );
+		// Falloff range.
+		// \param[in] value The new value.
+		void SetDecay( float value );
 
-	// Planar or Spherical type
-	// \return The current value.
-	ForceType GetForceType() const;
+		// The strength of gravity.
+		// \return The current value.
+		float GetStrength() const;
 
-	// Planar or Spherical type
-	// \param[in] value The new value.
-	void SetForceType( const ForceType & value );
+		// The strength of gravity.
+		// \param[in] value The new value.
+		void SetStrength( float value );
 
-	// Adds a degree of randomness.
-	// \return The current value.
-	float GetTurbulence() const;
+		// Planar or Spherical type
+		// \return The current value.
+		ForceType GetForceType() const;
 
-	// Adds a degree of randomness.
-	// \param[in] value The new value.
-	void SetTurbulence( float value );
+		// Planar or Spherical type
+		// \param[in] value The new value.
+		void SetForceType( const ForceType & value );
 
-	// Range for turbulence.
-	// \return The current value.
-	float GetTurbulenceScale() const;
+		// Adds a degree of randomness.
+		// \return The current value.
+		float GetTurbulence() const;
 
-	// Range for turbulence.
-	// \param[in] value The new value.
-	void SetTurbulenceScale( float value );
+		// Adds a degree of randomness.
+		// \param[in] value The new value.
+		void SetTurbulence( float value );
 
-	****End Example Naive Implementation***/
+		// Range for turbulence.
+		// \return The current value.
+		float GetTurbulenceScale() const;
 
-	//--BEGIN MISC CUSTOM CODE--//
-	// Refers to a NiNode for gravity location.
-	// \return The current value.
-	NIFLIB_API NiNode * GetGravityObject() const;
+		// Range for turbulence.
+		// \param[in] value The new value.
+		void SetTurbulenceScale( float value );
 
-	// Refers to a NiNode for gravity location.
-	// \param[in] value The new value.
-	NIFLIB_API void SetGravityObject(NiNode * value);
+		****End Example Naive Implementation***/
 
-	// Orientation of gravity.
-	// \return The current value.
-	NIFLIB_API Vector3 GetGravityAxis() const;
+		//--BEGIN MISC CUSTOM CODE--//
+		// Refers to a NiNode for gravity location.
+		// \return The current value.
+		NIFLIB_API NiNode * GetGravityObject() const;
 
-	// Orientation of gravity.
-	// \param[in] value The new value.
-	NIFLIB_API void SetGravityAxis(const Vector3 & value);
+		// Refers to a NiNode for gravity location.
+		// \param[in] value The new value.
+		NIFLIB_API void SetGravityObject(NiNode * value);
 
-	// Falloff range.
-	// \return The current value.
-	NIFLIB_API float GetDecay() const;
+		// Orientation of gravity.
+		// \return The current value.
+		NIFLIB_API Vector3 GetGravityAxis() const;
 
-	// Falloff range.
-	// \param[in] value The new value.
-	NIFLIB_API void SetDecay(float value);
+		// Orientation of gravity.
+		// \param[in] value The new value.
+		NIFLIB_API void SetGravityAxis(const Vector3 & value);
 
-	// The strength of gravity.
-	// \return The current value.
-	NIFLIB_API float GetStrength() const;
+		// Falloff range.
+		// \return The current value.
+		NIFLIB_API float GetDecay() const;
 
-	// The strength of gravity.
-	// \param[in] value The new value.
-	NIFLIB_API void SetStrength(float value);
+		// Falloff range.
+		// \param[in] value The new value.
+		NIFLIB_API void SetDecay(float value);
 
-	// Planar or Spherical type
-	// \return The current value.
-	NIFLIB_API ForceType GetForceType() const;
+		// The strength of gravity.
+		// \return The current value.
+		NIFLIB_API float GetStrength() const;
 
-	// Planar or Spherical type
-	// \param[in] value The new value.
-	NIFLIB_API void SetForceType(ForceType value);
+		// The strength of gravity.
+		// \param[in] value The new value.
+		NIFLIB_API void SetStrength(float value);
 
-	// Adds a degree of randomness.
-	// \return The current value.
-	NIFLIB_API float GetTurbulence() const;
+		// Planar or Spherical type
+		// \return The current value.
+		NIFLIB_API ForceType GetForceType() const;
 
-	// Adds a degree of randomness.
-	// \param[in] value The new value.
-	NIFLIB_API void SetTurbulence(float value);
+		// Planar or Spherical type
+		// \param[in] value The new value.
+		NIFLIB_API void SetForceType(ForceType value);
 
-	// Range for turbulence.
-	// \return The current value.
-	NIFLIB_API float GetTurbulenceScale() const;
+		// Adds a degree of randomness.
+		// \return The current value.
+		NIFLIB_API float GetTurbulence() const;
 
-	// Range for turbulence.
-	// \param[in] value The new value.
-	NIFLIB_API void SetTurbulenceScale(float value);
+		// Adds a degree of randomness.
+		// \param[in] value The new value.
+		NIFLIB_API void SetTurbulence(float value);
 
+		// Range for turbulence.
+		// \return The current value.
+		NIFLIB_API float GetTurbulenceScale() const;
+
+		// Range for turbulence.
+		// \param[in] value The new value.
+		NIFLIB_API void SetTurbulenceScale(float value);
+
+		//--END CUSTOM CODE--//
+	protected:
+		/*! Refers to a NiNode for gravity location. */
+		NiNode * gravityObject;
+		/*! Orientation of gravity. */
+		Vector3 gravityAxis;
+		/*! Falloff range. */
+		float decay;
+		/*! The strength of gravity. */
+		float strength;
+		/*! Planar or Spherical type */
+		ForceType forceType;
+		/*! Adds a degree of randomness. */
+		float turbulence;
+		/*! Range for turbulence. */
+		float turbulenceScale;
+		/*! Unknown */
+		byte unknownByte;
+	public:
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info);
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const;
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info);
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual list<NiObjectRef> GetRefs() const;
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual list<NiObject *> GetPtrs() const;
+	};
+
+	//--BEGIN FILE FOOT CUSTOM CODE--//
 	//--END CUSTOM CODE--//
-protected:
-	/*! Refers to a NiNode for gravity location. */
-	NiNode * gravityObject;
-	/*! Orientation of gravity. */
-	Vector3 gravityAxis;
-	/*! Falloff range. */
-	float decay;
-	/*! The strength of gravity. */
-	float strength;
-	/*! Planar or Spherical type */
-	ForceType forceType;
-	/*! Adds a degree of randomness. */
-	float turbulence;
-	/*! Range for turbulence. */
-	float turbulenceScale;
-	/*! Unknown */
-	byte unknownByte;
-public:
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const;
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info );
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual list<NiObjectRef> GetRefs() const;
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual list<NiObject *> GetPtrs() const;
-};
-
-//--BEGIN FILE FOOT CUSTOM CODE--//
-//--END CUSTOM CODE--//
-
 } //End Niflib namespace
 #endif

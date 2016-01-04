@@ -18,37 +18,44 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiPhysXKinematicSrc::TYPE("NiPhysXKinematicSrc", &NiObject::TYPE );
+const Type NiPhysXKinematicSrc::TYPE("NiPhysXKinematicSrc", &NiObject::TYPE);
 
-NiPhysXKinematicSrc::NiPhysXKinematicSrc() {
+NiPhysXKinematicSrc::NiPhysXKinematicSrc()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-NiPhysXKinematicSrc::~NiPhysXKinematicSrc() {
+NiPhysXKinematicSrc::~NiPhysXKinematicSrc()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiPhysXKinematicSrc::GetType() const {
+const Type & NiPhysXKinematicSrc::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiPhysXKinematicSrc::Create() {
+NiObject * NiPhysXKinematicSrc::Create()
+{
 	return new NiPhysXKinematicSrc;
 }
 
-void NiPhysXKinematicSrc::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiPhysXKinematicSrc::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiObject::Read( in, link_stack, info );
-	if ( info.version >= 0x14030006 ) {
-		for (unsigned int i2 = 0; i2 < 6; i2++) {
-			NifStream( unknownBytes[i2], in, info );
+	NiObject::Read(in, link_stack, info);
+	if(info.version >= 0x14030006)
+	{
+		for(unsigned int i2 = 0; i2 < 6; i2++)
+		{
+			NifStream(unknownBytes[i2], in, info);
 		};
 	};
 
@@ -57,15 +64,18 @@ void NiPhysXKinematicSrc::Read( istream& in, list<unsigned int> & link_stack, co
 	//--END CUSTOM CODE--//
 }
 
-void NiPhysXKinematicSrc::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiPhysXKinematicSrc::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiObject::Write( out, link_map, missing_link_stack, info );
-	if ( info.version >= 0x14030006 ) {
-		for (unsigned int i2 = 0; i2 < 6; i2++) {
-			NifStream( unknownBytes[i2], out, info );
+	NiObject::Write(out, link_map, missing_link_stack, info);
+	if(info.version >= 0x14030006)
+	{
+		for(unsigned int i2 = 0; i2 < 6; i2++)
+		{
+			NifStream(unknownBytes[i2], out, info);
 		};
 	};
 
@@ -74,7 +84,8 @@ void NiPhysXKinematicSrc::Write( ostream& out, const map<NiObjectRef,unsigned in
 	//--END CUSTOM CODE--//
 }
 
-std::string NiPhysXKinematicSrc::asString( bool verbose ) const {
+std::string NiPhysXKinematicSrc::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -83,12 +94,15 @@ std::string NiPhysXKinematicSrc::asString( bool verbose ) const {
 	unsigned int array_output_count = 0;
 	out << NiObject::asString(verbose);
 	array_output_count = 0;
-	for (unsigned int i1 = 0; i1 < 6; i1++) {
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+	for(unsigned int i1 = 0; i1 < 6; i1++)
+	{
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 			break;
 		};
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			break;
 		};
 		out << "    Unknown Bytes[" << i1 << "]:  " << unknownBytes[i1] << endl;
@@ -101,25 +115,28 @@ std::string NiPhysXKinematicSrc::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiPhysXKinematicSrc::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiPhysXKinematicSrc::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiObject::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiObject::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiPhysXKinematicSrc::GetRefs() const {
+std::list<NiObjectRef> NiPhysXKinematicSrc::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiObject::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiPhysXKinematicSrc::GetPtrs() const {
+std::list<NiObject *> NiPhysXKinematicSrc::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiObject::GetPtrs();
 	return ptrs;

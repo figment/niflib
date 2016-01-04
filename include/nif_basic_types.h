@@ -4,7 +4,7 @@ All rights reserved.  Please see niflib.h for license. */
 #ifndef _NIF_BASIC_TYPES_H_
 #define _NIF_BASIC_TYPES_H_
 
-#include <string>
+#include <cstring>
 #include <stdarg.h>
 #include "gen/enums.h"
 #include "nif_versions.h"

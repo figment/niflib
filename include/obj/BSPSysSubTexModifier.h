@@ -15,141 +15,141 @@ All rights reserved.  Please see niflib.h for license. */
 //--END CUSTOM CODE--//
 
 #include "NiPSysModifier.h"
-namespace Niflib {
-
-class BSPSysSubTexModifier;
-typedef Ref<BSPSysSubTexModifier> BSPSysSubTexModifierRef;
-
-/*!
- * Similar to a Flip Controller, this handles particle texture animation on a
- * single texture atlas
- */
-class BSPSysSubTexModifier : public NiPSysModifier {
-public:
-	/*! Constructor */
-	NIFLIB_API BSPSysSubTexModifier();
-
-	/*! Destructor */
-	NIFLIB_API virtual ~BSPSysSubTexModifier();
+namespace Niflib
+{
+	class BSPSysSubTexModifier;
+	typedef Ref<BSPSysSubTexModifier> BSPSysSubTexModifierRef;
 
 	/*!
-	 * A constant value which uniquly identifies objects of this type.
+	 * Similar to a Flip Controller, this handles particle texture animation on a
+	 * single texture atlas
 	 */
-	NIFLIB_API static const Type TYPE;
+	class BSPSysSubTexModifier : public NiPSysModifier
+	{
+	public:
+		/*! Constructor */
+		NIFLIB_API BSPSysSubTexModifier();
 
-	/*!
-	 * A factory function used during file reading to create an instance of this type of object.
-	 * \return A pointer to a newly allocated instance of this type of object.
-	 */
-	NIFLIB_API static NiObject * Create();
+		/*! Destructor */
+		NIFLIB_API virtual ~BSPSysSubTexModifier();
 
-	/*!
-	 * Summarizes the information contained in this object in English.
-	 * \param[in] verbose Determines whether or not detailed information about large areas of data will be printed out.
-	 * \return A string containing a summary of the information within the object in English.  This is the function that Niflyze calls to generate its analysis, so the output is the same.
-	 */
-	NIFLIB_API virtual string asString( bool verbose = false ) const;
+		/*!
+		 * A constant value which uniquly identifies objects of this type.
+		 */
+		NIFLIB_API static const Type TYPE;
 
-	/*!
-	 * Used to determine the type of a particular instance of this object.
-	 * \return The type constant for the actual type of the object.
-	 */
-	NIFLIB_API virtual const Type & GetType() const;
+		/*!
+		 * A factory function used during file reading to create an instance of this type of object.
+		 * \return A pointer to a newly allocated instance of this type of object.
+		 */
+		NIFLIB_API static NiObject * Create();
 
-	/***Begin Example Naive Implementation****
+		/*!
+		 * Summarizes the information contained in this object in English.
+		 * \param[in] verbose Determines whether or not detailed information about large areas of data will be printed out.
+		 * \return A string containing a summary of the information within the object in English.  This is the function that Niflyze calls to generate its analysis, so the output is the same.
+		 */
+		NIFLIB_API virtual string asString(bool verbose = false) const;
 
-	// Starting frame/position on atlas
-	// \return The current value.
-	unsigned int GetStartFrame() const;
+		/*!
+		 * Used to determine the type of a particular instance of this object.
+		 * \return The type constant for the actual type of the object.
+		 */
+		NIFLIB_API virtual const Type & GetType() const;
 
-	// Starting frame/position on atlas
-	// \param[in] value The new value.
-	void SetStartFrame( unsigned int value );
+		/***Begin Example Naive Implementation****
 
-	// Random chance to start on a different frame?
-	// \return The current value.
-	float GetStartFrameFudge() const;
+		// Starting frame/position on atlas
+		// \return The current value.
+		unsigned int GetStartFrame() const;
 
-	// Random chance to start on a different frame?
-	// \param[in] value The new value.
-	void SetStartFrameFudge( float value );
+		// Starting frame/position on atlas
+		// \param[in] value The new value.
+		void SetStartFrame( unsigned int value );
 
-	// Ending frame/position on atlas
-	// \return The current value.
-	float GetEndFrame() const;
+		// Random chance to start on a different frame?
+		// \return The current value.
+		float GetStartFrameFudge() const;
 
-	// Ending frame/position on atlas
-	// \param[in] value The new value.
-	void SetEndFrame( float value );
+		// Random chance to start on a different frame?
+		// \param[in] value The new value.
+		void SetStartFrameFudge( float value );
 
-	// Frame to start looping
-	// \return The current value.
-	float GetLoopStartFrame() const;
+		// Ending frame/position on atlas
+		// \return The current value.
+		float GetEndFrame() const;
 
-	// Frame to start looping
-	// \param[in] value The new value.
-	void SetLoopStartFrame( float value );
+		// Ending frame/position on atlas
+		// \param[in] value The new value.
+		void SetEndFrame( float value );
 
-	// Unknown.
-	// \return The current value.
-	float GetLoopStartFrameFudge() const;
+		// Frame to start looping
+		// \return The current value.
+		float GetLoopStartFrame() const;
 
-	// Unknown.
-	// \param[in] value The new value.
-	void SetLoopStartFrameFudge( float value );
+		// Frame to start looping
+		// \param[in] value The new value.
+		void SetLoopStartFrame( float value );
 
-	// Unknown
-	// \return The current value.
-	float GetFrameCount() const;
+		// Unknown.
+		// \return The current value.
+		float GetLoopStartFrameFudge() const;
 
-	// Unknown
-	// \param[in] value The new value.
-	void SetFrameCount( float value );
+		// Unknown.
+		// \param[in] value The new value.
+		void SetLoopStartFrameFudge( float value );
 
-	// Unknown
-	// \return The current value.
-	float GetFrameCountFudge() const;
+		// Unknown
+		// \return The current value.
+		float GetFrameCount() const;
 
-	// Unknown
-	// \param[in] value The new value.
-	void SetFrameCountFudge( float value );
+		// Unknown
+		// \param[in] value The new value.
+		void SetFrameCount( float value );
 
-	****End Example Naive Implementation***/
+		// Unknown
+		// \return The current value.
+		float GetFrameCountFudge() const;
 
-	//--BEGIN MISC CUSTOM CODE--//
+		// Unknown
+		// \param[in] value The new value.
+		void SetFrameCountFudge( float value );
+
+		****End Example Naive Implementation***/
+
+		//--BEGIN MISC CUSTOM CODE--//
+
+		//--END CUSTOM CODE--//
+	protected:
+		/*! Starting frame/position on atlas */
+		unsigned int startFrame;
+		/*! Random chance to start on a different frame? */
+		float startFrameFudge;
+		/*! Ending frame/position on atlas */
+		float endFrame;
+		/*! Frame to start looping */
+		float loopStartFrame;
+		/*! Unknown. */
+		float loopStartFrameFudge;
+		/*! Unknown */
+		float frameCount;
+		/*! Unknown */
+		float frameCountFudge;
+	public:
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info);
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const;
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info);
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual list<NiObjectRef> GetRefs() const;
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual list<NiObject *> GetPtrs() const;
+	};
+
+	//--BEGIN FILE FOOT CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
-protected:
-	/*! Starting frame/position on atlas */
-	unsigned int startFrame;
-	/*! Random chance to start on a different frame? */
-	float startFrameFudge;
-	/*! Ending frame/position on atlas */
-	float endFrame;
-	/*! Frame to start looping */
-	float loopStartFrame;
-	/*! Unknown. */
-	float loopStartFrameFudge;
-	/*! Unknown */
-	float frameCount;
-	/*! Unknown */
-	float frameCountFudge;
-public:
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const;
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info );
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual list<NiObjectRef> GetRefs() const;
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual list<NiObject *> GetPtrs() const;
-};
-
-//--BEGIN FILE FOOT CUSTOM CODE--//
-
-//--END CUSTOM CODE--//
-
 } //End Niflib namespace
 #endif

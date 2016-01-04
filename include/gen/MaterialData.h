@@ -10,26 +10,25 @@ All rights reserved.  Please see niflib.h for license. */
 
 #include "../NIF_IO.h"
 
-namespace Niflib {
-
-
-/*! Data stored per-material by NiRenderObject */
-struct MaterialData {
-	/*! Default Constructor */
-	NIFLIB_API MaterialData();
-	/*! Default Destructor */
-	NIFLIB_API ~MaterialData();
-	/*! Copy Constructor */
-	NIFLIB_API MaterialData( const MaterialData & src );
-	/*! Copy Operator */
-	NIFLIB_API MaterialData & operator=( const MaterialData & src );
-	/*! The name of the material. */
-	IndexString materialName;
-	/*! Extra data associated with the material? */
-	unsigned int materialExtraData;
-	//--BEGIN MISC CUSTOM CODE--//
-	//--END CUSTOM CODE--//
-};
-
+namespace Niflib
+{
+	/*! Data stored per-material by NiRenderObject */
+	struct MaterialData
+	{
+		/*! Default Constructor */
+		NIFLIB_API MaterialData();
+		/*! Default Destructor */
+		NIFLIB_API ~MaterialData();
+		/*! Copy Constructor */
+		NIFLIB_API MaterialData(const MaterialData & src);
+		/*! Copy Operator */
+		NIFLIB_API MaterialData & operator=(const MaterialData & src);
+		/*! The name of the material. */
+		IndexString materialName;
+		/*! Extra data associated with the material? */
+		unsigned int materialExtraData;
+		//--BEGIN MISC CUSTOM CODE--//
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

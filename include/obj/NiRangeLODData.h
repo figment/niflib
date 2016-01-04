@@ -17,113 +17,113 @@ All rights reserved.  Please see niflib.h for license. */
 
 // Include structures
 #include "../gen/LODRange.h"
-namespace Niflib {
+namespace Niflib
+{
+	class NiRangeLODData;
+	typedef Ref<NiRangeLODData> NiRangeLODDataRef;
 
-class NiRangeLODData;
-typedef Ref<NiRangeLODData> NiRangeLODDataRef;
+	/*! Describes levels of detail based on distance of object from camera. */
+	class NiRangeLODData : public NiLODData
+	{
+	public:
+		/*! Constructor */
+		NIFLIB_API NiRangeLODData();
 
-/*! Describes levels of detail based on distance of object from camera. */
-class NiRangeLODData : public NiLODData {
-public:
-	/*! Constructor */
-	NIFLIB_API NiRangeLODData();
+		/*! Destructor */
+		NIFLIB_API virtual ~NiRangeLODData();
 
-	/*! Destructor */
-	NIFLIB_API virtual ~NiRangeLODData();
+		/*!
+		 * A constant value which uniquly identifies objects of this type.
+		 */
+		NIFLIB_API static const Type TYPE;
 
-	/*!
-	 * A constant value which uniquly identifies objects of this type.
-	 */
-	NIFLIB_API static const Type TYPE;
+		/*!
+		 * A factory function used during file reading to create an instance of this type of object.
+		 * \return A pointer to a newly allocated instance of this type of object.
+		 */
+		NIFLIB_API static NiObject * Create();
 
-	/*!
-	 * A factory function used during file reading to create an instance of this type of object.
-	 * \return A pointer to a newly allocated instance of this type of object.
-	 */
-	NIFLIB_API static NiObject * Create();
+		/*!
+		 * Summarizes the information contained in this object in English.
+		 * \param[in] verbose Determines whether or not detailed information about large areas of data will be printed out.
+		 * \return A string containing a summary of the information within the object in English.  This is the function that Niflyze calls to generate its analysis, so the output is the same.
+		 */
+		NIFLIB_API virtual string asString(bool verbose = false) const;
 
-	/*!
-	 * Summarizes the information contained in this object in English.
-	 * \param[in] verbose Determines whether or not detailed information about large areas of data will be printed out.
-	 * \return A string containing a summary of the information within the object in English.  This is the function that Niflyze calls to generate its analysis, so the output is the same.
-	 */
-	NIFLIB_API virtual string asString( bool verbose = false ) const;
+		/*!
+		 * Used to determine the type of a particular instance of this object.
+		 * \return The type constant for the actual type of the object.
+		 */
+		NIFLIB_API virtual const Type & GetType() const;
 
-	/*!
-	 * Used to determine the type of a particular instance of this object.
-	 * \return The type constant for the actual type of the object.
-	 */
-	NIFLIB_API virtual const Type & GetType() const;
+		/***Begin Example Naive Implementation****
 
-	/***Begin Example Naive Implementation****
+		// ?
+		// \return The current value.
+		Vector3 GetLodCenter() const;
 
-	// ?
-	// \return The current value.
-	Vector3 GetLodCenter() const;
+		// ?
+		// \param[in] value The new value.
+		void SetLodCenter( const Vector3 & value );
 
-	// ?
-	// \param[in] value The new value.
-	void SetLodCenter( const Vector3 & value );
+		// The ranges of distance that each level of detail applies in.
+		// \return The current value.
+		vector<LODRange > GetLodLevels() const;
 
-	// The ranges of distance that each level of detail applies in.
-	// \return The current value.
-	vector<LODRange > GetLodLevels() const;
+		// The ranges of distance that each level of detail applies in.
+		// \param[in] value The new value.
+		void SetLodLevels( const vector<LODRange >& value );
 
-	// The ranges of distance that each level of detail applies in.
-	// \param[in] value The new value.
-	void SetLodLevels( const vector<LODRange >& value );
+		****End Example Naive Implementation***/
 
-	****End Example Naive Implementation***/
+		//--BEGIN MISC CUSTOM CODE--//
 
-	//--BEGIN MISC CUSTOM CODE--//
+		/*!
+		 * Get the point to calculate distance from for switching?
+		 * \return The point to calculate distance from for switching?
+		 */
+		NIFLIB_API Vector3 GetLODCenter() const;
 
-	/*!
-	 * Get the point to calculate distance from for switching?
-	 * \return The point to calculate distance from for switching?
-	 */
-	NIFLIB_API Vector3 GetLODCenter() const;
+		/*!
+		 * Set the point to calculate distance from for switching?
+		 * \param[in] value The new point to calculate distance from for switching?
+		 */
+		NIFLIB_API void SetLODCenter(const Vector3 & value);
 
-	/*!
-	 * Set the point to calculate distance from for switching?
-	 * \param[in] value The new point to calculate distance from for switching?
-	 */
-	NIFLIB_API void SetLODCenter( const Vector3 & value );
+		/*!
+		 * Get the ranges of distance that each level of detail applies in.
+		 * \return The ranges of distance that each level of detail applies in.
+		 */
+		NIFLIB_API vector<LODRange > GetLODLevels() const;
 
-	/*!
-	 * Get the ranges of distance that each level of detail applies in.
-	 * \return The ranges of distance that each level of detail applies in.
-	 */
-	NIFLIB_API vector<LODRange > GetLODLevels() const;
+		/*!
+		 * Set the ranges of distance that each level of detail applies in.
+		 * \param[in] value The new ranges of distance that each level of detail applies in.
+		 */
+		NIFLIB_API void SetLODLevels(const vector<LODRange> & value);
 
-	/*!
-	 * Set the ranges of distance that each level of detail applies in.
-	 * \param[in] value The new ranges of distance that each level of detail applies in.
-	 */
-	NIFLIB_API void SetLODLevels( const vector<LODRange> & value );
+		//--END CUSTOM CODE--//
+	protected:
+		/*! ? */
+		Vector3 lodCenter;
+		/*! Number of levels of detail. */
+		mutable unsigned int numLodLevels;
+		/*! The ranges of distance that each level of detail applies in. */
+		vector<LODRange > lodLevels;
+	public:
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info);
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const;
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info);
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual list<NiObjectRef> GetRefs() const;
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual list<NiObject *> GetPtrs() const;
+	};
 
+	//--BEGIN FILE FOOT CUSTOM CODE--//
 	//--END CUSTOM CODE--//
-protected:
-	/*! ? */
-	Vector3 lodCenter;
-	/*! Number of levels of detail. */
-	mutable unsigned int numLodLevels;
-	/*! The ranges of distance that each level of detail applies in. */
-	vector<LODRange > lodLevels;
-public:
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const;
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info );
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual list<NiObjectRef> GetRefs() const;
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual list<NiObject *> GetPtrs() const;
-};
-
-//--BEGIN FILE FOOT CUSTOM CODE--//
-//--END CUSTOM CODE--//
-
 } //End Niflib namespace
 #endif

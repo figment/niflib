@@ -9,15 +9,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-HalfTexCoord::HalfTexCoord() : u((hfloat)0), v((hfloat)0) {};
+HalfTexCoord::HalfTexCoord() : u((hfloat) 0), v((hfloat) 0) {};
 
 //Copy Constructor
-HalfTexCoord::HalfTexCoord( const HalfTexCoord & src ) {
+HalfTexCoord::HalfTexCoord(const HalfTexCoord & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-HalfTexCoord & HalfTexCoord::operator=( const HalfTexCoord & src ) {
+HalfTexCoord & HalfTexCoord::operator=(const HalfTexCoord & src)
+{
 	this->u = src.u;
 	this->v = src.v;
 	return *this;

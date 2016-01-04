@@ -17,47 +17,54 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiPSysResetOnLoopCtlr::TYPE("NiPSysResetOnLoopCtlr", &NiTimeController::TYPE );
+const Type NiPSysResetOnLoopCtlr::TYPE("NiPSysResetOnLoopCtlr", &NiTimeController::TYPE);
 
-NiPSysResetOnLoopCtlr::NiPSysResetOnLoopCtlr() {
+NiPSysResetOnLoopCtlr::NiPSysResetOnLoopCtlr()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-NiPSysResetOnLoopCtlr::~NiPSysResetOnLoopCtlr() {
+NiPSysResetOnLoopCtlr::~NiPSysResetOnLoopCtlr()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiPSysResetOnLoopCtlr::GetType() const {
+const Type & NiPSysResetOnLoopCtlr::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiPSysResetOnLoopCtlr::Create() {
+NiObject * NiPSysResetOnLoopCtlr::Create()
+{
 	return new NiPSysResetOnLoopCtlr;
 }
 
-void NiPSysResetOnLoopCtlr::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiPSysResetOnLoopCtlr::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiTimeController::Read( in, link_stack, info );
+	NiTimeController::Read(in, link_stack, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void NiPSysResetOnLoopCtlr::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiPSysResetOnLoopCtlr::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiTimeController::Write( out, link_map, missing_link_stack, info );
+	NiTimeController::Write(out, link_map, missing_link_stack, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string NiPSysResetOnLoopCtlr::asString( bool verbose ) const {
+std::string NiPSysResetOnLoopCtlr::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
@@ -69,23 +76,26 @@ std::string NiPSysResetOnLoopCtlr::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiPSysResetOnLoopCtlr::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiPSysResetOnLoopCtlr::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiTimeController::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiTimeController::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiPSysResetOnLoopCtlr::GetRefs() const {
+std::list<NiObjectRef> NiPSysResetOnLoopCtlr::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiTimeController::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiPSysResetOnLoopCtlr::GetPtrs() const {
+std::list<NiObject *> NiPSysResetOnLoopCtlr::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiTimeController::GetPtrs();
 	return ptrs;

@@ -18,92 +18,109 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiPSysEmitterCtlrData::TYPE("NiPSysEmitterCtlrData", &NiObject::TYPE );
+const Type NiPSysEmitterCtlrData::TYPE("NiPSysEmitterCtlrData", &NiObject::TYPE);
 
-NiPSysEmitterCtlrData::NiPSysEmitterCtlrData() : numVisibilityKeys_((unsigned int)0) {
+NiPSysEmitterCtlrData::NiPSysEmitterCtlrData() : numVisibilityKeys_((unsigned int) 0)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-NiPSysEmitterCtlrData::~NiPSysEmitterCtlrData() {
+NiPSysEmitterCtlrData::~NiPSysEmitterCtlrData()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiPSysEmitterCtlrData::GetType() const {
+const Type & NiPSysEmitterCtlrData::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiPSysEmitterCtlrData::Create() {
+NiObject * NiPSysEmitterCtlrData::Create()
+{
 	return new NiPSysEmitterCtlrData;
 }
 
-void NiPSysEmitterCtlrData::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiPSysEmitterCtlrData::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiObject::Read( in, link_stack, info );
-	NifStream( floatKeys_.numKeys, in, info );
-	if ( (floatKeys_.numKeys != 0) ) {
-		NifStream( floatKeys_.interpolation, in, info );
+	NiObject::Read(in, link_stack, info);
+	NifStream(floatKeys_.numKeys, in, info);
+	if((floatKeys_.numKeys != 0))
+	{
+		NifStream(floatKeys_.interpolation, in, info);
 	};
 	floatKeys_.keys.resize(floatKeys_.numKeys);
-	for (unsigned int i1 = 0; i1 < floatKeys_.keys.size(); i1++) {
-		NifStream( floatKeys_.keys[i1], in, info, floatKeys_.interpolation );
+	for(unsigned int i1 = 0; i1 < floatKeys_.keys.size(); i1++)
+	{
+		NifStream(floatKeys_.keys[i1], in, info, floatKeys_.interpolation);
 	};
-	NifStream( numVisibilityKeys_, in, info );
+	NifStream(numVisibilityKeys_, in, info);
 	visibilityKeys_.resize(numVisibilityKeys_);
-	for (unsigned int i1 = 0; i1 < visibilityKeys_.size(); i1++) {
-		NifStream( visibilityKeys_[i1], in, info, 1 );
+	for(unsigned int i1 = 0; i1 < visibilityKeys_.size(); i1++)
+	{
+		NifStream(visibilityKeys_[i1], in, info, 1);
 	};
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void NiPSysEmitterCtlrData::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiPSysEmitterCtlrData::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiObject::Write( out, link_map, missing_link_stack, info );
-	numVisibilityKeys_ = (unsigned int)(visibilityKeys_.size());
-	floatKeys_.numKeys = (unsigned int)(floatKeys_.keys.size());
-	NifStream( floatKeys_.numKeys, out, info );
-	if ( (floatKeys_.numKeys != 0) ) {
-		NifStream( floatKeys_.interpolation, out, info );
+	NiObject::Write(out, link_map, missing_link_stack, info);
+	numVisibilityKeys_ = (unsigned int) (visibilityKeys_.size());
+	floatKeys_.numKeys = (unsigned int) (floatKeys_.keys.size());
+	NifStream(floatKeys_.numKeys, out, info);
+	if((floatKeys_.numKeys != 0))
+	{
+		NifStream(floatKeys_.interpolation, out, info);
 	};
-	for (unsigned int i1 = 0; i1 < floatKeys_.keys.size(); i1++) {
-		NifStream( floatKeys_.keys[i1], out, info, floatKeys_.interpolation );
+	for(unsigned int i1 = 0; i1 < floatKeys_.keys.size(); i1++)
+	{
+		NifStream(floatKeys_.keys[i1], out, info, floatKeys_.interpolation);
 	};
-	NifStream( numVisibilityKeys_, out, info );
-	for (unsigned int i1 = 0; i1 < visibilityKeys_.size(); i1++) {
-		NifStream( visibilityKeys_[i1], out, info, 1 );
+	NifStream(numVisibilityKeys_, out, info);
+	for(unsigned int i1 = 0; i1 < visibilityKeys_.size(); i1++)
+	{
+		NifStream(visibilityKeys_[i1], out, info, 1);
 	};
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string NiPSysEmitterCtlrData::asString( bool verbose ) const {
+std::string NiPSysEmitterCtlrData::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
 	stringstream out;
 	unsigned int array_output_count = 0;
 	out << NiObject::asString(verbose);
-	numVisibilityKeys_ = (unsigned int)(visibilityKeys_.size());
-	floatKeys_.numKeys = (unsigned int)(floatKeys_.keys.size());
+	numVisibilityKeys_ = (unsigned int) (visibilityKeys_.size());
+	floatKeys_.numKeys = (unsigned int) (floatKeys_.keys.size());
 	out << "  Num Keys:  " << floatKeys_.numKeys << endl;
-	if ( (floatKeys_.numKeys != 0) ) {
+	if((floatKeys_.numKeys != 0))
+	{
 		out << "    Interpolation:  " << floatKeys_.interpolation << endl;
 	};
 	array_output_count = 0;
-	for (unsigned int i1 = 0; i1 < floatKeys_.keys.size(); i1++) {
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+	for(unsigned int i1 = 0; i1 < floatKeys_.keys.size(); i1++)
+	{
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 			break;
 		};
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			break;
 		};
 		out << "    Keys[" << i1 << "]:  " << floatKeys_.keys[i1] << endl;
@@ -111,12 +128,15 @@ std::string NiPSysEmitterCtlrData::asString( bool verbose ) const {
 	};
 	out << "  Num Visibility Keys?:  " << numVisibilityKeys_ << endl;
 	array_output_count = 0;
-	for (unsigned int i1 = 0; i1 < visibilityKeys_.size(); i1++) {
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+	for(unsigned int i1 = 0; i1 < visibilityKeys_.size(); i1++)
+	{
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 			break;
 		};
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			break;
 		};
 		out << "    Visibility Keys?[" << i1 << "]:  " << visibilityKeys_[i1] << endl;
@@ -128,23 +148,26 @@ std::string NiPSysEmitterCtlrData::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiPSysEmitterCtlrData::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiPSysEmitterCtlrData::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiObject::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiObject::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiPSysEmitterCtlrData::GetRefs() const {
+std::list<NiObjectRef> NiPSysEmitterCtlrData::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiObject::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiPSysEmitterCtlrData::GetPtrs() const {
+std::list<NiObject *> NiPSysEmitterCtlrData::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiObject::GetPtrs();
 	return ptrs;
@@ -153,19 +176,19 @@ std::list<NiObject *> NiPSysEmitterCtlrData::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 KeyGroup<float > NiPSysEmitterCtlrData::GetFloatKeys_() const {
-	return floatKeys_;
+return floatKeys_;
 }
 
 void NiPSysEmitterCtlrData::SetFloatKeys_( const KeyGroup<float > & value ) {
-	floatKeys_ = value;
+floatKeys_ = value;
 }
 
 vector<Key<byte > > NiPSysEmitterCtlrData::GetVisibilityKeys_() const {
-	return visibilityKeys_;
+return visibilityKeys_;
 }
 
 void NiPSysEmitterCtlrData::SetVisibilityKeys_( const vector<Key<byte > >& value ) {
-	visibilityKeys_ = value;
+visibilityKeys_ = value;
 }
 
 ****End Example Naive Implementation***/

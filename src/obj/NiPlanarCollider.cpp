@@ -17,91 +17,102 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiPlanarCollider::TYPE("NiPlanarCollider", &NiParticleModifier::TYPE );
+const Type NiPlanarCollider::TYPE("NiPlanarCollider", &NiParticleModifier::TYPE);
 
-NiPlanarCollider::NiPlanarCollider() : unknownShort((unsigned short)0), unknownFloat1(0.0f), unknownFloat2(0.0f), unknownShort2((unsigned short)0), unknownFloat3(0.0f), unknownFloat4(0.0f), unknownFloat5(0.0f), unknownFloat6(0.0f), unknownFloat7(0.0f), unknownFloat8(0.0f), unknownFloat9(0.0f), unknownFloat10(0.0f), unknownFloat11(0.0f), unknownFloat12(0.0f), unknownFloat13(0.0f), unknownFloat14(0.0f), unknownFloat15(0.0f), unknownFloat16(0.0f) {
+NiPlanarCollider::NiPlanarCollider() : unknownShort((unsigned short) 0), unknownFloat1(0.0f), unknownFloat2(0.0f), unknownShort2((unsigned short) 0), unknownFloat3(0.0f), unknownFloat4(0.0f), unknownFloat5(0.0f), unknownFloat6(0.0f), unknownFloat7(0.0f), unknownFloat8(0.0f), unknownFloat9(0.0f), unknownFloat10(0.0f), unknownFloat11(0.0f), unknownFloat12(0.0f), unknownFloat13(0.0f), unknownFloat14(0.0f), unknownFloat15(0.0f), unknownFloat16(0.0f)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-NiPlanarCollider::~NiPlanarCollider() {
+NiPlanarCollider::~NiPlanarCollider()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiPlanarCollider::GetType() const {
+const Type & NiPlanarCollider::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiPlanarCollider::Create() {
+NiObject * NiPlanarCollider::Create()
+{
 	return new NiPlanarCollider;
 }
 
-void NiPlanarCollider::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiPlanarCollider::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiParticleModifier::Read( in, link_stack, info );
-	if ( info.version >= 0x0A000100 ) {
-		NifStream( unknownShort, in, info );
+	NiParticleModifier::Read(in, link_stack, info);
+	if(info.version >= 0x0A000100)
+	{
+		NifStream(unknownShort, in, info);
 	};
-	NifStream( unknownFloat1, in, info );
-	NifStream( unknownFloat2, in, info );
-	if ( ( info.version >= 0x04020200 ) && ( info.version <= 0x04020200 ) ) {
-		NifStream( unknownShort2, in, info );
+	NifStream(unknownFloat1, in, info);
+	NifStream(unknownFloat2, in, info);
+	if((info.version >= 0x04020200) && (info.version <= 0x04020200))
+	{
+		NifStream(unknownShort2, in, info);
 	};
-	NifStream( unknownFloat3, in, info );
-	NifStream( unknownFloat4, in, info );
-	NifStream( unknownFloat5, in, info );
-	NifStream( unknownFloat6, in, info );
-	NifStream( unknownFloat7, in, info );
-	NifStream( unknownFloat8, in, info );
-	NifStream( unknownFloat9, in, info );
-	NifStream( unknownFloat10, in, info );
-	NifStream( unknownFloat11, in, info );
-	NifStream( unknownFloat12, in, info );
-	NifStream( unknownFloat13, in, info );
-	NifStream( unknownFloat14, in, info );
-	NifStream( unknownFloat15, in, info );
-	NifStream( unknownFloat16, in, info );
+	NifStream(unknownFloat3, in, info);
+	NifStream(unknownFloat4, in, info);
+	NifStream(unknownFloat5, in, info);
+	NifStream(unknownFloat6, in, info);
+	NifStream(unknownFloat7, in, info);
+	NifStream(unknownFloat8, in, info);
+	NifStream(unknownFloat9, in, info);
+	NifStream(unknownFloat10, in, info);
+	NifStream(unknownFloat11, in, info);
+	NifStream(unknownFloat12, in, info);
+	NifStream(unknownFloat13, in, info);
+	NifStream(unknownFloat14, in, info);
+	NifStream(unknownFloat15, in, info);
+	NifStream(unknownFloat16, in, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void NiPlanarCollider::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiPlanarCollider::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiParticleModifier::Write( out, link_map, missing_link_stack, info );
-	if ( info.version >= 0x0A000100 ) {
-		NifStream( unknownShort, out, info );
+	NiParticleModifier::Write(out, link_map, missing_link_stack, info);
+	if(info.version >= 0x0A000100)
+	{
+		NifStream(unknownShort, out, info);
 	};
-	NifStream( unknownFloat1, out, info );
-	NifStream( unknownFloat2, out, info );
-	if ( ( info.version >= 0x04020200 ) && ( info.version <= 0x04020200 ) ) {
-		NifStream( unknownShort2, out, info );
+	NifStream(unknownFloat1, out, info);
+	NifStream(unknownFloat2, out, info);
+	if((info.version >= 0x04020200) && (info.version <= 0x04020200))
+	{
+		NifStream(unknownShort2, out, info);
 	};
-	NifStream( unknownFloat3, out, info );
-	NifStream( unknownFloat4, out, info );
-	NifStream( unknownFloat5, out, info );
-	NifStream( unknownFloat6, out, info );
-	NifStream( unknownFloat7, out, info );
-	NifStream( unknownFloat8, out, info );
-	NifStream( unknownFloat9, out, info );
-	NifStream( unknownFloat10, out, info );
-	NifStream( unknownFloat11, out, info );
-	NifStream( unknownFloat12, out, info );
-	NifStream( unknownFloat13, out, info );
-	NifStream( unknownFloat14, out, info );
-	NifStream( unknownFloat15, out, info );
-	NifStream( unknownFloat16, out, info );
+	NifStream(unknownFloat3, out, info);
+	NifStream(unknownFloat4, out, info);
+	NifStream(unknownFloat5, out, info);
+	NifStream(unknownFloat6, out, info);
+	NifStream(unknownFloat7, out, info);
+	NifStream(unknownFloat8, out, info);
+	NifStream(unknownFloat9, out, info);
+	NifStream(unknownFloat10, out, info);
+	NifStream(unknownFloat11, out, info);
+	NifStream(unknownFloat12, out, info);
+	NifStream(unknownFloat13, out, info);
+	NifStream(unknownFloat14, out, info);
+	NifStream(unknownFloat15, out, info);
+	NifStream(unknownFloat16, out, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string NiPlanarCollider::asString( bool verbose ) const {
+std::string NiPlanarCollider::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
@@ -131,23 +142,26 @@ std::string NiPlanarCollider::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiPlanarCollider::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiPlanarCollider::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiParticleModifier::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiParticleModifier::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiPlanarCollider::GetRefs() const {
+std::list<NiObjectRef> NiPlanarCollider::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiParticleModifier::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiPlanarCollider::GetPtrs() const {
+std::list<NiObject *> NiPlanarCollider::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiParticleModifier::GetPtrs();
 	return ptrs;

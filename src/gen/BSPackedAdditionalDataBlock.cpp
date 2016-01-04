@@ -9,15 +9,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-BSPackedAdditionalDataBlock::BSPackedAdditionalDataBlock() : hasData(false), numTotalBytes((int)0), numBlocks((int)0), numAtoms((int)0), unknownInt1((int)0), numTotalBytesPerElement((int)0) {};
+BSPackedAdditionalDataBlock::BSPackedAdditionalDataBlock() : hasData(false), numTotalBytes((int) 0), numBlocks((int) 0), numAtoms((int) 0), unknownInt1((int) 0), numTotalBytesPerElement((int) 0) {};
 
 //Copy Constructor
-BSPackedAdditionalDataBlock::BSPackedAdditionalDataBlock( const BSPackedAdditionalDataBlock & src ) {
+BSPackedAdditionalDataBlock::BSPackedAdditionalDataBlock(const BSPackedAdditionalDataBlock & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-BSPackedAdditionalDataBlock & BSPackedAdditionalDataBlock::operator=( const BSPackedAdditionalDataBlock & src ) {
+BSPackedAdditionalDataBlock & BSPackedAdditionalDataBlock::operator=(const BSPackedAdditionalDataBlock & src)
+{
 	this->hasData = src.hasData;
 	this->numTotalBytes = src.numTotalBytes;
 	this->numBlocks = src.numBlocks;

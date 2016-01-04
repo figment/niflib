@@ -18,53 +18,60 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type AbstractAdditionalGeometryData::TYPE("AbstractAdditionalGeometryData", &NiObject::TYPE );
+const Type AbstractAdditionalGeometryData::TYPE("AbstractAdditionalGeometryData", &NiObject::TYPE);
 
-AbstractAdditionalGeometryData::AbstractAdditionalGeometryData() {
+AbstractAdditionalGeometryData::AbstractAdditionalGeometryData()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-AbstractAdditionalGeometryData::~AbstractAdditionalGeometryData() {
+AbstractAdditionalGeometryData::~AbstractAdditionalGeometryData()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & AbstractAdditionalGeometryData::GetType() const {
+const Type & AbstractAdditionalGeometryData::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * AbstractAdditionalGeometryData::Create() {
+NiObject * AbstractAdditionalGeometryData::Create()
+{
 	return new AbstractAdditionalGeometryData;
 }
 
-void AbstractAdditionalGeometryData::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void AbstractAdditionalGeometryData::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiObject::Read( in, link_stack, info );
+	NiObject::Read(in, link_stack, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-void AbstractAdditionalGeometryData::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void AbstractAdditionalGeometryData::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiObject::Write( out, link_map, missing_link_stack, info );
+	NiObject::Write(out, link_map, missing_link_stack, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::string AbstractAdditionalGeometryData::asString( bool verbose ) const {
+std::string AbstractAdditionalGeometryData::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -78,25 +85,28 @@ std::string AbstractAdditionalGeometryData::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void AbstractAdditionalGeometryData::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void AbstractAdditionalGeometryData::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiObject::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiObject::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> AbstractAdditionalGeometryData::GetRefs() const {
+std::list<NiObjectRef> AbstractAdditionalGeometryData::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiObject::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> AbstractAdditionalGeometryData::GetPtrs() const {
+std::list<NiObject *> AbstractAdditionalGeometryData::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiObject::GetPtrs();
 	return ptrs;

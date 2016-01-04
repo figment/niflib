@@ -17,53 +17,60 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiFogProperty::TYPE("NiFogProperty", &NiProperty::TYPE );
+const Type NiFogProperty::TYPE("NiFogProperty", &NiProperty::TYPE);
 
-NiFogProperty::NiFogProperty() : flags((unsigned short)0), fogDepth(0.0f) {
+NiFogProperty::NiFogProperty() : flags((unsigned short) 0), fogDepth(0.0f)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-NiFogProperty::~NiFogProperty() {
+NiFogProperty::~NiFogProperty()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiFogProperty::GetType() const {
+const Type & NiFogProperty::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiFogProperty::Create() {
+NiObject * NiFogProperty::Create()
+{
 	return new NiFogProperty;
 }
 
-void NiFogProperty::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiFogProperty::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiProperty::Read( in, link_stack, info );
-	NifStream( flags, in, info );
-	NifStream( fogDepth, in, info );
-	NifStream( fogColor, in, info );
+	NiProperty::Read(in, link_stack, info);
+	NifStream(flags, in, info);
+	NifStream(fogDepth, in, info);
+	NifStream(fogColor, in, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void NiFogProperty::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiFogProperty::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiProperty::Write( out, link_map, missing_link_stack, info );
-	NifStream( flags, out, info );
-	NifStream( fogDepth, out, info );
-	NifStream( fogColor, out, info );
+	NiProperty::Write(out, link_map, missing_link_stack, info);
+	NifStream(flags, out, info);
+	NifStream(fogDepth, out, info);
+	NifStream(fogColor, out, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string NiFogProperty::asString( bool verbose ) const {
+std::string NiFogProperty::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
@@ -78,23 +85,26 @@ std::string NiFogProperty::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiFogProperty::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiFogProperty::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiProperty::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiProperty::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiFogProperty::GetRefs() const {
+std::list<NiObjectRef> NiFogProperty::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiProperty::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiFogProperty::GetPtrs() const {
+std::list<NiObject *> NiFogProperty::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiProperty::GetPtrs();
 	return ptrs;
@@ -103,55 +113,61 @@ std::list<NiObject *> NiFogProperty::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 unsigned short NiFogProperty::GetFlags() const {
-	return flags;
+return flags;
 }
 
 void NiFogProperty::SetFlags( unsigned short value ) {
-	flags = value;
+flags = value;
 }
 
 float NiFogProperty::GetFogDepth() const {
-	return fogDepth;
+return fogDepth;
 }
 
 void NiFogProperty::SetFogDepth( float value ) {
-	fogDepth = value;
+fogDepth = value;
 }
 
 Color3 NiFogProperty::GetFogColor() const {
-	return fogColor;
+return fogColor;
 }
 
 void NiFogProperty::SetFogColor( const Color3 & value ) {
-	fogColor = value;
+fogColor = value;
 }
 
 ****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 
-unsigned short NiFogProperty::GetFlags() const {
-   return flags;
+unsigned short NiFogProperty::GetFlags() const
+{
+	return flags;
 }
 
-void NiFogProperty::SetFlags( unsigned short n ) {
-   flags = n;
+void NiFogProperty::SetFlags(unsigned short n)
+{
+	flags = n;
 }
 
-float NiFogProperty::GetFogDepth() const {
-   return fogDepth;
+float NiFogProperty::GetFogDepth() const
+{
+	return fogDepth;
 }
 
-void NiFogProperty::SetFogDepth(float value) {
-   fogDepth = value;
+void NiFogProperty::SetFogDepth(float value)
+{
+	fogDepth = value;
 }
 
-Color3 NiFogProperty::GetFogColor() const {
-   return fogColor;
+Color3 NiFogProperty::GetFogColor() const
+{
+	return fogColor;
 }
 
-void NiFogProperty::SetFogColor(Color3 value) {
-   fogColor = value;
+void NiFogProperty::SetFogColor(Color3 value)
+{
+	fogColor = value;
 }
 
 //--END CUSTOM CODE--//

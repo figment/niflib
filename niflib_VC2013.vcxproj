@@ -81,12 +81,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug - DLL|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <PlatformToolset>v120</PlatformToolset>
-    <CharacterSet>Multiunsigned char</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release - DLL|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <PlatformToolset>v120</PlatformToolset>
-    <CharacterSet>Multiunsigned char</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
     <WholeProgramOptimization>false</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release - Static|x64'" Label="Configuration">
@@ -104,7 +104,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug - Static|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <PlatformToolset>v120</PlatformToolset>
-    <CharacterSet>Multiunsigned char</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -175,12 +175,12 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release - Static|x64'">
     <OutDir>$(SolutionDir)StaticLibraries\</OutDir>
-    <IntDir>$(SolutionDir)NifLibIntermediate\obj\$(Platform)\$(PlatformToolset)\$(Configuration)\</IntDir>
+    <IntDir>$(SolutionDir)NifLibIntermediate\obj\$(Platform)\v120\Release\</IntDir>
     <TargetName>$(ProjectName)_static_$(PlatformShortName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release-ShowIncludes|x64'">
     <OutDir>$(SolutionDir)StaticLibraries\</OutDir>
-    <IntDir>$(SolutionDir)NifLibIntermediate\obj\$(Platform)\$(PlatformToolset)\$(Configuration)\</IntDir>
+    <IntDir>$(SolutionDir)NifLibIntermediate\obj\$(Platform)\v120\Release\</IntDir>
     <TargetName>$(ProjectName)_static_$(PlatformShortName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release - DLL|Win32'">
@@ -398,6 +398,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="GlobalCode\StringFunctions.cpp" />
     <ClCompile Include="NvTriStrip\NvTriStrip.cpp" />
     <ClCompile Include="NvTriStrip\NvTriStripObjects.cpp" />
     <ClCompile Include="NvTriStrip\VertexCache.cpp" />
@@ -972,6 +973,7 @@
     <ClCompile Include="TriStripper\tri_stripper.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GlobalCode\StringFunctions.h" />
     <ClInclude Include="include\ComplexShape.h" />
     <ClInclude Include="include\dll_export.h" />
     <ClInclude Include="include\FixLink.h" />

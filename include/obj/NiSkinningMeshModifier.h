@@ -19,142 +19,142 @@ All rights reserved.  Please see niflib.h for license. */
 // Include structures
 #include "../gen/SkinTransform.h"
 #include "../gen/SphereBV.h"
-namespace Niflib {
+namespace Niflib
+{
+	// Forward define of referenced NIF objects
+	class NiAVObject;
+	class NiSkinningMeshModifier;
+	typedef Ref<NiSkinningMeshModifier> NiSkinningMeshModifierRef;
 
-// Forward define of referenced NIF objects
-class NiAVObject;
-class NiSkinningMeshModifier;
-typedef Ref<NiSkinningMeshModifier> NiSkinningMeshModifierRef;
+	/*!  */
+	class NiSkinningMeshModifier : public NiMeshModifier
+	{
+	public:
+		/*! Constructor */
+		NIFLIB_API NiSkinningMeshModifier();
 
-/*!  */
-class NiSkinningMeshModifier : public NiMeshModifier {
-public:
-	/*! Constructor */
-	NIFLIB_API NiSkinningMeshModifier();
+		/*! Destructor */
+		NIFLIB_API virtual ~NiSkinningMeshModifier();
 
-	/*! Destructor */
-	NIFLIB_API virtual ~NiSkinningMeshModifier();
+		/*!
+		 * A constant value which uniquly identifies objects of this type.
+		 */
+		NIFLIB_API static const Type TYPE;
 
-	/*!
-	 * A constant value which uniquly identifies objects of this type.
-	 */
-	NIFLIB_API static const Type TYPE;
+		/*!
+		 * A factory function used during file reading to create an instance of this type of object.
+		 * \return A pointer to a newly allocated instance of this type of object.
+		 */
+		NIFLIB_API static NiObject * Create();
 
-	/*!
-	 * A factory function used during file reading to create an instance of this type of object.
-	 * \return A pointer to a newly allocated instance of this type of object.
-	 */
-	NIFLIB_API static NiObject * Create();
+		/*!
+		 * Summarizes the information contained in this object in English.
+		 * \param[in] verbose Determines whether or not detailed information about large areas of data will be printed out.
+		 * \return A string containing a summary of the information within the object in English.  This is the function that Niflyze calls to generate its analysis, so the output is the same.
+		 */
+		NIFLIB_API virtual string asString(bool verbose = false) const;
 
-	/*!
-	 * Summarizes the information contained in this object in English.
-	 * \param[in] verbose Determines whether or not detailed information about large areas of data will be printed out.
-	 * \return A string containing a summary of the information within the object in English.  This is the function that Niflyze calls to generate its analysis, so the output is the same.
-	 */
-	NIFLIB_API virtual string asString( bool verbose = false ) const;
+		/*!
+		 * Used to determine the type of a particular instance of this object.
+		 * \return The type constant for the actual type of the object.
+		 */
+		NIFLIB_API virtual const Type & GetType() const;
 
-	/*!
-	 * Used to determine the type of a particular instance of this object.
-	 * \return The type constant for the actual type of the object.
-	 */
-	NIFLIB_API virtual const Type & GetType() const;
+		/***Begin Example Naive Implementation****
 
-	/***Begin Example Naive Implementation****
+		// USE_SOFTWARE_SKINNING = 0x0001
+		//             RECOMPUTE_BOUNDS = 0x0002
+		// \return The current value.
+		unsigned short GetFlags() const;
 
-	// USE_SOFTWARE_SKINNING = 0x0001
-	//             RECOMPUTE_BOUNDS = 0x0002
-	// \return The current value.
-	unsigned short GetFlags() const;
+		// USE_SOFTWARE_SKINNING = 0x0001
+		//             RECOMPUTE_BOUNDS = 0x0002
+		// \param[in] value The new value.
+		void SetFlags( unsigned short value );
 
-	// USE_SOFTWARE_SKINNING = 0x0001
-	//             RECOMPUTE_BOUNDS = 0x0002
-	// \param[in] value The new value.
-	void SetFlags( unsigned short value );
+		// The root bone of the skeleton.
+		// \return The current value.
+		NiAVObject * GetSkeletonRoot() const;
 
-	// The root bone of the skeleton.
-	// \return The current value.
-	NiAVObject * GetSkeletonRoot() const;
+		// The root bone of the skeleton.
+		// \param[in] value The new value.
+		void SetSkeletonRoot( NiAVObject * value );
 
-	// The root bone of the skeleton.
-	// \param[in] value The new value.
-	void SetSkeletonRoot( NiAVObject * value );
+		// The transform that takes the root bone parent coordinate system into the skin
+		// coordinate system.
+		// \return The current value.
+		SkinTransform GetSkeletonTransform() const;
 
-	// The transform that takes the root bone parent coordinate system into the skin
-	// coordinate system.
-	// \return The current value.
-	SkinTransform GetSkeletonTransform() const;
+		// The transform that takes the root bone parent coordinate system into the skin
+		// coordinate system.
+		// \param[in] value The new value.
+		void SetSkeletonTransform( const SkinTransform & value );
 
-	// The transform that takes the root bone parent coordinate system into the skin
-	// coordinate system.
-	// \param[in] value The new value.
-	void SetSkeletonTransform( const SkinTransform & value );
+		// Pointers to the bone nodes that affect this skin.
+		// \return The current value.
+		vector<NiAVObject * > GetBones() const;
 
-	// Pointers to the bone nodes that affect this skin.
-	// \return The current value.
-	vector<NiAVObject * > GetBones() const;
+		// Pointers to the bone nodes that affect this skin.
+		// \param[in] value The new value.
+		void SetBones( const vector<NiAVObject * >& value );
 
-	// Pointers to the bone nodes that affect this skin.
-	// \param[in] value The new value.
-	void SetBones( const vector<NiAVObject * >& value );
+		// The transforms that go from bind-pose space to bone space.
+		// \return The current value.
+		vector<SkinTransform > GetBoneTransforms() const;
 
-	// The transforms that go from bind-pose space to bone space.
-	// \return The current value.
-	vector<SkinTransform > GetBoneTransforms() const;
+		// The transforms that go from bind-pose space to bone space.
+		// \param[in] value The new value.
+		void SetBoneTransforms( const vector<SkinTransform >& value );
 
-	// The transforms that go from bind-pose space to bone space.
-	// \param[in] value The new value.
-	void SetBoneTransforms( const vector<SkinTransform >& value );
+		// The bounds of the bones.  Only stored if the RECOMPUTE_BOUNDS bit is set.
+		// \return The current value.
+		vector<SphereBV > GetBoneBounds() const;
 
-	// The bounds of the bones.  Only stored if the RECOMPUTE_BOUNDS bit is set.
-	// \return The current value.
-	vector<SphereBV > GetBoneBounds() const;
+		// The bounds of the bones.  Only stored if the RECOMPUTE_BOUNDS bit is set.
+		// \param[in] value The new value.
+		void SetBoneBounds( const vector<SphereBV >& value );
 
-	// The bounds of the bones.  Only stored if the RECOMPUTE_BOUNDS bit is set.
-	// \param[in] value The new value.
-	void SetBoneBounds( const vector<SphereBV >& value );
+		****End Example Naive Implementation***/
 
-	****End Example Naive Implementation***/
+		//--BEGIN MISC CUSTOM CODE--//
 
-	//--BEGIN MISC CUSTOM CODE--//
+		//--END CUSTOM CODE--//
+	protected:
+		/*!
+		 * USE_SOFTWARE_SKINNING = 0x0001
+		 *             RECOMPUTE_BOUNDS = 0x0002
+		 */
+		unsigned short flags;
+		/*! The root bone of the skeleton. */
+		NiAVObject * skeletonRoot;
+		/*!
+		 * The transform that takes the root bone parent coordinate system into the skin
+		 * coordinate system.
+		 */
+		SkinTransform skeletonTransform;
+		/*! The number of bones referenced by this mesh modifier. */
+		mutable unsigned int numBones;
+		/*! Pointers to the bone nodes that affect this skin. */
+		vector<NiAVObject * > bones;
+		/*! The transforms that go from bind-pose space to bone space. */
+		vector<SkinTransform > boneTransforms;
+		/*! The bounds of the bones.  Only stored if the RECOMPUTE_BOUNDS bit is set. */
+		vector<SphereBV > boneBounds;
+	public:
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info);
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const;
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info);
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual list<NiObjectRef> GetRefs() const;
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual list<NiObject *> GetPtrs() const;
+	};
+
+	//--BEGIN FILE FOOT CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
-protected:
-	/*!
-	 * USE_SOFTWARE_SKINNING = 0x0001
-	 *             RECOMPUTE_BOUNDS = 0x0002
-	 */
-	unsigned short flags;
-	/*! The root bone of the skeleton. */
-	NiAVObject * skeletonRoot;
-	/*!
-	 * The transform that takes the root bone parent coordinate system into the skin
-	 * coordinate system.
-	 */
-	SkinTransform skeletonTransform;
-	/*! The number of bones referenced by this mesh modifier. */
-	mutable unsigned int numBones;
-	/*! Pointers to the bone nodes that affect this skin. */
-	vector<NiAVObject * > bones;
-	/*! The transforms that go from bind-pose space to bone space. */
-	vector<SkinTransform > boneTransforms;
-	/*! The bounds of the bones.  Only stored if the RECOMPUTE_BOUNDS bit is set. */
-	vector<SphereBV > boneBounds;
-public:
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const;
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info );
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual list<NiObjectRef> GetRefs() const;
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual list<NiObject *> GetPtrs() const;
-};
-
-//--BEGIN FILE FOOT CUSTOM CODE--//
-
-//--END CUSTOM CODE--//
-
 } //End Niflib namespace
 #endif

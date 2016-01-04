@@ -18,53 +18,60 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiPSysInitialRotSpeedVarCtlr::TYPE("NiPSysInitialRotSpeedVarCtlr", &NiPSysModifierFloatCtlr::TYPE );
+const Type NiPSysInitialRotSpeedVarCtlr::TYPE("NiPSysInitialRotSpeedVarCtlr", &NiPSysModifierFloatCtlr::TYPE);
 
-NiPSysInitialRotSpeedVarCtlr::NiPSysInitialRotSpeedVarCtlr() {
+NiPSysInitialRotSpeedVarCtlr::NiPSysInitialRotSpeedVarCtlr()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-NiPSysInitialRotSpeedVarCtlr::~NiPSysInitialRotSpeedVarCtlr() {
+NiPSysInitialRotSpeedVarCtlr::~NiPSysInitialRotSpeedVarCtlr()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiPSysInitialRotSpeedVarCtlr::GetType() const {
+const Type & NiPSysInitialRotSpeedVarCtlr::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiPSysInitialRotSpeedVarCtlr::Create() {
+NiObject * NiPSysInitialRotSpeedVarCtlr::Create()
+{
 	return new NiPSysInitialRotSpeedVarCtlr;
 }
 
-void NiPSysInitialRotSpeedVarCtlr::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiPSysInitialRotSpeedVarCtlr::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSysModifierFloatCtlr::Read( in, link_stack, info );
+	NiPSysModifierFloatCtlr::Read(in, link_stack, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-void NiPSysInitialRotSpeedVarCtlr::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiPSysInitialRotSpeedVarCtlr::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSysModifierFloatCtlr::Write( out, link_map, missing_link_stack, info );
+	NiPSysModifierFloatCtlr::Write(out, link_map, missing_link_stack, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::string NiPSysInitialRotSpeedVarCtlr::asString( bool verbose ) const {
+std::string NiPSysInitialRotSpeedVarCtlr::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -78,25 +85,28 @@ std::string NiPSysInitialRotSpeedVarCtlr::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiPSysInitialRotSpeedVarCtlr::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiPSysInitialRotSpeedVarCtlr::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSysModifierFloatCtlr::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiPSysModifierFloatCtlr::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiPSysInitialRotSpeedVarCtlr::GetRefs() const {
+std::list<NiObjectRef> NiPSysInitialRotSpeedVarCtlr::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiPSysModifierFloatCtlr::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiPSysInitialRotSpeedVarCtlr::GetPtrs() const {
+std::list<NiObject *> NiPSysInitialRotSpeedVarCtlr::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiPSysModifierFloatCtlr::GetPtrs();
 	return ptrs;

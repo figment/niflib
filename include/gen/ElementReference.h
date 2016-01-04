@@ -12,26 +12,25 @@ All rights reserved.  Please see niflib.h for license. */
 
 // Include structures
 #include "SemanticData.h"
-namespace Niflib {
-
-
-/*!  */
-struct ElementReference {
-	/*! Default Constructor */
-	NIFLIB_API ElementReference();
-	/*! Default Destructor */
-	NIFLIB_API ~ElementReference();
-	/*! Copy Constructor */
-	NIFLIB_API ElementReference( const ElementReference & src );
-	/*! Copy Operator */
-	NIFLIB_API ElementReference & operator=( const ElementReference & src );
-	/*! The element semantic. */
-	SemanticData semantic;
-	/*! Whether or not to normalize the data. */
-	unsigned int normalizeFlag;
-	//--BEGIN MISC CUSTOM CODE--//
-	//--END CUSTOM CODE--//
-};
-
+namespace Niflib
+{
+	/*!  */
+	struct ElementReference
+	{
+		/*! Default Constructor */
+		NIFLIB_API ElementReference();
+		/*! Default Destructor */
+		NIFLIB_API ~ElementReference();
+		/*! Copy Constructor */
+		NIFLIB_API ElementReference(const ElementReference & src);
+		/*! Copy Operator */
+		NIFLIB_API ElementReference & operator=(const ElementReference & src);
+		/*! The element semantic. */
+		SemanticData semantic;
+		/*! Whether or not to normalize the data. */
+		unsigned int normalizeFlag;
+		//--BEGIN MISC CUSTOM CODE--//
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

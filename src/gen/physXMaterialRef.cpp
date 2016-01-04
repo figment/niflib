@@ -10,15 +10,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-physXMaterialRef::physXMaterialRef() : number((byte)0), unknownByte1((byte)0), materialDesc(NULL) {};
+physXMaterialRef::physXMaterialRef() : number((byte) 0), unknownByte1((byte) 0), materialDesc(NULL) {};
 
 //Copy Constructor
-physXMaterialRef::physXMaterialRef( const physXMaterialRef & src ) {
+physXMaterialRef::physXMaterialRef(const physXMaterialRef & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-physXMaterialRef & physXMaterialRef::operator=( const physXMaterialRef & src ) {
+physXMaterialRef & physXMaterialRef::operator=(const physXMaterialRef & src)
+{
 	this->number = src.number;
 	this->unknownByte1 = src.unknownByte1;
 	this->materialDesc = src.materialDesc;

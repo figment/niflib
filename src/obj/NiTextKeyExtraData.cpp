@@ -17,79 +17,93 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiTextKeyExtraData::TYPE("NiTextKeyExtraData", &NiExtraData::TYPE );
+const Type NiTextKeyExtraData::TYPE("NiTextKeyExtraData", &NiExtraData::TYPE);
 
-NiTextKeyExtraData::NiTextKeyExtraData() : unknownInt1((unsigned int)0), numTextKeys((unsigned int)0) {
+NiTextKeyExtraData::NiTextKeyExtraData() : unknownInt1((unsigned int) 0), numTextKeys((unsigned int) 0)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-NiTextKeyExtraData::~NiTextKeyExtraData() {
+NiTextKeyExtraData::~NiTextKeyExtraData()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiTextKeyExtraData::GetType() const {
+const Type & NiTextKeyExtraData::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiTextKeyExtraData::Create() {
+NiObject * NiTextKeyExtraData::Create()
+{
 	return new NiTextKeyExtraData;
 }
 
-void NiTextKeyExtraData::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiTextKeyExtraData::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiExtraData::Read( in, link_stack, info );
-	if ( info.version <= 0x04020200 ) {
-		NifStream( unknownInt1, in, info );
+	NiExtraData::Read(in, link_stack, info);
+	if(info.version <= 0x04020200)
+	{
+		NifStream(unknownInt1, in, info);
 	};
-	NifStream( numTextKeys, in, info );
+	NifStream(numTextKeys, in, info);
 	textKeys.resize(numTextKeys);
-	for (unsigned int i1 = 0; i1 < textKeys.size(); i1++) {
-		NifStream( textKeys[i1], in, info, 1 );
+	for(unsigned int i1 = 0; i1 < textKeys.size(); i1++)
+	{
+		NifStream(textKeys[i1], in, info, 1);
 	};
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void NiTextKeyExtraData::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiTextKeyExtraData::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiExtraData::Write( out, link_map, missing_link_stack, info );
-	numTextKeys = (unsigned int)(textKeys.size());
-	if ( info.version <= 0x04020200 ) {
-		NifStream( unknownInt1, out, info );
+	NiExtraData::Write(out, link_map, missing_link_stack, info);
+	numTextKeys = (unsigned int) (textKeys.size());
+	if(info.version <= 0x04020200)
+	{
+		NifStream(unknownInt1, out, info);
 	};
-	NifStream( numTextKeys, out, info );
-	for (unsigned int i1 = 0; i1 < textKeys.size(); i1++) {
-		NifStream( textKeys[i1], out, info, 1 );
+	NifStream(numTextKeys, out, info);
+	for(unsigned int i1 = 0; i1 < textKeys.size(); i1++)
+	{
+		NifStream(textKeys[i1], out, info, 1);
 	};
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string NiTextKeyExtraData::asString( bool verbose ) const {
+std::string NiTextKeyExtraData::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
 	stringstream out;
 	unsigned int array_output_count = 0;
 	out << NiExtraData::asString(verbose);
-	numTextKeys = (unsigned int)(textKeys.size());
+	numTextKeys = (unsigned int) (textKeys.size());
 	out << "  Unknown Int 1:  " << unknownInt1 << endl;
 	out << "  Num Text Keys:  " << numTextKeys << endl;
 	array_output_count = 0;
-	for (unsigned int i1 = 0; i1 < textKeys.size(); i1++) {
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+	for(unsigned int i1 = 0; i1 < textKeys.size(); i1++)
+	{
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 			break;
 		};
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			break;
 		};
 		out << "    Text Keys[" << i1 << "]:  " << textKeys[i1] << endl;
@@ -101,23 +115,26 @@ std::string NiTextKeyExtraData::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiTextKeyExtraData::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiTextKeyExtraData::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiExtraData::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiExtraData::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiTextKeyExtraData::GetRefs() const {
+std::list<NiObjectRef> NiTextKeyExtraData::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiExtraData::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiTextKeyExtraData::GetPtrs() const {
+std::list<NiObject *> NiTextKeyExtraData::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiExtraData::GetPtrs();
 	return ptrs;
@@ -126,20 +143,22 @@ std::list<NiObject *> NiTextKeyExtraData::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 vector<Key<IndexString > > NiTextKeyExtraData::GetTextKeys() const {
-	return textKeys;
+return textKeys;
 }
 
 void NiTextKeyExtraData::SetTextKeys( const vector<Key<IndexString > >& value ) {
-	textKeys = value;
+textKeys = value;
 }
 
 ****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 
-vector< Key<string> > NiTextKeyExtraData::GetKeys() const {
+vector< Key<string> > NiTextKeyExtraData::GetKeys() const
+{
 	vector< Key<string> > value;
-	for (vector< Key<IndexString> >::const_iterator itr = textKeys.begin(); itr != textKeys.end(); ++itr) {
+	for(vector< Key<IndexString> >::const_iterator itr = textKeys.begin(); itr != textKeys.end(); ++itr)
+	{
 		Key<string> key;
 		key.time = (*itr).time;
 		key.data = (*itr).data;
@@ -151,10 +170,12 @@ vector< Key<string> > NiTextKeyExtraData::GetKeys() const {
 	return value;
 }
 
-void NiTextKeyExtraData::SetKeys( vector< Key<string> > const & keys ) {
+void NiTextKeyExtraData::SetKeys(vector< Key<string> > const & keys)
+{
 	vector< Key<string> > value;
 	textKeys.clear();
-	for (vector< Key<string> >::const_iterator itr = keys.begin(); itr != keys.end(); ++itr) {
+	for(vector< Key<string> >::const_iterator itr = keys.begin(); itr != keys.end(); ++itr)
+	{
 		Key<IndexString> key;
 		key.time = (*itr).time;
 		key.data = (*itr).data;

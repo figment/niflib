@@ -17,47 +17,54 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiBone::TYPE("NiBone", &NiNode::TYPE );
+const Type NiBone::TYPE("NiBone", &NiNode::TYPE);
 
-NiBone::NiBone() {
+NiBone::NiBone()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-NiBone::~NiBone() {
+NiBone::~NiBone()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiBone::GetType() const {
+const Type & NiBone::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiBone::Create() {
+NiObject * NiBone::Create()
+{
 	return new NiBone;
 }
 
-void NiBone::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiBone::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiNode::Read( in, link_stack, info );
+	NiNode::Read(in, link_stack, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void NiBone::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiBone::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiNode::Write( out, link_map, missing_link_stack, info );
+	NiNode::Write(out, link_map, missing_link_stack, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string NiBone::asString( bool verbose ) const {
+std::string NiBone::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
@@ -69,23 +76,26 @@ std::string NiBone::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiBone::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiBone::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiNode::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiNode::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiBone::GetRefs() const {
+std::list<NiObjectRef> NiBone::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiNode::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiBone::GetPtrs() const {
+std::list<NiObject *> NiBone::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiNode::GetPtrs();
 	return ptrs;

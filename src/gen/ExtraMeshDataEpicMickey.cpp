@@ -9,15 +9,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-ExtraMeshDataEpicMickey::ExtraMeshDataEpicMickey() : unknownInt1((int)0), unknownInt2((int)0), unknownInt3((int)0), unknownInt4(0.0f), unknownInt5(0.0f), unknownInt6(0.0f) {};
+ExtraMeshDataEpicMickey::ExtraMeshDataEpicMickey() : unknownInt1((int) 0), unknownInt2((int) 0), unknownInt3((int) 0), unknownInt4(0.0f), unknownInt5(0.0f), unknownInt6(0.0f) {};
 
 //Copy Constructor
-ExtraMeshDataEpicMickey::ExtraMeshDataEpicMickey( const ExtraMeshDataEpicMickey & src ) {
+ExtraMeshDataEpicMickey::ExtraMeshDataEpicMickey(const ExtraMeshDataEpicMickey & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-ExtraMeshDataEpicMickey & ExtraMeshDataEpicMickey::operator=( const ExtraMeshDataEpicMickey & src ) {
+ExtraMeshDataEpicMickey & ExtraMeshDataEpicMickey::operator=(const ExtraMeshDataEpicMickey & src)
+{
 	this->unknownInt1 = src.unknownInt1;
 	this->unknownInt2 = src.unknownInt2;
 	this->unknownInt3 = src.unknownInt3;

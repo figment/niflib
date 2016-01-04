@@ -18,59 +18,66 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type SkyShaderProperty::TYPE("SkyShaderProperty", &BSShaderProperty::TYPE );
+const Type SkyShaderProperty::TYPE("SkyShaderProperty", &BSShaderProperty::TYPE);
 
-SkyShaderProperty::SkyShaderProperty() : unknownInt4((int)0), unknownInt5((int)3) {
+SkyShaderProperty::SkyShaderProperty() : unknownInt4((int) 0), unknownInt5((int) 3)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-SkyShaderProperty::~SkyShaderProperty() {
+SkyShaderProperty::~SkyShaderProperty()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & SkyShaderProperty::GetType() const {
+const Type & SkyShaderProperty::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * SkyShaderProperty::Create() {
+NiObject * SkyShaderProperty::Create()
+{
 	return new SkyShaderProperty;
 }
 
-void SkyShaderProperty::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void SkyShaderProperty::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	BSShaderProperty::Read( in, link_stack, info );
-	NifStream( unknownInt4, in, info );
-	NifStream( fileName, in, info );
-	NifStream( unknownInt5, in, info );
+	BSShaderProperty::Read(in, link_stack, info);
+	NifStream(unknownInt4, in, info);
+	NifStream(fileName, in, info);
+	NifStream(unknownInt5, in, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-void SkyShaderProperty::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void SkyShaderProperty::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	BSShaderProperty::Write( out, link_map, missing_link_stack, info );
-	NifStream( unknownInt4, out, info );
-	NifStream( fileName, out, info );
-	NifStream( unknownInt5, out, info );
+	BSShaderProperty::Write(out, link_map, missing_link_stack, info);
+	NifStream(unknownInt4, out, info);
+	NifStream(fileName, out, info);
+	NifStream(unknownInt5, out, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::string SkyShaderProperty::asString( bool verbose ) const {
+std::string SkyShaderProperty::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -87,25 +94,28 @@ std::string SkyShaderProperty::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void SkyShaderProperty::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void SkyShaderProperty::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	BSShaderProperty::FixLinks( objects, link_stack, missing_link_stack, info );
+	BSShaderProperty::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> SkyShaderProperty::GetRefs() const {
+std::list<NiObjectRef> SkyShaderProperty::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = BSShaderProperty::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> SkyShaderProperty::GetPtrs() const {
+std::list<NiObject *> SkyShaderProperty::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = BSShaderProperty::GetPtrs();
 	return ptrs;
@@ -114,22 +124,24 @@ std::list<NiObject *> SkyShaderProperty::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 string SkyShaderProperty::GetFileName() const {
-	return fileName;
+return fileName;
 }
 
 void SkyShaderProperty::SetFileName( const string & value ) {
-	fileName = value;
+fileName = value;
 }
 
 ****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 
-string SkyShaderProperty::GetFileName() const {
+string SkyShaderProperty::GetFileName() const
+{
 	return fileName;
 }
 
-void SkyShaderProperty::SetFileName( const string & value ) {
+void SkyShaderProperty::SetFileName(const string & value)
+{
 	fileName = value;
 }
 

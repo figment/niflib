@@ -14,15 +14,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-UnionBV::UnionBV() : numBv((unsigned int)0) {};
+UnionBV::UnionBV() : numBv((unsigned int) 0) {};
 
 //Copy Constructor
-UnionBV::UnionBV( const UnionBV & src ) {
+UnionBV::UnionBV(const UnionBV & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-UnionBV & UnionBV::operator=( const UnionBV & src ) {
+UnionBV & UnionBV::operator=(const UnionBV & src)
+{
 	this->numBv = src.numBv;
 	this->boundingVolumes = src.boundingVolumes;
 	return *this;

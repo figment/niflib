@@ -10,28 +10,27 @@ All rights reserved.  Please see niflib.h for license. */
 
 #include "../NIF_IO.h"
 
-namespace Niflib {
-
-
-/*!  */
-struct HalfSpaceBV {
-	/*! Default Constructor */
-	NIFLIB_API HalfSpaceBV();
-	/*! Default Destructor */
-	NIFLIB_API ~HalfSpaceBV();
-	/*! Copy Constructor */
-	NIFLIB_API HalfSpaceBV( const HalfSpaceBV & src );
-	/*! Copy Operator */
-	NIFLIB_API HalfSpaceBV & operator=( const HalfSpaceBV & src );
-	/*! Normal */
-	Vector3 normal;
-	/*! Center */
-	Vector3 center;
-	/*! Unknown. */
-	float unknownFloat1;
-	//--BEGIN MISC CUSTOM CODE--//
-	//--END CUSTOM CODE--//
-};
-
+namespace Niflib
+{
+	/*!  */
+	struct HalfSpaceBV
+	{
+		/*! Default Constructor */
+		NIFLIB_API HalfSpaceBV();
+		/*! Default Destructor */
+		NIFLIB_API ~HalfSpaceBV();
+		/*! Copy Constructor */
+		NIFLIB_API HalfSpaceBV(const HalfSpaceBV & src);
+		/*! Copy Operator */
+		NIFLIB_API HalfSpaceBV & operator=(const HalfSpaceBV & src);
+		/*! Normal */
+		Vector3 normal;
+		/*! Center */
+		Vector3 center;
+		/*! Unknown. */
+		float unknownFloat1;
+		//--BEGIN MISC CUSTOM CODE--//
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

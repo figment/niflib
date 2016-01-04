@@ -10,29 +10,28 @@ All rights reserved.  Please see niflib.h for license. */
 
 #include "../NIF_IO.h"
 
-namespace Niflib {
+namespace Niflib
+{
+	/*! Bethesda-specific node. */
+	struct BSSegment
+	{
+		/*! Default Constructor */
+		NIFLIB_API BSSegment();
+		/*! Default Destructor */
+		NIFLIB_API ~BSSegment();
+		/*! Copy Constructor */
+		NIFLIB_API BSSegment(const BSSegment & src);
+		/*! Copy Operator */
+		NIFLIB_API BSSegment & operator=(const BSSegment & src);
+		/*! Index multiplied by 1536 (0x0600) */
+		int internalIndex;
+		/*! Geometry present in the segment */
+		BSSegmentFlags flags;
+		/*! Unknown */
+		byte unknownByte1;
+		//--BEGIN MISC CUSTOM CODE--//
 
-
-/*! Bethesda-specific node. */
-struct BSSegment {
-	/*! Default Constructor */
-	NIFLIB_API BSSegment();
-	/*! Default Destructor */
-	NIFLIB_API ~BSSegment();
-	/*! Copy Constructor */
-	NIFLIB_API BSSegment( const BSSegment & src );
-	/*! Copy Operator */
-	NIFLIB_API BSSegment & operator=( const BSSegment & src );
-	/*! Index multiplied by 1536 (0x0600) */
-	int internalIndex;
-	/*! Geometry present in the segment */
-	BSSegmentFlags flags;
-	/*! Unknown */
-	byte unknownByte1;
-	//--BEGIN MISC CUSTOM CODE--//
-
-	//--END CUSTOM CODE--//
-};
-
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

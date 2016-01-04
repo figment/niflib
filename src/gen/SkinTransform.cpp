@@ -12,12 +12,14 @@ using namespace Niflib;
 SkinTransform::SkinTransform() : scale(1.0f) {};
 
 //Copy Constructor
-SkinTransform::SkinTransform( const SkinTransform & src ) {
+SkinTransform::SkinTransform(const SkinTransform & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-SkinTransform & SkinTransform::operator=( const SkinTransform & src ) {
+SkinTransform & SkinTransform::operator=(const SkinTransform & src)
+{
 	this->rotation = src.rotation;
 	this->translation = src.translation;
 	this->scale = src.scale;

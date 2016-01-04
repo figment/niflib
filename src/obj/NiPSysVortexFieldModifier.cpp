@@ -18,55 +18,62 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiPSysVortexFieldModifier::TYPE("NiPSysVortexFieldModifier", &NiPSysFieldModifier::TYPE );
+const Type NiPSysVortexFieldModifier::TYPE("NiPSysVortexFieldModifier", &NiPSysFieldModifier::TYPE);
 
-NiPSysVortexFieldModifier::NiPSysVortexFieldModifier() {
+NiPSysVortexFieldModifier::NiPSysVortexFieldModifier()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-NiPSysVortexFieldModifier::~NiPSysVortexFieldModifier() {
+NiPSysVortexFieldModifier::~NiPSysVortexFieldModifier()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiPSysVortexFieldModifier::GetType() const {
+const Type & NiPSysVortexFieldModifier::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiPSysVortexFieldModifier::Create() {
+NiObject * NiPSysVortexFieldModifier::Create()
+{
 	return new NiPSysVortexFieldModifier;
 }
 
-void NiPSysVortexFieldModifier::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiPSysVortexFieldModifier::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSysFieldModifier::Read( in, link_stack, info );
-	NifStream( direction, in, info );
+	NiPSysFieldModifier::Read(in, link_stack, info);
+	NifStream(direction, in, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-void NiPSysVortexFieldModifier::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiPSysVortexFieldModifier::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSysFieldModifier::Write( out, link_map, missing_link_stack, info );
-	NifStream( direction, out, info );
+	NiPSysFieldModifier::Write(out, link_map, missing_link_stack, info);
+	NifStream(direction, out, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::string NiPSysVortexFieldModifier::asString( bool verbose ) const {
+std::string NiPSysVortexFieldModifier::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -81,25 +88,28 @@ std::string NiPSysVortexFieldModifier::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiPSysVortexFieldModifier::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiPSysVortexFieldModifier::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSysFieldModifier::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiPSysFieldModifier::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiPSysVortexFieldModifier::GetRefs() const {
+std::list<NiObjectRef> NiPSysVortexFieldModifier::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiPSysFieldModifier::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiPSysVortexFieldModifier::GetPtrs() const {
+std::list<NiObject *> NiPSysVortexFieldModifier::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiPSysFieldModifier::GetPtrs();
 	return ptrs;
@@ -108,11 +118,11 @@ std::list<NiObject *> NiPSysVortexFieldModifier::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 Vector3 NiPSysVortexFieldModifier::GetDirection() const {
-	return direction;
+return direction;
 }
 
 void NiPSysVortexFieldModifier::SetDirection( const Vector3 & value ) {
-	direction = value;
+direction = value;
 }
 
 ****End Example Naive Implementation***/

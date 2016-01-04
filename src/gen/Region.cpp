@@ -9,15 +9,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-Region::Region() : startIndex((unsigned int)0), numIndices((unsigned int)0) {};
+Region::Region() : startIndex((unsigned int) 0), numIndices((unsigned int) 0) {};
 
 //Copy Constructor
-Region::Region( const Region & src ) {
+Region::Region(const Region & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-Region & Region::operator=( const Region & src ) {
+Region & Region::operator=(const Region & src)
+{
 	this->startIndex = src.startIndex;
 	this->numIndices = src.numIndices;
 	return *this;

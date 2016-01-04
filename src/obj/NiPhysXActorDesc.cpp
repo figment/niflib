@@ -21,57 +21,63 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiPhysXActorDesc::TYPE("NiPhysXActorDesc", &NiObject::TYPE );
+const Type NiPhysXActorDesc::TYPE("NiPhysXActorDesc", &NiObject::TYPE);
 
-NiPhysXActorDesc::NiPhysXActorDesc() : unknownInt1((int)0), unknownInt2((int)0), unknownRef0(NULL), unknownInt4(0.0f), unknownInt5((int)0), unknownByte1((byte)0), unknownByte2((byte)0), unknownInt6((int)0), shapeDescription(NULL), unknownRef1(NULL), unknownRef2(NULL) {
+NiPhysXActorDesc::NiPhysXActorDesc() : unknownInt1((int) 0), unknownInt2((int) 0), unknownRef0(NULL), unknownInt4(0.0f), unknownInt5((int) 0), unknownByte1((byte) 0), unknownByte2((byte) 0), unknownInt6((int) 0), shapeDescription(NULL), unknownRef1(NULL), unknownRef2(NULL)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-NiPhysXActorDesc::~NiPhysXActorDesc() {
+NiPhysXActorDesc::~NiPhysXActorDesc()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiPhysXActorDesc::GetType() const {
+const Type & NiPhysXActorDesc::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiPhysXActorDesc::Create() {
+NiObject * NiPhysXActorDesc::Create()
+{
 	return new NiPhysXActorDesc;
 }
 
-void NiPhysXActorDesc::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiPhysXActorDesc::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
 	unsigned int block_num;
-	NiObject::Read( in, link_stack, info );
-	NifStream( unknownInt1, in, info );
-	NifStream( unknownInt2, in, info );
-	NifStream( unknownQuat1, in, info );
-	NifStream( unknownQuat2, in, info );
-	NifStream( unknownQuat3, in, info );
-	NifStream( block_num, in, info );
-	link_stack.push_back( block_num );
-	NifStream( unknownInt4, in, info );
-	NifStream( unknownInt5, in, info );
-	NifStream( unknownByte1, in, info );
-	NifStream( unknownByte2, in, info );
-	NifStream( unknownInt6, in, info );
-	NifStream( block_num, in, info );
-	link_stack.push_back( block_num );
-	NifStream( block_num, in, info );
-	link_stack.push_back( block_num );
-	NifStream( block_num, in, info );
-	link_stack.push_back( block_num );
+	NiObject::Read(in, link_stack, info);
+	NifStream(unknownInt1, in, info);
+	NifStream(unknownInt2, in, info);
+	NifStream(unknownQuat1, in, info);
+	NifStream(unknownQuat2, in, info);
+	NifStream(unknownQuat3, in, info);
+	NifStream(block_num, in, info);
+	link_stack.push_back(block_num);
+	NifStream(unknownInt4, in, info);
+	NifStream(unknownInt5, in, info);
+	NifStream(unknownByte1, in, info);
+	NifStream(unknownByte2, in, info);
+	NifStream(unknownInt6, in, info);
+	NifStream(block_num, in, info);
+	link_stack.push_back(block_num);
+	NifStream(block_num, in, info);
+	link_stack.push_back(block_num);
+	NifStream(block_num, in, info);
+	link_stack.push_back(block_num);
 	unknownRefs3.resize(unknownInt6);
-	for (unsigned int i1 = 0; i1 < unknownRefs3.size(); i1++) {
-		NifStream( block_num, in, info );
-		link_stack.push_back( block_num );
+	for(unsigned int i1 = 0; i1 < unknownRefs3.size(); i1++)
+	{
+		NifStream(block_num, in, info);
+		link_stack.push_back(block_num);
 	};
 
 	//--BEGIN POST-READ CUSTOM CODE--//
@@ -79,107 +85,154 @@ void NiPhysXActorDesc::Read( istream& in, list<unsigned int> & link_stack, const
 	//--END CUSTOM CODE--//
 }
 
-void NiPhysXActorDesc::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiPhysXActorDesc::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiObject::Write( out, link_map, missing_link_stack, info );
-	unknownInt6 = (int)(unknownRefs3.size());
-	NifStream( unknownInt1, out, info );
-	NifStream( unknownInt2, out, info );
-	NifStream( unknownQuat1, out, info );
-	NifStream( unknownQuat2, out, info );
-	NifStream( unknownQuat3, out, info );
-	if ( info.version < VER_3_3_0_13 ) {
-		WritePtr32( &(*unknownRef0), out );
-	} else {
-		if ( unknownRef0 != NULL ) {
-			map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(unknownRef0) );
-			if (it != link_map.end()) {
-				NifStream( it->second, out, info );
-				missing_link_stack.push_back( NULL );
-			} else {
-				NifStream( 0xFFFFFFFF, out, info );
-				missing_link_stack.push_back( unknownRef0 );
+	NiObject::Write(out, link_map, missing_link_stack, info);
+	unknownInt6 = (int) (unknownRefs3.size());
+	NifStream(unknownInt1, out, info);
+	NifStream(unknownInt2, out, info);
+	NifStream(unknownQuat1, out, info);
+	NifStream(unknownQuat2, out, info);
+	NifStream(unknownQuat3, out, info);
+	if(info.version < VER_3_3_0_13)
+	{
+		WritePtr32(&(*unknownRef0), out);
+	}
+	else
+	{
+		if(unknownRef0 != NULL)
+		{
+			map<NiObjectRef, unsigned int>::const_iterator it = link_map.find(StaticCast<NiObject>(unknownRef0));
+			if(it != link_map.end())
+			{
+				NifStream(it->second, out, info);
+				missing_link_stack.push_back(NULL);
 			}
-		} else {
-			NifStream( 0xFFFFFFFF, out, info );
-			missing_link_stack.push_back( NULL );
+			else
+			{
+				NifStream(0xFFFFFFFF, out, info);
+				missing_link_stack.push_back(unknownRef0);
+			}
+		}
+		else
+		{
+			NifStream(0xFFFFFFFF, out, info);
+			missing_link_stack.push_back(NULL);
 		}
 	}
-	NifStream( unknownInt4, out, info );
-	NifStream( unknownInt5, out, info );
-	NifStream( unknownByte1, out, info );
-	NifStream( unknownByte2, out, info );
-	NifStream( unknownInt6, out, info );
-	if ( info.version < VER_3_3_0_13 ) {
-		WritePtr32( &(*shapeDescription), out );
-	} else {
-		if ( shapeDescription != NULL ) {
-			map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(shapeDescription) );
-			if (it != link_map.end()) {
-				NifStream( it->second, out, info );
-				missing_link_stack.push_back( NULL );
-			} else {
-				NifStream( 0xFFFFFFFF, out, info );
-				missing_link_stack.push_back( shapeDescription );
+	NifStream(unknownInt4, out, info);
+	NifStream(unknownInt5, out, info);
+	NifStream(unknownByte1, out, info);
+	NifStream(unknownByte2, out, info);
+	NifStream(unknownInt6, out, info);
+	if(info.version < VER_3_3_0_13)
+	{
+		WritePtr32(&(*shapeDescription), out);
+	}
+	else
+	{
+		if(shapeDescription != NULL)
+		{
+			map<NiObjectRef, unsigned int>::const_iterator it = link_map.find(StaticCast<NiObject>(shapeDescription));
+			if(it != link_map.end())
+			{
+				NifStream(it->second, out, info);
+				missing_link_stack.push_back(NULL);
 			}
-		} else {
-			NifStream( 0xFFFFFFFF, out, info );
-			missing_link_stack.push_back( NULL );
+			else
+			{
+				NifStream(0xFFFFFFFF, out, info);
+				missing_link_stack.push_back(shapeDescription);
+			}
+		}
+		else
+		{
+			NifStream(0xFFFFFFFF, out, info);
+			missing_link_stack.push_back(NULL);
 		}
 	}
-	if ( info.version < VER_3_3_0_13 ) {
-		WritePtr32( &(*unknownRef1), out );
-	} else {
-		if ( unknownRef1 != NULL ) {
-			map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(unknownRef1) );
-			if (it != link_map.end()) {
-				NifStream( it->second, out, info );
-				missing_link_stack.push_back( NULL );
-			} else {
-				NifStream( 0xFFFFFFFF, out, info );
-				missing_link_stack.push_back( unknownRef1 );
+	if(info.version < VER_3_3_0_13)
+	{
+		WritePtr32(&(*unknownRef1), out);
+	}
+	else
+	{
+		if(unknownRef1 != NULL)
+		{
+			map<NiObjectRef, unsigned int>::const_iterator it = link_map.find(StaticCast<NiObject>(unknownRef1));
+			if(it != link_map.end())
+			{
+				NifStream(it->second, out, info);
+				missing_link_stack.push_back(NULL);
 			}
-		} else {
-			NifStream( 0xFFFFFFFF, out, info );
-			missing_link_stack.push_back( NULL );
+			else
+			{
+				NifStream(0xFFFFFFFF, out, info);
+				missing_link_stack.push_back(unknownRef1);
+			}
+		}
+		else
+		{
+			NifStream(0xFFFFFFFF, out, info);
+			missing_link_stack.push_back(NULL);
 		}
 	}
-	if ( info.version < VER_3_3_0_13 ) {
-		WritePtr32( &(*unknownRef2), out );
-	} else {
-		if ( unknownRef2 != NULL ) {
-			map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(unknownRef2) );
-			if (it != link_map.end()) {
-				NifStream( it->second, out, info );
-				missing_link_stack.push_back( NULL );
-			} else {
-				NifStream( 0xFFFFFFFF, out, info );
-				missing_link_stack.push_back( unknownRef2 );
+	if(info.version < VER_3_3_0_13)
+	{
+		WritePtr32(&(*unknownRef2), out);
+	}
+	else
+	{
+		if(unknownRef2 != NULL)
+		{
+			map<NiObjectRef, unsigned int>::const_iterator it = link_map.find(StaticCast<NiObject>(unknownRef2));
+			if(it != link_map.end())
+			{
+				NifStream(it->second, out, info);
+				missing_link_stack.push_back(NULL);
 			}
-		} else {
-			NifStream( 0xFFFFFFFF, out, info );
-			missing_link_stack.push_back( NULL );
+			else
+			{
+				NifStream(0xFFFFFFFF, out, info);
+				missing_link_stack.push_back(unknownRef2);
+			}
+		}
+		else
+		{
+			NifStream(0xFFFFFFFF, out, info);
+			missing_link_stack.push_back(NULL);
 		}
 	}
-	for (unsigned int i1 = 0; i1 < unknownRefs3.size(); i1++) {
-		if ( info.version < VER_3_3_0_13 ) {
-			WritePtr32( &(*unknownRefs3[i1]), out );
-		} else {
-			if ( unknownRefs3[i1] != NULL ) {
-				map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(unknownRefs3[i1]) );
-				if (it != link_map.end()) {
-					NifStream( it->second, out, info );
-					missing_link_stack.push_back( NULL );
-				} else {
-					NifStream( 0xFFFFFFFF, out, info );
-					missing_link_stack.push_back( unknownRefs3[i1] );
+	for(unsigned int i1 = 0; i1 < unknownRefs3.size(); i1++)
+	{
+		if(info.version < VER_3_3_0_13)
+		{
+			WritePtr32(&(*unknownRefs3[i1]), out);
+		}
+		else
+		{
+			if(unknownRefs3[i1] != NULL)
+			{
+				map<NiObjectRef, unsigned int>::const_iterator it = link_map.find(StaticCast<NiObject>(unknownRefs3[i1]));
+				if(it != link_map.end())
+				{
+					NifStream(it->second, out, info);
+					missing_link_stack.push_back(NULL);
 				}
-			} else {
-				NifStream( 0xFFFFFFFF, out, info );
-				missing_link_stack.push_back( NULL );
+				else
+				{
+					NifStream(0xFFFFFFFF, out, info);
+					missing_link_stack.push_back(unknownRefs3[i1]);
+				}
+			}
+			else
+			{
+				NifStream(0xFFFFFFFF, out, info);
+				missing_link_stack.push_back(NULL);
 			}
 		}
 	};
@@ -189,7 +242,8 @@ void NiPhysXActorDesc::Write( ostream& out, const map<NiObjectRef,unsigned int> 
 	//--END CUSTOM CODE--//
 }
 
-std::string NiPhysXActorDesc::asString( bool verbose ) const {
+std::string NiPhysXActorDesc::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -197,7 +251,7 @@ std::string NiPhysXActorDesc::asString( bool verbose ) const {
 	stringstream out;
 	unsigned int array_output_count = 0;
 	out << NiObject::asString(verbose);
-	unknownInt6 = (int)(unknownRefs3.size());
+	unknownInt6 = (int) (unknownRefs3.size());
 	out << "  Unknown Int 1:  " << unknownInt1 << endl;
 	out << "  Unknown Int 2:  " << unknownInt2 << endl;
 	out << "  Unknown Quat 1:  " << unknownQuat1 << endl;
@@ -213,12 +267,15 @@ std::string NiPhysXActorDesc::asString( bool verbose ) const {
 	out << "  Unknown Ref 1:  " << unknownRef1 << endl;
 	out << "  Unknown Ref 2:  " << unknownRef2 << endl;
 	array_output_count = 0;
-	for (unsigned int i1 = 0; i1 < unknownRefs3.size(); i1++) {
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+	for(unsigned int i1 = 0; i1 < unknownRefs3.size(); i1++)
+	{
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 			break;
 		};
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			break;
 		};
 		out << "    Unknown Refs 3[" << i1 << "]:  " << unknownRefs3[i1] << endl;
@@ -231,18 +288,20 @@ std::string NiPhysXActorDesc::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiPhysXActorDesc::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiPhysXActorDesc::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiObject::FixLinks( objects, link_stack, missing_link_stack, info );
-	unknownRef0 = FixLink<NiPhysXBodyDesc>( objects, link_stack, missing_link_stack, info );
-	shapeDescription = FixLink<NiPhysXShapeDesc>( objects, link_stack, missing_link_stack, info );
-	unknownRef1 = FixLink<NiObject>( objects, link_stack, missing_link_stack, info );
-	unknownRef2 = FixLink<NiObject>( objects, link_stack, missing_link_stack, info );
-	for (unsigned int i1 = 0; i1 < unknownRefs3.size(); i1++) {
-		unknownRefs3[i1] = FixLink<NiObject>( objects, link_stack, missing_link_stack, info );
+	NiObject::FixLinks(objects, link_stack, missing_link_stack, info);
+	unknownRef0 = FixLink<NiPhysXBodyDesc>(objects, link_stack, missing_link_stack, info);
+	shapeDescription = FixLink<NiPhysXShapeDesc>(objects, link_stack, missing_link_stack, info);
+	unknownRef1 = FixLink<NiObject>(objects, link_stack, missing_link_stack, info);
+	unknownRef2 = FixLink<NiObject>(objects, link_stack, missing_link_stack, info);
+	for(unsigned int i1 = 0; i1 < unknownRefs3.size(); i1++)
+	{
+		unknownRefs3[i1] = FixLink<NiObject>(objects, link_stack, missing_link_stack, info);
 	};
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
@@ -250,28 +309,32 @@ void NiPhysXActorDesc::FixLinks( const map<unsigned int,NiObjectRef> & objects, 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiPhysXActorDesc::GetRefs() const {
+std::list<NiObjectRef> NiPhysXActorDesc::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiObject::GetRefs();
-	if ( unknownRef0 != NULL )
+	if(unknownRef0 != NULL)
 		refs.push_back(StaticCast<NiObject>(unknownRef0));
-	if ( shapeDescription != NULL )
+	if(shapeDescription != NULL)
 		refs.push_back(StaticCast<NiObject>(shapeDescription));
-	if ( unknownRef1 != NULL )
+	if(unknownRef1 != NULL)
 		refs.push_back(StaticCast<NiObject>(unknownRef1));
-	if ( unknownRef2 != NULL )
+	if(unknownRef2 != NULL)
 		refs.push_back(StaticCast<NiObject>(unknownRef2));
-	for (unsigned int i1 = 0; i1 < unknownRefs3.size(); i1++) {
-		if ( unknownRefs3[i1] != NULL )
+	for(unsigned int i1 = 0; i1 < unknownRefs3.size(); i1++)
+	{
+		if(unknownRefs3[i1] != NULL)
 			refs.push_back(StaticCast<NiObject>(unknownRefs3[i1]));
 	};
 	return refs;
 }
 
-std::list<NiObject *> NiPhysXActorDesc::GetPtrs() const {
+std::list<NiObject *> NiPhysXActorDesc::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiObject::GetPtrs();
-	for (unsigned int i1 = 0; i1 < unknownRefs3.size(); i1++) {
+	for(unsigned int i1 = 0; i1 < unknownRefs3.size(); i1++)
+	{
 	};
 	return ptrs;
 }
@@ -279,11 +342,11 @@ std::list<NiObject *> NiPhysXActorDesc::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 Ref<NiPhysXShapeDesc > NiPhysXActorDesc::GetShapeDescription() const {
-	return shapeDescription;
+return shapeDescription;
 }
 
 void NiPhysXActorDesc::SetShapeDescription( Ref<NiPhysXShapeDesc > value ) {
-	shapeDescription = value;
+shapeDescription = value;
 }
 
 ****End Example Naive Implementation***/

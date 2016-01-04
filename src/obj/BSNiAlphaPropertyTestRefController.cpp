@@ -18,53 +18,60 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type BSNiAlphaPropertyTestRefController::TYPE("BSNiAlphaPropertyTestRefController", &NiAlphaController::TYPE );
+const Type BSNiAlphaPropertyTestRefController::TYPE("BSNiAlphaPropertyTestRefController", &NiAlphaController::TYPE);
 
-BSNiAlphaPropertyTestRefController::BSNiAlphaPropertyTestRefController() {
+BSNiAlphaPropertyTestRefController::BSNiAlphaPropertyTestRefController()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-BSNiAlphaPropertyTestRefController::~BSNiAlphaPropertyTestRefController() {
+BSNiAlphaPropertyTestRefController::~BSNiAlphaPropertyTestRefController()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & BSNiAlphaPropertyTestRefController::GetType() const {
+const Type & BSNiAlphaPropertyTestRefController::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * BSNiAlphaPropertyTestRefController::Create() {
+NiObject * BSNiAlphaPropertyTestRefController::Create()
+{
 	return new BSNiAlphaPropertyTestRefController;
 }
 
-void BSNiAlphaPropertyTestRefController::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void BSNiAlphaPropertyTestRefController::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiAlphaController::Read( in, link_stack, info );
+	NiAlphaController::Read(in, link_stack, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-void BSNiAlphaPropertyTestRefController::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void BSNiAlphaPropertyTestRefController::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiAlphaController::Write( out, link_map, missing_link_stack, info );
+	NiAlphaController::Write(out, link_map, missing_link_stack, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::string BSNiAlphaPropertyTestRefController::asString( bool verbose ) const {
+std::string BSNiAlphaPropertyTestRefController::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -78,25 +85,28 @@ std::string BSNiAlphaPropertyTestRefController::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void BSNiAlphaPropertyTestRefController::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void BSNiAlphaPropertyTestRefController::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiAlphaController::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiAlphaController::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> BSNiAlphaPropertyTestRefController::GetRefs() const {
+std::list<NiObjectRef> BSNiAlphaPropertyTestRefController::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiAlphaController::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> BSNiAlphaPropertyTestRefController::GetPtrs() const {
+std::list<NiObject *> BSNiAlphaPropertyTestRefController::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiAlphaController::GetPtrs();
 	return ptrs;

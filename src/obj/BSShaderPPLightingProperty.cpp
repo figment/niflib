@@ -19,47 +19,55 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type BSShaderPPLightingProperty::TYPE("BSShaderPPLightingProperty", &BSShaderLightingProperty::TYPE );
+const Type BSShaderPPLightingProperty::TYPE("BSShaderPPLightingProperty", &BSShaderLightingProperty::TYPE);
 
-BSShaderPPLightingProperty::BSShaderPPLightingProperty() : textureSet(NULL), unknownFloat2(0.0f), refractionPeriod((int)0), unknownFloat4(4.0f), unknownFloat5(1.0f) {
+BSShaderPPLightingProperty::BSShaderPPLightingProperty() : textureSet(NULL), unknownFloat2(0.0f), refractionPeriod((int) 0), unknownFloat4(4.0f), unknownFloat5(1.0f)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-BSShaderPPLightingProperty::~BSShaderPPLightingProperty() {
+BSShaderPPLightingProperty::~BSShaderPPLightingProperty()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & BSShaderPPLightingProperty::GetType() const {
+const Type & BSShaderPPLightingProperty::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * BSShaderPPLightingProperty::Create() {
+NiObject * BSShaderPPLightingProperty::Create()
+{
 	return new BSShaderPPLightingProperty;
 }
 
-void BSShaderPPLightingProperty::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void BSShaderPPLightingProperty::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
 	unsigned int block_num;
-	BSShaderLightingProperty::Read( in, link_stack, info );
-	NifStream( block_num, in, info );
-	link_stack.push_back( block_num );
-	if ( ((info.userVersion == 11) && (info.userVersion2 > 14)) ) {
-		NifStream( unknownFloat2, in, info );
-		NifStream( refractionPeriod, in, info );
+	BSShaderLightingProperty::Read(in, link_stack, info);
+	NifStream(block_num, in, info);
+	link_stack.push_back(block_num);
+	if(((info.userVersion == 11) && (info.userVersion2 > 14)))
+	{
+		NifStream(unknownFloat2, in, info);
+		NifStream(refractionPeriod, in, info);
 	};
-	if ( ((info.userVersion == 11) && (info.userVersion2 > 24)) ) {
-		NifStream( unknownFloat4, in, info );
-		NifStream( unknownFloat5, in, info );
+	if(((info.userVersion == 11) && (info.userVersion2 > 24)))
+	{
+		NifStream(unknownFloat4, in, info);
+		NifStream(unknownFloat5, in, info);
 	};
-	if ( (info.userVersion >= 12) ) {
-		NifStream( emissiveColor, in, info );
+	if((info.userVersion >= 12))
+	{
+		NifStream(emissiveColor, in, info);
 	};
 
 	//--BEGIN POST-READ CUSTOM CODE--//
@@ -67,39 +75,52 @@ void BSShaderPPLightingProperty::Read( istream& in, list<unsigned int> & link_st
 	//--END CUSTOM CODE--//
 }
 
-void BSShaderPPLightingProperty::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void BSShaderPPLightingProperty::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	BSShaderLightingProperty::Write( out, link_map, missing_link_stack, info );
-	if ( info.version < VER_3_3_0_13 ) {
-		WritePtr32( &(*textureSet), out );
-	} else {
-		if ( textureSet != NULL ) {
-			map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(textureSet) );
-			if (it != link_map.end()) {
-				NifStream( it->second, out, info );
-				missing_link_stack.push_back( NULL );
-			} else {
-				NifStream( 0xFFFFFFFF, out, info );
-				missing_link_stack.push_back( textureSet );
+	BSShaderLightingProperty::Write(out, link_map, missing_link_stack, info);
+	if(info.version < VER_3_3_0_13)
+	{
+		WritePtr32(&(*textureSet), out);
+	}
+	else
+	{
+		if(textureSet != NULL)
+		{
+			map<NiObjectRef, unsigned int>::const_iterator it = link_map.find(StaticCast<NiObject>(textureSet));
+			if(it != link_map.end())
+			{
+				NifStream(it->second, out, info);
+				missing_link_stack.push_back(NULL);
 			}
-		} else {
-			NifStream( 0xFFFFFFFF, out, info );
-			missing_link_stack.push_back( NULL );
+			else
+			{
+				NifStream(0xFFFFFFFF, out, info);
+				missing_link_stack.push_back(textureSet);
+			}
+		}
+		else
+		{
+			NifStream(0xFFFFFFFF, out, info);
+			missing_link_stack.push_back(NULL);
 		}
 	}
-	if ( ((info.userVersion == 11) && (info.userVersion2 > 14)) ) {
-		NifStream( unknownFloat2, out, info );
-		NifStream( refractionPeriod, out, info );
+	if(((info.userVersion == 11) && (info.userVersion2 > 14)))
+	{
+		NifStream(unknownFloat2, out, info);
+		NifStream(refractionPeriod, out, info);
 	};
-	if ( ((info.userVersion == 11) && (info.userVersion2 > 24)) ) {
-		NifStream( unknownFloat4, out, info );
-		NifStream( unknownFloat5, out, info );
+	if(((info.userVersion == 11) && (info.userVersion2 > 24)))
+	{
+		NifStream(unknownFloat4, out, info);
+		NifStream(unknownFloat5, out, info);
 	};
-	if ( (info.userVersion >= 12) ) {
-		NifStream( emissiveColor, out, info );
+	if((info.userVersion >= 12))
+	{
+		NifStream(emissiveColor, out, info);
 	};
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
@@ -107,7 +128,8 @@ void BSShaderPPLightingProperty::Write( ostream& out, const map<NiObjectRef,unsi
 	//--END CUSTOM CODE--//
 }
 
-std::string BSShaderPPLightingProperty::asString( bool verbose ) const {
+std::string BSShaderPPLightingProperty::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -127,28 +149,31 @@ std::string BSShaderPPLightingProperty::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void BSShaderPPLightingProperty::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void BSShaderPPLightingProperty::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	BSShaderLightingProperty::FixLinks( objects, link_stack, missing_link_stack, info );
-	textureSet = FixLink<BSShaderTextureSet>( objects, link_stack, missing_link_stack, info );
+	BSShaderLightingProperty::FixLinks(objects, link_stack, missing_link_stack, info);
+	textureSet = FixLink<BSShaderTextureSet>(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> BSShaderPPLightingProperty::GetRefs() const {
+std::list<NiObjectRef> BSShaderPPLightingProperty::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = BSShaderLightingProperty::GetRefs();
-	if ( textureSet != NULL )
+	if(textureSet != NULL)
 		refs.push_back(StaticCast<NiObject>(textureSet));
 	return refs;
 }
 
-std::list<NiObject *> BSShaderPPLightingProperty::GetPtrs() const {
+std::list<NiObject *> BSShaderPPLightingProperty::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = BSShaderLightingProperty::GetPtrs();
 	return ptrs;
@@ -157,38 +182,40 @@ std::list<NiObject *> BSShaderPPLightingProperty::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 Ref<BSShaderTextureSet > BSShaderPPLightingProperty::GetTextureSet() const {
-	return textureSet;
+return textureSet;
 }
 
 void BSShaderPPLightingProperty::SetTextureSet( Ref<BSShaderTextureSet > value ) {
-	textureSet = value;
+textureSet = value;
 }
 
 int BSShaderPPLightingProperty::GetRefractionPeriod() const {
-	return refractionPeriod;
+return refractionPeriod;
 }
 
 void BSShaderPPLightingProperty::SetRefractionPeriod( int value ) {
-	refractionPeriod = value;
+refractionPeriod = value;
 }
 
 Color4 BSShaderPPLightingProperty::GetEmissiveColor() const {
-	return emissiveColor;
+return emissiveColor;
 }
 
 void BSShaderPPLightingProperty::SetEmissiveColor( const Color4 & value ) {
-	emissiveColor = value;
+emissiveColor = value;
 }
 
 ****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 
-Ref<BSShaderTextureSet > BSShaderPPLightingProperty::GetTextureSet() const {
+Ref<BSShaderTextureSet > BSShaderPPLightingProperty::GetTextureSet() const
+{
 	return textureSet;
 }
 
-void BSShaderPPLightingProperty::SetTextureSet( Ref<BSShaderTextureSet > value ) {
+void BSShaderPPLightingProperty::SetTextureSet(Ref<BSShaderTextureSet > value)
+{
 	textureSet = value;
 }
 

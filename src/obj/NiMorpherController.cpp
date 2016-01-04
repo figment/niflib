@@ -19,64 +19,79 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiMorpherController::TYPE("NiMorpherController", &NiInterpController::TYPE );
+const Type NiMorpherController::TYPE("NiMorpherController", &NiInterpController::TYPE);
 
-NiMorpherController::NiMorpherController() : data(NULL) {
+NiMorpherController::NiMorpherController() : data(NULL)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-NiMorpherController::~NiMorpherController() {
+NiMorpherController::~NiMorpherController()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiMorpherController::GetType() const {
+const Type & NiMorpherController::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiMorpherController::Create() {
+NiObject * NiMorpherController::Create()
+{
 	return new NiMorpherController;
 }
 
-void NiMorpherController::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiMorpherController::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
 	unsigned int block_num;
-	NiInterpController::Read( in, link_stack, info );
-	NifStream( block_num, in, info );
-	link_stack.push_back( block_num );
+	NiInterpController::Read(in, link_stack, info);
+	NifStream(block_num, in, info);
+	link_stack.push_back(block_num);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-void NiMorpherController::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiMorpherController::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiInterpController::Write( out, link_map, missing_link_stack, info );
-	if ( info.version < VER_3_3_0_13 ) {
-		WritePtr32( &(*data), out );
-	} else {
-		if ( data != NULL ) {
-			map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(data) );
-			if (it != link_map.end()) {
-				NifStream( it->second, out, info );
-				missing_link_stack.push_back( NULL );
-			} else {
-				NifStream( 0xFFFFFFFF, out, info );
-				missing_link_stack.push_back( data );
+	NiInterpController::Write(out, link_map, missing_link_stack, info);
+	if(info.version < VER_3_3_0_13)
+	{
+		WritePtr32(&(*data), out);
+	}
+	else
+	{
+		if(data != NULL)
+		{
+			map<NiObjectRef, unsigned int>::const_iterator it = link_map.find(StaticCast<NiObject>(data));
+			if(it != link_map.end())
+			{
+				NifStream(it->second, out, info);
+				missing_link_stack.push_back(NULL);
 			}
-		} else {
-			NifStream( 0xFFFFFFFF, out, info );
-			missing_link_stack.push_back( NULL );
+			else
+			{
+				NifStream(0xFFFFFFFF, out, info);
+				missing_link_stack.push_back(data);
+			}
+		}
+		else
+		{
+			NifStream(0xFFFFFFFF, out, info);
+			missing_link_stack.push_back(NULL);
 		}
 	}
 
@@ -85,7 +100,8 @@ void NiMorpherController::Write( ostream& out, const map<NiObjectRef,unsigned in
 	//--END CUSTOM CODE--//
 }
 
-std::string NiMorpherController::asString( bool verbose ) const {
+std::string NiMorpherController::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -100,28 +116,31 @@ std::string NiMorpherController::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiMorpherController::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiMorpherController::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiInterpController::FixLinks( objects, link_stack, missing_link_stack, info );
-	data = FixLink<NiMorphData>( objects, link_stack, missing_link_stack, info );
+	NiInterpController::FixLinks(objects, link_stack, missing_link_stack, info);
+	data = FixLink<NiMorphData>(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiMorpherController::GetRefs() const {
+std::list<NiObjectRef> NiMorpherController::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiInterpController::GetRefs();
-	if ( data != NULL )
+	if(data != NULL)
 		refs.push_back(StaticCast<NiObject>(data));
 	return refs;
 }
 
-std::list<NiObject *> NiMorpherController::GetPtrs() const {
+std::list<NiObject *> NiMorpherController::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiInterpController::GetPtrs();
 	return ptrs;
@@ -130,11 +149,11 @@ std::list<NiObject *> NiMorpherController::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 Ref<NiMorphData > NiMorpherController::GetData() const {
-	return data;
+return data;
 }
 
 void NiMorpherController::SetData( Ref<NiMorphData > value ) {
-	data = value;
+data = value;
 }
 
 ****End Example Naive Implementation***/

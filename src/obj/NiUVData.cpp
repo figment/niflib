@@ -18,39 +18,47 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiUVData::TYPE("NiUVData", &NiObject::TYPE );
+const Type NiUVData::TYPE("NiUVData", &NiObject::TYPE);
 
-NiUVData::NiUVData() {
+NiUVData::NiUVData()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-NiUVData::~NiUVData() {
+NiUVData::~NiUVData()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiUVData::GetType() const {
+const Type & NiUVData::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiUVData::Create() {
+NiObject * NiUVData::Create()
+{
 	return new NiUVData;
 }
 
-void NiUVData::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiUVData::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiObject::Read( in, link_stack, info );
-	for (unsigned int i1 = 0; i1 < 4; i1++) {
-		NifStream( uvGroups[i1].numKeys, in, info );
-		if ( (uvGroups[i1].numKeys != 0) ) {
-			NifStream( uvGroups[i1].interpolation, in, info );
+	NiObject::Read(in, link_stack, info);
+	for(unsigned int i1 = 0; i1 < 4; i1++)
+	{
+		NifStream(uvGroups[i1].numKeys, in, info);
+		if((uvGroups[i1].numKeys != 0))
+		{
+			NifStream(uvGroups[i1].interpolation, in, info);
 		};
 		uvGroups[i1].keys.resize(uvGroups[i1].numKeys);
-		for (unsigned int i2 = 0; i2 < uvGroups[i1].keys.size(); i2++) {
-			NifStream( uvGroups[i1].keys[i2], in, info, uvGroups[i1].interpolation );
+		for(unsigned int i2 = 0; i2 < uvGroups[i1].keys.size(); i2++)
+		{
+			NifStream(uvGroups[i1].keys[i2], in, info, uvGroups[i1].interpolation);
 		};
 	};
 
@@ -58,19 +66,23 @@ void NiUVData::Read( istream& in, list<unsigned int> & link_stack, const NifInfo
 	//--END CUSTOM CODE--//
 }
 
-void NiUVData::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiUVData::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiObject::Write( out, link_map, missing_link_stack, info );
-	for (unsigned int i1 = 0; i1 < 4; i1++) {
-		uvGroups[i1].numKeys = (unsigned int)(uvGroups[i1].keys.size());
-		NifStream( uvGroups[i1].numKeys, out, info );
-		if ( (uvGroups[i1].numKeys != 0) ) {
-			NifStream( uvGroups[i1].interpolation, out, info );
+	NiObject::Write(out, link_map, missing_link_stack, info);
+	for(unsigned int i1 = 0; i1 < 4; i1++)
+	{
+		uvGroups[i1].numKeys = (unsigned int) (uvGroups[i1].keys.size());
+		NifStream(uvGroups[i1].numKeys, out, info);
+		if((uvGroups[i1].numKeys != 0))
+		{
+			NifStream(uvGroups[i1].interpolation, out, info);
 		};
-		for (unsigned int i2 = 0; i2 < uvGroups[i1].keys.size(); i2++) {
-			NifStream( uvGroups[i1].keys[i2], out, info, uvGroups[i1].interpolation );
+		for(unsigned int i2 = 0; i2 < uvGroups[i1].keys.size(); i2++)
+		{
+			NifStream(uvGroups[i1].keys[i2], out, info, uvGroups[i1].interpolation);
 		};
 	};
 
@@ -78,7 +90,8 @@ void NiUVData::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_m
 	//--END CUSTOM CODE--//
 }
 
-std::string NiUVData::asString( bool verbose ) const {
+std::string NiUVData::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
@@ -86,23 +99,29 @@ std::string NiUVData::asString( bool verbose ) const {
 	unsigned int array_output_count = 0;
 	out << NiObject::asString(verbose);
 	array_output_count = 0;
-	for (unsigned int i1 = 0; i1 < 4; i1++) {
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+	for(unsigned int i1 = 0; i1 < 4; i1++)
+	{
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 			break;
 		};
-		uvGroups[i1].numKeys = (unsigned int)(uvGroups[i1].keys.size());
+		uvGroups[i1].numKeys = (unsigned int) (uvGroups[i1].keys.size());
 		out << "    Num Keys:  " << uvGroups[i1].numKeys << endl;
-		if ( (uvGroups[i1].numKeys != 0) ) {
+		if((uvGroups[i1].numKeys != 0))
+		{
 			out << "      Interpolation:  " << uvGroups[i1].interpolation << endl;
 		};
 		array_output_count = 0;
-		for (unsigned int i2 = 0; i2 < uvGroups[i1].keys.size(); i2++) {
-			if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+		for(unsigned int i2 = 0; i2 < uvGroups[i1].keys.size(); i2++)
+		{
+			if(!verbose && (array_output_count > MAXARRAYDUMP))
+			{
 				out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 				break;
 			};
-			if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+			if(!verbose && (array_output_count > MAXARRAYDUMP))
+			{
 				break;
 			};
 			out << "      Keys[" << i2 << "]:  " << uvGroups[i1].keys[i2] << endl;
@@ -115,23 +134,26 @@ std::string NiUVData::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiUVData::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiUVData::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiObject::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiObject::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiUVData::GetRefs() const {
+std::list<NiObjectRef> NiUVData::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiObject::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiUVData::GetPtrs() const {
+std::list<NiObject *> NiUVData::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiObject::GetPtrs();
 	return ptrs;
@@ -140,11 +162,11 @@ std::list<NiObject *> NiUVData::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 array<4,KeyGroup<float > >  NiUVData::GetUvGroups() const {
-	return uvGroups;
+return uvGroups;
 }
 
 void NiUVData::SetUvGroups( const array<4,KeyGroup<float > >&  value ) {
-	uvGroups = value;
+uvGroups = value;
 }
 
 ****End Example Naive Implementation***/

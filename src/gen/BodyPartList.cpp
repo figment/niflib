@@ -9,15 +9,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-BodyPartList::BodyPartList() : partFlag((BSPartFlag)257), bodyPart((BSDismemberBodyPartType)0) {};
+BodyPartList::BodyPartList() : partFlag((BSPartFlag) 257), bodyPart((BSDismemberBodyPartType) 0) {};
 
 //Copy Constructor
-BodyPartList::BodyPartList( const BodyPartList & src ) {
+BodyPartList::BodyPartList(const BodyPartList & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-BodyPartList & BodyPartList::operator=( const BodyPartList & src ) {
+BodyPartList & BodyPartList::operator=(const BodyPartList & src)
+{
 	this->partFlag = src.partFlag;
 	this->bodyPart = src.bodyPart;
 	return *this;

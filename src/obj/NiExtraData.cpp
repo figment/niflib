@@ -18,72 +18,93 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiExtraData::TYPE("NiExtraData", &NiObject::TYPE );
+const Type NiExtraData::TYPE("NiExtraData", &NiObject::TYPE);
 
-NiExtraData::NiExtraData() : nextExtraData(NULL) {
+NiExtraData::NiExtraData() : nextExtraData(NULL)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-NiExtraData::~NiExtraData() {
+NiExtraData::~NiExtraData()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiExtraData::GetType() const {
+const Type & NiExtraData::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiExtraData::Create() {
+NiObject * NiExtraData::Create()
+{
 	return new NiExtraData;
 }
 
-void NiExtraData::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiExtraData::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
 	unsigned int block_num;
-	NiObject::Read( in, link_stack, info );
-	if ( info.version >= 0x0A000100 ) {
-		if ( (!IsDerivedType(BSExtraData::TYPE)) ) {
-			NifStream( name, in, info );
+	NiObject::Read(in, link_stack, info);
+	if(info.version >= 0x0A000100)
+	{
+		if((!IsDerivedType(BSExtraData::TYPE)))
+		{
+			NifStream(name, in, info);
 		};
 	};
-	if ( info.version <= 0x04020200 ) {
-		NifStream( block_num, in, info );
-		link_stack.push_back( block_num );
+	if(info.version <= 0x04020200)
+	{
+		NifStream(block_num, in, info);
+		link_stack.push_back(block_num);
 	};
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void NiExtraData::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiExtraData::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiObject::Write( out, link_map, missing_link_stack, info );
-	if ( info.version >= 0x0A000100 ) {
-		if ( (!IsDerivedType(BSExtraData::TYPE)) ) {
-			NifStream( name, out, info );
+	NiObject::Write(out, link_map, missing_link_stack, info);
+	if(info.version >= 0x0A000100)
+	{
+		if((!IsDerivedType(BSExtraData::TYPE)))
+		{
+			NifStream(name, out, info);
 		};
 	};
-	if ( info.version <= 0x04020200 ) {
-		if ( info.version < VER_3_3_0_13 ) {
-			WritePtr32( &(*nextExtraData), out );
-		} else {
-			if ( nextExtraData != NULL ) {
-				map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(nextExtraData) );
-				if (it != link_map.end()) {
-					NifStream( it->second, out, info );
-					missing_link_stack.push_back( NULL );
-				} else {
-					NifStream( 0xFFFFFFFF, out, info );
-					missing_link_stack.push_back( nextExtraData );
+	if(info.version <= 0x04020200)
+	{
+		if(info.version < VER_3_3_0_13)
+		{
+			WritePtr32(&(*nextExtraData), out);
+		}
+		else
+		{
+			if(nextExtraData != NULL)
+			{
+				map<NiObjectRef, unsigned int>::const_iterator it = link_map.find(StaticCast<NiObject>(nextExtraData));
+				if(it != link_map.end())
+				{
+					NifStream(it->second, out, info);
+					missing_link_stack.push_back(NULL);
 				}
-			} else {
-				NifStream( 0xFFFFFFFF, out, info );
-				missing_link_stack.push_back( NULL );
+				else
+				{
+					NifStream(0xFFFFFFFF, out, info);
+					missing_link_stack.push_back(nextExtraData);
+				}
+			}
+			else
+			{
+				NifStream(0xFFFFFFFF, out, info);
+				missing_link_stack.push_back(NULL);
 			}
 		}
 	};
@@ -92,13 +113,15 @@ void NiExtraData::Write( ostream& out, const map<NiObjectRef,unsigned int> & lin
 	//--END CUSTOM CODE--//
 }
 
-std::string NiExtraData::asString( bool verbose ) const {
+std::string NiExtraData::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
 	stringstream out;
 	out << NiObject::asString(verbose);
-	if ( (!IsDerivedType(BSExtraData::TYPE)) ) {
+	if((!IsDerivedType(BSExtraData::TYPE)))
+	{
 		out << "    Name:  " << name << endl;
 	};
 	out << "  Next Extra Data:  " << nextExtraData << endl;
@@ -108,28 +131,32 @@ std::string NiExtraData::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiExtraData::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiExtraData::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiObject::FixLinks( objects, link_stack, missing_link_stack, info );
-	if ( info.version <= 0x04020200 ) {
-		nextExtraData = FixLink<NiExtraData>( objects, link_stack, missing_link_stack, info );
+	NiObject::FixLinks(objects, link_stack, missing_link_stack, info);
+	if(info.version <= 0x04020200)
+	{
+		nextExtraData = FixLink<NiExtraData>(objects, link_stack, missing_link_stack, info);
 	};
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiExtraData::GetRefs() const {
+std::list<NiObjectRef> NiExtraData::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiObject::GetRefs();
-	if ( nextExtraData != NULL )
+	if(nextExtraData != NULL)
 		refs.push_back(StaticCast<NiObject>(nextExtraData));
 	return refs;
 }
 
-std::list<NiObject *> NiExtraData::GetPtrs() const {
+std::list<NiObject *> NiExtraData::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiObject::GetPtrs();
 	return ptrs;
@@ -138,45 +165,50 @@ std::list<NiObject *> NiExtraData::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 IndexString NiExtraData::GetName() const {
-	return name;
+return name;
 }
 
 void NiExtraData::SetName( const IndexString & value ) {
-	name = value;
+name = value;
 }
 
 Ref<NiExtraData > NiExtraData::GetNextExtraData() const {
-	return nextExtraData;
+return nextExtraData;
 }
 
 void NiExtraData::SetNextExtraData( Ref<NiExtraData > value ) {
-	nextExtraData = value;
+nextExtraData = value;
 }
 
 ****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 
-string NiExtraData::GetName() {
+string NiExtraData::GetName()
+{
 	return name;
 }
 
-void NiExtraData::SetName( const string & new_name ) {
+void NiExtraData::SetName(const string & new_name)
+{
 	name = new_name;
 }
 
 /*! Used to format a human readable string that includes the type of the object */
-string NiExtraData::GetIDString() const {
+string NiExtraData::GetIDString() const
+{
 	stringstream out;
 	out << NiObject::GetIDString() << " {" << name << "}";
 	return out.str();
 }
 
-NiExtraDataRef NiExtraData::GetNextExtraData() const {
+NiExtraDataRef NiExtraData::GetNextExtraData() const
+{
 	return nextExtraData;
 }
 
-void NiExtraData::SetNextExtraData( NiExtraData * obj ) {
+void NiExtraData::SetNextExtraData(NiExtraData * obj)
+{
 	nextExtraData = obj;
 }
 

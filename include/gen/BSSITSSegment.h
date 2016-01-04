@@ -12,33 +12,32 @@ All rights reserved.  Please see niflib.h for license. */
 
 // Include structures
 #include "BSSITSSubSegment.h"
-namespace Niflib {
+namespace Niflib
+{
+	/*!  */
+	struct BSSITSSegment
+	{
+		/*! Default Constructor */
+		NIFLIB_API BSSITSSegment();
+		/*! Default Destructor */
+		NIFLIB_API ~BSSITSSegment();
+		/*! Copy Constructor */
+		NIFLIB_API BSSITSSegment(const BSSITSSegment & src);
+		/*! Copy Operator */
+		NIFLIB_API BSSITSSegment & operator=(const BSSITSSegment & src);
+		/*! Unknown. */
+		unsigned int triangleOffset;
+		/*! Unknown. */
+		unsigned int triangleCount;
+		/*! Unknown. */
+		unsigned int materialHash;
+		/*! Unknown. */
+		mutable unsigned int numRecords;
+		/*! Unknown. */
+		vector<BSSITSSubSegment > subIndexRecord;
+		//--BEGIN MISC CUSTOM CODE--//
 
-
-/*!  */
-struct BSSITSSegment {
-	/*! Default Constructor */
-	NIFLIB_API BSSITSSegment();
-	/*! Default Destructor */
-	NIFLIB_API ~BSSITSSegment();
-	/*! Copy Constructor */
-	NIFLIB_API BSSITSSegment( const BSSITSSegment & src );
-	/*! Copy Operator */
-	NIFLIB_API BSSITSSegment & operator=( const BSSITSSegment & src );
-	/*! Unknown. */
-	unsigned int triangleOffset;
-	/*! Unknown. */
-	unsigned int triangleCount;
-	/*! Unknown. */
-	unsigned int materialHash;
-	/*! Unknown. */
-	mutable unsigned int numRecords;
-	/*! Unknown. */
-	vector<BSSITSSubSegment > subIndexRecord;
-	//--BEGIN MISC CUSTOM CODE--//
-
-	//--END CUSTOM CODE--//
-};
-
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

@@ -18,57 +18,64 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiArkShaderExtraData::TYPE("NiArkShaderExtraData", &NiExtraData::TYPE );
+const Type NiArkShaderExtraData::TYPE("NiArkShaderExtraData", &NiExtraData::TYPE);
 
-NiArkShaderExtraData::NiArkShaderExtraData() : unknownInt((int)0) {
+NiArkShaderExtraData::NiArkShaderExtraData() : unknownInt((int) 0)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-NiArkShaderExtraData::~NiArkShaderExtraData() {
+NiArkShaderExtraData::~NiArkShaderExtraData()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiArkShaderExtraData::GetType() const {
+const Type & NiArkShaderExtraData::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiArkShaderExtraData::Create() {
+NiObject * NiArkShaderExtraData::Create()
+{
 	return new NiArkShaderExtraData;
 }
 
-void NiArkShaderExtraData::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiArkShaderExtraData::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiExtraData::Read( in, link_stack, info );
-	NifStream( unknownInt, in, info );
-	NifStream( unknownString, in, info );
+	NiExtraData::Read(in, link_stack, info);
+	NifStream(unknownInt, in, info);
+	NifStream(unknownString, in, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-void NiArkShaderExtraData::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiArkShaderExtraData::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiExtraData::Write( out, link_map, missing_link_stack, info );
-	NifStream( unknownInt, out, info );
-	NifStream( unknownString, out, info );
+	NiExtraData::Write(out, link_map, missing_link_stack, info);
+	NifStream(unknownInt, out, info);
+	NifStream(unknownString, out, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::string NiArkShaderExtraData::asString( bool verbose ) const {
+std::string NiArkShaderExtraData::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -84,25 +91,28 @@ std::string NiArkShaderExtraData::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiArkShaderExtraData::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiArkShaderExtraData::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiExtraData::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiExtraData::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiArkShaderExtraData::GetRefs() const {
+std::list<NiObjectRef> NiArkShaderExtraData::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiExtraData::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiArkShaderExtraData::GetPtrs() const {
+std::list<NiObject *> NiArkShaderExtraData::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiExtraData::GetPtrs();
 	return ptrs;

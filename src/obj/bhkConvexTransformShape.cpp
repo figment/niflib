@@ -17,47 +17,54 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type bhkConvexTransformShape::TYPE("bhkConvexTransformShape", &bhkTransformShape::TYPE );
+const Type bhkConvexTransformShape::TYPE("bhkConvexTransformShape", &bhkTransformShape::TYPE);
 
-bhkConvexTransformShape::bhkConvexTransformShape() {
+bhkConvexTransformShape::bhkConvexTransformShape()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-bhkConvexTransformShape::~bhkConvexTransformShape() {
+bhkConvexTransformShape::~bhkConvexTransformShape()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & bhkConvexTransformShape::GetType() const {
+const Type & bhkConvexTransformShape::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * bhkConvexTransformShape::Create() {
+NiObject * bhkConvexTransformShape::Create()
+{
 	return new bhkConvexTransformShape;
 }
 
-void bhkConvexTransformShape::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void bhkConvexTransformShape::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	bhkTransformShape::Read( in, link_stack, info );
+	bhkTransformShape::Read(in, link_stack, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void bhkConvexTransformShape::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void bhkConvexTransformShape::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	bhkTransformShape::Write( out, link_map, missing_link_stack, info );
+	bhkTransformShape::Write(out, link_map, missing_link_stack, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string bhkConvexTransformShape::asString( bool verbose ) const {
+std::string bhkConvexTransformShape::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
@@ -69,23 +76,26 @@ std::string bhkConvexTransformShape::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void bhkConvexTransformShape::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void bhkConvexTransformShape::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	bhkTransformShape::FixLinks( objects, link_stack, missing_link_stack, info );
+	bhkTransformShape::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> bhkConvexTransformShape::GetRefs() const {
+std::list<NiObjectRef> bhkConvexTransformShape::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = bhkTransformShape::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> bhkConvexTransformShape::GetPtrs() const {
+std::list<NiObject *> bhkConvexTransformShape::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = bhkTransformShape::GetPtrs();
 	return ptrs;
@@ -96,10 +106,9 @@ std::list<NiObject *> bhkConvexTransformShape::GetPtrs() const {
 //--BEGIN MISC CUSTOM CODE--//
 void bhkConvexTransformShape::CalcMassProperties(float density, bool solid, float &mass, float &volume, Vector3 &center, InertiaMatrix& inertia)
 {
-	center = Vector3(0,0,0);
+	center = Vector3(0, 0, 0);
 	mass = 0.0f, volume = 0.0f;
 	inertia = InertiaMatrix::IDENTITY;
 }
-
 
 //--END CUSTOM CODE--//

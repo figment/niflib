@@ -21,79 +21,93 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type ATextureRenderData::TYPE("ATextureRenderData", &NiObject::TYPE );
+const Type ATextureRenderData::TYPE("ATextureRenderData", &NiObject::TYPE);
 
-ATextureRenderData::ATextureRenderData() : pixelFormat((PixelFormat)0), redMask((unsigned int)0), greenMask((unsigned int)0), blueMask((unsigned int)0), alphaMask((unsigned int)0), bitsPerPixel((byte)0), unknownInt((unsigned int)0), unknownInt2((int)0), unknownInt3((unsigned int)0), flags((byte)0), unknownInt4((unsigned int)0), unknownByte1((byte)0), palette(NULL), numMipmaps((unsigned int)0), bytesPerPixel((unsigned int)0) {
+ATextureRenderData::ATextureRenderData() : pixelFormat((PixelFormat) 0), redMask((unsigned int) 0), greenMask((unsigned int) 0), blueMask((unsigned int) 0), alphaMask((unsigned int) 0), bitsPerPixel((byte) 0), unknownInt((unsigned int) 0), unknownInt2((int) 0), unknownInt3((unsigned int) 0), flags((byte) 0), unknownInt4((unsigned int) 0), unknownByte1((byte) 0), palette(NULL), numMipmaps((unsigned int) 0), bytesPerPixel((unsigned int) 0)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-ATextureRenderData::~ATextureRenderData() {
+ATextureRenderData::~ATextureRenderData()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & ATextureRenderData::GetType() const {
+const Type & ATextureRenderData::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * ATextureRenderData::Create() {
+NiObject * ATextureRenderData::Create()
+{
 	return new ATextureRenderData;
 }
 
-void ATextureRenderData::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void ATextureRenderData::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
 	unsigned int block_num;
-	NiObject::Read( in, link_stack, info );
-	NifStream( pixelFormat, in, info );
-	if ( info.version <= 0x0A020000 ) {
-		NifStream( redMask, in, info );
-		NifStream( greenMask, in, info );
-		NifStream( blueMask, in, info );
-		NifStream( alphaMask, in, info );
-		NifStream( bitsPerPixel, in, info );
-		for (unsigned int i2 = 0; i2 < 3; i2++) {
-			NifStream( unknown3Bytes[i2], in, info );
+	NiObject::Read(in, link_stack, info);
+	NifStream(pixelFormat, in, info);
+	if(info.version <= 0x0A020000)
+	{
+		NifStream(redMask, in, info);
+		NifStream(greenMask, in, info);
+		NifStream(blueMask, in, info);
+		NifStream(alphaMask, in, info);
+		NifStream(bitsPerPixel, in, info);
+		for(unsigned int i2 = 0; i2 < 3; i2++)
+		{
+			NifStream(unknown3Bytes[i2], in, info);
 		};
-		for (unsigned int i2 = 0; i2 < 8; i2++) {
-			NifStream( unknown8Bytes[i2], in, info );
-		};
-	};
-	if ( ( info.version >= 0x0A010000 ) && ( info.version <= 0x0A020000 ) ) {
-		NifStream( unknownInt, in, info );
-	};
-	if ( info.version >= 0x14000004 ) {
-		NifStream( bitsPerPixel, in, info );
-		NifStream( unknownInt2, in, info );
-		NifStream( unknownInt3, in, info );
-		NifStream( flags, in, info );
-		NifStream( unknownInt4, in, info );
-	};
-	if ( info.version >= 0x14030006 ) {
-		NifStream( unknownByte1, in, info );
-	};
-	if ( info.version >= 0x14000004 ) {
-		for (unsigned int i2 = 0; i2 < 4; i2++) {
-			NifStream( channels[i2].type, in, info );
-			NifStream( channels[i2].convention, in, info );
-			NifStream( channels[i2].bitsPerChannel, in, info );
-			NifStream( channels[i2].unknownByte1, in, info );
+		for(unsigned int i2 = 0; i2 < 8; i2++)
+		{
+			NifStream(unknown8Bytes[i2], in, info);
 		};
 	};
-	NifStream( block_num, in, info );
-	link_stack.push_back( block_num );
-	NifStream( numMipmaps, in, info );
-	NifStream( bytesPerPixel, in, info );
+	if((info.version >= 0x0A010000) && (info.version <= 0x0A020000))
+	{
+		NifStream(unknownInt, in, info);
+	};
+	if(info.version >= 0x14000004)
+	{
+		NifStream(bitsPerPixel, in, info);
+		NifStream(unknownInt2, in, info);
+		NifStream(unknownInt3, in, info);
+		NifStream(flags, in, info);
+		NifStream(unknownInt4, in, info);
+	};
+	if(info.version >= 0x14030006)
+	{
+		NifStream(unknownByte1, in, info);
+	};
+	if(info.version >= 0x14000004)
+	{
+		for(unsigned int i2 = 0; i2 < 4; i2++)
+		{
+			NifStream(channels[i2].type, in, info);
+			NifStream(channels[i2].convention, in, info);
+			NifStream(channels[i2].bitsPerChannel, in, info);
+			NifStream(channels[i2].unknownByte1, in, info);
+		};
+	};
+	NifStream(block_num, in, info);
+	link_stack.push_back(block_num);
+	NifStream(numMipmaps, in, info);
+	NifStream(bytesPerPixel, in, info);
 	mipmaps.resize(numMipmaps);
-	for (unsigned int i1 = 0; i1 < mipmaps.size(); i1++) {
-		NifStream( mipmaps[i1].width, in, info );
-		NifStream( mipmaps[i1].height, in, info );
-		NifStream( mipmaps[i1].offset, in, info );
+	for(unsigned int i1 = 0; i1 < mipmaps.size(); i1++)
+	{
+		NifStream(mipmaps[i1].width, in, info);
+		NifStream(mipmaps[i1].height, in, info);
+		NifStream(mipmaps[i1].offset, in, info);
 	};
 
 	//--BEGIN POST-READ CUSTOM CODE--//
@@ -101,71 +115,90 @@ void ATextureRenderData::Read( istream& in, list<unsigned int> & link_stack, con
 	//--END CUSTOM CODE--//
 }
 
-void ATextureRenderData::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void ATextureRenderData::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiObject::Write( out, link_map, missing_link_stack, info );
-	numMipmaps = (unsigned int)(mipmaps.size());
-	NifStream( pixelFormat, out, info );
-	if ( info.version <= 0x0A020000 ) {
-		NifStream( redMask, out, info );
-		NifStream( greenMask, out, info );
-		NifStream( blueMask, out, info );
-		NifStream( alphaMask, out, info );
-		NifStream( bitsPerPixel, out, info );
-		for (unsigned int i2 = 0; i2 < 3; i2++) {
-			NifStream( unknown3Bytes[i2], out, info );
+	NiObject::Write(out, link_map, missing_link_stack, info);
+	numMipmaps = (unsigned int) (mipmaps.size());
+	NifStream(pixelFormat, out, info);
+	if(info.version <= 0x0A020000)
+	{
+		NifStream(redMask, out, info);
+		NifStream(greenMask, out, info);
+		NifStream(blueMask, out, info);
+		NifStream(alphaMask, out, info);
+		NifStream(bitsPerPixel, out, info);
+		for(unsigned int i2 = 0; i2 < 3; i2++)
+		{
+			NifStream(unknown3Bytes[i2], out, info);
 		};
-		for (unsigned int i2 = 0; i2 < 8; i2++) {
-			NifStream( unknown8Bytes[i2], out, info );
-		};
-	};
-	if ( ( info.version >= 0x0A010000 ) && ( info.version <= 0x0A020000 ) ) {
-		NifStream( unknownInt, out, info );
-	};
-	if ( info.version >= 0x14000004 ) {
-		NifStream( bitsPerPixel, out, info );
-		NifStream( unknownInt2, out, info );
-		NifStream( unknownInt3, out, info );
-		NifStream( flags, out, info );
-		NifStream( unknownInt4, out, info );
-	};
-	if ( info.version >= 0x14030006 ) {
-		NifStream( unknownByte1, out, info );
-	};
-	if ( info.version >= 0x14000004 ) {
-		for (unsigned int i2 = 0; i2 < 4; i2++) {
-			NifStream( channels[i2].type, out, info );
-			NifStream( channels[i2].convention, out, info );
-			NifStream( channels[i2].bitsPerChannel, out, info );
-			NifStream( channels[i2].unknownByte1, out, info );
+		for(unsigned int i2 = 0; i2 < 8; i2++)
+		{
+			NifStream(unknown8Bytes[i2], out, info);
 		};
 	};
-	if ( info.version < VER_3_3_0_13 ) {
-		WritePtr32( &(*palette), out );
-	} else {
-		if ( palette != NULL ) {
-			map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(palette) );
-			if (it != link_map.end()) {
-				NifStream( it->second, out, info );
-				missing_link_stack.push_back( NULL );
-			} else {
-				NifStream( 0xFFFFFFFF, out, info );
-				missing_link_stack.push_back( palette );
+	if((info.version >= 0x0A010000) && (info.version <= 0x0A020000))
+	{
+		NifStream(unknownInt, out, info);
+	};
+	if(info.version >= 0x14000004)
+	{
+		NifStream(bitsPerPixel, out, info);
+		NifStream(unknownInt2, out, info);
+		NifStream(unknownInt3, out, info);
+		NifStream(flags, out, info);
+		NifStream(unknownInt4, out, info);
+	};
+	if(info.version >= 0x14030006)
+	{
+		NifStream(unknownByte1, out, info);
+	};
+	if(info.version >= 0x14000004)
+	{
+		for(unsigned int i2 = 0; i2 < 4; i2++)
+		{
+			NifStream(channels[i2].type, out, info);
+			NifStream(channels[i2].convention, out, info);
+			NifStream(channels[i2].bitsPerChannel, out, info);
+			NifStream(channels[i2].unknownByte1, out, info);
+		};
+	};
+	if(info.version < VER_3_3_0_13)
+	{
+		WritePtr32(&(*palette), out);
+	}
+	else
+	{
+		if(palette != NULL)
+		{
+			map<NiObjectRef, unsigned int>::const_iterator it = link_map.find(StaticCast<NiObject>(palette));
+			if(it != link_map.end())
+			{
+				NifStream(it->second, out, info);
+				missing_link_stack.push_back(NULL);
 			}
-		} else {
-			NifStream( 0xFFFFFFFF, out, info );
-			missing_link_stack.push_back( NULL );
+			else
+			{
+				NifStream(0xFFFFFFFF, out, info);
+				missing_link_stack.push_back(palette);
+			}
+		}
+		else
+		{
+			NifStream(0xFFFFFFFF, out, info);
+			missing_link_stack.push_back(NULL);
 		}
 	}
-	NifStream( numMipmaps, out, info );
-	NifStream( bytesPerPixel, out, info );
-	for (unsigned int i1 = 0; i1 < mipmaps.size(); i1++) {
-		NifStream( mipmaps[i1].width, out, info );
-		NifStream( mipmaps[i1].height, out, info );
-		NifStream( mipmaps[i1].offset, out, info );
+	NifStream(numMipmaps, out, info);
+	NifStream(bytesPerPixel, out, info);
+	for(unsigned int i1 = 0; i1 < mipmaps.size(); i1++)
+	{
+		NifStream(mipmaps[i1].width, out, info);
+		NifStream(mipmaps[i1].height, out, info);
+		NifStream(mipmaps[i1].offset, out, info);
 	};
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
@@ -173,7 +206,8 @@ void ATextureRenderData::Write( ostream& out, const map<NiObjectRef,unsigned int
 	//--END CUSTOM CODE--//
 }
 
-std::string ATextureRenderData::asString( bool verbose ) const {
+std::string ATextureRenderData::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -181,7 +215,7 @@ std::string ATextureRenderData::asString( bool verbose ) const {
 	stringstream out;
 	unsigned int array_output_count = 0;
 	out << NiObject::asString(verbose);
-	numMipmaps = (unsigned int)(mipmaps.size());
+	numMipmaps = (unsigned int) (mipmaps.size());
 	out << "  Pixel Format:  " << pixelFormat << endl;
 	out << "  Red Mask:  " << redMask << endl;
 	out << "  Green Mask:  " << greenMask << endl;
@@ -189,24 +223,30 @@ std::string ATextureRenderData::asString( bool verbose ) const {
 	out << "  Alpha Mask:  " << alphaMask << endl;
 	out << "  Bits Per Pixel:  " << bitsPerPixel << endl;
 	array_output_count = 0;
-	for (unsigned int i1 = 0; i1 < 3; i1++) {
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+	for(unsigned int i1 = 0; i1 < 3; i1++)
+	{
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 			break;
 		};
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			break;
 		};
 		out << "    Unknown 3 Bytes[" << i1 << "]:  " << unknown3Bytes[i1] << endl;
 		array_output_count++;
 	};
 	array_output_count = 0;
-	for (unsigned int i1 = 0; i1 < 8; i1++) {
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+	for(unsigned int i1 = 0; i1 < 8; i1++)
+	{
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 			break;
 		};
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			break;
 		};
 		out << "    Unknown 8 Bytes[" << i1 << "]:  " << unknown8Bytes[i1] << endl;
@@ -219,8 +259,10 @@ std::string ATextureRenderData::asString( bool verbose ) const {
 	out << "  Unknown Int 4:  " << unknownInt4 << endl;
 	out << "  Unknown Byte 1:  " << unknownByte1 << endl;
 	array_output_count = 0;
-	for (unsigned int i1 = 0; i1 < 4; i1++) {
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+	for(unsigned int i1 = 0; i1 < 4; i1++)
+	{
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 			break;
 		};
@@ -233,8 +275,10 @@ std::string ATextureRenderData::asString( bool verbose ) const {
 	out << "  Num Mipmaps:  " << numMipmaps << endl;
 	out << "  Bytes Per Pixel:  " << bytesPerPixel << endl;
 	array_output_count = 0;
-	for (unsigned int i1 = 0; i1 < mipmaps.size(); i1++) {
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+	for(unsigned int i1 = 0; i1 < mipmaps.size(); i1++)
+	{
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 			break;
 		};
@@ -249,28 +293,31 @@ std::string ATextureRenderData::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void ATextureRenderData::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void ATextureRenderData::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiObject::FixLinks( objects, link_stack, missing_link_stack, info );
-	palette = FixLink<NiPalette>( objects, link_stack, missing_link_stack, info );
+	NiObject::FixLinks(objects, link_stack, missing_link_stack, info);
+	palette = FixLink<NiPalette>(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> ATextureRenderData::GetRefs() const {
+std::list<NiObjectRef> ATextureRenderData::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiObject::GetRefs();
-	if ( palette != NULL )
+	if(palette != NULL)
 		refs.push_back(StaticCast<NiObject>(palette));
 	return refs;
 }
 
-std::list<NiObject *> ATextureRenderData::GetPtrs() const {
+std::list<NiObject *> ATextureRenderData::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiObject::GetPtrs();
 	return ptrs;
@@ -279,99 +326,99 @@ std::list<NiObject *> ATextureRenderData::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 PixelFormat ATextureRenderData::GetPixelFormat() const {
-	return pixelFormat;
+return pixelFormat;
 }
 
 void ATextureRenderData::SetPixelFormat( const PixelFormat & value ) {
-	pixelFormat = value;
+pixelFormat = value;
 }
 
 unsigned int ATextureRenderData::GetRedMask() const {
-	return redMask;
+return redMask;
 }
 
 void ATextureRenderData::SetRedMask( unsigned int value ) {
-	redMask = value;
+redMask = value;
 }
 
 unsigned int ATextureRenderData::GetGreenMask() const {
-	return greenMask;
+return greenMask;
 }
 
 void ATextureRenderData::SetGreenMask( unsigned int value ) {
-	greenMask = value;
+greenMask = value;
 }
 
 unsigned int ATextureRenderData::GetBlueMask() const {
-	return blueMask;
+return blueMask;
 }
 
 void ATextureRenderData::SetBlueMask( unsigned int value ) {
-	blueMask = value;
+blueMask = value;
 }
 
 unsigned int ATextureRenderData::GetAlphaMask() const {
-	return alphaMask;
+return alphaMask;
 }
 
 void ATextureRenderData::SetAlphaMask( unsigned int value ) {
-	alphaMask = value;
+alphaMask = value;
 }
 
 byte ATextureRenderData::GetBitsPerPixel() const {
-	return bitsPerPixel;
+return bitsPerPixel;
 }
 
 void ATextureRenderData::SetBitsPerPixel( byte value ) {
-	bitsPerPixel = value;
+bitsPerPixel = value;
 }
 
 byte ATextureRenderData::GetBitsPerPixel() const {
-	return bitsPerPixel;
+return bitsPerPixel;
 }
 
 void ATextureRenderData::SetBitsPerPixel( byte value ) {
-	bitsPerPixel = value;
+bitsPerPixel = value;
 }
 
 byte ATextureRenderData::GetFlags() const {
-	return flags;
+return flags;
 }
 
 void ATextureRenderData::SetFlags( byte value ) {
-	flags = value;
+flags = value;
 }
 
 array<4,ChannelData >  ATextureRenderData::GetChannels() const {
-	return channels;
+return channels;
 }
 
 void ATextureRenderData::SetChannels( const array<4,ChannelData >&  value ) {
-	channels = value;
+channels = value;
 }
 
 Ref<NiPalette > ATextureRenderData::GetPalette() const {
-	return palette;
+return palette;
 }
 
 void ATextureRenderData::SetPalette( Ref<NiPalette > value ) {
-	palette = value;
+palette = value;
 }
 
 unsigned int ATextureRenderData::GetBytesPerPixel() const {
-	return bytesPerPixel;
+return bytesPerPixel;
 }
 
 void ATextureRenderData::SetBytesPerPixel( unsigned int value ) {
-	bytesPerPixel = value;
+bytesPerPixel = value;
 }
 
 vector<MipMap > ATextureRenderData::GetMipmaps() const {
-	return mipmaps;
+return mipmaps;
 }
 
 void ATextureRenderData::SetMipmaps( const vector<MipMap >& value ) {
-	mipmaps = value;
+mipmaps = value;
 }
 
 ****End Example Naive Implementation***/

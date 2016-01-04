@@ -10,28 +10,27 @@ All rights reserved.  Please see niflib.h for license. */
 
 #include "../NIF_IO.h"
 
-namespace Niflib {
-
-
-/*!  */
-struct ExtraMeshDataEpicMickey2 {
-	/*! Default Constructor */
-	NIFLIB_API ExtraMeshDataEpicMickey2();
-	/*! Default Destructor */
-	NIFLIB_API ~ExtraMeshDataEpicMickey2();
-	/*! Copy Constructor */
-	NIFLIB_API ExtraMeshDataEpicMickey2( const ExtraMeshDataEpicMickey2 & src );
-	/*! Copy Operator */
-	NIFLIB_API ExtraMeshDataEpicMickey2 & operator=( const ExtraMeshDataEpicMickey2 & src );
-	/*! Unknown. */
-	int start;
-	/*! Unknown. */
-	int end;
-	/*! Unknown. */
-	array<10,short > unknownShorts;
-	//--BEGIN MISC CUSTOM CODE--//
-	//--END CUSTOM CODE--//
-};
-
+namespace Niflib
+{
+	/*!  */
+	struct ExtraMeshDataEpicMickey2
+	{
+		/*! Default Constructor */
+		NIFLIB_API ExtraMeshDataEpicMickey2();
+		/*! Default Destructor */
+		NIFLIB_API ~ExtraMeshDataEpicMickey2();
+		/*! Copy Constructor */
+		NIFLIB_API ExtraMeshDataEpicMickey2(const ExtraMeshDataEpicMickey2 & src);
+		/*! Copy Operator */
+		NIFLIB_API ExtraMeshDataEpicMickey2 & operator=(const ExtraMeshDataEpicMickey2 & src);
+		/*! Unknown. */
+		int start;
+		/*! Unknown. */
+		int end;
+		/*! Unknown. */
+		array<10, short > unknownShorts;
+		//--BEGIN MISC CUSTOM CODE--//
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

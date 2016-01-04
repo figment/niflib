@@ -12,7 +12,6 @@ using namespace std;
 
 namespace Niflib
 {
-
 	/*! The type of force?  May be more valid values. */
 	enum ForceType
 	{
@@ -1303,6 +1302,5 @@ namespace Niflib
 	};
 
 	ostream & operator<<(ostream & out, BSSegmentFlags const & val);
-
 }
 #endif

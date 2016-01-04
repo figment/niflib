@@ -10,30 +10,29 @@ All rights reserved.  Please see niflib.h for license. */
 
 #include "../NIF_IO.h"
 
-namespace Niflib {
-
-
-/*! Bounding box. */
-struct BoundingBox {
-	/*! Default Constructor */
-	NIFLIB_API BoundingBox();
-	/*! Default Destructor */
-	NIFLIB_API ~BoundingBox();
-	/*! Copy Constructor */
-	NIFLIB_API BoundingBox( const BoundingBox & src );
-	/*! Copy Operator */
-	NIFLIB_API BoundingBox & operator=( const BoundingBox & src );
-	/*! Usually 1. */
-	unsigned int unknownInt;
-	/*! Translation vector. */
-	Vector3 translation;
-	/*! Rotation matrix. */
-	Matrix33 rotation;
-	/*! Radius, per direction. */
-	Vector3 radius;
-	//--BEGIN MISC CUSTOM CODE--//
-	//--END CUSTOM CODE--//
-};
-
+namespace Niflib
+{
+	/*! Bounding box. */
+	struct BoundingBox
+	{
+		/*! Default Constructor */
+		NIFLIB_API BoundingBox();
+		/*! Default Destructor */
+		NIFLIB_API ~BoundingBox();
+		/*! Copy Constructor */
+		NIFLIB_API BoundingBox(const BoundingBox & src);
+		/*! Copy Operator */
+		NIFLIB_API BoundingBox & operator=(const BoundingBox & src);
+		/*! Usually 1. */
+		unsigned int unknownInt;
+		/*! Translation vector. */
+		Vector3 translation;
+		/*! Rotation matrix. */
+		Matrix33 rotation;
+		/*! Radius, per direction. */
+		Vector3 radius;
+		//--BEGIN MISC CUSTOM CODE--//
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

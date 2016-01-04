@@ -9,15 +9,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-BSTreadTransfSubInfo::BSTreadTransfSubInfo() : unknownInt1((int)0), unknownInt2((int)0), unknownInt3((int)0), unknownInt4((int)0), unknownInt5((int)0), unknownInt6((int)0), unknownInt7((int)0), unknownInt8((int)0) {};
+BSTreadTransfSubInfo::BSTreadTransfSubInfo() : unknownInt1((int) 0), unknownInt2((int) 0), unknownInt3((int) 0), unknownInt4((int) 0), unknownInt5((int) 0), unknownInt6((int) 0), unknownInt7((int) 0), unknownInt8((int) 0) {};
 
 //Copy Constructor
-BSTreadTransfSubInfo::BSTreadTransfSubInfo( const BSTreadTransfSubInfo & src ) {
+BSTreadTransfSubInfo::BSTreadTransfSubInfo(const BSTreadTransfSubInfo & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-BSTreadTransfSubInfo & BSTreadTransfSubInfo::operator=( const BSTreadTransfSubInfo & src ) {
+BSTreadTransfSubInfo & BSTreadTransfSubInfo::operator=(const BSTreadTransfSubInfo & src)
+{
 	this->unknownInt1 = src.unknownInt1;
 	this->unknownInt2 = src.unknownInt2;
 	this->unknownInt3 = src.unknownInt3;
