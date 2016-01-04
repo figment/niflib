@@ -12,28 +12,27 @@ All rights reserved.  Please see niflib.h for license. */
 
 // Include structures
 #include "TexDesc.h"
-namespace Niflib {
-
-
-/*! An extended texture description for shader textures. */
-struct ShaderTexDesc {
-	/*! Default Constructor */
-	NIFLIB_API ShaderTexDesc();
-	/*! Default Destructor */
-	NIFLIB_API ~ShaderTexDesc();
-	/*! Copy Constructor */
-	NIFLIB_API ShaderTexDesc( const ShaderTexDesc & src );
-	/*! Copy Operator */
-	NIFLIB_API ShaderTexDesc & operator=( const ShaderTexDesc & src );
-	/*! Is it used? */
-	bool isUsed;
-	/*! The texture data. */
-	TexDesc textureData;
-	/*! Map Index */
-	unsigned int mapIndex;
-	//--BEGIN MISC CUSTOM CODE--//
-	//--END CUSTOM CODE--//
-};
-
+namespace Niflib
+{
+	/*! An extended texture description for shader textures. */
+	struct ShaderTexDesc
+	{
+		/*! Default Constructor */
+		NIFLIB_API ShaderTexDesc();
+		/*! Default Destructor */
+		NIFLIB_API ~ShaderTexDesc();
+		/*! Copy Constructor */
+		NIFLIB_API ShaderTexDesc(const ShaderTexDesc & src);
+		/*! Copy Operator */
+		NIFLIB_API ShaderTexDesc & operator=(const ShaderTexDesc & src);
+		/*! Is it used? */
+		bool isUsed;
+		/*! The texture data. */
+		TexDesc textureData;
+		/*! Map Index */
+		unsigned int mapIndex;
+		//--BEGIN MISC CUSTOM CODE--//
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

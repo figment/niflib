@@ -12,12 +12,14 @@ using namespace Niflib;
 CapsuleBV::CapsuleBV() : unknownFloat1(0.0f), unknownFloat2(0.0f) {};
 
 //Copy Constructor
-CapsuleBV::CapsuleBV( const CapsuleBV & src ) {
+CapsuleBV::CapsuleBV(const CapsuleBV & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-CapsuleBV & CapsuleBV::operator=( const CapsuleBV & src ) {
+CapsuleBV & CapsuleBV::operator=(const CapsuleBV & src)
+{
 	this->center = src.center;
 	this->origin = src.origin;
 	this->unknownFloat1 = src.unknownFloat1;

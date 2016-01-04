@@ -10,28 +10,27 @@ All rights reserved.  Please see niflib.h for license. */
 
 #include "../NIF_IO.h"
 
-namespace Niflib {
-
-
-/*! Bethesda-specific node. */
-struct BSSegmentedTriangle {
-	/*! Default Constructor */
-	NIFLIB_API BSSegmentedTriangle();
-	/*! Default Destructor */
-	NIFLIB_API ~BSSegmentedTriangle();
-	/*! Copy Constructor */
-	NIFLIB_API BSSegmentedTriangle( const BSSegmentedTriangle & src );
-	/*! Copy Operator */
-	NIFLIB_API BSSegmentedTriangle & operator=( const BSSegmentedTriangle & src );
-	/*! Unknown */
-	int unknownInt1;
-	/*! Unknown */
-	int unknownInt2;
-	/*! Unknown */
-	byte unknownByte1;
-	//--BEGIN MISC CUSTOM CODE--//
-	//--END CUSTOM CODE--//
-};
-
+namespace Niflib
+{
+	/*! Bethesda-specific node. */
+	struct BSSegmentedTriangle
+	{
+		/*! Default Constructor */
+		NIFLIB_API BSSegmentedTriangle();
+		/*! Default Destructor */
+		NIFLIB_API ~BSSegmentedTriangle();
+		/*! Copy Constructor */
+		NIFLIB_API BSSegmentedTriangle(const BSSegmentedTriangle & src);
+		/*! Copy Operator */
+		NIFLIB_API BSSegmentedTriangle & operator=(const BSSegmentedTriangle & src);
+		/*! Unknown */
+		int unknownInt1;
+		/*! Unknown */
+		int unknownInt2;
+		/*! Unknown */
+		byte unknownByte1;
+		//--BEGIN MISC CUSTOM CODE--//
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

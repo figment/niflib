@@ -9,15 +9,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-SkinPartitionUnknownItem1::SkinPartitionUnknownItem1() : unknownFlags((unsigned int)0), f1(0.0f), f2(0.0f), f3(0.0f), f4(0.0f), f5(0.0f) {};
+SkinPartitionUnknownItem1::SkinPartitionUnknownItem1() : unknownFlags((unsigned int) 0), f1(0.0f), f2(0.0f), f3(0.0f), f4(0.0f), f5(0.0f) {};
 
 //Copy Constructor
-SkinPartitionUnknownItem1::SkinPartitionUnknownItem1( const SkinPartitionUnknownItem1 & src ) {
+SkinPartitionUnknownItem1::SkinPartitionUnknownItem1(const SkinPartitionUnknownItem1 & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-SkinPartitionUnknownItem1 & SkinPartitionUnknownItem1::operator=( const SkinPartitionUnknownItem1 & src ) {
+SkinPartitionUnknownItem1 & SkinPartitionUnknownItem1::operator=(const SkinPartitionUnknownItem1 & src)
+{
 	this->unknownFlags = src.unknownFlags;
 	this->f1 = src.f1;
 	this->f2 = src.f2;

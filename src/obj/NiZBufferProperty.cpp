@@ -17,55 +17,64 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiZBufferProperty::TYPE("NiZBufferProperty", &NiProperty::TYPE );
+const Type NiZBufferProperty::TYPE("NiZBufferProperty", &NiProperty::TYPE);
 
-NiZBufferProperty::NiZBufferProperty() : flags((unsigned short)3), function((ZCompareMode)ZCOMP_LESS_EQUAL) {
+NiZBufferProperty::NiZBufferProperty() : flags((unsigned short) 3), function((ZCompareMode) ZCOMP_LESS_EQUAL)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-NiZBufferProperty::~NiZBufferProperty() {
+NiZBufferProperty::~NiZBufferProperty()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiZBufferProperty::GetType() const {
+const Type & NiZBufferProperty::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiZBufferProperty::Create() {
+NiObject * NiZBufferProperty::Create()
+{
 	return new NiZBufferProperty;
 }
 
-void NiZBufferProperty::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiZBufferProperty::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiProperty::Read( in, link_stack, info );
-	NifStream( flags, in, info );
-	if ( ( info.version >= 0x0401000C ) && ( info.version <= 0x14000005 ) ) {
-		NifStream( function, in, info );
+	NiProperty::Read(in, link_stack, info);
+	NifStream(flags, in, info);
+	if((info.version >= 0x0401000C) && (info.version <= 0x14000005))
+	{
+		NifStream(function, in, info);
 	};
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void NiZBufferProperty::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiZBufferProperty::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiProperty::Write( out, link_map, missing_link_stack, info );
-	NifStream( flags, out, info );
-	if ( ( info.version >= 0x0401000C ) && ( info.version <= 0x14000005 ) ) {
-		NifStream( function, out, info );
+	NiProperty::Write(out, link_map, missing_link_stack, info);
+	NifStream(flags, out, info);
+	if((info.version >= 0x0401000C) && (info.version <= 0x14000005))
+	{
+		NifStream(function, out, info);
 	};
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string NiZBufferProperty::asString( bool verbose ) const {
+std::string NiZBufferProperty::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
@@ -79,23 +88,26 @@ std::string NiZBufferProperty::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiZBufferProperty::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiZBufferProperty::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiProperty::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiProperty::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiZBufferProperty::GetRefs() const {
+std::list<NiObjectRef> NiZBufferProperty::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiProperty::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiZBufferProperty::GetPtrs() const {
+std::list<NiObject *> NiZBufferProperty::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiProperty::GetPtrs();
 	return ptrs;
@@ -104,39 +116,43 @@ std::list<NiObject *> NiZBufferProperty::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 unsigned short NiZBufferProperty::GetFlags() const {
-	return flags;
+return flags;
 }
 
 void NiZBufferProperty::SetFlags( unsigned short value ) {
-	flags = value;
+flags = value;
 }
 
 ZCompareMode NiZBufferProperty::GetFunction() const {
-	return function;
+return function;
 }
 
 void NiZBufferProperty::SetFunction( const ZCompareMode & value ) {
-	function = value;
+function = value;
 }
 
 ****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 
-unsigned short NiZBufferProperty::GetFlags() const {
-   return flags;
+unsigned short NiZBufferProperty::GetFlags() const
+{
+	return flags;
 }
 
-void NiZBufferProperty::SetFlags(unsigned short value) {
-   flags = value;
+void NiZBufferProperty::SetFlags(unsigned short value)
+{
+	flags = value;
 }
 
-ZCompareMode NiZBufferProperty::GetDepthFunction() const {
-   return function;
+ZCompareMode NiZBufferProperty::GetDepthFunction() const
+{
+	return function;
 }
 
-void NiZBufferProperty::SetDepthFunction(ZCompareMode value) {
-   function = value;
+void NiZBufferProperty::SetDepthFunction(ZCompareMode value)
+{
+	function = value;
 }
 
 //--END CUSTOM CODE--//

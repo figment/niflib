@@ -17,49 +17,56 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiColorExtraData::TYPE("NiColorExtraData", &NiExtraData::TYPE );
+const Type NiColorExtraData::TYPE("NiColorExtraData", &NiExtraData::TYPE);
 
-NiColorExtraData::NiColorExtraData() {
+NiColorExtraData::NiColorExtraData()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-NiColorExtraData::~NiColorExtraData() {
+NiColorExtraData::~NiColorExtraData()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiColorExtraData::GetType() const {
+const Type & NiColorExtraData::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiColorExtraData::Create() {
+NiObject * NiColorExtraData::Create()
+{
 	return new NiColorExtraData;
 }
 
-void NiColorExtraData::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiColorExtraData::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiExtraData::Read( in, link_stack, info );
-	NifStream( data, in, info );
+	NiExtraData::Read(in, link_stack, info);
+	NifStream(data, in, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void NiColorExtraData::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiColorExtraData::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiExtraData::Write( out, link_map, missing_link_stack, info );
-	NifStream( data, out, info );
+	NiExtraData::Write(out, link_map, missing_link_stack, info);
+	NifStream(data, out, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string NiColorExtraData::asString( bool verbose ) const {
+std::string NiColorExtraData::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
@@ -72,23 +79,26 @@ std::string NiColorExtraData::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiColorExtraData::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiColorExtraData::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiExtraData::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiExtraData::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiColorExtraData::GetRefs() const {
+std::list<NiObjectRef> NiColorExtraData::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiExtraData::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiColorExtraData::GetPtrs() const {
+std::list<NiObject *> NiColorExtraData::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiExtraData::GetPtrs();
 	return ptrs;
@@ -97,22 +107,24 @@ std::list<NiObject *> NiColorExtraData::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 Color4 NiColorExtraData::GetData() const {
-	return data;
+return data;
 }
 
 void NiColorExtraData::SetData( const Color4 & value ) {
-	data = value;
+data = value;
 }
 
 ****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 
-Color4 NiColorExtraData::GetData() const {
+Color4 NiColorExtraData::GetData() const
+{
 	return data;
 }
-	
-void NiColorExtraData::SetData( const Color4 & n ) {
+
+void NiColorExtraData::SetData(const Color4 & n)
+{
 	data = n;
 }
 

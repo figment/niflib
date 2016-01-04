@@ -14,146 +14,146 @@ All rights reserved.  Please see niflib.h for license. */
 //--END CUSTOM CODE--//
 
 #include "NiParticleModifier.h"
-namespace Niflib {
+namespace Niflib
+{
+	class NiParticleBomb;
+	typedef Ref<NiParticleBomb> NiParticleBombRef;
 
-class NiParticleBomb;
-typedef Ref<NiParticleBomb> NiParticleBombRef;
+	/*! A particle modifier. */
+	class NiParticleBomb : public NiParticleModifier
+	{
+	public:
+		/*! Constructor */
+		NIFLIB_API NiParticleBomb();
 
-/*! A particle modifier. */
-class NiParticleBomb : public NiParticleModifier {
-public:
-	/*! Constructor */
-	NIFLIB_API NiParticleBomb();
+		/*! Destructor */
+		NIFLIB_API virtual ~NiParticleBomb();
 
-	/*! Destructor */
-	NIFLIB_API virtual ~NiParticleBomb();
+		/*!
+		 * A constant value which uniquly identifies objects of this type.
+		 */
+		NIFLIB_API static const Type TYPE;
 
-	/*!
-	 * A constant value which uniquly identifies objects of this type.
-	 */
-	NIFLIB_API static const Type TYPE;
+		/*!
+		 * A factory function used during file reading to create an instance of this type of object.
+		 * \return A pointer to a newly allocated instance of this type of object.
+		 */
+		NIFLIB_API static NiObject * Create();
 
-	/*!
-	 * A factory function used during file reading to create an instance of this type of object.
-	 * \return A pointer to a newly allocated instance of this type of object.
-	 */
-	NIFLIB_API static NiObject * Create();
+		/*!
+		 * Summarizes the information contained in this object in English.
+		 * \param[in] verbose Determines whether or not detailed information about large areas of data will be printed out.
+		 * \return A string containing a summary of the information within the object in English.  This is the function that Niflyze calls to generate its analysis, so the output is the same.
+		 */
+		NIFLIB_API virtual string asString(bool verbose = false) const;
 
-	/*!
-	 * Summarizes the information contained in this object in English.
-	 * \param[in] verbose Determines whether or not detailed information about large areas of data will be printed out.
-	 * \return A string containing a summary of the information within the object in English.  This is the function that Niflyze calls to generate its analysis, so the output is the same.
-	 */
-	NIFLIB_API virtual string asString( bool verbose = false ) const;
+		/*!
+		 * Used to determine the type of a particular instance of this object.
+		 * \return The type constant for the actual type of the object.
+		 */
+		NIFLIB_API virtual const Type & GetType() const;
 
-	/*!
-	 * Used to determine the type of a particular instance of this object.
-	 * \return The type constant for the actual type of the object.
-	 */
-	NIFLIB_API virtual const Type & GetType() const;
+		/***Begin Example Naive Implementation****
 
-	/***Begin Example Naive Implementation****
+		// Unknown.
+		// \return The current value.
+		float GetDecay_() const;
 
-	// Unknown.
-	// \return The current value.
-	float GetDecay_() const;
+		// Unknown.
+		// \param[in] value The new value.
+		void SetDecay_( float value );
 
-	// Unknown.
-	// \param[in] value The new value.
-	void SetDecay_( float value );
+		// Unknown.
+		// \return The current value.
+		float GetDuration_() const;
 
-	// Unknown.
-	// \return The current value.
-	float GetDuration_() const;
+		// Unknown.
+		// \param[in] value The new value.
+		void SetDuration_( float value );
 
-	// Unknown.
-	// \param[in] value The new value.
-	void SetDuration_( float value );
+		// Unknown.
+		// \return The current value.
+		float GetDeltav_() const;
 
-	// Unknown.
-	// \return The current value.
-	float GetDeltav_() const;
+		// Unknown.
+		// \param[in] value The new value.
+		void SetDeltav_( float value );
 
-	// Unknown.
-	// \param[in] value The new value.
-	void SetDeltav_( float value );
+		// Unknown.
+		// \return The current value.
+		float GetStart_() const;
 
-	// Unknown.
-	// \return The current value.
-	float GetStart_() const;
+		// Unknown.
+		// \param[in] value The new value.
+		void SetStart_( float value );
 
-	// Unknown.
-	// \param[in] value The new value.
-	void SetStart_( float value );
+		// Unknown.
+		// \return The current value.
+		DecayType GetDecayType_() const;
 
-	// Unknown.
-	// \return The current value.
-	DecayType GetDecayType_() const;
+		// Unknown.
+		// \param[in] value The new value.
+		void SetDecayType_( const DecayType & value );
 
-	// Unknown.
-	// \param[in] value The new value.
-	void SetDecayType_( const DecayType & value );
+		// Unknown.
+		// \return The current value.
+		SymmetryType GetSymmetryType_() const;
 
-	// Unknown.
-	// \return The current value.
-	SymmetryType GetSymmetryType_() const;
+		// Unknown.
+		// \param[in] value The new value.
+		void SetSymmetryType_( const SymmetryType & value );
 
-	// Unknown.
-	// \param[in] value The new value.
-	void SetSymmetryType_( const SymmetryType & value );
+		// The position of the mass point relative to the particle system?
+		// \return The current value.
+		Vector3 GetPosition_() const;
 
-	// The position of the mass point relative to the particle system?
-	// \return The current value.
-	Vector3 GetPosition_() const;
+		// The position of the mass point relative to the particle system?
+		// \param[in] value The new value.
+		void SetPosition_( const Vector3 & value );
 
-	// The position of the mass point relative to the particle system?
-	// \param[in] value The new value.
-	void SetPosition_( const Vector3 & value );
+		// The direction of the applied acceleration?
+		// \return The current value.
+		Vector3 GetDirection_() const;
 
-	// The direction of the applied acceleration?
-	// \return The current value.
-	Vector3 GetDirection_() const;
+		// The direction of the applied acceleration?
+		// \param[in] value The new value.
+		void SetDirection_( const Vector3 & value );
 
-	// The direction of the applied acceleration?
-	// \param[in] value The new value.
-	void SetDirection_( const Vector3 & value );
+		****End Example Naive Implementation***/
 
-	****End Example Naive Implementation***/
+		//--BEGIN MISC CUSTOM CODE--//
+		//--END CUSTOM CODE--//
+	protected:
+		/*! Unknown. */
+		float decay_;
+		/*! Unknown. */
+		float duration_;
+		/*! Unknown. */
+		float deltav_;
+		/*! Unknown. */
+		float start_;
+		/*! Unknown. */
+		DecayType decayType_;
+		/*! Unknown. */
+		SymmetryType symmetryType_;
+		/*! The position of the mass point relative to the particle system? */
+		Vector3 position_;
+		/*! The direction of the applied acceleration? */
+		Vector3 direction_;
+	public:
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info);
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const;
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info);
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual list<NiObjectRef> GetRefs() const;
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual list<NiObject *> GetPtrs() const;
+	};
 
-	//--BEGIN MISC CUSTOM CODE--//
+	//--BEGIN FILE FOOT CUSTOM CODE--//
 	//--END CUSTOM CODE--//
-protected:
-	/*! Unknown. */
-	float decay_;
-	/*! Unknown. */
-	float duration_;
-	/*! Unknown. */
-	float deltav_;
-	/*! Unknown. */
-	float start_;
-	/*! Unknown. */
-	DecayType decayType_;
-	/*! Unknown. */
-	SymmetryType symmetryType_;
-	/*! The position of the mass point relative to the particle system? */
-	Vector3 position_;
-	/*! The direction of the applied acceleration? */
-	Vector3 direction_;
-public:
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const;
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info );
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual list<NiObjectRef> GetRefs() const;
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual list<NiObject *> GetPtrs() const;
-};
-
-//--BEGIN FILE FOOT CUSTOM CODE--//
-//--END CUSTOM CODE--//
-
 } //End Niflib namespace
 #endif

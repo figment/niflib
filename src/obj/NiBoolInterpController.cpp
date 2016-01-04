@@ -17,47 +17,54 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiBoolInterpController::TYPE("NiBoolInterpController", &NiSingleInterpController::TYPE );
+const Type NiBoolInterpController::TYPE("NiBoolInterpController", &NiSingleInterpController::TYPE);
 
-NiBoolInterpController::NiBoolInterpController() {
+NiBoolInterpController::NiBoolInterpController()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-NiBoolInterpController::~NiBoolInterpController() {
+NiBoolInterpController::~NiBoolInterpController()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiBoolInterpController::GetType() const {
+const Type & NiBoolInterpController::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiBoolInterpController::Create() {
+NiObject * NiBoolInterpController::Create()
+{
 	return new NiBoolInterpController;
 }
 
-void NiBoolInterpController::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiBoolInterpController::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiSingleInterpController::Read( in, link_stack, info );
+	NiSingleInterpController::Read(in, link_stack, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void NiBoolInterpController::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiBoolInterpController::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiSingleInterpController::Write( out, link_map, missing_link_stack, info );
+	NiSingleInterpController::Write(out, link_map, missing_link_stack, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string NiBoolInterpController::asString( bool verbose ) const {
+std::string NiBoolInterpController::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
@@ -69,23 +76,26 @@ std::string NiBoolInterpController::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiBoolInterpController::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiBoolInterpController::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiSingleInterpController::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiSingleInterpController::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiBoolInterpController::GetRefs() const {
+std::list<NiObjectRef> NiBoolInterpController::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiSingleInterpController::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiBoolInterpController::GetPtrs() const {
+std::list<NiObject *> NiBoolInterpController::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiSingleInterpController::GetPtrs();
 	return ptrs;

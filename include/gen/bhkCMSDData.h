@@ -10,26 +10,25 @@ All rights reserved.  Please see niflib.h for license. */
 
 #include "../NIF_IO.h"
 
-namespace Niflib {
-
-
-/*! Unknown, used in bhkCompressedMeshShapeData */
-struct bhkCMSDData {
-	/*! Default Constructor */
-	NIFLIB_API bhkCMSDData();
-	/*! Default Destructor */
-	NIFLIB_API ~bhkCMSDData();
-	/*! Copy Constructor */
-	NIFLIB_API bhkCMSDData( const bhkCMSDData & src );
-	/*! Copy Operator */
-	NIFLIB_API bhkCMSDData & operator=( const bhkCMSDData & src );
-	/*! Unknown */
-	Vector3 unknownFloats1;
-	/*! Unknown */
-	unsigned int unknownInt1;
-	//--BEGIN MISC CUSTOM CODE--//
-	//--END CUSTOM CODE--//
-};
-
+namespace Niflib
+{
+	/*! Unknown, used in bhkCompressedMeshShapeData */
+	struct bhkCMSDData
+	{
+		/*! Default Constructor */
+		NIFLIB_API bhkCMSDData();
+		/*! Default Destructor */
+		NIFLIB_API ~bhkCMSDData();
+		/*! Copy Constructor */
+		NIFLIB_API bhkCMSDData(const bhkCMSDData & src);
+		/*! Copy Operator */
+		NIFLIB_API bhkCMSDData & operator=(const bhkCMSDData & src);
+		/*! Unknown */
+		Vector3 unknownFloats1;
+		/*! Unknown */
+		unsigned int unknownInt1;
+		//--BEGIN MISC CUSTOM CODE--//
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

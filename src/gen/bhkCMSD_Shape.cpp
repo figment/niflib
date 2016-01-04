@@ -9,15 +9,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-bhkCMSD_Shape::bhkCMSD_Shape() : numShape((unsigned int)0) {};
+bhkCMSD_Shape::bhkCMSD_Shape() : numShape((unsigned int) 0) {};
 
 //Copy Constructor
-bhkCMSD_Shape::bhkCMSD_Shape( const bhkCMSD_Shape & src ) {
+bhkCMSD_Shape::bhkCMSD_Shape(const bhkCMSD_Shape & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-bhkCMSD_Shape & bhkCMSD_Shape::operator=( const bhkCMSD_Shape & src ) {
+bhkCMSD_Shape & bhkCMSD_Shape::operator=(const bhkCMSD_Shape & src)
+{
 	this->numShape = src.numShape;
 	this->shape = src.shape;
 	return *this;

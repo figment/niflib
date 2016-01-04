@@ -13,54 +13,36 @@
 #include "../public_types.h"
 #include "types.h"
 
-
-
-
-namespace triangle_stripper {
-
-	namespace detail {
-
-
-
-
-class policy
+namespace triangle_stripper
 {
-public:
-	policy(std::size_t MinStripSize, bool Cache);
+	namespace detail
+	{
+		class policy
+		{
+		public:
+			policy(std::size_t MinStripSize, bool Cache);
 
-	strip BestStrip() const;
-	void Challenge(strip Strip, std::size_t Degree, std::size_t CacheHits);
+			strip BestStrip() const;
+			void Challenge(strip Strip, std::size_t Degree, std::size_t CacheHits);
 
-private:
-	strip	m_Strip;
-	std::size_t	m_Degree;
-	std::size_t	m_CacheHits;
+		private:
+			strip	m_Strip;
+			std::size_t	m_Degree;
+			std::size_t	m_CacheHits;
 
-	const std::size_t	m_MinStripSize;
-	const bool		m_Cache;
-};
+			const std::size_t	m_MinStripSize;
+			const bool		m_Cache;
+		};
 
+		inline policy::policy(std::size_t MinStripSize, bool Cache)
+			: m_Degree(0), m_CacheHits(0), m_MinStripSize(MinStripSize), m_Cache(Cache)
+		{}
 
-
-
-
-inline policy::policy(std::size_t MinStripSize, bool Cache)
-: m_Degree(0), m_CacheHits(0), m_MinStripSize(MinStripSize), m_Cache(Cache) { }
-
-
-inline strip policy::BestStrip() const
-{
-	return m_Strip;
-}
-
-
-
-
+		inline strip policy::BestStrip() const
+		{
+			return m_Strip;
+		}
 	} // namespace detail
-
 } // namespace triangle_stripper
-
-
-
 
 #endif // TRI_STRIPPER_HEADER_GUARD_POLICY_H

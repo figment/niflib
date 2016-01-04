@@ -10,15 +10,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-bhkCMSDContainer::bhkCMSDContainer() : unknownInt((unsigned int)0), unknownShort1((unsigned short)0), unknownShort2((unsigned short)0) {};
+bhkCMSDContainer::bhkCMSDContainer() : unknownInt((unsigned int) 0), unknownShort1((unsigned short) 0), unknownShort2((unsigned short) 0) {};
 
 //Copy Constructor
-bhkCMSDContainer::bhkCMSDContainer( const bhkCMSDContainer & src ) {
+bhkCMSDContainer::bhkCMSDContainer(const bhkCMSDContainer & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-bhkCMSDContainer & bhkCMSDContainer::operator=( const bhkCMSDContainer & src ) {
+bhkCMSDContainer & bhkCMSDContainer::operator=(const bhkCMSDContainer & src)
+{
 	this->unknownFloats = src.unknownFloats;
 	this->unknownInt = src.unknownInt;
 	this->unknownShort1 = src.unknownShort1;

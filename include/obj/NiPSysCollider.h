@@ -17,145 +17,145 @@ All rights reserved.  Please see niflib.h for license. */
 
 // Include structures
 #include "../Ref.h"
-namespace Niflib {
+namespace Niflib
+{
+	// Forward define of referenced NIF objects
+	class NiPSysSpawnModifier;
+	class NiObject;
+	class NiNode;
+	class NiPSysCollider;
+	typedef Ref<NiPSysCollider> NiPSysColliderRef;
 
-// Forward define of referenced NIF objects
-class NiPSysSpawnModifier;
-class NiObject;
-class NiNode;
-class NiPSysCollider;
-typedef Ref<NiPSysCollider> NiPSysColliderRef;
+	/*! Particle system collider. */
+	class NiPSysCollider : public NiObject
+	{
+	public:
+		/*! Constructor */
+		NIFLIB_API NiPSysCollider();
 
-/*! Particle system collider. */
-class NiPSysCollider : public NiObject {
-public:
-	/*! Constructor */
-	NIFLIB_API NiPSysCollider();
+		/*! Destructor */
+		NIFLIB_API virtual ~NiPSysCollider();
 
-	/*! Destructor */
-	NIFLIB_API virtual ~NiPSysCollider();
+		/*!
+		 * A constant value which uniquly identifies objects of this type.
+		 */
+		NIFLIB_API static const Type TYPE;
 
-	/*!
-	 * A constant value which uniquly identifies objects of this type.
-	 */
-	NIFLIB_API static const Type TYPE;
+		/*!
+		 * A factory function used during file reading to create an instance of this type of object.
+		 * \return A pointer to a newly allocated instance of this type of object.
+		 */
+		NIFLIB_API static NiObject * Create();
 
-	/*!
-	 * A factory function used during file reading to create an instance of this type of object.
-	 * \return A pointer to a newly allocated instance of this type of object.
-	 */
-	NIFLIB_API static NiObject * Create();
+		/*!
+		 * Summarizes the information contained in this object in English.
+		 * \param[in] verbose Determines whether or not detailed information about large areas of data will be printed out.
+		 * \return A string containing a summary of the information within the object in English.  This is the function that Niflyze calls to generate its analysis, so the output is the same.
+		 */
+		NIFLIB_API virtual string asString(bool verbose = false) const;
 
-	/*!
-	 * Summarizes the information contained in this object in English.
-	 * \param[in] verbose Determines whether or not detailed information about large areas of data will be printed out.
-	 * \return A string containing a summary of the information within the object in English.  This is the function that Niflyze calls to generate its analysis, so the output is the same.
-	 */
-	NIFLIB_API virtual string asString( bool verbose = false ) const;
+		/*!
+		 * Used to determine the type of a particular instance of this object.
+		 * \return The type constant for the actual type of the object.
+		 */
+		NIFLIB_API virtual const Type & GetType() const;
 
-	/*!
-	 * Used to determine the type of a particular instance of this object.
-	 * \return The type constant for the actual type of the object.
-	 */
-	NIFLIB_API virtual const Type & GetType() const;
+		/***Begin Example Naive Implementation****
 
-	/***Begin Example Naive Implementation****
+		// Defines amount of bounce the collider object has.
+		// \return The current value.
+		float GetBounce() const;
 
-	// Defines amount of bounce the collider object has.
-	// \return The current value.
-	float GetBounce() const;
+		// Defines amount of bounce the collider object has.
+		// \param[in] value The new value.
+		void SetBounce( float value );
 
-	// Defines amount of bounce the collider object has.
-	// \param[in] value The new value.
-	void SetBounce( float value );
+		// Unknown.
+		// \return The current value.
+		bool GetSpawnOnCollide() const;
 
-	// Unknown.
-	// \return The current value.
-	bool GetSpawnOnCollide() const;
+		// Unknown.
+		// \param[in] value The new value.
+		void SetSpawnOnCollide( bool value );
 
-	// Unknown.
-	// \param[in] value The new value.
-	void SetSpawnOnCollide( bool value );
+		// Kill particles on impact if set to yes.
+		// \return The current value.
+		bool GetDieOnCollide() const;
 
-	// Kill particles on impact if set to yes.
-	// \return The current value.
-	bool GetDieOnCollide() const;
+		// Kill particles on impact if set to yes.
+		// \param[in] value The new value.
+		void SetDieOnCollide( bool value );
 
-	// Kill particles on impact if set to yes.
-	// \param[in] value The new value.
-	void SetDieOnCollide( bool value );
+		// Link to NiPSysSpawnModifier object?
+		// \return The current value.
+		Ref<NiPSysSpawnModifier > GetSpawnModifier() const;
 
-	// Link to NiPSysSpawnModifier object?
-	// \return The current value.
-	Ref<NiPSysSpawnModifier > GetSpawnModifier() const;
+		// Link to NiPSysSpawnModifier object?
+		// \param[in] value The new value.
+		void SetSpawnModifier( Ref<NiPSysSpawnModifier > value );
 
-	// Link to NiPSysSpawnModifier object?
-	// \param[in] value The new value.
-	void SetSpawnModifier( Ref<NiPSysSpawnModifier > value );
+		// Link to parent.
+		// \return The current value.
+		NiObject * GetParent() const;
 
-	// Link to parent.
-	// \return The current value.
-	NiObject * GetParent() const;
+		// Link to parent.
+		// \param[in] value The new value.
+		void SetParent( NiObject * value );
 
-	// Link to parent.
-	// \param[in] value The new value.
-	void SetParent( NiObject * value );
+		// The next collider.
+		// \return The current value.
+		Ref<NiObject > GetNextCollider() const;
 
-	// The next collider.
-	// \return The current value.
-	Ref<NiObject > GetNextCollider() const;
+		// The next collider.
+		// \param[in] value The new value.
+		void SetNextCollider( Ref<NiObject > value );
 
-	// The next collider.
-	// \param[in] value The new value.
-	void SetNextCollider( Ref<NiObject > value );
+		// Links to a NiNode that will define where in object space the collider is
+		// located/oriented.
+		// \return The current value.
+		NiNode * GetColliderObject() const;
 
-	// Links to a NiNode that will define where in object space the collider is
-	// located/oriented.
-	// \return The current value.
-	NiNode * GetColliderObject() const;
+		// Links to a NiNode that will define where in object space the collider is
+		// located/oriented.
+		// \param[in] value The new value.
+		void SetColliderObject( NiNode * value );
 
-	// Links to a NiNode that will define where in object space the collider is
-	// located/oriented.
-	// \param[in] value The new value.
-	void SetColliderObject( NiNode * value );
+		****End Example Naive Implementation***/
 
-	****End Example Naive Implementation***/
+		//--BEGIN MISC CUSTOM CODE--//
+		//--END CUSTOM CODE--//
+	protected:
+		/*! Defines amount of bounce the collider object has. */
+		float bounce;
+		/*! Unknown. */
+		bool spawnOnCollide;
+		/*! Kill particles on impact if set to yes. */
+		bool dieOnCollide;
+		/*! Link to NiPSysSpawnModifier object? */
+		Ref<NiPSysSpawnModifier > spawnModifier;
+		/*! Link to parent. */
+		NiObject * parent;
+		/*! The next collider. */
+		Ref<NiObject > nextCollider;
+		/*!
+		 * Links to a NiNode that will define where in object space the collider is
+		 * located/oriented.
+		 */
+		NiNode * colliderObject;
+	public:
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info);
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const;
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info);
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual list<NiObjectRef> GetRefs() const;
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual list<NiObject *> GetPtrs() const;
+	};
 
-	//--BEGIN MISC CUSTOM CODE--//
+	//--BEGIN FILE FOOT CUSTOM CODE--//
 	//--END CUSTOM CODE--//
-protected:
-	/*! Defines amount of bounce the collider object has. */
-	float bounce;
-	/*! Unknown. */
-	bool spawnOnCollide;
-	/*! Kill particles on impact if set to yes. */
-	bool dieOnCollide;
-	/*! Link to NiPSysSpawnModifier object? */
-	Ref<NiPSysSpawnModifier > spawnModifier;
-	/*! Link to parent. */
-	NiObject * parent;
-	/*! The next collider. */
-	Ref<NiObject > nextCollider;
-	/*!
-	 * Links to a NiNode that will define where in object space the collider is
-	 * located/oriented.
-	 */
-	NiNode * colliderObject;
-public:
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const;
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info );
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual list<NiObjectRef> GetRefs() const;
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual list<NiObject *> GetPtrs() const;
-};
-
-//--BEGIN FILE FOOT CUSTOM CODE--//
-//--END CUSTOM CODE--//
-
 } //End Niflib namespace
 #endif

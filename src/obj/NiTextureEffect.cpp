@@ -19,132 +19,167 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiTextureEffect::TYPE("NiTextureEffect", &NiDynamicEffect::TYPE );
+const Type NiTextureEffect::TYPE("NiTextureEffect", &NiDynamicEffect::TYPE);
 
-NiTextureEffect::NiTextureEffect() : textureFiltering((TexFilterMode)FILTER_TRILERP), textureClamping((TexClampMode)WRAP_S_WRAP_T), unknown((short)0), textureType((EffectType)EFFECT_ENVIRONMENT_MAP), coordinateGenerationType((CoordGenType)CG_SPHERE_MAP), image(NULL), sourceTexture(NULL), clippingPlane((byte)0), unknownVector(1.0, 0.0, 0.0), unknownFloat(0.0f), ps2L((short)0), ps2K((short)-75), unknownShort((unsigned short)0) {
+NiTextureEffect::NiTextureEffect() : textureFiltering((TexFilterMode) FILTER_TRILERP), textureClamping((TexClampMode) WRAP_S_WRAP_T), unknown((short) 0), textureType((EffectType) EFFECT_ENVIRONMENT_MAP), coordinateGenerationType((CoordGenType) CG_SPHERE_MAP), image(NULL), sourceTexture(NULL), clippingPlane((byte) 0), unknownVector(1.0, 0.0, 0.0), unknownFloat(0.0f), ps2L((short) 0), ps2K((short) -75), unknownShort((unsigned short) 0)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-NiTextureEffect::~NiTextureEffect() {
+NiTextureEffect::~NiTextureEffect()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiTextureEffect::GetType() const {
+const Type & NiTextureEffect::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiTextureEffect::Create() {
+NiObject * NiTextureEffect::Create()
+{
 	return new NiTextureEffect;
 }
 
-void NiTextureEffect::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiTextureEffect::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
 	unsigned int block_num;
-	NiDynamicEffect::Read( in, link_stack, info );
-	NifStream( modelProjectionMatrix, in, info );
-	NifStream( modelProjectionTransform, in, info );
-	NifStream( textureFiltering, in, info );
-	NifStream( textureClamping, in, info );
-	if ( info.version >= 0x14060000 ) {
-		NifStream( unknown, in, info );
+	NiDynamicEffect::Read(in, link_stack, info);
+	NifStream(modelProjectionMatrix, in, info);
+	NifStream(modelProjectionTransform, in, info);
+	NifStream(textureFiltering, in, info);
+	NifStream(textureClamping, in, info);
+	if(info.version >= 0x14060000)
+	{
+		NifStream(unknown, in, info);
 	};
-	NifStream( textureType, in, info );
-	NifStream( coordinateGenerationType, in, info );
-	if ( info.version <= 0x03010000 ) {
-		NifStream( block_num, in, info );
-		link_stack.push_back( block_num );
+	NifStream(textureType, in, info);
+	NifStream(coordinateGenerationType, in, info);
+	if(info.version <= 0x03010000)
+	{
+		NifStream(block_num, in, info);
+		link_stack.push_back(block_num);
 	};
-	if ( info.version >= 0x04000000 ) {
-		NifStream( block_num, in, info );
-		link_stack.push_back( block_num );
+	if(info.version >= 0x04000000)
+	{
+		NifStream(block_num, in, info);
+		link_stack.push_back(block_num);
 	};
-	NifStream( clippingPlane, in, info );
-	NifStream( unknownVector, in, info );
-	NifStream( unknownFloat, in, info );
-	if ( info.version <= 0x0A020000 ) {
-		NifStream( ps2L, in, info );
-		NifStream( ps2K, in, info );
+	NifStream(clippingPlane, in, info);
+	NifStream(unknownVector, in, info);
+	NifStream(unknownFloat, in, info);
+	if(info.version <= 0x0A020000)
+	{
+		NifStream(ps2L, in, info);
+		NifStream(ps2K, in, info);
 	};
-	if ( info.version <= 0x0401000C ) {
-		NifStream( unknownShort, in, info );
+	if(info.version <= 0x0401000C)
+	{
+		NifStream(unknownShort, in, info);
 	};
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void NiTextureEffect::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiTextureEffect::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiDynamicEffect::Write( out, link_map, missing_link_stack, info );
-	NifStream( modelProjectionMatrix, out, info );
-	NifStream( modelProjectionTransform, out, info );
-	NifStream( textureFiltering, out, info );
-	NifStream( textureClamping, out, info );
-	if ( info.version >= 0x14060000 ) {
-		NifStream( unknown, out, info );
+	NiDynamicEffect::Write(out, link_map, missing_link_stack, info);
+	NifStream(modelProjectionMatrix, out, info);
+	NifStream(modelProjectionTransform, out, info);
+	NifStream(textureFiltering, out, info);
+	NifStream(textureClamping, out, info);
+	if(info.version >= 0x14060000)
+	{
+		NifStream(unknown, out, info);
 	};
-	NifStream( textureType, out, info );
-	NifStream( coordinateGenerationType, out, info );
-	if ( info.version <= 0x03010000 ) {
-		if ( info.version < VER_3_3_0_13 ) {
-			WritePtr32( &(*image), out );
-		} else {
-			if ( image != NULL ) {
-				map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(image) );
-				if (it != link_map.end()) {
-					NifStream( it->second, out, info );
-					missing_link_stack.push_back( NULL );
-				} else {
-					NifStream( 0xFFFFFFFF, out, info );
-					missing_link_stack.push_back( image );
+	NifStream(textureType, out, info);
+	NifStream(coordinateGenerationType, out, info);
+	if(info.version <= 0x03010000)
+	{
+		if(info.version < VER_3_3_0_13)
+		{
+			WritePtr32(&(*image), out);
+		}
+		else
+		{
+			if(image != NULL)
+			{
+				map<NiObjectRef, unsigned int>::const_iterator it = link_map.find(StaticCast<NiObject>(image));
+				if(it != link_map.end())
+				{
+					NifStream(it->second, out, info);
+					missing_link_stack.push_back(NULL);
 				}
-			} else {
-				NifStream( 0xFFFFFFFF, out, info );
-				missing_link_stack.push_back( NULL );
+				else
+				{
+					NifStream(0xFFFFFFFF, out, info);
+					missing_link_stack.push_back(image);
+				}
+			}
+			else
+			{
+				NifStream(0xFFFFFFFF, out, info);
+				missing_link_stack.push_back(NULL);
 			}
 		}
 	};
-	if ( info.version >= 0x04000000 ) {
-		if ( info.version < VER_3_3_0_13 ) {
-			WritePtr32( &(*sourceTexture), out );
-		} else {
-			if ( sourceTexture != NULL ) {
-				map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(sourceTexture) );
-				if (it != link_map.end()) {
-					NifStream( it->second, out, info );
-					missing_link_stack.push_back( NULL );
-				} else {
-					NifStream( 0xFFFFFFFF, out, info );
-					missing_link_stack.push_back( sourceTexture );
+	if(info.version >= 0x04000000)
+	{
+		if(info.version < VER_3_3_0_13)
+		{
+			WritePtr32(&(*sourceTexture), out);
+		}
+		else
+		{
+			if(sourceTexture != NULL)
+			{
+				map<NiObjectRef, unsigned int>::const_iterator it = link_map.find(StaticCast<NiObject>(sourceTexture));
+				if(it != link_map.end())
+				{
+					NifStream(it->second, out, info);
+					missing_link_stack.push_back(NULL);
 				}
-			} else {
-				NifStream( 0xFFFFFFFF, out, info );
-				missing_link_stack.push_back( NULL );
+				else
+				{
+					NifStream(0xFFFFFFFF, out, info);
+					missing_link_stack.push_back(sourceTexture);
+				}
+			}
+			else
+			{
+				NifStream(0xFFFFFFFF, out, info);
+				missing_link_stack.push_back(NULL);
 			}
 		}
 	};
-	NifStream( clippingPlane, out, info );
-	NifStream( unknownVector, out, info );
-	NifStream( unknownFloat, out, info );
-	if ( info.version <= 0x0A020000 ) {
-		NifStream( ps2L, out, info );
-		NifStream( ps2K, out, info );
+	NifStream(clippingPlane, out, info);
+	NifStream(unknownVector, out, info);
+	NifStream(unknownFloat, out, info);
+	if(info.version <= 0x0A020000)
+	{
+		NifStream(ps2L, out, info);
+		NifStream(ps2K, out, info);
 	};
-	if ( info.version <= 0x0401000C ) {
-		NifStream( unknownShort, out, info );
+	if(info.version <= 0x0401000C)
+	{
+		NifStream(unknownShort, out, info);
 	};
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string NiTextureEffect::asString( bool verbose ) const {
+std::string NiTextureEffect::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
@@ -171,33 +206,38 @@ std::string NiTextureEffect::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiTextureEffect::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiTextureEffect::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiDynamicEffect::FixLinks( objects, link_stack, missing_link_stack, info );
-	if ( info.version <= 0x03010000 ) {
-		image = FixLink<NiImage>( objects, link_stack, missing_link_stack, info );
+	NiDynamicEffect::FixLinks(objects, link_stack, missing_link_stack, info);
+	if(info.version <= 0x03010000)
+	{
+		image = FixLink<NiImage>(objects, link_stack, missing_link_stack, info);
 	};
-	if ( info.version >= 0x04000000 ) {
-		sourceTexture = FixLink<NiSourceTexture>( objects, link_stack, missing_link_stack, info );
+	if(info.version >= 0x04000000)
+	{
+		sourceTexture = FixLink<NiSourceTexture>(objects, link_stack, missing_link_stack, info);
 	};
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiTextureEffect::GetRefs() const {
+std::list<NiObjectRef> NiTextureEffect::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiDynamicEffect::GetRefs();
-	if ( image != NULL )
+	if(image != NULL)
 		refs.push_back(StaticCast<NiObject>(image));
-	if ( sourceTexture != NULL )
+	if(sourceTexture != NULL)
 		refs.push_back(StaticCast<NiObject>(sourceTexture));
 	return refs;
 }
 
-std::list<NiObject *> NiTextureEffect::GetPtrs() const {
+std::list<NiObject *> NiTextureEffect::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiDynamicEffect::GetPtrs();
 	return ptrs;
@@ -206,174 +246,194 @@ std::list<NiObject *> NiTextureEffect::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 Matrix33 NiTextureEffect::GetModelProjectionMatrix() const {
-	return modelProjectionMatrix;
+return modelProjectionMatrix;
 }
 
 void NiTextureEffect::SetModelProjectionMatrix( const Matrix33 & value ) {
-	modelProjectionMatrix = value;
+modelProjectionMatrix = value;
 }
 
 Vector3 NiTextureEffect::GetModelProjectionTransform() const {
-	return modelProjectionTransform;
+return modelProjectionTransform;
 }
 
 void NiTextureEffect::SetModelProjectionTransform( const Vector3 & value ) {
-	modelProjectionTransform = value;
+modelProjectionTransform = value;
 }
 
 TexFilterMode NiTextureEffect::GetTextureFiltering() const {
-	return textureFiltering;
+return textureFiltering;
 }
 
 void NiTextureEffect::SetTextureFiltering( const TexFilterMode & value ) {
-	textureFiltering = value;
+textureFiltering = value;
 }
 
 TexClampMode NiTextureEffect::GetTextureClamping() const {
-	return textureClamping;
+return textureClamping;
 }
 
 void NiTextureEffect::SetTextureClamping( const TexClampMode & value ) {
-	textureClamping = value;
+textureClamping = value;
 }
 
 EffectType NiTextureEffect::GetTextureType() const {
-	return textureType;
+return textureType;
 }
 
 void NiTextureEffect::SetTextureType( const EffectType & value ) {
-	textureType = value;
+textureType = value;
 }
 
 CoordGenType NiTextureEffect::GetCoordinateGenerationType() const {
-	return coordinateGenerationType;
+return coordinateGenerationType;
 }
 
 void NiTextureEffect::SetCoordinateGenerationType( const CoordGenType & value ) {
-	coordinateGenerationType = value;
+coordinateGenerationType = value;
 }
 
 Ref<NiImage > NiTextureEffect::GetImage() const {
-	return image;
+return image;
 }
 
 void NiTextureEffect::SetImage( Ref<NiImage > value ) {
-	image = value;
+image = value;
 }
 
 Ref<NiSourceTexture > NiTextureEffect::GetSourceTexture() const {
-	return sourceTexture;
+return sourceTexture;
 }
 
 void NiTextureEffect::SetSourceTexture( Ref<NiSourceTexture > value ) {
-	sourceTexture = value;
+sourceTexture = value;
 }
 
 byte NiTextureEffect::GetClippingPlane() const {
-	return clippingPlane;
+return clippingPlane;
 }
 
 void NiTextureEffect::SetClippingPlane( byte value ) {
-	clippingPlane = value;
+clippingPlane = value;
 }
 
 short NiTextureEffect::GetPs2L() const {
-	return ps2L;
+return ps2L;
 }
 
 void NiTextureEffect::SetPs2L( short value ) {
-	ps2L = value;
+ps2L = value;
 }
 
 short NiTextureEffect::GetPs2K() const {
-	return ps2K;
+return ps2K;
 }
 
 void NiTextureEffect::SetPs2K( short value ) {
-	ps2K = value;
+ps2K = value;
 }
 
 ****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 
-Matrix33 NiTextureEffect::GetModelProjectionMatrix() const {
+Matrix33 NiTextureEffect::GetModelProjectionMatrix() const
+{
 	return modelProjectionMatrix;
 }
 
-void NiTextureEffect::SetModelProjectionMatrix( Matrix33 value ) {
+void NiTextureEffect::SetModelProjectionMatrix(Matrix33 value)
+{
 	modelProjectionMatrix = value;
 }
 
-Vector3 NiTextureEffect::GetModelProjectionTransform() const {
+Vector3 NiTextureEffect::GetModelProjectionTransform() const
+{
 	return modelProjectionTransform;
 }
 
-void NiTextureEffect::SetModelProjectionTransform( Vector3 value ) {
+void NiTextureEffect::SetModelProjectionTransform(Vector3 value)
+{
 	modelProjectionTransform = value;
 }
 
-TexFilterMode NiTextureEffect::GetTextureFiltering() const {
+TexFilterMode NiTextureEffect::GetTextureFiltering() const
+{
 	return textureFiltering;
 }
 
-void NiTextureEffect::SetTextureFiltering( TexFilterMode value ) {
+void NiTextureEffect::SetTextureFiltering(TexFilterMode value)
+{
 	textureFiltering = value;
 }
 
-TexClampMode NiTextureEffect::GetTextureClamping() const {
+TexClampMode NiTextureEffect::GetTextureClamping() const
+{
 	return textureClamping;
 }
 
-void NiTextureEffect::SetTextureClamping( TexClampMode value ) {
+void NiTextureEffect::SetTextureClamping(TexClampMode value)
+{
 	textureClamping = value;
 }
 
-EffectType NiTextureEffect::GetTextureType() const {
+EffectType NiTextureEffect::GetTextureType() const
+{
 	return textureType;
 }
 
-void NiTextureEffect::SetTextureType( EffectType value ) {
+void NiTextureEffect::SetTextureType(EffectType value)
+{
 	textureType = value;
 }
 
-CoordGenType NiTextureEffect::GetCoordinateGenerationType() const {
+CoordGenType NiTextureEffect::GetCoordinateGenerationType() const
+{
 	return coordinateGenerationType;
 }
 
-void NiTextureEffect::SetCoordinateGenerationType( CoordGenType value ) {
+void NiTextureEffect::SetCoordinateGenerationType(CoordGenType value)
+{
 	coordinateGenerationType = value;
 }
 
-Ref<NiSourceTexture > NiTextureEffect::GetSourceTexture() const {
+Ref<NiSourceTexture > NiTextureEffect::GetSourceTexture() const
+{
 	return sourceTexture;
 }
 
-void NiTextureEffect::SetSourceTexture( Ref<NiSourceTexture > value ) {
+void NiTextureEffect::SetSourceTexture(Ref<NiSourceTexture > value)
+{
 	sourceTexture = value;
 }
 
-byte NiTextureEffect::GetClippingPlane() const {
+byte NiTextureEffect::GetClippingPlane() const
+{
 	return clippingPlane;
 }
 
-void NiTextureEffect::SetClippingPlane( byte value ) {
+void NiTextureEffect::SetClippingPlane(byte value)
+{
 	clippingPlane = value;
 }
 
-unsigned short NiTextureEffect::GetPs2L() const {
+unsigned short NiTextureEffect::GetPs2L() const
+{
 	return ps2L;
 }
 
-void NiTextureEffect::SetPs2L( unsigned short value ) {
+void NiTextureEffect::SetPs2L(unsigned short value)
+{
 	ps2L = value;
 }
 
-unsigned short NiTextureEffect::GetPs2K() const {
+unsigned short NiTextureEffect::GetPs2K() const
+{
 	return ps2K;
 }
 
-void NiTextureEffect::SetPs2K( unsigned short value ) {
+void NiTextureEffect::SetPs2K(unsigned short value)
+{
 	ps2K = value;
 }
 

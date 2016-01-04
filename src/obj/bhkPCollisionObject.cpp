@@ -17,47 +17,54 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type bhkPCollisionObject::TYPE("bhkPCollisionObject", &bhkNiCollisionObject::TYPE );
+const Type bhkPCollisionObject::TYPE("bhkPCollisionObject", &bhkNiCollisionObject::TYPE);
 
-bhkPCollisionObject::bhkPCollisionObject() {
+bhkPCollisionObject::bhkPCollisionObject()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-bhkPCollisionObject::~bhkPCollisionObject() {
+bhkPCollisionObject::~bhkPCollisionObject()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & bhkPCollisionObject::GetType() const {
+const Type & bhkPCollisionObject::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * bhkPCollisionObject::Create() {
+NiObject * bhkPCollisionObject::Create()
+{
 	return new bhkPCollisionObject;
 }
 
-void bhkPCollisionObject::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void bhkPCollisionObject::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	bhkNiCollisionObject::Read( in, link_stack, info );
+	bhkNiCollisionObject::Read(in, link_stack, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void bhkPCollisionObject::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void bhkPCollisionObject::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	bhkNiCollisionObject::Write( out, link_map, missing_link_stack, info );
+	bhkNiCollisionObject::Write(out, link_map, missing_link_stack, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string bhkPCollisionObject::asString( bool verbose ) const {
+std::string bhkPCollisionObject::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
@@ -69,23 +76,26 @@ std::string bhkPCollisionObject::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void bhkPCollisionObject::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void bhkPCollisionObject::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	bhkNiCollisionObject::FixLinks( objects, link_stack, missing_link_stack, info );
+	bhkNiCollisionObject::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> bhkPCollisionObject::GetRefs() const {
+std::list<NiObjectRef> bhkPCollisionObject::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = bhkNiCollisionObject::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> bhkPCollisionObject::GetPtrs() const {
+std::list<NiObject *> bhkPCollisionObject::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = bhkNiCollisionObject::GetPtrs();
 	return ptrs;

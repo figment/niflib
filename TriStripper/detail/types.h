@@ -10,92 +10,77 @@
 #ifndef TRI_STRIPPER_HEADER_GUARD_TYPES_H
 #define TRI_STRIPPER_HEADER_GUARD_TYPES_H
 
-
-
-
-namespace triangle_stripper {
-
-	namespace detail {
-
-
-
-
-class triangle
+namespace triangle_stripper
 {
-public:
-	triangle() { }
-	triangle(index A, index B, index C)
-		: m_A(A), m_B(B), m_C(C), m_StripID(0) { }
+	namespace detail
+	{
+		class triangle
+		{
+		public:
+			triangle() {}
+			triangle(index A, index B, index C)
+				: m_A(A), m_B(B), m_C(C), m_StripID(0)
+			{}
 
-	void ResetStripID()							{ m_StripID = 0; }
-	void SetStripID(std::size_t StripID)				{ m_StripID = StripID; }	
-	std::size_t StripID() const						{ return m_StripID; }
+			void ResetStripID() { m_StripID = 0; }
+			void SetStripID(std::size_t StripID) { m_StripID = StripID; }
+			std::size_t StripID() const { return m_StripID; }
 
-	index A() const								{ return m_A; }
-	index B() const								{ return m_B; }
-	index C() const								{ return m_C; }
-	
-private:
-	index	m_A;
-	index	m_B;
-	index	m_C;
+			index A() const { return m_A; }
+			index B() const { return m_B; }
+			index C() const { return m_C; }
 
-	std::size_t	m_StripID;
-};
+		private:
+			index	m_A;
+			index	m_B;
+			index	m_C;
 
+			std::size_t	m_StripID;
+		};
 
+		class triangle_edge
+		{
+		public:
+			triangle_edge(index A, index B)
+				: m_A(A), m_B(B)
+			{}
 
-class triangle_edge
-{
-public:
-	triangle_edge(index A, index B)
-		: m_A(A), m_B(B) { }
+			index A() const { return m_A; }
+			index B() const { return m_B; }
 
-	index A() const								{ return m_A; }
-	index B() const								{ return m_B; }
+			bool operator == (const triangle_edge & Right) const
+			{
+				return ((A() == Right.A()) && (B() == Right.B()));
+			}
 
-	bool operator == (const triangle_edge & Right) const {
-		return ((A() == Right.A()) && (B() == Right.B()));
-	}
+		private:
+			index	m_A;
+			index	m_B;
+		};
 
-private:
-	index	m_A;
-	index	m_B;
-};
+		enum triangle_order { ABC, BCA, CAB };
 
+		class strip
+		{
+		public:
+			strip()
+				: m_Start(0), m_Order(ABC), m_Size(0)
+			{}
 
+			strip(std::size_t Start, triangle_order Order, std::size_t Size)
+				: m_Start(Start), m_Order(Order), m_Size(Size)
+			{}
 
-enum triangle_order { ABC, BCA, CAB };
+			std::size_t Start() const { return m_Start; }
+			triangle_order Order() const { return m_Order; }
+			std::size_t Size() const { return m_Size; }
 
-
-
-class strip
-{
-public:
-	strip()
-		: m_Start(0), m_Order(ABC), m_Size(0) { }
-
-	strip(std::size_t Start, triangle_order Order, std::size_t Size)
-		: m_Start(Start), m_Order(Order), m_Size(Size) { }
-
-	std::size_t Start() const						{ return m_Start; }
-	triangle_order Order() const				{ return m_Order; }
-	std::size_t Size() const							{ return m_Size; }
-
-private:
-	std::size_t			m_Start;
-	triangle_order	m_Order;
-	std::size_t			m_Size;
-};
-
-
-
-
+		private:
+			std::size_t			m_Start;
+			triangle_order	m_Order;
+			std::size_t			m_Size;
+		};
 	} // namespace detail
-
 } // namespace triangle_stripper
-
-
-
 
 #endif // TRI_STRIPPER_HEADER_GUARD_TYPES_H

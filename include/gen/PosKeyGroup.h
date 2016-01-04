@@ -10,22 +10,21 @@ All rights reserved.  Please see niflib.h for license. */
 
 #include "../NIF_IO.h"
 
-namespace Niflib {
+namespace Niflib
+{
+	/*! Unknown. */
+	template <class T >
+	struct PosKeyGroup
+	{
+		/*! Number of keys in the array. */
+		mutable unsigned int numKeys;
+		/*! The key type. */
+		KeyType interpolation;
+		/*! The keys. */
+		vector<Key<T > > keys;
+		//--BEGIN MISC CUSTOM CODE--//
 
-
-/*! Unknown. */
-template <class T >
-struct PosKeyGroup {
-	/*! Number of keys in the array. */
-	mutable unsigned int numKeys;
-	/*! The key type. */
-	KeyType interpolation;
-	/*! The keys. */
-	vector<Key<T > > keys;
-	//--BEGIN MISC CUSTOM CODE--//
-
-	//--END CUSTOM CODE--//
-};
-
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

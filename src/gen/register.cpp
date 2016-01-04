@@ -467,7 +467,6 @@ namespace Niflib
 {
 	void RegisterObjects()
 	{
-
 		ObjectRegistry::RegisterObject("NiObject", NiObject::Create);
 		ObjectRegistry::RegisterObject("Ni3dsAlphaAnimator", Ni3dsAlphaAnimator::Create);
 		ObjectRegistry::RegisterObject("Ni3dsAnimationNode", Ni3dsAnimationNode::Create);
@@ -924,6 +923,5 @@ namespace Niflib
 		ObjectRegistry::RegisterObject("BSConnectPoint::Parents", BSConnectPoint__Parents::Create);
 		ObjectRegistry::RegisterObject("BSConnectPoint::Children", BSConnectPoint__Children::Create);
 		ObjectRegistry::RegisterObject("BSEyeCenterExtraData", BSEyeCenterExtraData::Create);
-
 	}
 }

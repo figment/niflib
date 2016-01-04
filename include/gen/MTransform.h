@@ -10,29 +10,28 @@ All rights reserved.  Please see niflib.h for license. */
 
 #include "../NIF_IO.h"
 
-namespace Niflib {
+namespace Niflib
+{
+	/*!  */
+	struct MTransform
+	{
+		/*! Default Constructor */
+		NIFLIB_API MTransform();
+		/*! Default Destructor */
+		NIFLIB_API ~MTransform();
+		/*! Copy Constructor */
+		NIFLIB_API MTransform(const MTransform & src);
+		/*! Copy Operator */
+		NIFLIB_API MTransform & operator=(const MTransform & src);
+		/*! Translation. */
+		Vector3 translation;
+		/*! Rotation. */
+		Matrix33 rotation;
+		/*! Scale. */
+		float scale;
+		//--BEGIN MISC CUSTOM CODE--//
 
-
-/*!  */
-struct MTransform {
-	/*! Default Constructor */
-	NIFLIB_API MTransform();
-	/*! Default Destructor */
-	NIFLIB_API ~MTransform();
-	/*! Copy Constructor */
-	NIFLIB_API MTransform( const MTransform & src );
-	/*! Copy Operator */
-	NIFLIB_API MTransform & operator=( const MTransform & src );
-	/*! Translation. */
-	Vector3 translation;
-	/*! Rotation. */
-	Matrix33 rotation;
-	/*! Scale. */
-	float scale;
-	//--BEGIN MISC CUSTOM CODE--//
-
-	//--END CUSTOM CODE--//
-};
-
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

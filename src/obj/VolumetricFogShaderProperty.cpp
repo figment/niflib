@@ -18,53 +18,60 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type VolumetricFogShaderProperty::TYPE("VolumetricFogShaderProperty", &BSShaderProperty::TYPE );
+const Type VolumetricFogShaderProperty::TYPE("VolumetricFogShaderProperty", &BSShaderProperty::TYPE);
 
-VolumetricFogShaderProperty::VolumetricFogShaderProperty() {
+VolumetricFogShaderProperty::VolumetricFogShaderProperty()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-VolumetricFogShaderProperty::~VolumetricFogShaderProperty() {
+VolumetricFogShaderProperty::~VolumetricFogShaderProperty()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & VolumetricFogShaderProperty::GetType() const {
+const Type & VolumetricFogShaderProperty::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * VolumetricFogShaderProperty::Create() {
+NiObject * VolumetricFogShaderProperty::Create()
+{
 	return new VolumetricFogShaderProperty;
 }
 
-void VolumetricFogShaderProperty::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void VolumetricFogShaderProperty::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	BSShaderProperty::Read( in, link_stack, info );
+	BSShaderProperty::Read(in, link_stack, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-void VolumetricFogShaderProperty::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void VolumetricFogShaderProperty::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	BSShaderProperty::Write( out, link_map, missing_link_stack, info );
+	BSShaderProperty::Write(out, link_map, missing_link_stack, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::string VolumetricFogShaderProperty::asString( bool verbose ) const {
+std::string VolumetricFogShaderProperty::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -78,25 +85,28 @@ std::string VolumetricFogShaderProperty::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void VolumetricFogShaderProperty::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void VolumetricFogShaderProperty::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	BSShaderProperty::FixLinks( objects, link_stack, missing_link_stack, info );
+	BSShaderProperty::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> VolumetricFogShaderProperty::GetRefs() const {
+std::list<NiObjectRef> VolumetricFogShaderProperty::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = BSShaderProperty::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> VolumetricFogShaderProperty::GetPtrs() const {
+std::list<NiObject *> VolumetricFogShaderProperty::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = BSShaderProperty::GetPtrs();
 	return ptrs;

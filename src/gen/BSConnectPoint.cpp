@@ -12,12 +12,14 @@ using namespace Niflib;
 BSConnectPoint::BSConnectPoint() : scale(0.0f) {};
 
 //Copy Constructor
-BSConnectPoint::BSConnectPoint( const BSConnectPoint & src ) {
+BSConnectPoint::BSConnectPoint(const BSConnectPoint & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-BSConnectPoint & BSConnectPoint::operator=( const BSConnectPoint & src ) {
+BSConnectPoint & BSConnectPoint::operator=(const BSConnectPoint & src)
+{
 	this->root = src.root;
 	this->variableName = src.variableName;
 	this->rotation = src.rotation;

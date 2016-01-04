@@ -16,206 +16,206 @@ All rights reserved.  Please see niflib.h for license. */
 //--END CUSTOM CODE--//
 
 #include "NiPSSimulatorStep.h"
-namespace Niflib {
-
-class NiPSSimulatorGeneralStep;
-typedef Ref<NiPSSimulatorGeneralStep> NiPSSimulatorGeneralStepRef;
-
-/*!
- * Encapsulates a floodgate kernel that updates particle size, colors, and
- * rotations.
- */
-class NiPSSimulatorGeneralStep : public NiPSSimulatorStep {
-public:
-	/*! Constructor */
-	NIFLIB_API NiPSSimulatorGeneralStep();
-
-	/*! Destructor */
-	NIFLIB_API virtual ~NiPSSimulatorGeneralStep();
+namespace Niflib
+{
+	class NiPSSimulatorGeneralStep;
+	typedef Ref<NiPSSimulatorGeneralStep> NiPSSimulatorGeneralStepRef;
 
 	/*!
-	 * A constant value which uniquly identifies objects of this type.
+	 * Encapsulates a floodgate kernel that updates particle size, colors, and
+	 * rotations.
 	 */
-	NIFLIB_API static const Type TYPE;
+	class NiPSSimulatorGeneralStep : public NiPSSimulatorStep
+	{
+	public:
+		/*! Constructor */
+		NIFLIB_API NiPSSimulatorGeneralStep();
 
-	/*!
-	 * A factory function used during file reading to create an instance of this type of object.
-	 * \return A pointer to a newly allocated instance of this type of object.
-	 */
-	NIFLIB_API static NiObject * Create();
+		/*! Destructor */
+		NIFLIB_API virtual ~NiPSSimulatorGeneralStep();
 
-	/*!
-	 * Summarizes the information contained in this object in English.
-	 * \param[in] verbose Determines whether or not detailed information about large areas of data will be printed out.
-	 * \return A string containing a summary of the information within the object in English.  This is the function that Niflyze calls to generate its analysis, so the output is the same.
-	 */
-	NIFLIB_API virtual string asString( bool verbose = false ) const;
+		/*!
+		 * A constant value which uniquly identifies objects of this type.
+		 */
+		NIFLIB_API static const Type TYPE;
 
-	/*!
-	 * Used to determine the type of a particular instance of this object.
-	 * \return The type constant for the actual type of the object.
-	 */
-	NIFLIB_API virtual const Type & GetType() const;
+		/*!
+		 * A factory function used during file reading to create an instance of this type of object.
+		 * \return A pointer to a newly allocated instance of this type of object.
+		 */
+		NIFLIB_API static NiObject * Create();
 
-	/***Begin Example Naive Implementation****
+		/*!
+		 * Summarizes the information contained in this object in English.
+		 * \param[in] verbose Determines whether or not detailed information about large areas of data will be printed out.
+		 * \return A string containing a summary of the information within the object in English.  This is the function that Niflyze calls to generate its analysis, so the output is the same.
+		 */
+		NIFLIB_API virtual string asString(bool verbose = false) const;
 
-	// The particle size keys.
-	// \return The current value.
-	vector<Key<float > > GetSizeKeys() const;
+		/*!
+		 * Used to determine the type of a particular instance of this object.
+		 * \return The type constant for the actual type of the object.
+		 */
+		NIFLIB_API virtual const Type & GetType() const;
 
-	// The particle size keys.
-	// \param[in] value The new value.
-	void SetSizeKeys( const vector<Key<float > >& value );
+		/***Begin Example Naive Implementation****
 
-	// The loop behavior for the size keys.
-	// \return The current value.
-	PSLoopBehavior GetSizeLoopBehavior() const;
+		// The particle size keys.
+		// \return The current value.
+		vector<Key<float > > GetSizeKeys() const;
 
-	// The loop behavior for the size keys.
-	// \param[in] value The new value.
-	void SetSizeLoopBehavior( const PSLoopBehavior & value );
+		// The particle size keys.
+		// \param[in] value The new value.
+		void SetSizeKeys( const vector<Key<float > >& value );
 
-	// The particle color keys.
-	// \return The current value.
-	vector<Key<ByteColor4 > > GetColorKeys() const;
+		// The loop behavior for the size keys.
+		// \return The current value.
+		PSLoopBehavior GetSizeLoopBehavior() const;
 
-	// The particle color keys.
-	// \param[in] value The new value.
-	void SetColorKeys( const vector<Key<ByteColor4 > >& value );
+		// The loop behavior for the size keys.
+		// \param[in] value The new value.
+		void SetSizeLoopBehavior( const PSLoopBehavior & value );
 
-	// The loop behavior for the color keys.
-	// \return The current value.
-	PSLoopBehavior GetColorLoopBehavior() const;
+		// The particle color keys.
+		// \return The current value.
+		vector<Key<ByteColor4 > > GetColorKeys() const;
 
-	// The loop behavior for the color keys.
-	// \param[in] value The new value.
-	void SetColorLoopBehavior( const PSLoopBehavior & value );
+		// The particle color keys.
+		// \param[in] value The new value.
+		void SetColorKeys( const vector<Key<ByteColor4 > >& value );
 
-	// The particle rotation keys.
-	// \return The current value.
-	vector<Key<Quaternion > > GetRotationKeys() const;
+		// The loop behavior for the color keys.
+		// \return The current value.
+		PSLoopBehavior GetColorLoopBehavior() const;
 
-	// The particle rotation keys.
-	// \param[in] value The new value.
-	void SetRotationKeys( const vector<Key<Quaternion > >& value );
+		// The loop behavior for the color keys.
+		// \param[in] value The new value.
+		void SetColorLoopBehavior( const PSLoopBehavior & value );
 
-	// The loop behavior for the rotation keys.
-	// \return The current value.
-	PSLoopBehavior GetRotationLoopBehavior() const;
+		// The particle rotation keys.
+		// \return The current value.
+		vector<Key<Quaternion > > GetRotationKeys() const;
 
-	// The loop behavior for the rotation keys.
-	// \param[in] value The new value.
-	void SetRotationLoopBehavior( const PSLoopBehavior & value );
+		// The particle rotation keys.
+		// \param[in] value The new value.
+		void SetRotationKeys( const vector<Key<Quaternion > >& value );
 
-	// The the amount of time over which a particle's size is ramped from 0.0 to 1.0 in
-	// seconds
-	// \return The current value.
-	float GetGrowTime() const;
+		// The loop behavior for the rotation keys.
+		// \return The current value.
+		PSLoopBehavior GetRotationLoopBehavior() const;
 
-	// The the amount of time over which a particle's size is ramped from 0.0 to 1.0 in
-	// seconds
-	// \param[in] value The new value.
-	void SetGrowTime( float value );
+		// The loop behavior for the rotation keys.
+		// \param[in] value The new value.
+		void SetRotationLoopBehavior( const PSLoopBehavior & value );
 
-	// The the amount of time over which a particle's size is ramped from 1.0 to 0.0 in
-	// seconds
-	// \return The current value.
-	float GetShrinkTime() const;
+		// The the amount of time over which a particle's size is ramped from 0.0 to 1.0 in
+		// seconds
+		// \return The current value.
+		float GetGrowTime() const;
 
-	// The the amount of time over which a particle's size is ramped from 1.0 to 0.0 in
-	// seconds
-	// \param[in] value The new value.
-	void SetShrinkTime( float value );
+		// The the amount of time over which a particle's size is ramped from 0.0 to 1.0 in
+		// seconds
+		// \param[in] value The new value.
+		void SetGrowTime( float value );
 
-	// Specifies the particle generation to which the grow effect should be applied.
-	// This is usually generation 0, so that newly created particles will grow.
-	// \return The current value.
-	unsigned short GetGrowGeneration() const;
+		// The the amount of time over which a particle's size is ramped from 1.0 to 0.0 in
+		// seconds
+		// \return The current value.
+		float GetShrinkTime() const;
 
-	// Specifies the particle generation to which the grow effect should be applied.
-	// This is usually generation 0, so that newly created particles will grow.
-	// \param[in] value The new value.
-	void SetGrowGeneration( unsigned short value );
+		// The the amount of time over which a particle's size is ramped from 1.0 to 0.0 in
+		// seconds
+		// \param[in] value The new value.
+		void SetShrinkTime( float value );
 
-	// Specifies the particle generation to which the shrink effect should be applied.
-	// This is usually the highest supported generation for the particle system, so
-	// that particles will shrink immediately before getting killed.
-	// \return The current value.
-	unsigned short GetShrinkGeneration() const;
+		// Specifies the particle generation to which the grow effect should be applied.
+		// This is usually generation 0, so that newly created particles will grow.
+		// \return The current value.
+		unsigned short GetGrowGeneration() const;
 
-	// Specifies the particle generation to which the shrink effect should be applied.
-	// This is usually the highest supported generation for the particle system, so
-	// that particles will shrink immediately before getting killed.
-	// \param[in] value The new value.
-	void SetShrinkGeneration( unsigned short value );
+		// Specifies the particle generation to which the grow effect should be applied.
+		// This is usually generation 0, so that newly created particles will grow.
+		// \param[in] value The new value.
+		void SetGrowGeneration( unsigned short value );
 
-	****End Example Naive Implementation***/
+		// Specifies the particle generation to which the shrink effect should be applied.
+		// This is usually the highest supported generation for the particle system, so
+		// that particles will shrink immediately before getting killed.
+		// \return The current value.
+		unsigned short GetShrinkGeneration() const;
 
-	//--BEGIN MISC CUSTOM CODE--//
+		// Specifies the particle generation to which the shrink effect should be applied.
+		// This is usually the highest supported generation for the particle system, so
+		// that particles will shrink immediately before getting killed.
+		// \param[in] value The new value.
+		void SetShrinkGeneration( unsigned short value );
+
+		****End Example Naive Implementation***/
+
+		//--BEGIN MISC CUSTOM CODE--//
+
+		//--END CUSTOM CODE--//
+	protected:
+		/*! The number of size animation keys. */
+		mutable byte numSizeKeys;
+		/*! The particle size keys. */
+		vector<Key<float > > sizeKeys;
+		/*! The loop behavior for the size keys. */
+		PSLoopBehavior sizeLoopBehavior;
+		/*! Unknown. */
+		float unknown1;
+		/*! Unknown. */
+		float unknown2;
+		/*! Unknown. */
+		float unknown3;
+		/*! The number of color animation keys. */
+		mutable byte numColorKeys;
+		/*! The particle color keys. */
+		vector<Key<ByteColor4 > > colorKeys;
+		/*! The loop behavior for the color keys. */
+		PSLoopBehavior colorLoopBehavior;
+		/*! The number of rotatoin animation keys. */
+		mutable byte numRotationKeys;
+		/*! The particle rotation keys. */
+		vector<Key<Quaternion > > rotationKeys;
+		/*! The loop behavior for the rotation keys. */
+		PSLoopBehavior rotationLoopBehavior;
+		/*!
+		 * The the amount of time over which a particle's size is ramped from 0.0 to 1.0 in
+		 * seconds
+		 */
+		float growTime;
+		/*!
+		 * The the amount of time over which a particle's size is ramped from 1.0 to 0.0 in
+		 * seconds
+		 */
+		float shrinkTime;
+		/*!
+		 * Specifies the particle generation to which the grow effect should be applied.
+		 * This is usually generation 0, so that newly created particles will grow.
+		 */
+		unsigned short growGeneration;
+		/*!
+		 * Specifies the particle generation to which the shrink effect should be applied.
+		 * This is usually the highest supported generation for the particle system, so
+		 * that particles will shrink immediately before getting killed.
+		 */
+		unsigned short shrinkGeneration;
+	public:
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info);
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const;
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info);
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual list<NiObjectRef> GetRefs() const;
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual list<NiObject *> GetPtrs() const;
+	};
+
+	//--BEGIN FILE FOOT CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
-protected:
-	/*! The number of size animation keys. */
-	mutable byte numSizeKeys;
-	/*! The particle size keys. */
-	vector<Key<float > > sizeKeys;
-	/*! The loop behavior for the size keys. */
-	PSLoopBehavior sizeLoopBehavior;
-	/*! Unknown. */
-	float unknown1;
-	/*! Unknown. */
-	float unknown2;
-	/*! Unknown. */
-	float unknown3;
-	/*! The number of color animation keys. */
-	mutable byte numColorKeys;
-	/*! The particle color keys. */
-	vector<Key<ByteColor4 > > colorKeys;
-	/*! The loop behavior for the color keys. */
-	PSLoopBehavior colorLoopBehavior;
-	/*! The number of rotatoin animation keys. */
-	mutable byte numRotationKeys;
-	/*! The particle rotation keys. */
-	vector<Key<Quaternion > > rotationKeys;
-	/*! The loop behavior for the rotation keys. */
-	PSLoopBehavior rotationLoopBehavior;
-	/*!
-	 * The the amount of time over which a particle's size is ramped from 0.0 to 1.0 in
-	 * seconds
-	 */
-	float growTime;
-	/*!
-	 * The the amount of time over which a particle's size is ramped from 1.0 to 0.0 in
-	 * seconds
-	 */
-	float shrinkTime;
-	/*!
-	 * Specifies the particle generation to which the grow effect should be applied.
-	 * This is usually generation 0, so that newly created particles will grow.
-	 */
-	unsigned short growGeneration;
-	/*!
-	 * Specifies the particle generation to which the shrink effect should be applied.
-	 * This is usually the highest supported generation for the particle system, so
-	 * that particles will shrink immediately before getting killed.
-	 */
-	unsigned short shrinkGeneration;
-public:
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const;
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info );
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual list<NiObjectRef> GetRefs() const;
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual list<NiObject *> GetPtrs() const;
-};
-
-//--BEGIN FILE FOOT CUSTOM CODE--//
-
-//--END CUSTOM CODE--//
-
 } //End Niflib namespace
 #endif

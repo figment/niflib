@@ -13,12 +13,14 @@ using namespace Niflib;
 BSTreadTransfInfo::BSTreadTransfInfo() : unknownFloat1(0.0f) {};
 
 //Copy Constructor
-BSTreadTransfInfo::BSTreadTransfInfo( const BSTreadTransfInfo & src ) {
+BSTreadTransfInfo::BSTreadTransfInfo(const BSTreadTransfInfo & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-BSTreadTransfInfo & BSTreadTransfInfo::operator=( const BSTreadTransfInfo & src ) {
+BSTreadTransfInfo & BSTreadTransfInfo::operator=(const BSTreadTransfInfo & src)
+{
 	this->unknownFloat1 = src.unknownFloat1;
 	this->data = src.data;
 	return *this;

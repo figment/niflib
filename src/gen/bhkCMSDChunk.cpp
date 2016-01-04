@@ -9,15 +9,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-bhkCMSDChunk::bhkCMSDChunk() : materialIndex((unsigned int)0), reference((unsigned short)65535), transformIndex((unsigned short)0), numVertices((unsigned int)0), numIndices((unsigned int)0), numStrips((unsigned int)0), numWeldings((unsigned int)0) {};
+bhkCMSDChunk::bhkCMSDChunk() : materialIndex((unsigned int) 0), reference((unsigned short) 65535), transformIndex((unsigned short) 0), numVertices((unsigned int) 0), numIndices((unsigned int) 0), numStrips((unsigned int) 0), numWeldings((unsigned int) 0) {};
 
 //Copy Constructor
-bhkCMSDChunk::bhkCMSDChunk( const bhkCMSDChunk & src ) {
+bhkCMSDChunk::bhkCMSDChunk(const bhkCMSDChunk & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-bhkCMSDChunk & bhkCMSDChunk::operator=( const bhkCMSDChunk & src ) {
+bhkCMSDChunk & bhkCMSDChunk::operator=(const bhkCMSDChunk & src)
+{
 	this->translation = src.translation;
 	this->materialIndex = src.materialIndex;
 	this->reference = src.reference;

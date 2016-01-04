@@ -9,15 +9,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-BSSITSSubSegment::BSSITSSubSegment() : triangleOffset((unsigned int)0), triangleCount((unsigned int)0), segmentOffset((unsigned int)0), unknownInt1((unsigned int)0) {};
+BSSITSSubSegment::BSSITSSubSegment() : triangleOffset((unsigned int) 0), triangleCount((unsigned int) 0), segmentOffset((unsigned int) 0), unknownInt1((unsigned int) 0) {};
 
 //Copy Constructor
-BSSITSSubSegment::BSSITSSubSegment( const BSSITSSubSegment & src ) {
+BSSITSSubSegment::BSSITSSubSegment(const BSSITSSubSegment & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-BSSITSSubSegment & BSSITSSubSegment::operator=( const BSSITSSubSegment & src ) {
+BSSITSSubSegment & BSSITSSubSegment::operator=(const BSSITSSubSegment & src)
+{
 	this->triangleOffset = src.triangleOffset;
 	this->triangleCount = src.triangleCount;
 	this->segmentOffset = src.segmentOffset;

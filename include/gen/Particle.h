@@ -10,36 +10,35 @@ All rights reserved.  Please see niflib.h for license. */
 
 #include "../NIF_IO.h"
 
-namespace Niflib {
-
-
-/*! particle array entry */
-struct Particle {
-	/*! Default Constructor */
-	NIFLIB_API Particle();
-	/*! Default Destructor */
-	NIFLIB_API ~Particle();
-	/*! Copy Constructor */
-	NIFLIB_API Particle( const Particle & src );
-	/*! Copy Operator */
-	NIFLIB_API Particle & operator=( const Particle & src );
-	/*! Particle velocity */
-	Vector3 velocity;
-	/*! Unknown */
-	Vector3 unknownVector;
-	/*! The particle's age. */
-	float lifetime;
-	/*! Maximum age of the particle. */
-	float lifespan;
-	/*! Timestamp of the last update. */
-	float timestamp;
-	/*! Unknown short */
-	unsigned short unknownShort;
-	/*! Particle/vertex index matches array index */
-	unsigned short vertexId;
-	//--BEGIN MISC CUSTOM CODE--//
-	//--END CUSTOM CODE--//
-};
-
+namespace Niflib
+{
+	/*! particle array entry */
+	struct Particle
+	{
+		/*! Default Constructor */
+		NIFLIB_API Particle();
+		/*! Default Destructor */
+		NIFLIB_API ~Particle();
+		/*! Copy Constructor */
+		NIFLIB_API Particle(const Particle & src);
+		/*! Copy Operator */
+		NIFLIB_API Particle & operator=(const Particle & src);
+		/*! Particle velocity */
+		Vector3 velocity;
+		/*! Unknown */
+		Vector3 unknownVector;
+		/*! The particle's age. */
+		float lifetime;
+		/*! Maximum age of the particle. */
+		float lifespan;
+		/*! Timestamp of the last update. */
+		float timestamp;
+		/*! Unknown short */
+		unsigned short unknownShort;
+		/*! Particle/vertex index matches array index */
+		unsigned short vertexId;
+		//--BEGIN MISC CUSTOM CODE--//
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

@@ -17,53 +17,60 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type bhkStiffSpringConstraint::TYPE("bhkStiffSpringConstraint", &bhkConstraint::TYPE );
+const Type bhkStiffSpringConstraint::TYPE("bhkStiffSpringConstraint", &bhkConstraint::TYPE);
 
-bhkStiffSpringConstraint::bhkStiffSpringConstraint() : length(0.0f) {
+bhkStiffSpringConstraint::bhkStiffSpringConstraint() : length(0.0f)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-bhkStiffSpringConstraint::~bhkStiffSpringConstraint() {
+bhkStiffSpringConstraint::~bhkStiffSpringConstraint()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & bhkStiffSpringConstraint::GetType() const {
+const Type & bhkStiffSpringConstraint::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * bhkStiffSpringConstraint::Create() {
+NiObject * bhkStiffSpringConstraint::Create()
+{
 	return new bhkStiffSpringConstraint;
 }
 
-void bhkStiffSpringConstraint::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void bhkStiffSpringConstraint::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	bhkConstraint::Read( in, link_stack, info );
-	NifStream( pivotA, in, info );
-	NifStream( pivotB, in, info );
-	NifStream( length, in, info );
+	bhkConstraint::Read(in, link_stack, info);
+	NifStream(pivotA, in, info);
+	NifStream(pivotB, in, info);
+	NifStream(length, in, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void bhkStiffSpringConstraint::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void bhkStiffSpringConstraint::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	bhkConstraint::Write( out, link_map, missing_link_stack, info );
-	NifStream( pivotA, out, info );
-	NifStream( pivotB, out, info );
-	NifStream( length, out, info );
+	bhkConstraint::Write(out, link_map, missing_link_stack, info);
+	NifStream(pivotA, out, info);
+	NifStream(pivotB, out, info);
+	NifStream(length, out, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string bhkStiffSpringConstraint::asString( bool verbose ) const {
+std::string bhkStiffSpringConstraint::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
@@ -78,23 +85,26 @@ std::string bhkStiffSpringConstraint::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void bhkStiffSpringConstraint::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void bhkStiffSpringConstraint::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	bhkConstraint::FixLinks( objects, link_stack, missing_link_stack, info );
+	bhkConstraint::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> bhkStiffSpringConstraint::GetRefs() const {
+std::list<NiObjectRef> bhkStiffSpringConstraint::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = bhkConstraint::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> bhkStiffSpringConstraint::GetPtrs() const {
+std::list<NiObject *> bhkStiffSpringConstraint::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = bhkConstraint::GetPtrs();
 	return ptrs;
@@ -103,27 +113,27 @@ std::list<NiObject *> bhkStiffSpringConstraint::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 Vector4 bhkStiffSpringConstraint::GetPivotA() const {
-	return pivotA;
+return pivotA;
 }
 
 void bhkStiffSpringConstraint::SetPivotA( const Vector4 & value ) {
-	pivotA = value;
+pivotA = value;
 }
 
 Vector4 bhkStiffSpringConstraint::GetPivotB() const {
-	return pivotB;
+return pivotB;
 }
 
 void bhkStiffSpringConstraint::SetPivotB( const Vector4 & value ) {
-	pivotB = value;
+pivotB = value;
 }
 
 float bhkStiffSpringConstraint::GetLength() const {
-	return length;
+return length;
 }
 
 void bhkStiffSpringConstraint::SetLength( float value ) {
-	length = value;
+length = value;
 }
 
 ****End Example Naive Implementation***/

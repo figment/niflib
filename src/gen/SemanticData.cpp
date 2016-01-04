@@ -9,15 +9,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-SemanticData::SemanticData() : index((unsigned int)0) {};
+SemanticData::SemanticData() : index((unsigned int) 0) {};
 
 //Copy Constructor
-SemanticData::SemanticData( const SemanticData & src ) {
+SemanticData::SemanticData(const SemanticData & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-SemanticData & SemanticData::operator=( const SemanticData & src ) {
+SemanticData & SemanticData::operator=(const SemanticData & src)
+{
 	this->name = src.name;
 	this->index = src.index;
 	return *this;

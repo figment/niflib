@@ -9,15 +9,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-bhkCMSD_Something::bhkCMSD_Something() : largeInt((unsigned int)0), unknownInteger((unsigned int)0) {};
+bhkCMSD_Something::bhkCMSD_Something() : largeInt((unsigned int) 0), unknownInteger((unsigned int) 0) {};
 
 //Copy Constructor
-bhkCMSD_Something::bhkCMSD_Something( const bhkCMSD_Something & src ) {
+bhkCMSD_Something::bhkCMSD_Something(const bhkCMSD_Something & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-bhkCMSD_Something & bhkCMSD_Something::operator=( const bhkCMSD_Something & src ) {
+bhkCMSD_Something & bhkCMSD_Something::operator=(const bhkCMSD_Something & src)
+{
 	this->largeInt = src.largeInt;
 	this->unknownInteger = src.unknownInteger;
 	return *this;

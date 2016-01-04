@@ -12,27 +12,26 @@ All rights reserved.  Please see niflib.h for license. */
 
 // Include structures
 #include "QuaternionXYZW.h"
-namespace Niflib {
+namespace Niflib
+{
+	/*! A set of transformation data: translation and rotation */
+	struct bhkCMSDTransform
+	{
+		/*! Default Constructor */
+		NIFLIB_API bhkCMSDTransform();
+		/*! Default Destructor */
+		NIFLIB_API ~bhkCMSDTransform();
+		/*! Copy Constructor */
+		NIFLIB_API bhkCMSDTransform(const bhkCMSDTransform & src);
+		/*! Copy Operator */
+		NIFLIB_API bhkCMSDTransform & operator=(const bhkCMSDTransform & src);
+		/*! A vector that moves the chunk by the specified amount. W is not used. */
+		Vector4 translation;
+		/*! Rotation. Reference point for rotation is bhkRigidBody translation. */
+		QuaternionXYZW rotation;
+		//--BEGIN MISC CUSTOM CODE--//
 
-
-/*! A set of transformation data: translation and rotation */
-struct bhkCMSDTransform {
-	/*! Default Constructor */
-	NIFLIB_API bhkCMSDTransform();
-	/*! Default Destructor */
-	NIFLIB_API ~bhkCMSDTransform();
-	/*! Copy Constructor */
-	NIFLIB_API bhkCMSDTransform( const bhkCMSDTransform & src );
-	/*! Copy Operator */
-	NIFLIB_API bhkCMSDTransform & operator=( const bhkCMSDTransform & src );
-	/*! A vector that moves the chunk by the specified amount. W is not used. */
-	Vector4 translation;
-	/*! Rotation. Reference point for rotation is bhkRigidBody translation. */
-	QuaternionXYZW rotation;
-	//--BEGIN MISC CUSTOM CODE--//
-
-	//--END CUSTOM CODE--//
-};
-
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

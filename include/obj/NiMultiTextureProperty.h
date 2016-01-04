@@ -17,96 +17,96 @@ All rights reserved.  Please see niflib.h for license. */
 
 // Include structures
 #include "../gen/MultiTextureElement.h"
-namespace Niflib {
+namespace Niflib
+{
+	class NiMultiTextureProperty;
+	typedef Ref<NiMultiTextureProperty> NiMultiTexturePropertyRef;
 
-class NiMultiTextureProperty;
-typedef Ref<NiMultiTextureProperty> NiMultiTexturePropertyRef;
+	/*! (note: not quite complete yet... but already reads most of the DAoC ones) */
+	class NiMultiTextureProperty : public NiProperty
+	{
+	public:
+		/*! Constructor */
+		NIFLIB_API NiMultiTextureProperty();
 
-/*! (note: not quite complete yet... but already reads most of the DAoC ones) */
-class NiMultiTextureProperty : public NiProperty {
-public:
-	/*! Constructor */
-	NIFLIB_API NiMultiTextureProperty();
+		/*! Destructor */
+		NIFLIB_API virtual ~NiMultiTextureProperty();
 
-	/*! Destructor */
-	NIFLIB_API virtual ~NiMultiTextureProperty();
+		/*!
+		 * A constant value which uniquly identifies objects of this type.
+		 */
+		NIFLIB_API static const Type TYPE;
 
-	/*!
-	 * A constant value which uniquly identifies objects of this type.
-	 */
-	NIFLIB_API static const Type TYPE;
+		/*!
+		 * A factory function used during file reading to create an instance of this type of object.
+		 * \return A pointer to a newly allocated instance of this type of object.
+		 */
+		NIFLIB_API static NiObject * Create();
 
-	/*!
-	 * A factory function used during file reading to create an instance of this type of object.
-	 * \return A pointer to a newly allocated instance of this type of object.
-	 */
-	NIFLIB_API static NiObject * Create();
+		/*!
+		 * Summarizes the information contained in this object in English.
+		 * \param[in] verbose Determines whether or not detailed information about large areas of data will be printed out.
+		 * \return A string containing a summary of the information within the object in English.  This is the function that Niflyze calls to generate its analysis, so the output is the same.
+		 */
+		NIFLIB_API virtual string asString(bool verbose = false) const;
 
-	/*!
-	 * Summarizes the information contained in this object in English.
-	 * \param[in] verbose Determines whether or not detailed information about large areas of data will be printed out.
-	 * \return A string containing a summary of the information within the object in English.  This is the function that Niflyze calls to generate its analysis, so the output is the same.
-	 */
-	NIFLIB_API virtual string asString( bool verbose = false ) const;
+		/*!
+		 * Used to determine the type of a particular instance of this object.
+		 * \return The type constant for the actual type of the object.
+		 */
+		NIFLIB_API virtual const Type & GetType() const;
 
-	/*!
-	 * Used to determine the type of a particular instance of this object.
-	 * \return The type constant for the actual type of the object.
-	 */
-	NIFLIB_API virtual const Type & GetType() const;
+		/***Begin Example Naive Implementation****
 
-	/***Begin Example Naive Implementation****
+		// Property flags.
+		// \return The current value.
+		unsigned short GetFlags() const;
 
-	// Property flags.
-	// \return The current value.
-	unsigned short GetFlags() const;
+		// Property flags.
+		// \param[in] value The new value.
+		void SetFlags( unsigned short value );
 
-	// Property flags.
-	// \param[in] value The new value.
-	void SetFlags( unsigned short value );
+		// Describes the various textures used by this mutli-texture property.  Each slot
+		// probably has special meaning like thoes in NiTexturingProperty.
+		// \return The current value.
+		array<5,MultiTextureElement >  GetTextureElements() const;
 
-	// Describes the various textures used by this mutli-texture property.  Each slot
-	// probably has special meaning like thoes in NiTexturingProperty.
-	// \return The current value.
-	array<5,MultiTextureElement >  GetTextureElements() const;
+		// Describes the various textures used by this mutli-texture property.  Each slot
+		// probably has special meaning like thoes in NiTexturingProperty.
+		// \param[in] value The new value.
+		void SetTextureElements( const array<5,MultiTextureElement >&  value );
 
-	// Describes the various textures used by this mutli-texture property.  Each slot
-	// probably has special meaning like thoes in NiTexturingProperty.
-	// \param[in] value The new value.
-	void SetTextureElements( const array<5,MultiTextureElement >&  value );
+		****End Example Naive Implementation***/
 
-	****End Example Naive Implementation***/
+		//--BEGIN MISC CUSTOM CODE--//
+		//--END CUSTOM CODE--//
+	protected:
+		/*! Property flags. */
+		unsigned short flags;
+		/*!
+		 * Unknown. Always 5 for DAoC files, and always 6 for Bridge Commander.  Seems to
+		 * have nothing to do with the number of Texture Element slots that follow.
+		 */
+		unsigned int unknownInt;
+		/*!
+		 * Describes the various textures used by this mutli-texture property.  Each slot
+		 * probably has special meaning like thoes in NiTexturingProperty.
+		 */
+		array<5, MultiTextureElement > textureElements;
+	public:
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info);
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const;
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info);
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual list<NiObjectRef> GetRefs() const;
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual list<NiObject *> GetPtrs() const;
+	};
 
-	//--BEGIN MISC CUSTOM CODE--//
+	//--BEGIN FILE FOOT CUSTOM CODE--//
 	//--END CUSTOM CODE--//
-protected:
-	/*! Property flags. */
-	unsigned short flags;
-	/*!
-	 * Unknown. Always 5 for DAoC files, and always 6 for Bridge Commander.  Seems to
-	 * have nothing to do with the number of Texture Element slots that follow.
-	 */
-	unsigned int unknownInt;
-	/*!
-	 * Describes the various textures used by this mutli-texture property.  Each slot
-	 * probably has special meaning like thoes in NiTexturingProperty.
-	 */
-	array<5,MultiTextureElement > textureElements;
-public:
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const;
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info );
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual list<NiObjectRef> GetRefs() const;
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual list<NiObject *> GetPtrs() const;
-};
-
-//--BEGIN FILE FOOT CUSTOM CODE--//
-//--END CUSTOM CODE--//
-
 } //End Niflib namespace
 #endif

@@ -18,55 +18,62 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiPSysTurbulenceFieldModifier::TYPE("NiPSysTurbulenceFieldModifier", &NiPSysFieldModifier::TYPE );
+const Type NiPSysTurbulenceFieldModifier::TYPE("NiPSysTurbulenceFieldModifier", &NiPSysFieldModifier::TYPE);
 
-NiPSysTurbulenceFieldModifier::NiPSysTurbulenceFieldModifier() : frequency(0.0f) {
+NiPSysTurbulenceFieldModifier::NiPSysTurbulenceFieldModifier() : frequency(0.0f)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-NiPSysTurbulenceFieldModifier::~NiPSysTurbulenceFieldModifier() {
+NiPSysTurbulenceFieldModifier::~NiPSysTurbulenceFieldModifier()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiPSysTurbulenceFieldModifier::GetType() const {
+const Type & NiPSysTurbulenceFieldModifier::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiPSysTurbulenceFieldModifier::Create() {
+NiObject * NiPSysTurbulenceFieldModifier::Create()
+{
 	return new NiPSysTurbulenceFieldModifier;
 }
 
-void NiPSysTurbulenceFieldModifier::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiPSysTurbulenceFieldModifier::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSysFieldModifier::Read( in, link_stack, info );
-	NifStream( frequency, in, info );
+	NiPSysFieldModifier::Read(in, link_stack, info);
+	NifStream(frequency, in, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-void NiPSysTurbulenceFieldModifier::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiPSysTurbulenceFieldModifier::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSysFieldModifier::Write( out, link_map, missing_link_stack, info );
-	NifStream( frequency, out, info );
+	NiPSysFieldModifier::Write(out, link_map, missing_link_stack, info);
+	NifStream(frequency, out, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::string NiPSysTurbulenceFieldModifier::asString( bool verbose ) const {
+std::string NiPSysTurbulenceFieldModifier::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -81,25 +88,28 @@ std::string NiPSysTurbulenceFieldModifier::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiPSysTurbulenceFieldModifier::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiPSysTurbulenceFieldModifier::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSysFieldModifier::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiPSysFieldModifier::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiPSysTurbulenceFieldModifier::GetRefs() const {
+std::list<NiObjectRef> NiPSysTurbulenceFieldModifier::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiPSysFieldModifier::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiPSysTurbulenceFieldModifier::GetPtrs() const {
+std::list<NiObject *> NiPSysTurbulenceFieldModifier::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiPSysFieldModifier::GetPtrs();
 	return ptrs;
@@ -108,11 +118,11 @@ std::list<NiObject *> NiPSysTurbulenceFieldModifier::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 float NiPSysTurbulenceFieldModifier::GetFrequency() const {
-	return frequency;
+return frequency;
 }
 
 void NiPSysTurbulenceFieldModifier::SetFrequency( float value ) {
-	frequency = value;
+frequency = value;
 }
 
 ****End Example Naive Implementation***/

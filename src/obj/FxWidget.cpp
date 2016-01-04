@@ -17,55 +17,64 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type FxWidget::TYPE("FxWidget", &NiNode::TYPE );
+const Type FxWidget::TYPE("FxWidget", &NiNode::TYPE);
 
-FxWidget::FxWidget() : unknown3((byte)0) {
+FxWidget::FxWidget() : unknown3((byte) 0)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-FxWidget::~FxWidget() {
+FxWidget::~FxWidget()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & FxWidget::GetType() const {
+const Type & FxWidget::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * FxWidget::Create() {
+NiObject * FxWidget::Create()
+{
 	return new FxWidget;
 }
 
-void FxWidget::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void FxWidget::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiNode::Read( in, link_stack, info );
-	NifStream( unknown3, in, info );
-	for (unsigned int i1 = 0; i1 < 292; i1++) {
-		NifStream( unknown292Bytes[i1], in, info );
+	NiNode::Read(in, link_stack, info);
+	NifStream(unknown3, in, info);
+	for(unsigned int i1 = 0; i1 < 292; i1++)
+	{
+		NifStream(unknown292Bytes[i1], in, info);
 	};
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void FxWidget::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void FxWidget::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiNode::Write( out, link_map, missing_link_stack, info );
-	NifStream( unknown3, out, info );
-	for (unsigned int i1 = 0; i1 < 292; i1++) {
-		NifStream( unknown292Bytes[i1], out, info );
+	NiNode::Write(out, link_map, missing_link_stack, info);
+	NifStream(unknown3, out, info);
+	for(unsigned int i1 = 0; i1 < 292; i1++)
+	{
+		NifStream(unknown292Bytes[i1], out, info);
 	};
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string FxWidget::asString( bool verbose ) const {
+std::string FxWidget::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
@@ -74,12 +83,15 @@ std::string FxWidget::asString( bool verbose ) const {
 	out << NiNode::asString(verbose);
 	out << "  Unknown 3:  " << unknown3 << endl;
 	array_output_count = 0;
-	for (unsigned int i1 = 0; i1 < 292; i1++) {
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+	for(unsigned int i1 = 0; i1 < 292; i1++)
+	{
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 			break;
 		};
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			break;
 		};
 		out << "    Unknown 292 Bytes[" << i1 << "]:  " << unknown292Bytes[i1] << endl;
@@ -91,23 +103,26 @@ std::string FxWidget::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void FxWidget::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void FxWidget::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiNode::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiNode::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> FxWidget::GetRefs() const {
+std::list<NiObjectRef> FxWidget::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiNode::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> FxWidget::GetPtrs() const {
+std::list<NiObject *> FxWidget::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiNode::GetPtrs();
 	return ptrs;

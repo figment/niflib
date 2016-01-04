@@ -1749,6 +1749,9 @@
     <ClCompile Include="src\obj\NiLightRadiusController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GlobalCode\StringFunctions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\ComplexShape.h">
@@ -3495,6 +3498,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\obj\BSTriShape.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalCode\StringFunctions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

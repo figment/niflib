@@ -18,106 +18,135 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiTimeController::TYPE("NiTimeController", &NiObject::TYPE );
+const Type NiTimeController::TYPE("NiTimeController", &NiObject::TYPE);
 
-NiTimeController::NiTimeController() : nextController(NULL), flags((unsigned short)0), frequency(0.0f), phase(0.0f), startTime(0.0f), stopTime(0.0f), target(NULL), unknownInteger((unsigned int)0) {
+NiTimeController::NiTimeController() : nextController(NULL), flags((unsigned short) 0), frequency(0.0f), phase(0.0f), startTime(0.0f), stopTime(0.0f), target(NULL), unknownInteger((unsigned int) 0)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-NiTimeController::~NiTimeController() {
+NiTimeController::~NiTimeController()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiTimeController::GetType() const {
+const Type & NiTimeController::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiTimeController::Create() {
+NiObject * NiTimeController::Create()
+{
 	return new NiTimeController;
 }
 
-void NiTimeController::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiTimeController::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
 	unsigned int block_num;
-	NiObject::Read( in, link_stack, info );
-	NifStream( block_num, in, info );
-	link_stack.push_back( block_num );
-	NifStream( flags, in, info );
-	NifStream( frequency, in, info );
-	NifStream( phase, in, info );
-	NifStream( startTime, in, info );
-	NifStream( stopTime, in, info );
-	if ( info.version >= 0x0303000D ) {
-		NifStream( block_num, in, info );
-		link_stack.push_back( block_num );
+	NiObject::Read(in, link_stack, info);
+	NifStream(block_num, in, info);
+	link_stack.push_back(block_num);
+	NifStream(flags, in, info);
+	NifStream(frequency, in, info);
+	NifStream(phase, in, info);
+	NifStream(startTime, in, info);
+	NifStream(stopTime, in, info);
+	if(info.version >= 0x0303000D)
+	{
+		NifStream(block_num, in, info);
+		link_stack.push_back(block_num);
 	};
-	if ( info.version <= 0x03010000 ) {
-		NifStream( unknownInteger, in, info );
+	if(info.version <= 0x03010000)
+	{
+		NifStream(unknownInteger, in, info);
 	};
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void NiTimeController::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiTimeController::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiObject::Write( out, link_map, missing_link_stack, info );
-	if ( info.version < VER_3_3_0_13 ) {
-		WritePtr32( &(*nextController), out );
-	} else {
-		if ( nextController != NULL ) {
-			map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(nextController) );
-			if (it != link_map.end()) {
-				NifStream( it->second, out, info );
-				missing_link_stack.push_back( NULL );
-			} else {
-				NifStream( 0xFFFFFFFF, out, info );
-				missing_link_stack.push_back( nextController );
+	NiObject::Write(out, link_map, missing_link_stack, info);
+	if(info.version < VER_3_3_0_13)
+	{
+		WritePtr32(&(*nextController), out);
+	}
+	else
+	{
+		if(nextController != NULL)
+		{
+			map<NiObjectRef, unsigned int>::const_iterator it = link_map.find(StaticCast<NiObject>(nextController));
+			if(it != link_map.end())
+			{
+				NifStream(it->second, out, info);
+				missing_link_stack.push_back(NULL);
 			}
-		} else {
-			NifStream( 0xFFFFFFFF, out, info );
-			missing_link_stack.push_back( NULL );
+			else
+			{
+				NifStream(0xFFFFFFFF, out, info);
+				missing_link_stack.push_back(nextController);
+			}
+		}
+		else
+		{
+			NifStream(0xFFFFFFFF, out, info);
+			missing_link_stack.push_back(NULL);
 		}
 	}
-	NifStream( flags, out, info );
-	NifStream( frequency, out, info );
-	NifStream( phase, out, info );
-	NifStream( startTime, out, info );
-	NifStream( stopTime, out, info );
-	if ( info.version >= 0x0303000D ) {
-		if ( info.version < VER_3_3_0_13 ) {
-			WritePtr32( &(*target), out );
-		} else {
-			if ( target != NULL ) {
-				map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(target) );
-				if (it != link_map.end()) {
-					NifStream( it->second, out, info );
-					missing_link_stack.push_back( NULL );
-				} else {
-					NifStream( 0xFFFFFFFF, out, info );
-					missing_link_stack.push_back( target );
+	NifStream(flags, out, info);
+	NifStream(frequency, out, info);
+	NifStream(phase, out, info);
+	NifStream(startTime, out, info);
+	NifStream(stopTime, out, info);
+	if(info.version >= 0x0303000D)
+	{
+		if(info.version < VER_3_3_0_13)
+		{
+			WritePtr32(&(*target), out);
+		}
+		else
+		{
+			if(target != NULL)
+			{
+				map<NiObjectRef, unsigned int>::const_iterator it = link_map.find(StaticCast<NiObject>(target));
+				if(it != link_map.end())
+				{
+					NifStream(it->second, out, info);
+					missing_link_stack.push_back(NULL);
 				}
-			} else {
-				NifStream( 0xFFFFFFFF, out, info );
-				missing_link_stack.push_back( NULL );
+				else
+				{
+					NifStream(0xFFFFFFFF, out, info);
+					missing_link_stack.push_back(target);
+				}
+			}
+			else
+			{
+				NifStream(0xFFFFFFFF, out, info);
+				missing_link_stack.push_back(NULL);
 			}
 		}
 	};
-	if ( info.version <= 0x03010000 ) {
-		NifStream( unknownInteger, out, info );
+	if(info.version <= 0x03010000)
+	{
+		NifStream(unknownInteger, out, info);
 	};
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string NiTimeController::asString( bool verbose ) const {
+std::string NiTimeController::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
@@ -137,139 +166,154 @@ std::string NiTimeController::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiTimeController::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiTimeController::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiObject::FixLinks( objects, link_stack, missing_link_stack, info );
-	nextController = FixLink<NiTimeController>( objects, link_stack, missing_link_stack, info );
-	if ( info.version >= 0x0303000D ) {
-		target = FixLink<NiObjectNET>( objects, link_stack, missing_link_stack, info );
+	NiObject::FixLinks(objects, link_stack, missing_link_stack, info);
+	nextController = FixLink<NiTimeController>(objects, link_stack, missing_link_stack, info);
+	if(info.version >= 0x0303000D)
+	{
+		target = FixLink<NiObjectNET>(objects, link_stack, missing_link_stack, info);
 	};
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiTimeController::GetRefs() const {
+std::list<NiObjectRef> NiTimeController::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiObject::GetRefs();
-	if ( nextController != NULL )
+	if(nextController != NULL)
 		refs.push_back(StaticCast<NiObject>(nextController));
 	return refs;
 }
 
-std::list<NiObject *> NiTimeController::GetPtrs() const {
+std::list<NiObject *> NiTimeController::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiObject::GetPtrs();
-	if ( target != NULL )
-		ptrs.push_back((NiObject *)(target));
+	if(target != NULL)
+		ptrs.push_back((NiObject *) (target));
 	return ptrs;
 }
 
 /***Begin Example Naive Implementation****
 
 Ref<NiTimeController > NiTimeController::GetNextController() const {
-	return nextController;
+return nextController;
 }
 
 void NiTimeController::SetNextController( Ref<NiTimeController > value ) {
-	nextController = value;
+nextController = value;
 }
 
 unsigned short NiTimeController::GetFlags() const {
-	return flags;
+return flags;
 }
 
 void NiTimeController::SetFlags( unsigned short value ) {
-	flags = value;
+flags = value;
 }
 
 float NiTimeController::GetFrequency() const {
-	return frequency;
+return frequency;
 }
 
 void NiTimeController::SetFrequency( float value ) {
-	frequency = value;
+frequency = value;
 }
 
 float NiTimeController::GetPhase() const {
-	return phase;
+return phase;
 }
 
 void NiTimeController::SetPhase( float value ) {
-	phase = value;
+phase = value;
 }
 
 float NiTimeController::GetStartTime() const {
-	return startTime;
+return startTime;
 }
 
 void NiTimeController::SetStartTime( float value ) {
-	startTime = value;
+startTime = value;
 }
 
 float NiTimeController::GetStopTime() const {
-	return stopTime;
+return stopTime;
 }
 
 void NiTimeController::SetStopTime( float value ) {
-	stopTime = value;
+stopTime = value;
 }
 
 NiObjectNET * NiTimeController::GetTarget() const {
-	return target;
+return target;
 }
 
 void NiTimeController::SetTarget( NiObjectNET * value ) {
-	target = value;
+target = value;
 }
 
 ****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 
-NiTimeControllerRef NiTimeController::GetNextController() const {
+NiTimeControllerRef NiTimeController::GetNextController() const
+{
 	return nextController;
 }
 
-void NiTimeController::SetNextController( const NiTimeControllerRef & obj ) {
+void NiTimeController::SetNextController(const NiTimeControllerRef & obj)
+{
 	nextController = obj;
 }
 
-void NiTimeController::SetTarget( NiObjectNET * new_target ) {
+void NiTimeController::SetTarget(NiObjectNET * new_target)
+{
 	target = new_target;
 }
 
-Ref<NiObjectNET> NiTimeController::GetTarget() {
+Ref<NiObjectNET> NiTimeController::GetTarget()
+{
 	return target;
 }
 
-unsigned short NiTimeController::GetFlags() const {
+unsigned short NiTimeController::GetFlags() const
+{
 	return flags;
 }
 
-void NiTimeController::SetFlags( unsigned short n ) {
+void NiTimeController::SetFlags(unsigned short n)
+{
 	flags = n;
 }
 
-float NiTimeController::GetFrequency() const {
+float NiTimeController::GetFrequency() const
+{
 	return frequency;
 }
 
-void NiTimeController::SetFrequency( float n ) {
+void NiTimeController::SetFrequency(float n)
+{
 	frequency = n;
 }
 
-float NiTimeController::GetPhase() const {
+float NiTimeController::GetPhase() const
+{
 	return phase;
 }
 
-void NiTimeController::SetPhase( float n ) {
+void NiTimeController::SetPhase(float n)
+{
 	phase = n;
 }
 
-void NiTimeController::NormalizeKeys() {
+void NiTimeController::NormalizeKeys()
+{
 	//Normalize the start and stop times
 	startTime = frequency * startTime + phase;
 	stopTime = frequency * stopTime + phase;
@@ -279,19 +323,23 @@ void NiTimeController::NormalizeKeys() {
 	frequency = 0.0f;
 }
 
-float NiTimeController::GetStartTime() const {
+float NiTimeController::GetStartTime() const
+{
 	return startTime;
 }
 
-void NiTimeController::SetStartTime( float n ) {
+void NiTimeController::SetStartTime(float n)
+{
 	startTime = n;
 }
 
-float NiTimeController::GetStopTime() const {
+float NiTimeController::GetStopTime() const
+{
 	return stopTime;
 }
 
-void NiTimeController::SetStopTime( float n ) {
+void NiTimeController::SetStopTime(float n)
+{
 	stopTime = n;
 }
 

@@ -305,9 +305,8 @@ namespace Niflib
 		 */
 		NIFLIB_API Vector3 CrossProduct(const Vector3 & rh) const; //Cross Product
 
-
 		///* Multiplies this Vector with a 4x4 matrix
-		// * \param[in] The 4x4 matrix to multiply this vector with. 
+		// * \param[in] The 4x4 matrix to multiply this vector with.
 		// * \return The new vector resulting from the multiplication.
 		// */
 		//Vector3 operator*( const Matrix44 & rh ) const;
@@ -466,7 +465,6 @@ namespace Niflib
 		* \return The value at the given array index by reference so it can be read or set via the bracket operator.
 		*/
 		NIFLIB_API float operator[](int n) const;
-
 	};
 
 	/* Stores two floating point numbers.  Used as a row of a Matrix22 */
@@ -713,7 +711,6 @@ namespace Niflib
 
 		NIFLIB_API Matrix33 operator*(const Matrix33 & m) const;
 	};
-
 
 	/* Stores four floating point numbers.  Used as a row of a Matrix44. */
 	struct Float4
@@ -1274,7 +1271,6 @@ namespace Niflib
 		NIFLIB_API Quaternion Normalized() const;
 	};
 
-
 	/*! Stores a 4 by 3 matrix used for tensors. */
 	struct InertiaMatrix
 	{
@@ -1470,7 +1466,6 @@ namespace Niflib
 	NIFLIB_API float ConvertByteToFloat(byte value);
 	NIFLIB_API byte ConvertFloatToByte(float value);
 
-
 	//--ostream functions for printing with cout--//
 
 	NIFLIB_API ostream & operator<<(ostream & out, TexCoord const & val);
@@ -1486,6 +1481,5 @@ namespace Niflib
 	NIFLIB_API ostream & operator<<(ostream & out, Quaternion const & val);
 	NIFLIB_API ostream & operator<<(ostream & out, Matrix44 const & val);
 	NIFLIB_API ostream & operator<<(ostream & out, InertiaMatrix const & val);
-
 }
 #endif

@@ -15,62 +15,61 @@ All rights reserved.  Please see niflib.h for license. */
 #include "HalfTexCoord.h"
 #include "ByteVector3.h"
 #include "ByteColor4.h"
-namespace Niflib {
+namespace Niflib
+{
+	/*!  */
+	struct BSVertexData
+	{
+		/*! Default Constructor */
+		NIFLIB_API BSVertexData();
+		/*! Default Destructor */
+		NIFLIB_API ~BSVertexData();
+		/*! Copy Constructor */
+		NIFLIB_API BSVertexData(const BSVertexData & src);
+		/*! Copy Operator */
+		NIFLIB_API BSVertexData & operator=(const BSVertexData & src);
+		/*! Unknown. */
+		HalfVector3 vertex;
+		/*! Unknown. */
+		hfloat bitangentX;
+		/*! Normal nybble? */
+		unsigned int unknownShort1;
+		/*! Unknown. */
+		Vector3 vertex2;
+		/*! Unknown. */
+		float bitangentX2;
+		/*! Unknown. */
+		HalfTexCoord uv;
+		/*! Unknown. */
+		ByteVector3 normal;
+		/*! Unknown. */
+		byte bitangentY;
+		/*! Unknown. */
+		ByteVector3 tangent;
+		/*! Unknown. */
+		byte bitangentZ;
+		/*! Unknown. */
+		ByteColor4 vertexColors;
+		/*! Unknown. */
+		array<4, hfloat > boneWeights;
+		/*! Unknown. */
+		array<4, byte > boneIndices;
+		/*! Unknown. */
+		unsigned int unknownInt2;
+		//--BEGIN MISC CUSTOM CODE--//
+		void Clear();
 
+		Vector3 GetVertex() const;
 
-/*!  */
-struct BSVertexData {
-	/*! Default Constructor */
-	NIFLIB_API BSVertexData();
-	/*! Default Destructor */
-	NIFLIB_API ~BSVertexData();
-	/*! Copy Constructor */
-	NIFLIB_API BSVertexData( const BSVertexData & src );
-	/*! Copy Operator */
-	NIFLIB_API BSVertexData & operator=( const BSVertexData & src );
-	/*! Unknown. */
-	HalfVector3 vertex;
-	/*! Unknown. */
-	hfloat bitangentX;
-	/*! Normal nybble? */
-	unsigned int unknownShort1;
-	/*! Unknown. */
-	Vector3 vertex2;
-	/*! Unknown. */
-	float bitangentX2;
-	/*! Unknown. */
-	HalfTexCoord uv;
-	/*! Unknown. */
-	ByteVector3 normal;
-	/*! Unknown. */
-	byte bitangentY;
-	/*! Unknown. */
-	ByteVector3 tangent;
-	/*! Unknown. */
-	byte bitangentZ;
-	/*! Unknown. */
-	ByteColor4 vertexColors;
-	/*! Unknown. */
-	array<4,hfloat > boneWeights;
-	/*! Unknown. */
-	array<4,byte > boneIndices;
-	/*! Unknown. */
-	unsigned int unknownInt2;
-	//--BEGIN MISC CUSTOM CODE--//
-	void Clear();
+		void SetVertex(const Vector3& v);
+		void SetNormal(const Vector3& n);
+		void SetUV(const TexCoord& tc);
+		void SetVertexColor(const Color4& vc);
+		void SetTangent(const Vector3& t);
+		void SetBitangent(const Vector3& b);
+		void SetBoneWeight(int idx, int bone, float weight);
 
-	Vector3 GetVertex() const;
-
-	void SetVertex(const Vector3& v);
-	void SetNormal(const Vector3& n);
-	void SetUV(const TexCoord& tc);
-	void SetVertexColor(const Color4& vc);
-	void SetTangent(const Vector3& t);
-	void SetBitangent(const Vector3& b);
-	void SetBoneWeight(int idx, int bone, float weight);
-
-	//--END CUSTOM CODE--//
-};
-
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

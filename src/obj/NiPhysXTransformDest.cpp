@@ -19,68 +19,83 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiPhysXTransformDest::TYPE("NiPhysXTransformDest", &NiObject::TYPE );
+const Type NiPhysXTransformDest::TYPE("NiPhysXTransformDest", &NiObject::TYPE);
 
-NiPhysXTransformDest::NiPhysXTransformDest() : unknownByte1((byte)0), unknownByte2((byte)0), node(NULL) {
+NiPhysXTransformDest::NiPhysXTransformDest() : unknownByte1((byte) 0), unknownByte2((byte) 0), node(NULL)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-NiPhysXTransformDest::~NiPhysXTransformDest() {
+NiPhysXTransformDest::~NiPhysXTransformDest()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiPhysXTransformDest::GetType() const {
+const Type & NiPhysXTransformDest::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiPhysXTransformDest::Create() {
+NiObject * NiPhysXTransformDest::Create()
+{
 	return new NiPhysXTransformDest;
 }
 
-void NiPhysXTransformDest::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiPhysXTransformDest::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
 	unsigned int block_num;
-	NiObject::Read( in, link_stack, info );
-	NifStream( unknownByte1, in, info );
-	NifStream( unknownByte2, in, info );
-	NifStream( block_num, in, info );
-	link_stack.push_back( block_num );
+	NiObject::Read(in, link_stack, info);
+	NifStream(unknownByte1, in, info);
+	NifStream(unknownByte2, in, info);
+	NifStream(block_num, in, info);
+	link_stack.push_back(block_num);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-void NiPhysXTransformDest::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiPhysXTransformDest::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiObject::Write( out, link_map, missing_link_stack, info );
-	NifStream( unknownByte1, out, info );
-	NifStream( unknownByte2, out, info );
-	if ( info.version < VER_3_3_0_13 ) {
-		WritePtr32( &(*node), out );
-	} else {
-		if ( node != NULL ) {
-			map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(node) );
-			if (it != link_map.end()) {
-				NifStream( it->second, out, info );
-				missing_link_stack.push_back( NULL );
-			} else {
-				NifStream( 0xFFFFFFFF, out, info );
-				missing_link_stack.push_back( node );
+	NiObject::Write(out, link_map, missing_link_stack, info);
+	NifStream(unknownByte1, out, info);
+	NifStream(unknownByte2, out, info);
+	if(info.version < VER_3_3_0_13)
+	{
+		WritePtr32(&(*node), out);
+	}
+	else
+	{
+		if(node != NULL)
+		{
+			map<NiObjectRef, unsigned int>::const_iterator it = link_map.find(StaticCast<NiObject>(node));
+			if(it != link_map.end())
+			{
+				NifStream(it->second, out, info);
+				missing_link_stack.push_back(NULL);
 			}
-		} else {
-			NifStream( 0xFFFFFFFF, out, info );
-			missing_link_stack.push_back( NULL );
+			else
+			{
+				NifStream(0xFFFFFFFF, out, info);
+				missing_link_stack.push_back(node);
+			}
+		}
+		else
+		{
+			NifStream(0xFFFFFFFF, out, info);
+			missing_link_stack.push_back(NULL);
 		}
 	}
 
@@ -89,7 +104,8 @@ void NiPhysXTransformDest::Write( ostream& out, const map<NiObjectRef,unsigned i
 	//--END CUSTOM CODE--//
 }
 
-std::string NiPhysXTransformDest::asString( bool verbose ) const {
+std::string NiPhysXTransformDest::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -106,41 +122,44 @@ std::string NiPhysXTransformDest::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiPhysXTransformDest::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiPhysXTransformDest::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiObject::FixLinks( objects, link_stack, missing_link_stack, info );
-	node = FixLink<NiNode>( objects, link_stack, missing_link_stack, info );
+	NiObject::FixLinks(objects, link_stack, missing_link_stack, info);
+	node = FixLink<NiNode>(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiPhysXTransformDest::GetRefs() const {
+std::list<NiObjectRef> NiPhysXTransformDest::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiObject::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiPhysXTransformDest::GetPtrs() const {
+std::list<NiObject *> NiPhysXTransformDest::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiObject::GetPtrs();
-	if ( node != NULL )
-		ptrs.push_back((NiObject *)(node));
+	if(node != NULL)
+		ptrs.push_back((NiObject *) (node));
 	return ptrs;
 }
 
 /***Begin Example Naive Implementation****
 
 NiNode * NiPhysXTransformDest::GetNode() const {
-	return node;
+return node;
 }
 
 void NiPhysXTransformDest::SetNode( NiNode * value ) {
-	node = value;
+node = value;
 }
 
 ****End Example Naive Implementation***/

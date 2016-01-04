@@ -10,15 +10,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-BSSITSSegment::BSSITSSegment() : triangleOffset((unsigned int)0), triangleCount((unsigned int)0), materialHash((unsigned int)0), numRecords((unsigned int)0) {};
+BSSITSSegment::BSSITSSegment() : triangleOffset((unsigned int) 0), triangleCount((unsigned int) 0), materialHash((unsigned int) 0), numRecords((unsigned int) 0) {};
 
 //Copy Constructor
-BSSITSSegment::BSSITSSegment( const BSSITSSegment & src ) {
+BSSITSSegment::BSSITSSegment(const BSSITSSegment & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-BSSITSSegment & BSSITSSegment::operator=( const BSSITSSegment & src ) {
+BSSITSSegment & BSSITSSegment::operator=(const BSSITSSegment & src)
+{
 	this->triangleOffset = src.triangleOffset;
 	this->triangleCount = src.triangleCount;
 	this->materialHash = src.materialHash;

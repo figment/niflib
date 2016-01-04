@@ -9,15 +9,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-MaterialData::MaterialData() : materialExtraData((unsigned int)0) {};
+MaterialData::MaterialData() : materialExtraData((unsigned int) 0) {};
 
 //Copy Constructor
-MaterialData::MaterialData( const MaterialData & src ) {
+MaterialData::MaterialData(const MaterialData & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-MaterialData & MaterialData::operator=( const MaterialData & src ) {
+MaterialData & MaterialData::operator=(const MaterialData & src)
+{
 	this->materialName = src.materialName;
 	this->materialExtraData = src.materialExtraData;
 	return *this;

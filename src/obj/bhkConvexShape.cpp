@@ -17,47 +17,54 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type bhkConvexShape::TYPE("bhkConvexShape", &bhkSphereRepShape::TYPE );
+const Type bhkConvexShape::TYPE("bhkConvexShape", &bhkSphereRepShape::TYPE);
 
-bhkConvexShape::bhkConvexShape() {
+bhkConvexShape::bhkConvexShape()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-bhkConvexShape::~bhkConvexShape() {
+bhkConvexShape::~bhkConvexShape()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & bhkConvexShape::GetType() const {
+const Type & bhkConvexShape::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * bhkConvexShape::Create() {
+NiObject * bhkConvexShape::Create()
+{
 	return new bhkConvexShape;
 }
 
-void bhkConvexShape::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void bhkConvexShape::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	bhkSphereRepShape::Read( in, link_stack, info );
+	bhkSphereRepShape::Read(in, link_stack, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void bhkConvexShape::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void bhkConvexShape::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	bhkSphereRepShape::Write( out, link_map, missing_link_stack, info );
+	bhkSphereRepShape::Write(out, link_map, missing_link_stack, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string bhkConvexShape::asString( bool verbose ) const {
+std::string bhkConvexShape::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
@@ -69,23 +76,26 @@ std::string bhkConvexShape::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void bhkConvexShape::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void bhkConvexShape::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	bhkSphereRepShape::FixLinks( objects, link_stack, missing_link_stack, info );
+	bhkSphereRepShape::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> bhkConvexShape::GetRefs() const {
+std::list<NiObjectRef> bhkConvexShape::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = bhkSphereRepShape::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> bhkConvexShape::GetPtrs() const {
+std::list<NiObject *> bhkConvexShape::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = bhkSphereRepShape::GetPtrs();
 	return ptrs;
@@ -97,7 +107,7 @@ std::list<NiObject *> bhkConvexShape::GetPtrs() const {
 
 void bhkConvexShape::CalcMassProperties(float density, bool solid, float &mass, float &volume, Vector3 &center, InertiaMatrix& inertia)
 {
-	center = Vector3(0,0,0);
+	center = Vector3(0, 0, 0);
 	mass = 0.0f, volume = 0.0f;
 	inertia = InertiaMatrix::IDENTITY;
 }

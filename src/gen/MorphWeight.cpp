@@ -13,12 +13,14 @@ using namespace Niflib;
 MorphWeight::MorphWeight() : interpolator(NULL), weight_(0.0f) {};
 
 //Copy Constructor
-MorphWeight::MorphWeight( const MorphWeight & src ) {
+MorphWeight::MorphWeight(const MorphWeight & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-MorphWeight & MorphWeight::operator=( const MorphWeight & src ) {
+MorphWeight & MorphWeight::operator=(const MorphWeight & src)
+{
 	this->interpolator = src.interpolator;
 	this->weight_ = src.weight_;
 	return *this;

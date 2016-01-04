@@ -10,42 +10,41 @@ All rights reserved.  Please see niflib.h for license. */
 
 #include "../NIF_IO.h"
 
-namespace Niflib {
-
-
-/*! Unknown Matrix; for deathposes.psa */
-struct UnknownMatrix1 {
-	/*! Default Constructor */
-	NIFLIB_API UnknownMatrix1();
-	/*! Default Destructor */
-	NIFLIB_API ~UnknownMatrix1();
-	/*! Copy Constructor */
-	NIFLIB_API UnknownMatrix1( const UnknownMatrix1 & src );
-	/*! Copy Operator */
-	NIFLIB_API UnknownMatrix1 & operator=( const UnknownMatrix1 & src );
-	/*! Unknown uint 1 */
-	unsigned int unknownUint1;
-	/*! Unknown. */
-	float m11;
-	/*! Unknown. */
-	float m12;
-	/*! Unknown. */
-	float m13;
-	/*! Unknown. */
-	float m21;
-	/*! Unknown. */
-	float m22;
-	/*! Unknown. */
-	float m23;
-	/*! Unknown. */
-	float m31;
-	/*! Unknown. */
-	float m32;
-	/*! Unknown. */
-	float m33;
-	//--BEGIN MISC CUSTOM CODE--//
-	//--END CUSTOM CODE--//
-};
-
+namespace Niflib
+{
+	/*! Unknown Matrix; for deathposes.psa */
+	struct UnknownMatrix1
+	{
+		/*! Default Constructor */
+		NIFLIB_API UnknownMatrix1();
+		/*! Default Destructor */
+		NIFLIB_API ~UnknownMatrix1();
+		/*! Copy Constructor */
+		NIFLIB_API UnknownMatrix1(const UnknownMatrix1 & src);
+		/*! Copy Operator */
+		NIFLIB_API UnknownMatrix1 & operator=(const UnknownMatrix1 & src);
+		/*! Unknown uint 1 */
+		unsigned int unknownUint1;
+		/*! Unknown. */
+		float m11;
+		/*! Unknown. */
+		float m12;
+		/*! Unknown. */
+		float m13;
+		/*! Unknown. */
+		float m21;
+		/*! Unknown. */
+		float m22;
+		/*! Unknown. */
+		float m23;
+		/*! Unknown. */
+		float m31;
+		/*! Unknown. */
+		float m32;
+		/*! Unknown. */
+		float m33;
+		//--BEGIN MISC CUSTOM CODE--//
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

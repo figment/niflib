@@ -10,30 +10,29 @@ All rights reserved.  Please see niflib.h for license. */
 
 #include "../NIF_IO.h"
 
-namespace Niflib {
-
-
-/*! Channel data */
-struct ChannelData {
-	/*! Default Constructor */
-	NIFLIB_API ChannelData();
-	/*! Default Destructor */
-	NIFLIB_API ~ChannelData();
-	/*! Copy Constructor */
-	NIFLIB_API ChannelData( const ChannelData & src );
-	/*! Copy Operator */
-	NIFLIB_API ChannelData & operator=( const ChannelData & src );
-	/*! Channel Type */
-	ChannelType type;
-	/*! Data Storage Convention */
-	ChannelConvention convention;
-	/*! Bits per channel */
-	byte bitsPerChannel;
-	/*! Unknown */
-	byte unknownByte1;
-	//--BEGIN MISC CUSTOM CODE--//
-	//--END CUSTOM CODE--//
-};
-
+namespace Niflib
+{
+	/*! Channel data */
+	struct ChannelData
+	{
+		/*! Default Constructor */
+		NIFLIB_API ChannelData();
+		/*! Default Destructor */
+		NIFLIB_API ~ChannelData();
+		/*! Copy Constructor */
+		NIFLIB_API ChannelData(const ChannelData & src);
+		/*! Copy Operator */
+		NIFLIB_API ChannelData & operator=(const ChannelData & src);
+		/*! Channel Type */
+		ChannelType type;
+		/*! Data Storage Convention */
+		ChannelConvention convention;
+		/*! Bits per channel */
+		byte bitsPerChannel;
+		/*! Unknown */
+		byte unknownByte1;
+		//--BEGIN MISC CUSTOM CODE--//
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

@@ -19,93 +19,106 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiDataStream::TYPE("NiDataStream", &NiObject::TYPE );
+const Type NiDataStream::TYPE("NiDataStream", &NiObject::TYPE);
 
-NiDataStream::NiDataStream() : usage((DataStreamUsage)0), access((DataStreamAccess)0), numBytes((unsigned int)0), cloningBehavior((CloningBehavior)CLONING_SHARE), numRegions((unsigned int)0), numComponents((unsigned int)0), streamable(1) {
+NiDataStream::NiDataStream() : usage((DataStreamUsage) 0), access((DataStreamAccess) 0), numBytes((unsigned int) 0), cloningBehavior((CloningBehavior) CLONING_SHARE), numRegions((unsigned int) 0), numComponents((unsigned int) 0), streamable(1)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-NiDataStream::~NiDataStream() {
+NiDataStream::~NiDataStream()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiDataStream::GetType() const {
+const Type & NiDataStream::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiDataStream::Create() {
+NiObject * NiDataStream::Create()
+{
 	return new NiDataStream;
 }
 
-void NiDataStream::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiDataStream::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiObject::Read( in, link_stack, info );
-	NifStream( usage, in, info );
-	NifStream( access, in, info );
-	NifStream( numBytes, in, info );
-	NifStream( cloningBehavior, in, info );
-	NifStream( numRegions, in, info );
+	NiObject::Read(in, link_stack, info);
+	NifStream(usage, in, info);
+	NifStream(access, in, info);
+	NifStream(numBytes, in, info);
+	NifStream(cloningBehavior, in, info);
+	NifStream(numRegions, in, info);
 	regions.resize(numRegions);
-	for (unsigned int i1 = 0; i1 < regions.size(); i1++) {
-		NifStream( regions[i1].startIndex, in, info );
-		NifStream( regions[i1].numIndices, in, info );
+	for(unsigned int i1 = 0; i1 < regions.size(); i1++)
+	{
+		NifStream(regions[i1].startIndex, in, info);
+		NifStream(regions[i1].numIndices, in, info);
 	};
-	NifStream( numComponents, in, info );
+	NifStream(numComponents, in, info);
 	componentFormats.resize(numComponents);
-	for (unsigned int i1 = 0; i1 < componentFormats.size(); i1++) {
-		NifStream( componentFormats[i1], in, info );
+	for(unsigned int i1 = 0; i1 < componentFormats.size(); i1++)
+	{
+		NifStream(componentFormats[i1], in, info);
 	};
 	data.resize(numBytes);
-	for (unsigned int i1 = 0; i1 < data.size(); i1++) {
-		NifStream( data[i1], in, info );
+	for(unsigned int i1 = 0; i1 < data.size(); i1++)
+	{
+		NifStream(data[i1], in, info);
 	};
-	NifStream( streamable, in, info );
+	NifStream(streamable, in, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-void NiDataStream::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiDataStream::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiObject::Write( out, link_map, missing_link_stack, info );
-	numComponents = (unsigned int)(componentFormats.size());
-	numRegions = (unsigned int)(regions.size());
-	numBytes = (unsigned int)(data.size());
-	NifStream( usage, out, info );
-	NifStream( access, out, info );
-	NifStream( numBytes, out, info );
-	NifStream( cloningBehavior, out, info );
-	NifStream( numRegions, out, info );
-	for (unsigned int i1 = 0; i1 < regions.size(); i1++) {
-		NifStream( regions[i1].startIndex, out, info );
-		NifStream( regions[i1].numIndices, out, info );
+	NiObject::Write(out, link_map, missing_link_stack, info);
+	numComponents = (unsigned int) (componentFormats.size());
+	numRegions = (unsigned int) (regions.size());
+	numBytes = (unsigned int) (data.size());
+	NifStream(usage, out, info);
+	NifStream(access, out, info);
+	NifStream(numBytes, out, info);
+	NifStream(cloningBehavior, out, info);
+	NifStream(numRegions, out, info);
+	for(unsigned int i1 = 0; i1 < regions.size(); i1++)
+	{
+		NifStream(regions[i1].startIndex, out, info);
+		NifStream(regions[i1].numIndices, out, info);
 	};
-	NifStream( numComponents, out, info );
-	for (unsigned int i1 = 0; i1 < componentFormats.size(); i1++) {
-		NifStream( componentFormats[i1], out, info );
+	NifStream(numComponents, out, info);
+	for(unsigned int i1 = 0; i1 < componentFormats.size(); i1++)
+	{
+		NifStream(componentFormats[i1], out, info);
 	};
-	for (unsigned int i1 = 0; i1 < data.size(); i1++) {
-		NifStream( data[i1], out, info );
+	for(unsigned int i1 = 0; i1 < data.size(); i1++)
+	{
+		NifStream(data[i1], out, info);
 	};
-	NifStream( streamable, out, info );
+	NifStream(streamable, out, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::string NiDataStream::asString( bool verbose ) const {
+std::string NiDataStream::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -113,17 +126,19 @@ std::string NiDataStream::asString( bool verbose ) const {
 	stringstream out;
 	unsigned int array_output_count = 0;
 	out << NiObject::asString(verbose);
-	numComponents = (unsigned int)(componentFormats.size());
-	numRegions = (unsigned int)(regions.size());
-	numBytes = (unsigned int)(data.size());
+	numComponents = (unsigned int) (componentFormats.size());
+	numRegions = (unsigned int) (regions.size());
+	numBytes = (unsigned int) (data.size());
 	out << "  Usage:  " << usage << endl;
 	out << "  Access:  " << access << endl;
 	out << "  Num Bytes:  " << numBytes << endl;
 	out << "  Cloning Behavior:  " << cloningBehavior << endl;
 	out << "  Num Regions:  " << numRegions << endl;
 	array_output_count = 0;
-	for (unsigned int i1 = 0; i1 < regions.size(); i1++) {
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+	for(unsigned int i1 = 0; i1 < regions.size(); i1++)
+	{
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 			break;
 		};
@@ -132,24 +147,30 @@ std::string NiDataStream::asString( bool verbose ) const {
 	};
 	out << "  Num Components:  " << numComponents << endl;
 	array_output_count = 0;
-	for (unsigned int i1 = 0; i1 < componentFormats.size(); i1++) {
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+	for(unsigned int i1 = 0; i1 < componentFormats.size(); i1++)
+	{
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 			break;
 		};
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			break;
 		};
 		out << "    Component Formats[" << i1 << "]:  " << componentFormats[i1] << endl;
 		array_output_count++;
 	};
 	array_output_count = 0;
-	for (unsigned int i1 = 0; i1 < data.size(); i1++) {
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+	for(unsigned int i1 = 0; i1 < data.size(); i1++)
+	{
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 			break;
 		};
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			break;
 		};
 		out << "    Data[" << i1 << "]:  " << data[i1] << endl;
@@ -163,25 +184,28 @@ std::string NiDataStream::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiDataStream::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiDataStream::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiObject::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiObject::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiDataStream::GetRefs() const {
+std::list<NiObjectRef> NiDataStream::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiObject::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiDataStream::GetPtrs() const {
+std::list<NiObject *> NiDataStream::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiObject::GetPtrs();
 	return ptrs;
@@ -190,59 +214,59 @@ std::list<NiObject *> NiDataStream::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 DataStreamUsage NiDataStream::GetUsage() const {
-	return usage;
+return usage;
 }
 
 void NiDataStream::SetUsage( const DataStreamUsage & value ) {
-	usage = value;
+usage = value;
 }
 
 DataStreamAccess NiDataStream::GetAccess() const {
-	return access;
+return access;
 }
 
 void NiDataStream::SetAccess( const DataStreamAccess & value ) {
-	access = value;
+access = value;
 }
 
 CloningBehavior NiDataStream::GetCloningBehavior() const {
-	return cloningBehavior;
+return cloningBehavior;
 }
 
 void NiDataStream::SetCloningBehavior( const CloningBehavior & value ) {
-	cloningBehavior = value;
+cloningBehavior = value;
 }
 
 vector<Region > NiDataStream::GetRegions() const {
-	return regions;
+return regions;
 }
 
 void NiDataStream::SetRegions( const vector<Region >& value ) {
-	regions = value;
+regions = value;
 }
 
 vector<ComponentFormat > NiDataStream::GetComponentFormats() const {
-	return componentFormats;
+return componentFormats;
 }
 
 void NiDataStream::SetComponentFormats( const vector<ComponentFormat >& value ) {
-	componentFormats = value;
+componentFormats = value;
 }
 
 vector<byte > NiDataStream::GetData() const {
-	return data;
+return data;
 }
 
 void NiDataStream::SetData( const vector<byte >& value ) {
-	data = value;
+data = value;
 }
 
 bool NiDataStream::GetStreamable() const {
-	return streamable;
+return streamable;
 }
 
 void NiDataStream::SetStreamable( bool value ) {
-	streamable = value;
+streamable = value;
 }
 
 ****End Example Naive Implementation***/

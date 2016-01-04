@@ -14,120 +14,120 @@ All rights reserved.  Please see niflib.h for license. */
 //--END CUSTOM CODE--//
 
 #include "NiPSysModifier.h"
-namespace Niflib {
-
-class NiPSysGrowFadeModifier;
-typedef Ref<NiPSysGrowFadeModifier> NiPSysGrowFadeModifierRef;
-
-/*!
- * Particle modifier that controls the time it takes to grow a particle from Size=0
- * to the specified Size in the emitter, and then back to 0.  This modifer has no
- * control over alpha settings.
- */
-class NiPSysGrowFadeModifier : public NiPSysModifier {
-public:
-	/*! Constructor */
-	NIFLIB_API NiPSysGrowFadeModifier();
-
-	/*! Destructor */
-	NIFLIB_API virtual ~NiPSysGrowFadeModifier();
+namespace Niflib
+{
+	class NiPSysGrowFadeModifier;
+	typedef Ref<NiPSysGrowFadeModifier> NiPSysGrowFadeModifierRef;
 
 	/*!
-	 * A constant value which uniquly identifies objects of this type.
+	 * Particle modifier that controls the time it takes to grow a particle from Size=0
+	 * to the specified Size in the emitter, and then back to 0.  This modifer has no
+	 * control over alpha settings.
 	 */
-	NIFLIB_API static const Type TYPE;
+	class NiPSysGrowFadeModifier : public NiPSysModifier
+	{
+	public:
+		/*! Constructor */
+		NIFLIB_API NiPSysGrowFadeModifier();
 
-	/*!
-	 * A factory function used during file reading to create an instance of this type of object.
-	 * \return A pointer to a newly allocated instance of this type of object.
-	 */
-	NIFLIB_API static NiObject * Create();
+		/*! Destructor */
+		NIFLIB_API virtual ~NiPSysGrowFadeModifier();
 
-	/*!
-	 * Summarizes the information contained in this object in English.
-	 * \param[in] verbose Determines whether or not detailed information about large areas of data will be printed out.
-	 * \return A string containing a summary of the information within the object in English.  This is the function that Niflyze calls to generate its analysis, so the output is the same.
-	 */
-	NIFLIB_API virtual string asString( bool verbose = false ) const;
+		/*!
+		 * A constant value which uniquly identifies objects of this type.
+		 */
+		NIFLIB_API static const Type TYPE;
 
-	/*!
-	 * Used to determine the type of a particular instance of this object.
-	 * \return The type constant for the actual type of the object.
-	 */
-	NIFLIB_API virtual const Type & GetType() const;
+		/*!
+		 * A factory function used during file reading to create an instance of this type of object.
+		 * \return A pointer to a newly allocated instance of this type of object.
+		 */
+		NIFLIB_API static NiObject * Create();
 
-	/***Begin Example Naive Implementation****
+		/*!
+		 * Summarizes the information contained in this object in English.
+		 * \param[in] verbose Determines whether or not detailed information about large areas of data will be printed out.
+		 * \return A string containing a summary of the information within the object in English.  This is the function that Niflyze calls to generate its analysis, so the output is the same.
+		 */
+		NIFLIB_API virtual string asString(bool verbose = false) const;
 
-	// Time in seconds to fade in.
-	// \return The current value.
-	float GetGrowTime() const;
+		/*!
+		 * Used to determine the type of a particular instance of this object.
+		 * \return The type constant for the actual type of the object.
+		 */
+		NIFLIB_API virtual const Type & GetType() const;
 
-	// Time in seconds to fade in.
-	// \param[in] value The new value.
-	void SetGrowTime( float value );
+		/***Begin Example Naive Implementation****
 
-	// Unknown.
-	// \return The current value.
-	unsigned short GetGrowGeneration() const;
+		// Time in seconds to fade in.
+		// \return The current value.
+		float GetGrowTime() const;
 
-	// Unknown.
-	// \param[in] value The new value.
-	void SetGrowGeneration( unsigned short value );
+		// Time in seconds to fade in.
+		// \param[in] value The new value.
+		void SetGrowTime( float value );
 
-	// Time in seconds to fade out.
-	// \return The current value.
-	float GetFadeTime() const;
+		// Unknown.
+		// \return The current value.
+		unsigned short GetGrowGeneration() const;
 
-	// Time in seconds to fade out.
-	// \param[in] value The new value.
-	void SetFadeTime( float value );
+		// Unknown.
+		// \param[in] value The new value.
+		void SetGrowGeneration( unsigned short value );
 
-	// Unknown.
-	// \return The current value.
-	unsigned short GetFadeGeneration() const;
+		// Time in seconds to fade out.
+		// \return The current value.
+		float GetFadeTime() const;
 
-	// Unknown.
-	// \param[in] value The new value.
-	void SetFadeGeneration( unsigned short value );
+		// Time in seconds to fade out.
+		// \param[in] value The new value.
+		void SetFadeTime( float value );
 
-	// Unknown
-	// \return The current value.
-	float GetBaseScale() const;
+		// Unknown.
+		// \return The current value.
+		unsigned short GetFadeGeneration() const;
 
-	// Unknown
-	// \param[in] value The new value.
-	void SetBaseScale( float value );
+		// Unknown.
+		// \param[in] value The new value.
+		void SetFadeGeneration( unsigned short value );
 
-	****End Example Naive Implementation***/
+		// Unknown
+		// \return The current value.
+		float GetBaseScale() const;
 
-	//--BEGIN MISC CUSTOM CODE--//
+		// Unknown
+		// \param[in] value The new value.
+		void SetBaseScale( float value );
+
+		****End Example Naive Implementation***/
+
+		//--BEGIN MISC CUSTOM CODE--//
+		//--END CUSTOM CODE--//
+	protected:
+		/*! Time in seconds to fade in. */
+		float growTime;
+		/*! Unknown. */
+		unsigned short growGeneration;
+		/*! Time in seconds to fade out. */
+		float fadeTime;
+		/*! Unknown. */
+		unsigned short fadeGeneration;
+		/*! Unknown */
+		float baseScale;
+	public:
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info);
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const;
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info);
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual list<NiObjectRef> GetRefs() const;
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual list<NiObject *> GetPtrs() const;
+	};
+
+	//--BEGIN FILE FOOT CUSTOM CODE--//
 	//--END CUSTOM CODE--//
-protected:
-	/*! Time in seconds to fade in. */
-	float growTime;
-	/*! Unknown. */
-	unsigned short growGeneration;
-	/*! Time in seconds to fade out. */
-	float fadeTime;
-	/*! Unknown. */
-	unsigned short fadeGeneration;
-	/*! Unknown */
-	float baseScale;
-public:
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const;
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info );
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual list<NiObjectRef> GetRefs() const;
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual list<NiObject *> GetPtrs() const;
-};
-
-//--BEGIN FILE FOOT CUSTOM CODE--//
-//--END CUSTOM CODE--//
-
 } //End Niflib namespace
 #endif

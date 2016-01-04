@@ -12,15 +12,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-SkinShapeGroup::SkinShapeGroup() : numLinkPairs((unsigned int)0) {};
+SkinShapeGroup::SkinShapeGroup() : numLinkPairs((unsigned int) 0) {};
 
 //Copy Constructor
-SkinShapeGroup::SkinShapeGroup( const SkinShapeGroup & src ) {
+SkinShapeGroup::SkinShapeGroup(const SkinShapeGroup & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-SkinShapeGroup & SkinShapeGroup::operator=( const SkinShapeGroup & src ) {
+SkinShapeGroup & SkinShapeGroup::operator=(const SkinShapeGroup & src)
+{
 	this->numLinkPairs = src.numLinkPairs;
 	this->linkPairs = src.linkPairs;
 	return *this;

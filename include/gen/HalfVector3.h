@@ -10,29 +10,28 @@ All rights reserved.  Please see niflib.h for license. */
 
 #include "../NIF_IO.h"
 
-namespace Niflib {
+namespace Niflib
+{
+	/*! A vector in 3D space (x,y,z). */
+	struct HalfVector3
+	{
+		/*! Default Constructor */
+		NIFLIB_API HalfVector3();
+		/*! Default Destructor */
+		NIFLIB_API ~HalfVector3();
+		/*! Copy Constructor */
+		NIFLIB_API HalfVector3(const HalfVector3 & src);
+		/*! Copy Operator */
+		NIFLIB_API HalfVector3 & operator=(const HalfVector3 & src);
+		/*! First coordinate. */
+		hfloat x;
+		/*! Second coordinate. */
+		hfloat y;
+		/*! Third coordinate. */
+		hfloat z;
+		//--BEGIN MISC CUSTOM CODE--//
 
-
-/*! A vector in 3D space (x,y,z). */
-struct HalfVector3 {
-	/*! Default Constructor */
-	NIFLIB_API HalfVector3();
-	/*! Default Destructor */
-	NIFLIB_API ~HalfVector3();
-	/*! Copy Constructor */
-	NIFLIB_API HalfVector3( const HalfVector3 & src );
-	/*! Copy Operator */
-	NIFLIB_API HalfVector3 & operator=( const HalfVector3 & src );
-	/*! First coordinate. */
-	hfloat x;
-	/*! Second coordinate. */
-	hfloat y;
-	/*! Third coordinate. */
-	hfloat z;
-	//--BEGIN MISC CUSTOM CODE--//
-
-	//--END CUSTOM CODE--//
-};
-
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

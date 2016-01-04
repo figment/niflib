@@ -18,44 +18,52 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiArkImporterExtraData::TYPE("NiArkImporterExtraData", &NiExtraData::TYPE );
+const Type NiArkImporterExtraData::TYPE("NiArkImporterExtraData", &NiExtraData::TYPE);
 
-NiArkImporterExtraData::NiArkImporterExtraData() : unknownInt1((int)0), unknownInt2((int)0) {
+NiArkImporterExtraData::NiArkImporterExtraData() : unknownInt1((int) 0), unknownInt2((int) 0)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-NiArkImporterExtraData::~NiArkImporterExtraData() {
+NiArkImporterExtraData::~NiArkImporterExtraData()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiArkImporterExtraData::GetType() const {
+const Type & NiArkImporterExtraData::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiArkImporterExtraData::Create() {
+NiObject * NiArkImporterExtraData::Create()
+{
 	return new NiArkImporterExtraData;
 }
 
-void NiArkImporterExtraData::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiArkImporterExtraData::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiExtraData::Read( in, link_stack, info );
-	NifStream( unknownInt1, in, info );
-	if ( info.version <= 0x0401000C ) {
-		NifStream( unknownInt2, in, info );
+	NiExtraData::Read(in, link_stack, info);
+	NifStream(unknownInt1, in, info);
+	if(info.version <= 0x0401000C)
+	{
+		NifStream(unknownInt2, in, info);
 	};
-	NifStream( importerName, in, info );
-	for (unsigned int i1 = 0; i1 < 13; i1++) {
-		NifStream( unknownBytes[i1], in, info );
+	NifStream(importerName, in, info);
+	for(unsigned int i1 = 0; i1 < 13; i1++)
+	{
+		NifStream(unknownBytes[i1], in, info);
 	};
-	for (unsigned int i1 = 0; i1 < 7; i1++) {
-		NifStream( unknownFloats[i1], in, info );
+	for(unsigned int i1 = 0; i1 < 7; i1++)
+	{
+		NifStream(unknownFloats[i1], in, info);
 	};
 
 	//--BEGIN POST-READ CUSTOM CODE--//
@@ -63,22 +71,26 @@ void NiArkImporterExtraData::Read( istream& in, list<unsigned int> & link_stack,
 	//--END CUSTOM CODE--//
 }
 
-void NiArkImporterExtraData::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiArkImporterExtraData::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiExtraData::Write( out, link_map, missing_link_stack, info );
-	NifStream( unknownInt1, out, info );
-	if ( info.version <= 0x0401000C ) {
-		NifStream( unknownInt2, out, info );
+	NiExtraData::Write(out, link_map, missing_link_stack, info);
+	NifStream(unknownInt1, out, info);
+	if(info.version <= 0x0401000C)
+	{
+		NifStream(unknownInt2, out, info);
 	};
-	NifStream( importerName, out, info );
-	for (unsigned int i1 = 0; i1 < 13; i1++) {
-		NifStream( unknownBytes[i1], out, info );
+	NifStream(importerName, out, info);
+	for(unsigned int i1 = 0; i1 < 13; i1++)
+	{
+		NifStream(unknownBytes[i1], out, info);
 	};
-	for (unsigned int i1 = 0; i1 < 7; i1++) {
-		NifStream( unknownFloats[i1], out, info );
+	for(unsigned int i1 = 0; i1 < 7; i1++)
+	{
+		NifStream(unknownFloats[i1], out, info);
 	};
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
@@ -86,7 +98,8 @@ void NiArkImporterExtraData::Write( ostream& out, const map<NiObjectRef,unsigned
 	//--END CUSTOM CODE--//
 }
 
-std::string NiArkImporterExtraData::asString( bool verbose ) const {
+std::string NiArkImporterExtraData::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -98,24 +111,30 @@ std::string NiArkImporterExtraData::asString( bool verbose ) const {
 	out << "  Unknown Int 2:  " << unknownInt2 << endl;
 	out << "  Importer Name:  " << importerName << endl;
 	array_output_count = 0;
-	for (unsigned int i1 = 0; i1 < 13; i1++) {
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+	for(unsigned int i1 = 0; i1 < 13; i1++)
+	{
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 			break;
 		};
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			break;
 		};
 		out << "    Unknown Bytes[" << i1 << "]:  " << unknownBytes[i1] << endl;
 		array_output_count++;
 	};
 	array_output_count = 0;
-	for (unsigned int i1 = 0; i1 < 7; i1++) {
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+	for(unsigned int i1 = 0; i1 < 7; i1++)
+	{
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 			break;
 		};
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			break;
 		};
 		out << "    Unknown Floats[" << i1 << "]:  " << unknownFloats[i1] << endl;
@@ -128,25 +147,28 @@ std::string NiArkImporterExtraData::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiArkImporterExtraData::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiArkImporterExtraData::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiExtraData::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiExtraData::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiArkImporterExtraData::GetRefs() const {
+std::list<NiObjectRef> NiArkImporterExtraData::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiExtraData::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiArkImporterExtraData::GetPtrs() const {
+std::list<NiObject *> NiArkImporterExtraData::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiExtraData::GetPtrs();
 	return ptrs;
@@ -155,11 +177,11 @@ std::list<NiObject *> NiArkImporterExtraData::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 IndexString NiArkImporterExtraData::GetImporterName() const {
-	return importerName;
+return importerName;
 }
 
 void NiArkImporterExtraData::SetImporterName( const IndexString & value ) {
-	importerName = value;
+importerName = value;
 }
 
 ****End Example Naive Implementation***/

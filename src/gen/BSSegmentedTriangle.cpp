@@ -9,15 +9,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-BSSegmentedTriangle::BSSegmentedTriangle() : unknownInt1((int)0), unknownInt2((int)0), unknownByte1((byte)0) {};
+BSSegmentedTriangle::BSSegmentedTriangle() : unknownInt1((int) 0), unknownInt2((int) 0), unknownByte1((byte) 0) {};
 
 //Copy Constructor
-BSSegmentedTriangle::BSSegmentedTriangle( const BSSegmentedTriangle & src ) {
+BSSegmentedTriangle::BSSegmentedTriangle(const BSSegmentedTriangle & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-BSSegmentedTriangle & BSSegmentedTriangle::operator=( const BSSegmentedTriangle & src ) {
+BSSegmentedTriangle & BSSegmentedTriangle::operator=(const BSSegmentedTriangle & src)
+{
 	this->unknownInt1 = src.unknownInt1;
 	this->unknownInt2 = src.unknownInt2;
 	this->unknownByte1 = src.unknownByte1;

@@ -13,45 +13,45 @@ All rights reserved.  Please see niflib.h for license. */
 // Include structures
 #include "../Ref.h"
 #include "SemanticData.h"
-namespace Niflib {
+namespace Niflib
+{
+	// Forward define of referenced NIF objects
+	class NiDataStream;
 
-// Forward define of referenced NIF objects
-class NiDataStream;
-
-/*!  */
-struct MeshData {
-	/*! Default Constructor */
-	NIFLIB_API MeshData();
-	/*! Default Destructor */
-	NIFLIB_API ~MeshData();
-	/*! Copy Constructor */
-	NIFLIB_API MeshData( const MeshData & src );
-	/*! Copy Operator */
-	NIFLIB_API MeshData & operator=( const MeshData & src );
-	/*!
-	 * Reference to a data stream object which holds the data used by
-	 *             this reference.
-	 */
-	Ref<NiDataStream > stream;
-	/*!
-	 * Sets whether this stream data is per-instance data for use in
-	 *             hardware instancing.
-	 */
-	bool isPerInstance;
-	/*!
-	 * The number of submesh-to-region mappings that this data stream
-	 *             has.
-	 */
-	mutable unsigned short numSubmeshes;
 	/*!  */
-	vector<unsigned short > submeshToRegionMap;
-	/*! Unknown. */
-	mutable int numComponents;
-	/*! Describes the semantic of each component. */
-	vector<SemanticData > componentSemantics;
-	//--BEGIN MISC CUSTOM CODE--//
-	//--END CUSTOM CODE--//
-};
-
+	struct MeshData
+	{
+		/*! Default Constructor */
+		NIFLIB_API MeshData();
+		/*! Default Destructor */
+		NIFLIB_API ~MeshData();
+		/*! Copy Constructor */
+		NIFLIB_API MeshData(const MeshData & src);
+		/*! Copy Operator */
+		NIFLIB_API MeshData & operator=(const MeshData & src);
+		/*!
+		 * Reference to a data stream object which holds the data used by
+		 *             this reference.
+		 */
+		Ref<NiDataStream > stream;
+		/*!
+		 * Sets whether this stream data is per-instance data for use in
+		 *             hardware instancing.
+		 */
+		bool isPerInstance;
+		/*!
+		 * The number of submesh-to-region mappings that this data stream
+		 *             has.
+		 */
+		mutable unsigned short numSubmeshes;
+		/*!  */
+		vector<unsigned short > submeshToRegionMap;
+		/*! Unknown. */
+		mutable int numComponents;
+		/*! Describes the semantic of each component. */
+		vector<SemanticData > componentSemantics;
+		//--BEGIN MISC CUSTOM CODE--//
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

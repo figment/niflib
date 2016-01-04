@@ -17,51 +17,58 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type bhkBlendCollisionObject::TYPE("bhkBlendCollisionObject", &bhkCollisionObject::TYPE );
+const Type bhkBlendCollisionObject::TYPE("bhkBlendCollisionObject", &bhkCollisionObject::TYPE);
 
-bhkBlendCollisionObject::bhkBlendCollisionObject() : unknownFloat1(0.0f), unknownFloat2(0.0f) {
+bhkBlendCollisionObject::bhkBlendCollisionObject() : unknownFloat1(0.0f), unknownFloat2(0.0f)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-bhkBlendCollisionObject::~bhkBlendCollisionObject() {
+bhkBlendCollisionObject::~bhkBlendCollisionObject()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & bhkBlendCollisionObject::GetType() const {
+const Type & bhkBlendCollisionObject::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * bhkBlendCollisionObject::Create() {
+NiObject * bhkBlendCollisionObject::Create()
+{
 	return new bhkBlendCollisionObject;
 }
 
-void bhkBlendCollisionObject::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void bhkBlendCollisionObject::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	bhkCollisionObject::Read( in, link_stack, info );
-	NifStream( unknownFloat1, in, info );
-	NifStream( unknownFloat2, in, info );
+	bhkCollisionObject::Read(in, link_stack, info);
+	NifStream(unknownFloat1, in, info);
+	NifStream(unknownFloat2, in, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void bhkBlendCollisionObject::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void bhkBlendCollisionObject::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	bhkCollisionObject::Write( out, link_map, missing_link_stack, info );
-	NifStream( unknownFloat1, out, info );
-	NifStream( unknownFloat2, out, info );
+	bhkCollisionObject::Write(out, link_map, missing_link_stack, info);
+	NifStream(unknownFloat1, out, info);
+	NifStream(unknownFloat2, out, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string bhkBlendCollisionObject::asString( bool verbose ) const {
+std::string bhkBlendCollisionObject::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
@@ -75,23 +82,26 @@ std::string bhkBlendCollisionObject::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void bhkBlendCollisionObject::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void bhkBlendCollisionObject::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	bhkCollisionObject::FixLinks( objects, link_stack, missing_link_stack, info );
+	bhkCollisionObject::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> bhkBlendCollisionObject::GetRefs() const {
+std::list<NiObjectRef> bhkBlendCollisionObject::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = bhkCollisionObject::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> bhkBlendCollisionObject::GetPtrs() const {
+std::list<NiObject *> bhkBlendCollisionObject::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = bhkCollisionObject::GetPtrs();
 	return ptrs;

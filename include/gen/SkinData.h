@@ -13,37 +13,36 @@ All rights reserved.  Please see niflib.h for license. */
 // Include structures
 #include "SkinTransform.h"
 #include "SkinWeight.h"
-namespace Niflib {
-
-
-/*! Skinning data component. */
-struct SkinData {
-	/*! Default Constructor */
-	NIFLIB_API SkinData();
-	/*! Default Destructor */
-	NIFLIB_API ~SkinData();
-	/*! Copy Constructor */
-	NIFLIB_API SkinData( const SkinData & src );
-	/*! Copy Operator */
-	NIFLIB_API SkinData & operator=( const SkinData & src );
-	/*! Offset of the skin from this bone in bind position. */
-	SkinTransform skinTransform;
-	/*!
-	 * Translation offset of a bounding sphere holding all vertices. (Note that its a
-	 * Sphere Containing Axis Aligned Box not a minimum volume Sphere)
-	 */
-	Vector3 boundingSphereOffset;
-	/*! Radius for bounding sphere holding all vertices. */
-	float boundingSphereRadius;
-	/*! Unknown, always 0? */
-	array<13,short > unknown13Shorts;
-	/*! Number of weighted vertices. */
-	mutable unsigned short numVertices;
-	/*! The vertex weights. */
-	vector<SkinWeight > vertexWeights;
-	//--BEGIN MISC CUSTOM CODE--//
-	//--END CUSTOM CODE--//
-};
-
+namespace Niflib
+{
+	/*! Skinning data component. */
+	struct SkinData
+	{
+		/*! Default Constructor */
+		NIFLIB_API SkinData();
+		/*! Default Destructor */
+		NIFLIB_API ~SkinData();
+		/*! Copy Constructor */
+		NIFLIB_API SkinData(const SkinData & src);
+		/*! Copy Operator */
+		NIFLIB_API SkinData & operator=(const SkinData & src);
+		/*! Offset of the skin from this bone in bind position. */
+		SkinTransform skinTransform;
+		/*!
+		 * Translation offset of a bounding sphere holding all vertices. (Note that its a
+		 * Sphere Containing Axis Aligned Box not a minimum volume Sphere)
+		 */
+		Vector3 boundingSphereOffset;
+		/*! Radius for bounding sphere holding all vertices. */
+		float boundingSphereRadius;
+		/*! Unknown, always 0? */
+		array<13, short > unknown13Shorts;
+		/*! Number of weighted vertices. */
+		mutable unsigned short numVertices;
+		/*! The vertex weights. */
+		vector<SkinWeight > vertexWeights;
+		//--BEGIN MISC CUSTOM CODE--//
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

@@ -18,67 +18,74 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type BSPSysSubTexModifier::TYPE("BSPSysSubTexModifier", &NiPSysModifier::TYPE );
+const Type BSPSysSubTexModifier::TYPE("BSPSysSubTexModifier", &NiPSysModifier::TYPE);
 
-BSPSysSubTexModifier::BSPSysSubTexModifier() : startFrame((unsigned int)0), startFrameFudge(0.0f), endFrame(0.0f), loopStartFrame(0.0f), loopStartFrameFudge(0.0f), frameCount(0.0f), frameCountFudge(0.0f) {
+BSPSysSubTexModifier::BSPSysSubTexModifier() : startFrame((unsigned int) 0), startFrameFudge(0.0f), endFrame(0.0f), loopStartFrame(0.0f), loopStartFrameFudge(0.0f), frameCount(0.0f), frameCountFudge(0.0f)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-BSPSysSubTexModifier::~BSPSysSubTexModifier() {
+BSPSysSubTexModifier::~BSPSysSubTexModifier()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & BSPSysSubTexModifier::GetType() const {
+const Type & BSPSysSubTexModifier::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * BSPSysSubTexModifier::Create() {
+NiObject * BSPSysSubTexModifier::Create()
+{
 	return new BSPSysSubTexModifier;
 }
 
-void BSPSysSubTexModifier::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void BSPSysSubTexModifier::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSysModifier::Read( in, link_stack, info );
-	NifStream( startFrame, in, info );
-	NifStream( startFrameFudge, in, info );
-	NifStream( endFrame, in, info );
-	NifStream( loopStartFrame, in, info );
-	NifStream( loopStartFrameFudge, in, info );
-	NifStream( frameCount, in, info );
-	NifStream( frameCountFudge, in, info );
+	NiPSysModifier::Read(in, link_stack, info);
+	NifStream(startFrame, in, info);
+	NifStream(startFrameFudge, in, info);
+	NifStream(endFrame, in, info);
+	NifStream(loopStartFrame, in, info);
+	NifStream(loopStartFrameFudge, in, info);
+	NifStream(frameCount, in, info);
+	NifStream(frameCountFudge, in, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-void BSPSysSubTexModifier::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void BSPSysSubTexModifier::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSysModifier::Write( out, link_map, missing_link_stack, info );
-	NifStream( startFrame, out, info );
-	NifStream( startFrameFudge, out, info );
-	NifStream( endFrame, out, info );
-	NifStream( loopStartFrame, out, info );
-	NifStream( loopStartFrameFudge, out, info );
-	NifStream( frameCount, out, info );
-	NifStream( frameCountFudge, out, info );
+	NiPSysModifier::Write(out, link_map, missing_link_stack, info);
+	NifStream(startFrame, out, info);
+	NifStream(startFrameFudge, out, info);
+	NifStream(endFrame, out, info);
+	NifStream(loopStartFrame, out, info);
+	NifStream(loopStartFrameFudge, out, info);
+	NifStream(frameCount, out, info);
+	NifStream(frameCountFudge, out, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::string BSPSysSubTexModifier::asString( bool verbose ) const {
+std::string BSPSysSubTexModifier::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -99,25 +106,28 @@ std::string BSPSysSubTexModifier::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void BSPSysSubTexModifier::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void BSPSysSubTexModifier::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSysModifier::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiPSysModifier::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> BSPSysSubTexModifier::GetRefs() const {
+std::list<NiObjectRef> BSPSysSubTexModifier::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiPSysModifier::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> BSPSysSubTexModifier::GetPtrs() const {
+std::list<NiObject *> BSPSysSubTexModifier::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiPSysModifier::GetPtrs();
 	return ptrs;
@@ -126,59 +136,59 @@ std::list<NiObject *> BSPSysSubTexModifier::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 unsigned int BSPSysSubTexModifier::GetStartFrame() const {
-	return startFrame;
+return startFrame;
 }
 
 void BSPSysSubTexModifier::SetStartFrame( unsigned int value ) {
-	startFrame = value;
+startFrame = value;
 }
 
 float BSPSysSubTexModifier::GetStartFrameFudge() const {
-	return startFrameFudge;
+return startFrameFudge;
 }
 
 void BSPSysSubTexModifier::SetStartFrameFudge( float value ) {
-	startFrameFudge = value;
+startFrameFudge = value;
 }
 
 float BSPSysSubTexModifier::GetEndFrame() const {
-	return endFrame;
+return endFrame;
 }
 
 void BSPSysSubTexModifier::SetEndFrame( float value ) {
-	endFrame = value;
+endFrame = value;
 }
 
 float BSPSysSubTexModifier::GetLoopStartFrame() const {
-	return loopStartFrame;
+return loopStartFrame;
 }
 
 void BSPSysSubTexModifier::SetLoopStartFrame( float value ) {
-	loopStartFrame = value;
+loopStartFrame = value;
 }
 
 float BSPSysSubTexModifier::GetLoopStartFrameFudge() const {
-	return loopStartFrameFudge;
+return loopStartFrameFudge;
 }
 
 void BSPSysSubTexModifier::SetLoopStartFrameFudge( float value ) {
-	loopStartFrameFudge = value;
+loopStartFrameFudge = value;
 }
 
 float BSPSysSubTexModifier::GetFrameCount() const {
-	return frameCount;
+return frameCount;
 }
 
 void BSPSysSubTexModifier::SetFrameCount( float value ) {
-	frameCount = value;
+frameCount = value;
 }
 
 float BSPSysSubTexModifier::GetFrameCountFudge() const {
-	return frameCountFudge;
+return frameCountFudge;
 }
 
 void BSPSysSubTexModifier::SetFrameCountFudge( float value ) {
-	frameCountFudge = value;
+frameCountFudge = value;
 }
 
 ****End Example Naive Implementation***/

@@ -17,53 +17,60 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiParticleRotation::TYPE("NiParticleRotation", &NiParticleModifier::TYPE );
+const Type NiParticleRotation::TYPE("NiParticleRotation", &NiParticleModifier::TYPE);
 
-NiParticleRotation::NiParticleRotation() : randomInitialAxis_((byte)0), rotationSpeed_(0.0f) {
+NiParticleRotation::NiParticleRotation() : randomInitialAxis_((byte) 0), rotationSpeed_(0.0f)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-NiParticleRotation::~NiParticleRotation() {
+NiParticleRotation::~NiParticleRotation()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiParticleRotation::GetType() const {
+const Type & NiParticleRotation::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiParticleRotation::Create() {
+NiObject * NiParticleRotation::Create()
+{
 	return new NiParticleRotation;
 }
 
-void NiParticleRotation::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiParticleRotation::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiParticleModifier::Read( in, link_stack, info );
-	NifStream( randomInitialAxis_, in, info );
-	NifStream( initialAxis_, in, info );
-	NifStream( rotationSpeed_, in, info );
+	NiParticleModifier::Read(in, link_stack, info);
+	NifStream(randomInitialAxis_, in, info);
+	NifStream(initialAxis_, in, info);
+	NifStream(rotationSpeed_, in, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void NiParticleRotation::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiParticleRotation::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiParticleModifier::Write( out, link_map, missing_link_stack, info );
-	NifStream( randomInitialAxis_, out, info );
-	NifStream( initialAxis_, out, info );
-	NifStream( rotationSpeed_, out, info );
+	NiParticleModifier::Write(out, link_map, missing_link_stack, info);
+	NifStream(randomInitialAxis_, out, info);
+	NifStream(initialAxis_, out, info);
+	NifStream(rotationSpeed_, out, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string NiParticleRotation::asString( bool verbose ) const {
+std::string NiParticleRotation::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
@@ -78,23 +85,26 @@ std::string NiParticleRotation::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiParticleRotation::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiParticleRotation::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiParticleModifier::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiParticleModifier::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiParticleRotation::GetRefs() const {
+std::list<NiObjectRef> NiParticleRotation::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiParticleModifier::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiParticleRotation::GetPtrs() const {
+std::list<NiObject *> NiParticleRotation::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiParticleModifier::GetPtrs();
 	return ptrs;
@@ -103,27 +113,27 @@ std::list<NiObject *> NiParticleRotation::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 byte NiParticleRotation::GetRandomInitialAxis_() const {
-	return randomInitialAxis_;
+return randomInitialAxis_;
 }
 
 void NiParticleRotation::SetRandomInitialAxis_( byte value ) {
-	randomInitialAxis_ = value;
+randomInitialAxis_ = value;
 }
 
 Vector3 NiParticleRotation::GetInitialAxis_() const {
-	return initialAxis_;
+return initialAxis_;
 }
 
 void NiParticleRotation::SetInitialAxis_( const Vector3 & value ) {
-	initialAxis_ = value;
+initialAxis_ = value;
 }
 
 float NiParticleRotation::GetRotationSpeed_() const {
-	return rotationSpeed_;
+return rotationSpeed_;
 }
 
 void NiParticleRotation::SetRotationSpeed_( float value ) {
-	rotationSpeed_ = value;
+rotationSpeed_ = value;
 }
 
 ****End Example Naive Implementation***/

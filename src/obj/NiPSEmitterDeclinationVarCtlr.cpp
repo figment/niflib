@@ -18,53 +18,60 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiPSEmitterDeclinationVarCtlr::TYPE("NiPSEmitterDeclinationVarCtlr", &NiPSEmitterDeclinationCtlr::TYPE );
+const Type NiPSEmitterDeclinationVarCtlr::TYPE("NiPSEmitterDeclinationVarCtlr", &NiPSEmitterDeclinationCtlr::TYPE);
 
-NiPSEmitterDeclinationVarCtlr::NiPSEmitterDeclinationVarCtlr() {
+NiPSEmitterDeclinationVarCtlr::NiPSEmitterDeclinationVarCtlr()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-NiPSEmitterDeclinationVarCtlr::~NiPSEmitterDeclinationVarCtlr() {
+NiPSEmitterDeclinationVarCtlr::~NiPSEmitterDeclinationVarCtlr()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiPSEmitterDeclinationVarCtlr::GetType() const {
+const Type & NiPSEmitterDeclinationVarCtlr::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiPSEmitterDeclinationVarCtlr::Create() {
+NiObject * NiPSEmitterDeclinationVarCtlr::Create()
+{
 	return new NiPSEmitterDeclinationVarCtlr;
 }
 
-void NiPSEmitterDeclinationVarCtlr::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiPSEmitterDeclinationVarCtlr::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSEmitterDeclinationCtlr::Read( in, link_stack, info );
+	NiPSEmitterDeclinationCtlr::Read(in, link_stack, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-void NiPSEmitterDeclinationVarCtlr::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiPSEmitterDeclinationVarCtlr::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSEmitterDeclinationCtlr::Write( out, link_map, missing_link_stack, info );
+	NiPSEmitterDeclinationCtlr::Write(out, link_map, missing_link_stack, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::string NiPSEmitterDeclinationVarCtlr::asString( bool verbose ) const {
+std::string NiPSEmitterDeclinationVarCtlr::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -78,25 +85,28 @@ std::string NiPSEmitterDeclinationVarCtlr::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiPSEmitterDeclinationVarCtlr::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiPSEmitterDeclinationVarCtlr::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSEmitterDeclinationCtlr::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiPSEmitterDeclinationCtlr::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiPSEmitterDeclinationVarCtlr::GetRefs() const {
+std::list<NiObjectRef> NiPSEmitterDeclinationVarCtlr::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiPSEmitterDeclinationCtlr::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiPSEmitterDeclinationVarCtlr::GetPtrs() const {
+std::list<NiObject *> NiPSEmitterDeclinationVarCtlr::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiPSEmitterDeclinationCtlr::GetPtrs();
 	return ptrs;

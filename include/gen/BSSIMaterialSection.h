@@ -12,35 +12,34 @@ All rights reserved.  Please see niflib.h for license. */
 
 // Include structures
 #include "BSSIMaterial.h"
-namespace Niflib {
+namespace Niflib
+{
+	/*!  */
+	struct BSSIMaterialSection
+	{
+		/*! Default Constructor */
+		NIFLIB_API BSSIMaterialSection();
+		/*! Default Destructor */
+		NIFLIB_API ~BSSIMaterialSection();
+		/*! Copy Constructor */
+		NIFLIB_API BSSIMaterialSection(const BSSIMaterialSection & src);
+		/*! Copy Operator */
+		NIFLIB_API BSSIMaterialSection & operator=(const BSSIMaterialSection & src);
+		/*! Unknown. */
+		mutable unsigned int numSegments;
+		/*! Unknown. */
+		mutable unsigned int numMaterials;
+		/*! Unknown. */
+		vector<unsigned int > emptyMaterials;
+		/*! Unknown. */
+		vector<BSSIMaterial > materials;
+		/*! Unknown. */
+		mutable unsigned short ssfLength;
+		/*! Unknown. */
+		vector<byte > ssfFile;
+		//--BEGIN MISC CUSTOM CODE--//
 
-
-/*!  */
-struct BSSIMaterialSection {
-	/*! Default Constructor */
-	NIFLIB_API BSSIMaterialSection();
-	/*! Default Destructor */
-	NIFLIB_API ~BSSIMaterialSection();
-	/*! Copy Constructor */
-	NIFLIB_API BSSIMaterialSection( const BSSIMaterialSection & src );
-	/*! Copy Operator */
-	NIFLIB_API BSSIMaterialSection & operator=( const BSSIMaterialSection & src );
-	/*! Unknown. */
-	mutable unsigned int numSegments;
-	/*! Unknown. */
-	mutable unsigned int numMaterials;
-	/*! Unknown. */
-	vector<unsigned int > emptyMaterials;
-	/*! Unknown. */
-	vector<BSSIMaterial > materials;
-	/*! Unknown. */
-	mutable unsigned short ssfLength;
-	/*! Unknown. */
-	vector<byte > ssfFile;
-	//--BEGIN MISC CUSTOM CODE--//
-
-	//--END CUSTOM CODE--//
-};
-
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

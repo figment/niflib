@@ -10,21 +10,20 @@ All rights reserved.  Please see niflib.h for license. */
 
 #include "../NIF_IO.h"
 
-namespace Niflib {
-
-
-/*! Rotation key array. */
-template <class T >
-struct RotationKeyArray {
-	/*! Number of keys. */
-	mutable unsigned int numKeys;
-	/*! Key type (LINEAR_KEY, QUADRATIC_KEY, TBC_KEY, or XYZ_ROTATION_KEY). */
-	KeyType keyType;
-	/*! The rotation keys. */
-	vector<Key<T > > keys;
-	//--BEGIN MISC CUSTOM CODE--//
-	//--END CUSTOM CODE--//
-};
-
+namespace Niflib
+{
+	/*! Rotation key array. */
+	template <class T >
+	struct RotationKeyArray
+	{
+		/*! Number of keys. */
+		mutable unsigned int numKeys;
+		/*! Key type (LINEAR_KEY, QUADRATIC_KEY, TBC_KEY, or XYZ_ROTATION_KEY). */
+		KeyType keyType;
+		/*! The rotation keys. */
+		vector<Key<T > > keys;
+		//--BEGIN MISC CUSTOM CODE--//
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

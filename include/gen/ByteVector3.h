@@ -10,29 +10,28 @@ All rights reserved.  Please see niflib.h for license. */
 
 #include "../NIF_IO.h"
 
-namespace Niflib {
+namespace Niflib
+{
+	/*!  */
+	struct ByteVector3
+	{
+		/*! Default Constructor */
+		NIFLIB_API ByteVector3();
+		/*! Default Destructor */
+		NIFLIB_API ~ByteVector3();
+		/*! Copy Constructor */
+		NIFLIB_API ByteVector3(const ByteVector3 & src);
+		/*! Copy Operator */
+		NIFLIB_API ByteVector3 & operator=(const ByteVector3 & src);
+		/*! First coordinate. */
+		byte x;
+		/*! Second coordinate. */
+		byte y;
+		/*! Third coordinate. */
+		byte z;
+		//--BEGIN MISC CUSTOM CODE--//
 
-
-/*!  */
-struct ByteVector3 {
-	/*! Default Constructor */
-	NIFLIB_API ByteVector3();
-	/*! Default Destructor */
-	NIFLIB_API ~ByteVector3();
-	/*! Copy Constructor */
-	NIFLIB_API ByteVector3( const ByteVector3 & src );
-	/*! Copy Operator */
-	NIFLIB_API ByteVector3 & operator=( const ByteVector3 & src );
-	/*! First coordinate. */
-	byte x;
-	/*! Second coordinate. */
-	byte y;
-	/*! Third coordinate. */
-	byte z;
-	//--BEGIN MISC CUSTOM CODE--//
-
-	//--END CUSTOM CODE--//
-};
-
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

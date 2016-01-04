@@ -22,62 +22,71 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiPhysXPropDesc::TYPE("NiPhysXPropDesc", &NiObject::TYPE );
+const Type NiPhysXPropDesc::TYPE("NiPhysXPropDesc", &NiObject::TYPE);
 
-NiPhysXPropDesc::NiPhysXPropDesc() : numDests((int)0), numJoints((unsigned int)0), unknownInt1((int)0), numMaterials((unsigned int)0), unknownInt2((unsigned int)0), unknownInt3((unsigned int)0), unknownInt5((unsigned int)0), unknownByte6((byte)0) {
+NiPhysXPropDesc::NiPhysXPropDesc() : numDests((int) 0), numJoints((unsigned int) 0), unknownInt1((int) 0), numMaterials((unsigned int) 0), unknownInt2((unsigned int) 0), unknownInt3((unsigned int) 0), unknownInt5((unsigned int) 0), unknownByte6((byte) 0)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-NiPhysXPropDesc::~NiPhysXPropDesc() {
+NiPhysXPropDesc::~NiPhysXPropDesc()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiPhysXPropDesc::GetType() const {
+const Type & NiPhysXPropDesc::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiPhysXPropDesc::Create() {
+NiObject * NiPhysXPropDesc::Create()
+{
 	return new NiPhysXPropDesc;
 }
 
-void NiPhysXPropDesc::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiPhysXPropDesc::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
 	unsigned int block_num;
-	NiObject::Read( in, link_stack, info );
-	NifStream( numDests, in, info );
+	NiObject::Read(in, link_stack, info);
+	NifStream(numDests, in, info);
 	actorDescs.resize(numDests);
-	for (unsigned int i1 = 0; i1 < actorDescs.size(); i1++) {
-		NifStream( block_num, in, info );
-		link_stack.push_back( block_num );
+	for(unsigned int i1 = 0; i1 < actorDescs.size(); i1++)
+	{
+		NifStream(block_num, in, info);
+		link_stack.push_back(block_num);
 	};
-	NifStream( numJoints, in, info );
+	NifStream(numJoints, in, info);
 	jointDescs.resize(numJoints);
-	for (unsigned int i1 = 0; i1 < jointDescs.size(); i1++) {
-		NifStream( block_num, in, info );
-		link_stack.push_back( block_num );
+	for(unsigned int i1 = 0; i1 < jointDescs.size(); i1++)
+	{
+		NifStream(block_num, in, info);
+		link_stack.push_back(block_num);
 	};
-	NifStream( unknownInt1, in, info );
-	NifStream( numMaterials, in, info );
+	NifStream(unknownInt1, in, info);
+	NifStream(numMaterials, in, info);
 	materialDescs.resize(numMaterials);
-	for (unsigned int i1 = 0; i1 < materialDescs.size(); i1++) {
-		NifStream( materialDescs[i1].number, in, info );
-		NifStream( materialDescs[i1].unknownByte1, in, info );
-		NifStream( block_num, in, info );
-		link_stack.push_back( block_num );
+	for(unsigned int i1 = 0; i1 < materialDescs.size(); i1++)
+	{
+		NifStream(materialDescs[i1].number, in, info);
+		NifStream(materialDescs[i1].unknownByte1, in, info);
+		NifStream(block_num, in, info);
+		link_stack.push_back(block_num);
 	};
-	NifStream( unknownInt2, in, info );
-	if ( info.version >= 0x14050000 ) {
-		NifStream( unknownInt3, in, info );
-		NifStream( unknownString4, in, info );
-		NifStream( unknownInt5, in, info );
-		NifStream( unknownByte6, in, info );
+	NifStream(unknownInt2, in, info);
+	if(info.version >= 0x14050000)
+	{
+		NifStream(unknownInt3, in, info);
+		NifStream(unknownString4, in, info);
+		NifStream(unknownInt5, in, info);
+		NifStream(unknownByte6, in, info);
 	};
 
 	//--BEGIN POST-READ CUSTOM CODE--//
@@ -85,84 +94,116 @@ void NiPhysXPropDesc::Read( istream& in, list<unsigned int> & link_stack, const 
 	//--END CUSTOM CODE--//
 }
 
-void NiPhysXPropDesc::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiPhysXPropDesc::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiObject::Write( out, link_map, missing_link_stack, info );
-	numMaterials = (unsigned int)(materialDescs.size());
-	numJoints = (unsigned int)(jointDescs.size());
-	numDests = (int)(actorDescs.size());
-	NifStream( numDests, out, info );
-	for (unsigned int i1 = 0; i1 < actorDescs.size(); i1++) {
-		if ( info.version < VER_3_3_0_13 ) {
-			WritePtr32( &(*actorDescs[i1]), out );
-		} else {
-			if ( actorDescs[i1] != NULL ) {
-				map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(actorDescs[i1]) );
-				if (it != link_map.end()) {
-					NifStream( it->second, out, info );
-					missing_link_stack.push_back( NULL );
-				} else {
-					NifStream( 0xFFFFFFFF, out, info );
-					missing_link_stack.push_back( actorDescs[i1] );
+	NiObject::Write(out, link_map, missing_link_stack, info);
+	numMaterials = (unsigned int) (materialDescs.size());
+	numJoints = (unsigned int) (jointDescs.size());
+	numDests = (int) (actorDescs.size());
+	NifStream(numDests, out, info);
+	for(unsigned int i1 = 0; i1 < actorDescs.size(); i1++)
+	{
+		if(info.version < VER_3_3_0_13)
+		{
+			WritePtr32(&(*actorDescs[i1]), out);
+		}
+		else
+		{
+			if(actorDescs[i1] != NULL)
+			{
+				map<NiObjectRef, unsigned int>::const_iterator it = link_map.find(StaticCast<NiObject>(actorDescs[i1]));
+				if(it != link_map.end())
+				{
+					NifStream(it->second, out, info);
+					missing_link_stack.push_back(NULL);
 				}
-			} else {
-				NifStream( 0xFFFFFFFF, out, info );
-				missing_link_stack.push_back( NULL );
+				else
+				{
+					NifStream(0xFFFFFFFF, out, info);
+					missing_link_stack.push_back(actorDescs[i1]);
+				}
+			}
+			else
+			{
+				NifStream(0xFFFFFFFF, out, info);
+				missing_link_stack.push_back(NULL);
 			}
 		}
 	};
-	NifStream( numJoints, out, info );
-	for (unsigned int i1 = 0; i1 < jointDescs.size(); i1++) {
-		if ( info.version < VER_3_3_0_13 ) {
-			WritePtr32( &(*jointDescs[i1]), out );
-		} else {
-			if ( jointDescs[i1] != NULL ) {
-				map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(jointDescs[i1]) );
-				if (it != link_map.end()) {
-					NifStream( it->second, out, info );
-					missing_link_stack.push_back( NULL );
-				} else {
-					NifStream( 0xFFFFFFFF, out, info );
-					missing_link_stack.push_back( jointDescs[i1] );
+	NifStream(numJoints, out, info);
+	for(unsigned int i1 = 0; i1 < jointDescs.size(); i1++)
+	{
+		if(info.version < VER_3_3_0_13)
+		{
+			WritePtr32(&(*jointDescs[i1]), out);
+		}
+		else
+		{
+			if(jointDescs[i1] != NULL)
+			{
+				map<NiObjectRef, unsigned int>::const_iterator it = link_map.find(StaticCast<NiObject>(jointDescs[i1]));
+				if(it != link_map.end())
+				{
+					NifStream(it->second, out, info);
+					missing_link_stack.push_back(NULL);
 				}
-			} else {
-				NifStream( 0xFFFFFFFF, out, info );
-				missing_link_stack.push_back( NULL );
+				else
+				{
+					NifStream(0xFFFFFFFF, out, info);
+					missing_link_stack.push_back(jointDescs[i1]);
+				}
+			}
+			else
+			{
+				NifStream(0xFFFFFFFF, out, info);
+				missing_link_stack.push_back(NULL);
 			}
 		}
 	};
-	NifStream( unknownInt1, out, info );
-	NifStream( numMaterials, out, info );
-	for (unsigned int i1 = 0; i1 < materialDescs.size(); i1++) {
-		NifStream( materialDescs[i1].number, out, info );
-		NifStream( materialDescs[i1].unknownByte1, out, info );
-		if ( info.version < VER_3_3_0_13 ) {
-			WritePtr32( &(*materialDescs[i1].materialDesc), out );
-		} else {
-			if ( materialDescs[i1].materialDesc != NULL ) {
-				map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(materialDescs[i1].materialDesc) );
-				if (it != link_map.end()) {
-					NifStream( it->second, out, info );
-					missing_link_stack.push_back( NULL );
-				} else {
-					NifStream( 0xFFFFFFFF, out, info );
-					missing_link_stack.push_back( materialDescs[i1].materialDesc );
+	NifStream(unknownInt1, out, info);
+	NifStream(numMaterials, out, info);
+	for(unsigned int i1 = 0; i1 < materialDescs.size(); i1++)
+	{
+		NifStream(materialDescs[i1].number, out, info);
+		NifStream(materialDescs[i1].unknownByte1, out, info);
+		if(info.version < VER_3_3_0_13)
+		{
+			WritePtr32(&(*materialDescs[i1].materialDesc), out);
+		}
+		else
+		{
+			if(materialDescs[i1].materialDesc != NULL)
+			{
+				map<NiObjectRef, unsigned int>::const_iterator it = link_map.find(StaticCast<NiObject>(materialDescs[i1].materialDesc));
+				if(it != link_map.end())
+				{
+					NifStream(it->second, out, info);
+					missing_link_stack.push_back(NULL);
 				}
-			} else {
-				NifStream( 0xFFFFFFFF, out, info );
-				missing_link_stack.push_back( NULL );
+				else
+				{
+					NifStream(0xFFFFFFFF, out, info);
+					missing_link_stack.push_back(materialDescs[i1].materialDesc);
+				}
+			}
+			else
+			{
+				NifStream(0xFFFFFFFF, out, info);
+				missing_link_stack.push_back(NULL);
 			}
 		}
 	};
-	NifStream( unknownInt2, out, info );
-	if ( info.version >= 0x14050000 ) {
-		NifStream( unknownInt3, out, info );
-		NifStream( unknownString4, out, info );
-		NifStream( unknownInt5, out, info );
-		NifStream( unknownByte6, out, info );
+	NifStream(unknownInt2, out, info);
+	if(info.version >= 0x14050000)
+	{
+		NifStream(unknownInt3, out, info);
+		NifStream(unknownString4, out, info);
+		NifStream(unknownInt5, out, info);
+		NifStream(unknownByte6, out, info);
 	};
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
@@ -170,7 +211,8 @@ void NiPhysXPropDesc::Write( ostream& out, const map<NiObjectRef,unsigned int> &
 	//--END CUSTOM CODE--//
 }
 
-std::string NiPhysXPropDesc::asString( bool verbose ) const {
+std::string NiPhysXPropDesc::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -178,17 +220,20 @@ std::string NiPhysXPropDesc::asString( bool verbose ) const {
 	stringstream out;
 	unsigned int array_output_count = 0;
 	out << NiObject::asString(verbose);
-	numMaterials = (unsigned int)(materialDescs.size());
-	numJoints = (unsigned int)(jointDescs.size());
-	numDests = (int)(actorDescs.size());
+	numMaterials = (unsigned int) (materialDescs.size());
+	numJoints = (unsigned int) (jointDescs.size());
+	numDests = (int) (actorDescs.size());
 	out << "  Num Dests:  " << numDests << endl;
 	array_output_count = 0;
-	for (unsigned int i1 = 0; i1 < actorDescs.size(); i1++) {
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+	for(unsigned int i1 = 0; i1 < actorDescs.size(); i1++)
+	{
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 			break;
 		};
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			break;
 		};
 		out << "    Actor Descs[" << i1 << "]:  " << actorDescs[i1] << endl;
@@ -196,12 +241,15 @@ std::string NiPhysXPropDesc::asString( bool verbose ) const {
 	};
 	out << "  Num Joints:  " << numJoints << endl;
 	array_output_count = 0;
-	for (unsigned int i1 = 0; i1 < jointDescs.size(); i1++) {
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+	for(unsigned int i1 = 0; i1 < jointDescs.size(); i1++)
+	{
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 			break;
 		};
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			break;
 		};
 		out << "    Joint Descs[" << i1 << "]:  " << jointDescs[i1] << endl;
@@ -210,8 +258,10 @@ std::string NiPhysXPropDesc::asString( bool verbose ) const {
 	out << "  Unknown Int 1:  " << unknownInt1 << endl;
 	out << "  Num Materials:  " << numMaterials << endl;
 	array_output_count = 0;
-	for (unsigned int i1 = 0; i1 < materialDescs.size(); i1++) {
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+	for(unsigned int i1 = 0; i1 < materialDescs.size(); i1++)
+	{
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 			break;
 		};
@@ -231,20 +281,24 @@ std::string NiPhysXPropDesc::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiPhysXPropDesc::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiPhysXPropDesc::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiObject::FixLinks( objects, link_stack, missing_link_stack, info );
-	for (unsigned int i1 = 0; i1 < actorDescs.size(); i1++) {
-		actorDescs[i1] = FixLink<NiPhysXActorDesc>( objects, link_stack, missing_link_stack, info );
+	NiObject::FixLinks(objects, link_stack, missing_link_stack, info);
+	for(unsigned int i1 = 0; i1 < actorDescs.size(); i1++)
+	{
+		actorDescs[i1] = FixLink<NiPhysXActorDesc>(objects, link_stack, missing_link_stack, info);
 	};
-	for (unsigned int i1 = 0; i1 < jointDescs.size(); i1++) {
-		jointDescs[i1] = FixLink<NiPhysXD6JointDesc>( objects, link_stack, missing_link_stack, info );
+	for(unsigned int i1 = 0; i1 < jointDescs.size(); i1++)
+	{
+		jointDescs[i1] = FixLink<NiPhysXD6JointDesc>(objects, link_stack, missing_link_stack, info);
 	};
-	for (unsigned int i1 = 0; i1 < materialDescs.size(); i1++) {
-		materialDescs[i1].materialDesc = FixLink<NiPhysXMaterialDesc>( objects, link_stack, missing_link_stack, info );
+	for(unsigned int i1 = 0; i1 < materialDescs.size(); i1++)
+	{
+		materialDescs[i1].materialDesc = FixLink<NiPhysXMaterialDesc>(objects, link_stack, missing_link_stack, info);
 	};
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
@@ -252,32 +306,40 @@ void NiPhysXPropDesc::FixLinks( const map<unsigned int,NiObjectRef> & objects, l
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiPhysXPropDesc::GetRefs() const {
+std::list<NiObjectRef> NiPhysXPropDesc::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiObject::GetRefs();
-	for (unsigned int i1 = 0; i1 < actorDescs.size(); i1++) {
-		if ( actorDescs[i1] != NULL )
+	for(unsigned int i1 = 0; i1 < actorDescs.size(); i1++)
+	{
+		if(actorDescs[i1] != NULL)
 			refs.push_back(StaticCast<NiObject>(actorDescs[i1]));
 	};
-	for (unsigned int i1 = 0; i1 < jointDescs.size(); i1++) {
-		if ( jointDescs[i1] != NULL )
+	for(unsigned int i1 = 0; i1 < jointDescs.size(); i1++)
+	{
+		if(jointDescs[i1] != NULL)
 			refs.push_back(StaticCast<NiObject>(jointDescs[i1]));
 	};
-	for (unsigned int i1 = 0; i1 < materialDescs.size(); i1++) {
-		if ( materialDescs[i1].materialDesc != NULL )
+	for(unsigned int i1 = 0; i1 < materialDescs.size(); i1++)
+	{
+		if(materialDescs[i1].materialDesc != NULL)
 			refs.push_back(StaticCast<NiObject>(materialDescs[i1].materialDesc));
 	};
 	return refs;
 }
 
-std::list<NiObject *> NiPhysXPropDesc::GetPtrs() const {
+std::list<NiObject *> NiPhysXPropDesc::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiObject::GetPtrs();
-	for (unsigned int i1 = 0; i1 < actorDescs.size(); i1++) {
+	for(unsigned int i1 = 0; i1 < actorDescs.size(); i1++)
+	{
 	};
-	for (unsigned int i1 = 0; i1 < jointDescs.size(); i1++) {
+	for(unsigned int i1 = 0; i1 < jointDescs.size(); i1++)
+	{
 	};
-	for (unsigned int i1 = 0; i1 < materialDescs.size(); i1++) {
+	for(unsigned int i1 = 0; i1 < materialDescs.size(); i1++)
+	{
 	};
 	return ptrs;
 }
@@ -285,27 +347,27 @@ std::list<NiObject *> NiPhysXPropDesc::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 vector<Ref<NiPhysXActorDesc > > NiPhysXPropDesc::GetActorDescs() const {
-	return actorDescs;
+return actorDescs;
 }
 
 void NiPhysXPropDesc::SetActorDescs( const vector<Ref<NiPhysXActorDesc > >& value ) {
-	actorDescs = value;
+actorDescs = value;
 }
 
 vector<Ref<NiPhysXD6JointDesc > > NiPhysXPropDesc::GetJointDescs() const {
-	return jointDescs;
+return jointDescs;
 }
 
 void NiPhysXPropDesc::SetJointDescs( const vector<Ref<NiPhysXD6JointDesc > >& value ) {
-	jointDescs = value;
+jointDescs = value;
 }
 
 vector<physXMaterialRef > NiPhysXPropDesc::GetMaterialDescs() const {
-	return materialDescs;
+return materialDescs;
 }
 
 void NiPhysXPropDesc::SetMaterialDescs( const vector<physXMaterialRef >& value ) {
-	materialDescs = value;
+materialDescs = value;
 }
 
 ****End Example Naive Implementation***/

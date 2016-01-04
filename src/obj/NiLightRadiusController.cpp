@@ -18,53 +18,60 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiLightRadiusController::TYPE("NiLightRadiusController", &NiFloatInterpController::TYPE );
+const Type NiLightRadiusController::TYPE("NiLightRadiusController", &NiFloatInterpController::TYPE);
 
-NiLightRadiusController::NiLightRadiusController() {
+NiLightRadiusController::NiLightRadiusController()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-NiLightRadiusController::~NiLightRadiusController() {
+NiLightRadiusController::~NiLightRadiusController()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiLightRadiusController::GetType() const {
+const Type & NiLightRadiusController::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiLightRadiusController::Create() {
+NiObject * NiLightRadiusController::Create()
+{
 	return new NiLightRadiusController;
 }
 
-void NiLightRadiusController::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiLightRadiusController::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiFloatInterpController::Read( in, link_stack, info );
+	NiFloatInterpController::Read(in, link_stack, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-void NiLightRadiusController::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiLightRadiusController::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiFloatInterpController::Write( out, link_map, missing_link_stack, info );
+	NiFloatInterpController::Write(out, link_map, missing_link_stack, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::string NiLightRadiusController::asString( bool verbose ) const {
+std::string NiLightRadiusController::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
@@ -78,25 +85,28 @@ std::string NiLightRadiusController::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiLightRadiusController::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiLightRadiusController::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiFloatInterpController::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiFloatInterpController::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiLightRadiusController::GetRefs() const {
+std::list<NiObjectRef> NiLightRadiusController::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiFloatInterpController::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiLightRadiusController::GetPtrs() const {
+std::list<NiObject *> NiLightRadiusController::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiFloatInterpController::GetPtrs();
 	return ptrs;

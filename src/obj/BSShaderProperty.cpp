@@ -18,63 +18,72 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type BSShaderProperty::TYPE("BSShaderProperty", &NiProperty::TYPE );
+const Type BSShaderProperty::TYPE("BSShaderProperty", &NiProperty::TYPE);
 
-BSShaderProperty::BSShaderProperty() : flags((unsigned short)1), shaderType((BSShaderType)SHADER_DEFAULT), shaderFlags((BSShaderFlags)0x82000000), unknownInt2((int)1), envmapScale(1.0f) {
+BSShaderProperty::BSShaderProperty() : flags((unsigned short) 1), shaderType((BSShaderType) SHADER_DEFAULT), shaderFlags((BSShaderFlags) 0x82000000), unknownInt2((int) 1), envmapScale(1.0f)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-BSShaderProperty::~BSShaderProperty() {
+BSShaderProperty::~BSShaderProperty()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & BSShaderProperty::GetType() const {
+const Type & BSShaderProperty::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * BSShaderProperty::Create() {
+NiObject * BSShaderProperty::Create()
+{
 	return new BSShaderProperty;
 }
 
-void BSShaderProperty::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void BSShaderProperty::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiProperty::Read( in, link_stack, info );
-	NifStream( flags, in, info );
-	NifStream( shaderType, in, info );
-	NifStream( shaderFlags, in, info );
-	NifStream( unknownInt2, in, info );
-	if ( (info.userVersion == 11) ) {
-		NifStream( envmapScale, in, info );
+	NiProperty::Read(in, link_stack, info);
+	NifStream(flags, in, info);
+	NifStream(shaderType, in, info);
+	NifStream(shaderFlags, in, info);
+	NifStream(unknownInt2, in, info);
+	if((info.userVersion == 11))
+	{
+		NifStream(envmapScale, in, info);
 	};
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void BSShaderProperty::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void BSShaderProperty::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiProperty::Write( out, link_map, missing_link_stack, info );
-	NifStream( flags, out, info );
-	NifStream( shaderType, out, info );
-	NifStream( shaderFlags, out, info );
-	NifStream( unknownInt2, out, info );
-	if ( (info.userVersion == 11) ) {
-		NifStream( envmapScale, out, info );
+	NiProperty::Write(out, link_map, missing_link_stack, info);
+	NifStream(flags, out, info);
+	NifStream(shaderType, out, info);
+	NifStream(shaderFlags, out, info);
+	NifStream(unknownInt2, out, info);
+	if((info.userVersion == 11))
+	{
+		NifStream(envmapScale, out, info);
 	};
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string BSShaderProperty::asString( bool verbose ) const {
+std::string BSShaderProperty::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
@@ -91,23 +100,26 @@ std::string BSShaderProperty::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void BSShaderProperty::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void BSShaderProperty::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiProperty::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiProperty::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> BSShaderProperty::GetRefs() const {
+std::list<NiObjectRef> BSShaderProperty::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiProperty::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> BSShaderProperty::GetPtrs() const {
+std::list<NiObject *> BSShaderProperty::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiProperty::GetPtrs();
 	return ptrs;
@@ -116,70 +128,78 @@ std::list<NiObject *> BSShaderProperty::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 unsigned short BSShaderProperty::GetFlags() const {
-	return flags;
+return flags;
 }
 
 void BSShaderProperty::SetFlags( unsigned short value ) {
-	flags = value;
+flags = value;
 }
 
 BSShaderType BSShaderProperty::GetShaderType() const {
-	return shaderType;
+return shaderType;
 }
 
 void BSShaderProperty::SetShaderType( const BSShaderType & value ) {
-	shaderType = value;
+shaderType = value;
 }
 
 BSShaderFlags BSShaderProperty::GetShaderFlags() const {
-	return shaderFlags;
+return shaderFlags;
 }
 
 void BSShaderProperty::SetShaderFlags( const BSShaderFlags & value ) {
-	shaderFlags = value;
+shaderFlags = value;
 }
 
 float BSShaderProperty::GetEnvmapScale() const {
-	return envmapScale;
+return envmapScale;
 }
 
 void BSShaderProperty::SetEnvmapScale( float value ) {
-	envmapScale = value;
+envmapScale = value;
 }
 
 ****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 
-unsigned short BSShaderProperty::GetFlags() const {
+unsigned short BSShaderProperty::GetFlags() const
+{
 	return flags;
 }
 
-void BSShaderProperty::SetFlags( unsigned short value ) {
+void BSShaderProperty::SetFlags(unsigned short value)
+{
 	flags = value;
 }
 
-BSShaderType BSShaderProperty::GetShaderType() const {
+BSShaderType BSShaderProperty::GetShaderType() const
+{
 	return shaderType;
 }
 
-void BSShaderProperty::SetShaderType( const BSShaderType & value ) {
+void BSShaderProperty::SetShaderType(const BSShaderType & value)
+{
 	shaderType = value;
 }
 
-BSShaderFlags BSShaderProperty::GetShaderFlags() const {
+BSShaderFlags BSShaderProperty::GetShaderFlags() const
+{
 	return shaderFlags;
 }
 
-void BSShaderProperty::SetShaderFlags( const BSShaderFlags & value ) {
+void BSShaderProperty::SetShaderFlags(const BSShaderFlags & value)
+{
 	shaderFlags = value;
 }
 
-float BSShaderProperty::GetEnvmapScale() const {
+float BSShaderProperty::GetEnvmapScale() const
+{
 	return envmapScale;
 }
 
-void BSShaderProperty::SetEnvmapScale( float value ) {
+void BSShaderProperty::SetEnvmapScale(float value)
+{
 	envmapScale = value;
 }
 //--END CUSTOM CODE--//

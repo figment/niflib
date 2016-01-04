@@ -9,15 +9,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-FurniturePosition::FurniturePosition() : orientation((unsigned short)0), positionRef1((byte)0), positionRef2((byte)0), heading(0.0f), animationType((AnimationType)0), entryProperties((FurnitureEntryPoints)0) {};
+FurniturePosition::FurniturePosition() : orientation((unsigned short) 0), positionRef1((byte) 0), positionRef2((byte) 0), heading(0.0f), animationType((AnimationType) 0), entryProperties((FurnitureEntryPoints) 0) {};
 
 //Copy Constructor
-FurniturePosition::FurniturePosition( const FurniturePosition & src ) {
+FurniturePosition::FurniturePosition(const FurniturePosition & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-FurniturePosition & FurniturePosition::operator=( const FurniturePosition & src ) {
+FurniturePosition & FurniturePosition::operator=(const FurniturePosition & src)
+{
 	this->offset = src.offset;
 	this->orientation = src.orientation;
 	this->positionRef1 = src.positionRef1;

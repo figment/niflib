@@ -13,12 +13,14 @@ using namespace Niflib;
 BSSkinBoneTrans::BSSkinBoneTrans() : scale(0.0f) {};
 
 //Copy Constructor
-BSSkinBoneTrans::BSSkinBoneTrans( const BSSkinBoneTrans & src ) {
+BSSkinBoneTrans::BSSkinBoneTrans(const BSSkinBoneTrans & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-BSSkinBoneTrans & BSSkinBoneTrans::operator=( const BSSkinBoneTrans & src ) {
+BSSkinBoneTrans & BSSkinBoneTrans::operator=(const BSSkinBoneTrans & src)
+{
 	this->bounds = src.bounds;
 	this->rotation = src.rotation;
 	this->translation = src.translation;

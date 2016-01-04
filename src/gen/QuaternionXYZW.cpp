@@ -12,12 +12,14 @@ using namespace Niflib;
 QuaternionXYZW::QuaternionXYZW() : x(0.0f), y(0.0f), z(0.0f), w(1.0f) {};
 
 //Copy Constructor
-QuaternionXYZW::QuaternionXYZW( const QuaternionXYZW & src ) {
+QuaternionXYZW::QuaternionXYZW(const QuaternionXYZW & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-QuaternionXYZW & QuaternionXYZW::operator=( const QuaternionXYZW & src ) {
+QuaternionXYZW & QuaternionXYZW::operator=(const QuaternionXYZW & src)
+{
 	this->x = src.x;
 	this->y = src.y;
 	this->z = src.z;

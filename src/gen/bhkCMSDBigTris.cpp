@@ -9,15 +9,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-bhkCMSDBigTris::bhkCMSDBigTris() : triangle1((unsigned short)0), triangle2((unsigned short)0), triangle3((unsigned short)0), material((unsigned int)0), weldingInfo((unsigned short)0) {};
+bhkCMSDBigTris::bhkCMSDBigTris() : triangle1((unsigned short) 0), triangle2((unsigned short) 0), triangle3((unsigned short) 0), material((unsigned int) 0), weldingInfo((unsigned short) 0) {};
 
 //Copy Constructor
-bhkCMSDBigTris::bhkCMSDBigTris( const bhkCMSDBigTris & src ) {
+bhkCMSDBigTris::bhkCMSDBigTris(const bhkCMSDBigTris & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-bhkCMSDBigTris & bhkCMSDBigTris::operator=( const bhkCMSDBigTris & src ) {
+bhkCMSDBigTris & bhkCMSDBigTris::operator=(const bhkCMSDBigTris & src)
+{
 	this->triangle1 = src.triangle1;
 	this->triangle2 = src.triangle2;
 	this->triangle3 = src.triangle3;

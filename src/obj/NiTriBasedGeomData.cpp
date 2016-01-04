@@ -17,49 +17,56 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiTriBasedGeomData::TYPE("NiTriBasedGeomData", &NiGeometryData::TYPE );
+const Type NiTriBasedGeomData::TYPE("NiTriBasedGeomData", &NiGeometryData::TYPE);
 
-NiTriBasedGeomData::NiTriBasedGeomData() : numTriangles((unsigned short)0) {
+NiTriBasedGeomData::NiTriBasedGeomData() : numTriangles((unsigned short) 0)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-NiTriBasedGeomData::~NiTriBasedGeomData() {
+NiTriBasedGeomData::~NiTriBasedGeomData()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiTriBasedGeomData::GetType() const {
+const Type & NiTriBasedGeomData::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiTriBasedGeomData::Create() {
+NiObject * NiTriBasedGeomData::Create()
+{
 	return new NiTriBasedGeomData;
 }
 
-void NiTriBasedGeomData::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiTriBasedGeomData::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiGeometryData::Read( in, link_stack, info );
-	NifStream( numTriangles, in, info );
+	NiGeometryData::Read(in, link_stack, info);
+	NifStream(numTriangles, in, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void NiTriBasedGeomData::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiTriBasedGeomData::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiGeometryData::Write( out, link_map, missing_link_stack, info );
-	NifStream( numTriangles, out, info );
+	NiGeometryData::Write(out, link_map, missing_link_stack, info);
+	NifStream(numTriangles, out, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string NiTriBasedGeomData::asString( bool verbose ) const {
+std::string NiTriBasedGeomData::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
@@ -72,23 +79,26 @@ std::string NiTriBasedGeomData::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiTriBasedGeomData::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiTriBasedGeomData::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiGeometryData::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiGeometryData::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiTriBasedGeomData::GetRefs() const {
+std::list<NiObjectRef> NiTriBasedGeomData::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiGeometryData::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiTriBasedGeomData::GetPtrs() const {
+std::list<NiObject *> NiTriBasedGeomData::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiGeometryData::GetPtrs();
 	return ptrs;
@@ -97,22 +107,24 @@ std::list<NiObject *> NiTriBasedGeomData::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 unsigned short NiTriBasedGeomData::GetNumTriangles() const {
-	return numTriangles;
+return numTriangles;
 }
 
 void NiTriBasedGeomData::SetNumTriangles( unsigned short value ) {
-	numTriangles = value;
+numTriangles = value;
 }
 
 ****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 
-void NiTriBasedGeomData::SetTriangles( const vector<Triangle> & in ) {
-   throw runtime_error("SetTriangles is not implemented for this object.");
+void NiTriBasedGeomData::SetTriangles(const vector<Triangle> & in)
+{
+	throw runtime_error("SetTriangles is not implemented for this object.");
 }
 
-vector<Triangle> NiTriBasedGeomData::GetTriangles() const {
+vector<Triangle> NiTriBasedGeomData::GetTriangles() const
+{
 	return vector<Triangle>();
 }
 

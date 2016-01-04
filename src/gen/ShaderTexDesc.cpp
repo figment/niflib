@@ -11,15 +11,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-ShaderTexDesc::ShaderTexDesc() : isUsed(false), mapIndex((unsigned int)0) {};
+ShaderTexDesc::ShaderTexDesc() : isUsed(false), mapIndex((unsigned int) 0) {};
 
 //Copy Constructor
-ShaderTexDesc::ShaderTexDesc( const ShaderTexDesc & src ) {
+ShaderTexDesc::ShaderTexDesc(const ShaderTexDesc & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-ShaderTexDesc & ShaderTexDesc::operator=( const ShaderTexDesc & src ) {
+ShaderTexDesc & ShaderTexDesc::operator=(const ShaderTexDesc & src)
+{
 	this->isUsed = src.isUsed;
 	this->textureData = src.textureData;
 	this->mapIndex = src.mapIndex;
