@@ -4,12 +4,18 @@
 #include "StringFunctions.h"
 #include <locale>
 
+<<<<<<< HEAD
 #include <math.h>
+=======
+>>>>>>> origin/master
 #include <iostream>
 #include <cstdlib>
 #include <fstream>
 #include <iosfwd>
+<<<<<<< HEAD
 #include <limits>
+=======
+>>>>>>> origin/master
 
 using std::cout;
 using std::string;
@@ -53,8 +59,11 @@ int Niflib::StringFunctions::NumberOfPlaces(double Value)
 int Niflib::StringFunctions::NumberOfDecimalPlaces(int Value)
 {
 	int NumberOfPlaces = floor(log(Value));
+<<<<<<< HEAD
 	NumberOfPlaces *= -1;
 	NumberOfPlaces += 1;
+=======
+>>>>>>> origin/master
 	return NumberOfPlaces;
 }
 
@@ -69,6 +78,7 @@ int Niflib::StringFunctions::NumberOfDecimalPlaces(int Value)
 int Niflib::StringFunctions::NumberOfDecimalPlaces(double Value)
 {
 	int NumberOfPlaces = floor(log(Value));
+<<<<<<< HEAD
 	NumberOfPlaces *= -1;
 	NumberOfPlaces += 1;
 	return NumberOfPlaces;
@@ -79,6 +89,8 @@ int Niflib::StringFunctions::NumberOfDecimalPlaces(float Value)
 	int NumberOfPlaces = floor(log(Value));
 	NumberOfPlaces *= -1;
 	NumberOfPlaces += 1;
+=======
+>>>>>>> origin/master
 	return NumberOfPlaces;
 }
 
@@ -981,8 +993,13 @@ std::string Niflib::StringFunctions::DoubleToStringConversion(double TempValue)
 		TempValue *= -1;
 	}
 	int IntegerHalf = TempValue;
+<<<<<<< HEAD
 	double DecimalHalf = TempValue - (double) IntegerHalf;
 	unsigned short CurrentDigit;
+=======
+	double DecimalHalf = TempValue - IntegerHalf;
+	int CurrentDigit;
+>>>>>>> origin/master
 	string DigitString = "";
 	if(IntegerHalf == 0)
 	{
@@ -998,6 +1015,7 @@ std::string Niflib::StringFunctions::DoubleToStringConversion(double TempValue)
 			TempString += DigitAsChar(CurrentDigit);
 		}
 	}
+<<<<<<< HEAD
 	if(DecimalHalf != 0.0)
 	{
 		DigitString += ".";
@@ -1007,6 +1025,20 @@ std::string Niflib::StringFunctions::DoubleToStringConversion(double TempValue)
 			DecimalHalf *= 10;
 			CurrentDigit = floor(DecimalHalf);
 			DecimalHalf -= CurrentDigit;
+=======
+	if(DecimalHalf != 0)
+	{
+		TempString += ".";
+	}
+	else
+	{
+		TempInt = NumberOfDecimalPlaces(DecimalHalf);
+		cout << "Decimal NumberOfPlaces:" << TempInt << "\n";
+		for(int i = -1; i >= TempInt; i--)
+		{
+			CurrentDigit = floor(DecimalHalf * 10);
+			DecimalHalf -= (double) CurrentDigit*pow(10, i);
+>>>>>>> origin/master
 			DigitString += DigitAsChar(CurrentDigit);
 		}
 	}
@@ -1089,6 +1121,7 @@ std::string Niflib::StringFunctions::ConvertPointerToStringAddressV2(T* obj)
 	return ss.str();
 }
 
+<<<<<<< HEAD
 //FloatToDouble code from https://github.com/PIlin/nanopb/blob/master/example_avr_double/double_conversion.c
 //Licease from project code is From:
 //Copyright(c) 2011 Petteri Aimonen <jpa at nanopb.mail.kapsi.fi>
@@ -1262,6 +1295,60 @@ std::string Niflib::StringFunctions::FloatToStringConversion(float TempValue)
 	FloatStream.precision(FloatLimit::max_digits10);
 	FloatStream << fixed << TempValue;
 	TempString = FloatStream.str();
+=======
+//************************************
+// Method:    FloatToStringConversion
+// FullName:  FloatToStringConversion
+// Access:    public static
+// Returns:   string
+// Qualifier:
+// Parameter: float TempValue
+//************************************
+std::string Niflib::StringFunctions::FloatToStringConversion(float TempValue)
+{
+	std::string TempString = "";
+	int IsNegative = TempValue < 0;
+	int TempInt;
+	if(IsNegative)
+	{
+		TempString += "-";
+		TempValue *= -1;
+	}
+	int IntegerHalf = TempValue;
+	float DecimalHalf = TempValue - IntegerHalf;
+	int CurrentDigit;
+	string DigitString = "";
+	if(IntegerHalf == 0)
+	{
+		TempString += "0";
+	}
+	else
+	{
+		TempInt = NumberOfPlaces(IntegerHalf);
+		for(int i = TempInt; i >= 0; i--)
+		{
+			CurrentDigit = floor(IntegerHalf / pow(10, i));
+			IntegerHalf -= CurrentDigit*pow(10, i);
+			TempString += DigitAsChar(CurrentDigit);
+		}
+	}
+	if(DecimalHalf != 0)
+	{
+		TempString += ".";
+	}
+	else
+	{
+		TempInt = NumberOfDecimalPlaces(DecimalHalf);
+		//cout << "Decimal NumberOfPlaces:" << TempInt << "\n";
+		for(int i = -1; i >= TempInt; i--)
+		{
+			CurrentDigit = floor(DecimalHalf * 10);
+			DecimalHalf -= (float) CurrentDigit*pow(10, i);
+			DigitString += DigitAsChar(CurrentDigit);
+		}
+	}
+	TempString += DigitString;
+>>>>>>> origin/master
 	return TempString;
 }
 

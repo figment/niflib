@@ -19,6 +19,10 @@ All rights reserved.  Please see niflib.h for license. */
 #include "../../include/gen/BSTreadTransformData.h"
 #include "../../include/gen/BSTreadTransformData.h"
 #include "../../include/obj/NiFloatData.h"
+<<<<<<< HEAD
+=======
+//#include "../GlobalCode/NiflibStringFunctions.h"
+>>>>>>> origin/master
 
 using namespace Niflib;
 
@@ -153,7 +157,20 @@ std::string BSTreadTransfInterpolator::asString(bool verbose) const
 		out << "    Scale:  " << StringFunctions::FloatToStringConversion(treadTransforms[i1].transform1.scale) << endl;
 		out << "    Translation:  " << StringFunctions::DisplayFullValues_Vector(treadTransforms[i1].transform2.translation.x, treadTransforms[i1].transform2.translation.y, treadTransforms[i1].transform2.translation.z) << endl;
 		out << "    Rotation:  " << treadTransforms[i1].transform2.rotation << endl;
+<<<<<<< HEAD
 		out << "    Scale:  " << StringFunctions::FloatToStringConversion(treadTransforms[i1].transform2.scale) << endl;
+=======
+		out << "    Scale:  " << treadTransforms[i1].transform2.scale << endl;
+		////---New version-----------
+		//out << "    Name:  " << treadTransforms[i1].name << endl;
+		//out << "    Translation:  " << NiflibStringFunctions::DisplayFullValues_Vector(treadTransforms[i1].transform1.translation.x,treadTransforms[i1].transform1.translation.y,treadTransforms[i1].transform1.translation.z) << endl;
+		//out << "    Rotation:  " << treadTransforms[i1].transform1.rotation << endl;
+		//out << "    Scale:  " << NiflibStringFunctions::FloatToStringConversion(treadTransforms[i1].transform1.scale) << endl;
+		//out << "    Translation:  " << NiflibStringFunctions::DisplayFullValues_Vector(treadTransforms[i1].transform2.translation.x,treadTransforms[i1].transform2.translation.y,treadTransforms[i1].transform2.translation.z) << endl;
+		//out << "    Rotation:  " << treadTransforms[i1].transform2.rotation << endl;
+		//out << "    Scale:  " << NiflibStringFunctions::FloatToStringConversion(treadTransforms[i1].transform2.scale) << endl;
+		////--------------------------------------------------------
+>>>>>>> origin/master
 	};
 	out << "  Data:  " << data << endl;
 	return out.str();

@@ -2,7 +2,11 @@
 	*/
 #pragma once
 
+<<<<<<< HEAD
 //#include <cstring>
+=======
+//#include <string>
+>>>>>>> origin/master
 
 namespace Niflib
 {
@@ -16,7 +20,10 @@ namespace Niflib
 		static int NumberOfPlaces(double Value);
 		static int NumberOfDecimalPlaces(int Value);
 		static int NumberOfDecimalPlaces(double Value);
+<<<<<<< HEAD
 		static int NumberOfDecimalPlaces(float Value);
+=======
+>>>>>>> origin/master
 		static std::string AddStringInFront(std::string ValueAdded, std::string TargetString);
 		static std::string AddStringInFront(char ValueAdded, std::string TargetString);
 		static int CharAsInt(char Temp);
@@ -30,7 +37,11 @@ namespace Niflib
 		//************************************
 		// Scan string for bool value
 		// Method:    ReadBoolFromInt
+<<<<<<< HEAD
 		// FullName:  StringFunctions::ReadBoolFromInt
+=======
+		// FullName:  NiflibStringFunctions::ReadBoolFromInt
+>>>>>>> origin/master
 		// Access:    public static
 		// Returns:   bool
 		// Qualifier:
@@ -124,7 +135,11 @@ namespace Niflib
 		//************************************
 		// Convert Double to String
 		// Method:    DoubleToStringConversion
+<<<<<<< HEAD
 		// FullName:  StringFunctions::DoubleToStringConversion
+=======
+		// FullName:  NiflibStringFunctions::DoubleToStringConversion
+>>>>>>> origin/master
 		// Access:    public static
 		// Returns:   std::string
 		// Qualifier:
@@ -134,7 +149,11 @@ namespace Niflib
 		//************************************
 		// Convert Int to String
 		// Method:    IntToStringConversion
+<<<<<<< HEAD
 		// FullName:  StringFunctions::IntToStringConversion
+=======
+		// FullName:  NiflibStringFunctions::IntToStringConversion
+>>>>>>> origin/master
 		// Access:    public static
 		// Returns:   std::string
 		// Qualifier:
@@ -144,7 +163,11 @@ namespace Niflib
 		//************************************
 		// Converts Pointer into String Address(Code from http://www.cplusplus.com/forum/general/8597/)
 		// Method:    ConvertPointerToStringAddress
+<<<<<<< HEAD
 		// FullName:  StringFunctions::ConvertPointerToStringAddress
+=======
+		// FullName:  NiflibStringFunctions::ConvertPointerToStringAddress
+>>>>>>> origin/master
 		// Access:    public
 		// Returns:   std::string
 		// Qualifier:
@@ -154,6 +177,7 @@ namespace Niflib
 		static std::string ConvertPointerToStringAddress(const T* obj);
 		template <typename T>
 		static std::string ConvertPointerToStringAddressV2(T* obj);
+<<<<<<< HEAD
 		typedef union conversion_t;
 		static uint64_t float_to_double(float value);
 		static float double_to_float(uint64_t value);
@@ -177,6 +201,8 @@ namespace Niflib
 		// Parameter: float TempValue
 		//************************************
 		static double FloatToDouble(float TempValue);
+=======
+>>>>>>> origin/master
 		static std::string FloatToStringConversion(float TempValue);
 		static std::string DisplayFullValues_Vector(float x, float y, float z, float w);
 		static std::string DisplayFullValues_Vector(float x, float y, float z);

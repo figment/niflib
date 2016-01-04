@@ -21,7 +21,11 @@ All rights reserved.  Please see niflib.h for license. */
 #include "../../include/gen/LimitedHingeDescriptor.h"
 #include "../../include/gen/MotorDescriptor.h"
 #include "../../include/obj/NiObject.h"
+<<<<<<< HEAD
 
+=======
+//#include "../GlobalCode/NiflibStringFunctions.h"
+>>>>>>> origin/master
 using namespace Niflib;
 
 //Definition of TYPE constant
@@ -439,6 +443,91 @@ std::string bhkMalleableConstraint::asString(bool verbose) const
 	//--BEGIN POST-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
+//New Version
+//std::string bhkMalleableConstraint::asString(bool verbose) const
+//{
+//	//--BEGIN PRE-STRING CUSTOM CODE--//
+//	//--END CUSTOM CODE--//
+//
+//	stringstream out;
+//	out << bhkConstraint::asString(verbose);
+//	out << "  Type:  " << type << endl;
+//	out << "  Unknown Int 2:  " << unknownInt2 << endl;
+//	out << "  Unknown Link 1:  " << unknownLink1 << endl;
+//	out << "  Unknown Link 2:  " << unknownLink2 << endl;
+//	out << "  Unknown Int 3:  " << unknownInt3 << endl;
+//	if((type == 1))
+//	{
+//		out << "    Pivot A:  " << NiflibStringFunctions::DisplayFullValues_Vector(hinge.pivotA.x, hinge.pivotA.y, hinge.pivotA.z, hinge.pivotA.w) << endl;
+//		out << "    Perp2 Axle In A1:  " << NiflibStringFunctions::DisplayFullValues_Vector(hinge.perp2AxleInA1.x, hinge.perp2AxleInA1.y, hinge.perp2AxleInA1.z, hinge.perp2AxleInA1.w) << endl;
+//		out << "    Perp2 Axle In A2:  " << NiflibStringFunctions::DisplayFullValues_Vector(hinge.perp2AxleInA2.x, hinge.perp2AxleInA2.y, hinge.perp2AxleInA2.z, hinge.perp2AxleInA2.w) << endl;
+//		out << "    Pivot B:  " << NiflibStringFunctions::DisplayFullValues_Vector(hinge.pivotB.x, hinge.pivotB.y, hinge.pivotB.z, hinge.pivotB.w) << endl;
+//		out << "    Axle B:  " << NiflibStringFunctions::DisplayFullValues_Vector(hinge.axleB.x, hinge.axleB.y, hinge.axleB.z, hinge.axleB.w) << endl;
+//		out << "    Axle A:  " << NiflibStringFunctions::DisplayFullValues_Vector(hinge.axleA.x, hinge.axleA.y, hinge.axleA.z, hinge.axleA.w) << endl;
+//		out << "    Perp2 Axle In B1:  " << NiflibStringFunctions::DisplayFullValues_Vector(hinge.perp2AxleInB1.x, hinge.perp2AxleInB1.y, hinge.perp2AxleInB1.z, hinge.perp2AxleInB1.w) << endl;
+//		out << "    Perp2 Axle In B2:  " << NiflibStringFunctions::DisplayFullValues_Vector(hinge.perp2AxleInB2.x, hinge.perp2AxleInB2.y, hinge.perp2AxleInB2.z, hinge.perp2AxleInB2.w) << endl;
+//	};
+//	if((type == 7))
+//	{
+//		out << "    Pivot A:  " << NiflibStringFunctions::DisplayFullValues_Vector(ragdoll.pivotA.x, ragdoll.pivotA.y, ragdoll.pivotA.z, ragdoll.pivotA.w) << endl;
+//		out << "    Plane A:  " << NiflibStringFunctions::DisplayFullValues_Vector(ragdoll.planeA.x, ragdoll.planeA.y, ragdoll.planeA.z, ragdoll.planeA.w) << endl;
+//		out << "    Twist A:  " << NiflibStringFunctions::DisplayFullValues_Vector(ragdoll.twistA.x, ragdoll.twistA.y, ragdoll.twistA.z, ragdoll.twistA.w) << endl;
+//		out << "    Pivot B:  " << NiflibStringFunctions::DisplayFullValues_Vector(ragdoll.pivotB.x, ragdoll.pivotB.y, ragdoll.pivotB.z, ragdoll.pivotB.w) << endl;
+//		out << "    Plane B:  " << NiflibStringFunctions::DisplayFullValues_Vector(ragdoll.planeB.x, ragdoll.planeB.y, ragdoll.planeB.z, ragdoll.planeB.w) << endl;
+//		out << "    Twist B:  " << NiflibStringFunctions::DisplayFullValues_Vector(ragdoll.twistB.x, ragdoll.twistB.y, ragdoll.twistB.z, ragdoll.twistB.w) << endl;
+//		out << "    Motor A:  " << NiflibStringFunctions::DisplayFullValues_Vector(ragdoll.motorA.x, ragdoll.motorA.y, ragdoll.motorA.z, ragdoll.motorA.w) << endl;
+//		out << "    Motor B:  " << NiflibStringFunctions::DisplayFullValues_Vector(ragdoll.motorB.x, ragdoll.motorB.y, ragdoll.motorB.z, ragdoll.motorB.w) << endl;
+//		out << "    Cone Max Angle:  " << NiflibStringFunctions::FloatToStringConversion(ragdoll.coneMaxAngle) << endl;
+//		out << "    Plane Min Angle:  " << NiflibStringFunctions::FloatToStringConversion(ragdoll.planeMinAngle) << endl;
+//		out << "    Plane Max Angle:  " << NiflibStringFunctions::FloatToStringConversion(ragdoll.planeMaxAngle) << endl;
+//		out << "    Twist Min Angle:  " << NiflibStringFunctions::FloatToStringConversion(ragdoll.twistMinAngle) << endl;
+//		out << "    Twist Max Angle:  " << NiflibStringFunctions::FloatToStringConversion(ragdoll.twistMaxAngle) << endl;
+//		out << "    Max Friction:  " << NiflibStringFunctions::FloatToStringConversion(ragdoll.maxFriction) << endl;
+//		out << "    Enable Motor:  " << ragdoll.enableMotor << endl;
+//		if(ragdoll.enableMotor)
+//		{
+//			out << "      Unknown Float 1:  " << NiflibStringFunctions::FloatToStringConversion(ragdoll.motor.unknownFloat1) << endl;
+//			out << "      Unknown Float 2:  " << NiflibStringFunctions::FloatToStringConversion(ragdoll.motor.unknownFloat2) << endl;
+//			out << "      Unknown Float 3:  " << NiflibStringFunctions::FloatToStringConversion(ragdoll.motor.unknownFloat3) << endl;
+//			out << "      Unknown Float 4:  " << NiflibStringFunctions::FloatToStringConversion(ragdoll.motor.unknownFloat4) << endl;
+//			out << "      Unknown Float 5:  " << NiflibStringFunctions::FloatToStringConversion(ragdoll.motor.unknownFloat5) << endl;
+//			out << "      Unknown Float 6:  " << NiflibStringFunctions::FloatToStringConversion(ragdoll.motor.unknownFloat6) << endl;
+//			out << "      Unknown Byte 1:  " << ragdoll.motor.unknownByte1 << endl;
+//		};
+//	};
+//	if((type == 2))
+//	{
+//		out << "    Pivot A:  " << NiflibStringFunctions::DisplayFullValues_Vector(limitedHinge.pivotA.x, limitedHinge.pivotA.y, limitedHinge.pivotA.z, limitedHinge.pivotA.w) << endl;
+//		out << "    Axle A:  " << NiflibStringFunctions::DisplayFullValues_Vector(limitedHinge.axleA.x, limitedHinge.axleA.y, limitedHinge.axleA.z, limitedHinge.axleA.w) << endl;
+//		out << "    Perp2 Axle In A1:  " << NiflibStringFunctions::DisplayFullValues_Vector(limitedHinge.perp2AxleInA1.x, limitedHinge.perp2AxleInA1.y, limitedHinge.perp2AxleInA1.z, limitedHinge.perp2AxleInA1.w) << endl;
+//		out << "    Perp2 Axle In A2:  " << NiflibStringFunctions::DisplayFullValues_Vector(limitedHinge.perp2AxleInA2.x, limitedHinge.perp2AxleInA2.y, limitedHinge.perp2AxleInA2.z, limitedHinge.perp2AxleInA2.w) << endl;
+//		out << "    Pivot B:  " << NiflibStringFunctions::DisplayFullValues_Vector(limitedHinge.pivotB.x, limitedHinge.pivotB.y, limitedHinge.pivotB.z, limitedHinge.pivotB.w) << endl;
+//		out << "    Axle B:  " << NiflibStringFunctions::DisplayFullValues_Vector(limitedHinge.axleB.x, limitedHinge.axleB.y, limitedHinge.axleB.z, limitedHinge.axleB.w) << endl;
+//		out << "    Perp2 Axle In B2:  " << NiflibStringFunctions::DisplayFullValues_Vector(limitedHinge.perp2AxleInB2.x, limitedHinge.perp2AxleInB2.y, limitedHinge.perp2AxleInB2.z, limitedHinge.perp2AxleInB2.w) << endl;
+//		out << "    Perp2 Axle In B1:  " << NiflibStringFunctions::DisplayFullValues_Vector(limitedHinge.perp2AxleInB1.x, limitedHinge.perp2AxleInB1.y, limitedHinge.perp2AxleInB1.z, limitedHinge.perp2AxleInB1.w) << endl;
+//		out << "    Min Angle:  " << NiflibStringFunctions::FloatToStringConversion(limitedHinge.minAngle) << endl;
+//		out << "    Max Angle:  " << NiflibStringFunctions::FloatToStringConversion(limitedHinge.maxAngle) << endl;
+//		out << "    Max Friction:  " << NiflibStringFunctions::FloatToStringConversion(limitedHinge.maxFriction) << endl;
+//		out << "    Enable Motor:  " << limitedHinge.enableMotor << endl;
+//		if(limitedHinge.enableMotor)
+//		{
+//			out << "      Unknown Float 1:  " << NiflibStringFunctions::FloatToStringConversion(limitedHinge.motor.unknownFloat1) << endl;
+//			out << "      Unknown Float 2:  " << NiflibStringFunctions::FloatToStringConversion(limitedHinge.motor.unknownFloat2) << endl;
+//			out << "      Unknown Float 3:  " << NiflibStringFunctions::FloatToStringConversion(limitedHinge.motor.unknownFloat3) << endl;
+//			out << "      Unknown Float 4:  " << NiflibStringFunctions::FloatToStringConversion(limitedHinge.motor.unknownFloat4) << endl;
+//			out << "      Unknown Float 5:  " << NiflibStringFunctions::FloatToStringConversion(limitedHinge.motor.unknownFloat5) << endl;
+//			out << "      Unknown Float 6:  " << NiflibStringFunctions::FloatToStringConversion(limitedHinge.motor.unknownFloat6) << endl;
+//			out << "      Unknown Byte 1:  " << limitedHinge.motor.unknownByte1 << endl;
+//		};
+//	};
+//	out << "  Tau:  " << tau << endl;
+//	out << "  Damping:  " << damping << endl;
+//	return out.str();
+//
+//	//--BEGIN POST-STRING CUSTOM CODE--//
+//	//--END CUSTOM CODE--//
+//}
+
 
 void bhkMalleableConstraint::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
 {
