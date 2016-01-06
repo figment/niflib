@@ -15,15 +15,7 @@ All rights reserved.  Please see niflib.h for license. */
 #include "../../include/ObjectRegistry.h"
 #include "../../include/NIF_IO.h"
 #include "../../include/obj/bhkPrismaticConstraint.h"
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
-
-=======
-//#include "../GlobalCode/NiflibStringFunctions.h"
->>>>>>> origin/master
->>>>>>> origin/master
 using namespace Niflib;
 
 //Definition of TYPE constant
@@ -166,19 +158,6 @@ std::string bhkPrismaticConstraint::asString(bool verbose) const
 	out << "  Max Distance:  " << StringFunctions::FloatToStringConversion(maxDistance) << endl;
 	out << "  Friction:  " << StringFunctions::FloatToStringConversion(friction) << endl;
 	out << "  Unknown Byte 1:  " << unknownByte1 << endl;
-	////---New version--------------------------------
-	//	out << "  Pivot B:  " << NiflibStringFunctions::DisplayFullValues_Vector(pivotB.x,pivotB.y,pivotB.z,pivotB.w)  << endl;
-	//out << "  Sliding B:  " << NiflibStringFunctions::DisplayFullValues_Vector(slidingB.x,slidingB.y,slidingB.z,slidingB.w) << endl;
-	//out << "  Plane B:  " << NiflibStringFunctions::DisplayFullValues_Vector(planeB.x,planeB.y,planeB.z,planeB.w) << endl;
-	//out << "  Sliding A:  " << NiflibStringFunctions::DisplayFullValues_Vector(slidingA.x,slidingA.y,slidingA.z,slidingA.w) << endl;
-	//out << "  Rotation A:  " << NiflibStringFunctions::DisplayFullValues_Vector(rotationA.x,rotationA.y,rotationA.z,rotationA.w) << endl;
-	//out << "  Plane A:  " << NiflibStringFunctions::DisplayFullValues_Vector(planeA.x,planeA.y,planeA.z,planeA.w) << endl;
-	//out << "  Rotation B:  " << NiflibStringFunctions::DisplayFullValues_Vector(rotationB.x,rotationB.y,rotationB.z,rotationB.w) << endl;
-	//out << "  Min Distance:  " << NiflibStringFunctions::FloatToStringConversion(minDistance) << endl;
-	//out << "  Max Distance:  " << NiflibStringFunctions::FloatToStringConversion(maxDistance) << endl;
-	//out << "  Friction:  " << NiflibStringFunctions::FloatToStringConversion(friction) << endl;
-	//out << "  Unknown Byte 1:  " << unknownByte1 << endl;
-	////-------------------------------------------------------
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//
