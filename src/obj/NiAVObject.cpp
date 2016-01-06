@@ -19,7 +19,15 @@ All rights reserved.  Please see niflib.h for license. */
 #include "../../include/gen/BoundingBox.h"
 #include "../../include/obj/NiCollisionObject.h"
 #include "../../include/obj/NiProperty.h"
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+
+=======
+//#include "../GlobalCode/NiflibStringFunctions.h"
+>>>>>>> origin/master
+>>>>>>> origin/master
 using namespace Niflib;
 
 //Definition of TYPE constant
@@ -290,6 +298,63 @@ std::string NiAVObject::asString(bool verbose) const
 	//--BEGIN POST-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
+<<<<<<< HEAD
+=======
+//New Version
+//std::string NiAVObject::asString( bool verbose ) const {
+//	//--BEGIN PRE-STRING CUSTOM CODE--//
+//	//--END CUSTOM CODE--//
+//
+//	stringstream out;
+//	unsigned int array_output_count = 0;
+//	out << NiObjectNET::asString(verbose);
+//	numProperties = (unsigned int)(properties.size());
+//	out << "  Flags:  " << flags << endl;
+//	out << "  Unknown Short 1:  " << unknownShort1 << endl;
+//	out << "  Translation:  " << NiflibStringFunctions::DisplayFullValues_Vector(translation.x,translation.y,translation.z) << endl;
+//	out << "  Rotation:  " << rotation << endl;
+//	out << "  Scale:  " << scale << endl;
+//	out << "  Velocity:  " << NiflibStringFunctions::DisplayFullValues_Vector(velocity.x,velocity.y,velocity.z) << endl;
+//	out << "  Num Properties:  " << numProperties << endl;
+//	array_output_count = 0;
+//	for (unsigned int i1 = 0; i1 < properties.size(); i1++) {
+//		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+//			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
+//			break;
+//		};
+//		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+//			break;
+//		};
+//		out << "    Properties[" << i1 << "]:  " << properties[i1] << endl;
+//		array_output_count++;
+//	};
+//	array_output_count = 0;
+//	for (unsigned int i1 = 0; i1 < 4; i1++) {
+//		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+//			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
+//			break;
+//		};
+//		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+//			break;
+//		};
+//		out << "    Unknown 1[" << i1 << "]:  " << unknown1[i1] << endl;
+//		array_output_count++;
+//	};
+//	out << "  Unknown 2:  " << unknown2 << endl;
+//	out << "  Has Bounding Box:  " << hasBoundingBox << endl;
+//	if ( hasBoundingBox ) {
+//		out << "    Unknown Int:  " << boundingBox.unknownInt << endl;
+//		out << "    Translation:  " << NiflibStringFunctions::DisplayFullValues_Vector(boundingBox.translation.x,boundingBox.translation.y,boundingBox.translation.z) << endl;
+//		out << "    Rotation:  " << boundingBox.rotation << endl;
+//		out << "    Radius:  " << NiflibStringFunctions::DisplayFullValues_Vector(boundingBox.radius.x,boundingBox.radius.y,boundingBox.radius.z) << endl;
+//	};
+//	out << "  Collision Object:  " << collisionObject << endl;
+//	return out.str();
+//
+//	//--BEGIN POST-STRING CUSTOM CODE--//
+//	//--END CUSTOM CODE--//
+//}
+>>>>>>> origin/master
 
 void NiAVObject::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
 {
