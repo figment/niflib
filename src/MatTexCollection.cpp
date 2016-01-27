@@ -125,12 +125,12 @@ namespace Niflib
 		textures.clear();
 	}
 
-	unsigned int MatTexCollection::GetNumMaterials()
+	size_t MatTexCollection::GetNumMaterials()
 	{
 		return materials.size();
 	}
 
-	unsigned int MatTexCollection::GetNumTextures()
+	size_t MatTexCollection::GetNumTextures()
 	{
 		return textures.size();
 	}
@@ -155,7 +155,7 @@ namespace Niflib
 		return textures[index];
 	}
 
-	unsigned int MatTexCollection::GetMaterialIndex(NiAVObject * obj)
+	size_t MatTexCollection::GetMaterialIndex(NiAVObject * obj)
 	{
 		//Search for a material that matches the properties that the NiAVObject has.
 		vector< Ref<NiProperty> > properties = obj->GetProperties();
@@ -163,7 +163,7 @@ namespace Niflib
 		return GetMaterialIndex(properties);
 	}
 
-	unsigned int MatTexCollection::GetMaterialIndex(NiMaterialProperty * mat, NiTexturingProperty * texing, NiTextureProperty * tex, NiMultiTextureProperty * multi, NiSpecularProperty * spec, NiAlphaProperty * alpha, NiStencilProperty * stencil)
+	size_t MatTexCollection::GetMaterialIndex(NiMaterialProperty * mat, NiTexturingProperty * texing, NiTextureProperty * tex, NiMultiTextureProperty * multi, NiSpecularProperty * spec, NiAlphaProperty * alpha, NiStencilProperty * stencil)
 	{
 		for(size_t i = 0; i < materials.size(); ++i)
 		{
@@ -184,7 +184,7 @@ namespace Niflib
 		return NO_MATERIAL;
 	}
 
-	unsigned int MatTexCollection::GetTextureIndex(NiSourceTexture * src_tex)
+	size_t MatTexCollection::GetTextureIndex(NiSourceTexture * src_tex)
 	{
 		for(size_t i = 0; i < textures.size(); ++i)
 		{
@@ -199,7 +199,7 @@ namespace Niflib
 		return NO_TEXTURE;
 	}
 
-	unsigned int MatTexCollection::GetTextureIndex(NiImage * image)
+	size_t MatTexCollection::GetTextureIndex(NiImage * image)
 	{
 		for(size_t i = 0; i < textures.size(); ++i)
 		{
@@ -214,7 +214,7 @@ namespace Niflib
 		return NO_TEXTURE;
 	}
 
-	unsigned int MatTexCollection::GetMaterialIndex(const vector< Ref<NiProperty> > & properties)
+	size_t MatTexCollection::GetMaterialIndex(const vector< Ref<NiProperty> > & properties)
 	{
 		//Get Material and Texturing properties, if any
 		NiMaterialPropertyRef mat = NULL;
@@ -265,7 +265,7 @@ namespace Niflib
 		return GetMaterialIndex(mat, texing, tex, multi, spec, alpha, stencil);
 	}
 
-	unsigned int MatTexCollection::CreateTexture(unsigned int version)
+	size_t MatTexCollection::CreateTexture(unsigned int version)
 	{
 		if(version < VER_3_3_0_13)
 		{
@@ -288,7 +288,7 @@ namespace Niflib
 		return textures.size() - 1;
 	}
 
-	unsigned int MatTexCollection::CreateMaterial(bool color, bool texture, bool multi_tex, bool specular, bool translucency, unsigned int version)
+	size_t MatTexCollection::CreateMaterial(bool color, bool texture, bool multi_tex, bool specular, bool translucency, unsigned int version)
 	{
 		//Make sure at least one option is set to true
 		if(color == false && texture == false && multi_tex == false && specular == false && translucency == false)
@@ -476,7 +476,7 @@ namespace Niflib
 		return false;;
 	}
 
-	unsigned int MaterialWrapper::GetTextureIndex(TexType slot)
+	size_t MaterialWrapper::GetTextureIndex(TexType slot)
 	{
 		if(texing_prop != NULL)
 		{
@@ -530,7 +530,7 @@ namespace Niflib
 		//TODO:  Figure out which slots are what in NiMultiTextureProperty so this can be implemented for that too
 	}
 
-	unsigned int MaterialWrapper::GetTexUVSetIndex(TexType slot)
+	size_t MaterialWrapper::GetTexUVSetIndex(TexType slot)
 	{
 		if(texing_prop != NULL)
 		{

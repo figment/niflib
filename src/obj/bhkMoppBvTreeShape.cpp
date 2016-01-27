@@ -401,9 +401,9 @@ void bhkMoppBvTreeShape::CalcMassProperties(float density, bool solid, float &ma
 }
 
 // calculation helper
-unsigned int bhkMoppBvTreeShape::moppDataSizeCalc(const NifInfo& info) const
+size_t bhkMoppBvTreeShape::moppDataSizeCalc(const NifInfo& info) const
 {
-	unsigned int value = moppData.size();
+	size_t value = moppData.size();
 	if(info.version <= 0x0A000100)
 		value += 1;
 	return value;

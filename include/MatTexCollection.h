@@ -75,7 +75,7 @@ namespace Niflib
 		 * \return The number of materials for which data have been gathered in this
 		 * collection.
 		 */
-		NIFLIB_API unsigned int GetNumMaterials();
+		NIFLIB_API size_t GetNumMaterials();
 
 		/*
 		 * Retrieves a specific material wrapper by index.  This is a class which
@@ -92,7 +92,7 @@ namespace Niflib
 		 * \return The number of textures for which data have been gathered in this
 		 * collection.
 		 */
-		NIFLIB_API unsigned int GetNumTextures();
+		NIFLIB_API size_t GetNumTextures();
 
 		/*
 		 * Retrieves a specific texture wrapper by index.  This is a class which
@@ -110,7 +110,7 @@ namespace Niflib
 		 * \return The index of the matching texture, or NO_TEXTURE if a match is
 		 * not found.
 		 */
-		NIFLIB_API unsigned int GetTextureIndex(NiSourceTexture * src_tex);
+		NIFLIB_API size_t GetTextureIndex(NiSourceTexture * src_tex);
 
 		/*
 		 * Retrieves the texture index of the texture wrapper that encloses the
@@ -119,7 +119,7 @@ namespace Niflib
 		 * \return The index of the matching texture, or NO_TEXTURE if a match is
 		 * not found.
 		 */
-		NIFLIB_API unsigned int GetTextureIndex(NiImage * image);
+		NIFLIB_API size_t GetTextureIndex(NiImage * image);
 
 		/*!
 		 * Creates a new material and adds it to the end of the array of materials
@@ -129,7 +129,7 @@ namespace Niflib
 		 * objects that store the texture data.
 		 * \return The index of the newly created texture.
 		 */
-		NIFLIB_API unsigned int CreateTexture(unsigned int version = VER_4_0_0_2);
+		NIFLIB_API size_t CreateTexture(unsigned int version = VER_4_0_0_2);
 
 		/*
 		 * Retrieves the material index of the material that affects a specified
@@ -138,7 +138,7 @@ namespace Niflib
 		 * \return The index of the material that affects the specified object or
 		 * NO_MATERIAL if no match is found.
 		 */
-		NIFLIB_API unsigned int GetMaterialIndex(NiAVObject * obj);
+		NIFLIB_API size_t GetMaterialIndex(NiAVObject * obj);
 
 		/*
 		 * Retrieves the material index of the material that matches the given list
@@ -150,7 +150,7 @@ namespace Niflib
 		 * \return The index of the material that matches the specified properties,
 		 * or NO_MATERIAL if no match is found.
 		 */
-		NIFLIB_API unsigned int GetMaterialIndex(NiMaterialProperty * mat, NiTexturingProperty * texing, NiTextureProperty * tex, NiMultiTextureProperty * multi, NiSpecularProperty * spec, NiAlphaProperty * alpha, NiStencilProperty * stencil);
+		NIFLIB_API size_t GetMaterialIndex(NiMaterialProperty * mat, NiTexturingProperty * texing, NiTextureProperty * tex, NiMultiTextureProperty * multi, NiSpecularProperty * spec, NiAlphaProperty * alpha, NiStencilProperty * stencil);
 
 		/*
 		 * Retrieves the material index of the material that matches the given list
@@ -159,7 +159,7 @@ namespace Niflib
 		 * \return The index of the material that matches the given properties,
 		 * or NO_MATERIAL if no match is found.
 		 */
-		NIFLIB_API unsigned int GetMaterialIndex(const vector< Ref<NiProperty> > & properties);
+		NIFLIB_API size_t GetMaterialIndex(const vector< Ref<NiProperty> > & properties);
 
 		/*
 		 * Creates a new material and adds it to the end of the array of materials
@@ -185,7 +185,7 @@ namespace Niflib
 		 * objects that store the requested types of data.
 		 * \return The index of the newly created material.
 		 */
-		NIFLIB_API unsigned int CreateMaterial(bool color, bool texture, bool multi_tex, bool specular, bool translucenty, unsigned int version = VER_4_0_0_2);
+		NIFLIB_API size_t CreateMaterial(bool color, bool texture, bool multi_tex, bool specular, bool translucenty, unsigned int version = VER_4_0_0_2);
 	private:
 		/*! The vector of materials that this collection holds. */
 		vector<MaterialWrapper> materials;
@@ -262,7 +262,7 @@ namespace Niflib
 		 * \return The index of the texture used by the specified material at the
 		 * given slot, or NO_TEXTURE if no match is found.
 		 */
-		NIFLIB_API unsigned int GetTextureIndex(TexType slot);
+		NIFLIB_API size_t GetTextureIndex(TexType slot);
 
 		/*
 		 * Sets a new texture to the specified texture slot.  Overwrites any
@@ -281,7 +281,7 @@ namespace Niflib
 		 * \param[in] slot The type of texture slot to get the UV set index for.
 		 * \return The UV set index used by the specified texture slot.
 		 */
-		NIFLIB_API unsigned int GetTexUVSetIndex(TexType slot);
+		NIFLIB_API size_t GetTexUVSetIndex(TexType slot);
 
 		/*
 		 * Sets the UV Set Index of the texture in the specified slot.  This

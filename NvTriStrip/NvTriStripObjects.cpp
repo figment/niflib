@@ -93,7 +93,7 @@ void NvStripifier::BuildStripifyInfo(NvFaceInfoVec &faceInfos, NvEdgeInfoVec &ed
 	const unsigned short maxIndex)
 {
 	// reserve space for the face infos, but do not resize them.
-	int numIndices = indices.size();
+	size_t numIndices = indices.size();
 	faceInfos.reserve(numIndices / 3);
 
 	// we actually resize the edge infos, so we must initialize to NULL
@@ -102,11 +102,11 @@ void NvStripifier::BuildStripifyInfo(NvFaceInfoVec &faceInfos, NvEdgeInfoVec &ed
 		edgeInfos[i] = NULL;
 
 	// iterate through the triangles of the triangle list
-	int numTriangles = numIndices / 3;
-	int index = 0;
+	size_t numTriangles = numIndices / 3;
+	size_t index = 0;
 	bool bFaceUpdated[3];
 
-	for(int i = 0; i < numTriangles; i++)
+	for(size_t i = 0; i < numTriangles; i++)
 	{
 		bool bMightAlreadyExist = true;
 		bFaceUpdated[0] = false;
@@ -251,8 +251,8 @@ void NvStripifier::BuildStripifyInfo(NvFaceInfoVec &faceInfos, NvEdgeInfoVec &ed
 //
 int NvStripifier::FindStartPoint(NvFaceInfoVec &faceInfos, NvEdgeInfoVec &edgeInfos)
 {
-	int bestCtr = -1;
-	int bestIndex = -1;
+	size_t bestCtr = -1;
+	size_t bestIndex = -1;
 
 	for(size_t i = 0; i < faceInfos.size(); i++)
 	{
@@ -714,7 +714,7 @@ void NvStripInfo::Build(NvEdgeInfoVec &edgeInfos, NvFaceInfoVec &faceInfos)
 void NvStripInfo::Combine(const NvFaceInfoVec &forward, const NvFaceInfoVec &backward)
 {
 	// add backward faces
-	int numFaces = backward.size();
+	size_t numFaces = backward.size();
 	for(int i = numFaces - 1; i >= 0; i--)
 		m_faces.push_back(backward[i]);
 
@@ -761,8 +761,8 @@ bool NvStripInfo::SharesEdge(const NvFaceInfo* faceInfo, NvEdgeInfoVec &edgeInfo
 void NvStripifier::CommitStrips(NvStripInfoVec &allStrips, const NvStripInfoVec &strips)
 {
 	// Iterate through strips
-	int numStrips = strips.size();
-	for(int i = 0; i < numStrips; i++)
+	size_t numStrips = strips.size();
+	for(size_t i = 0; i < numStrips; i++)
 	{
 		// Tell the strip that it is now real
 		NvStripInfo *strip = strips[i];
@@ -774,7 +774,7 @@ void NvStripifier::CommitStrips(NvStripInfoVec &allStrips, const NvStripInfoVec 
 		// Iterate through the faces of the strip
 		// Tell the faces of the strip that they belong to a real strip now
 		const NvFaceInfoVec &faces = strips[i]->m_faces;
-		int numFaces = faces.size();
+		size_t numFaces = faces.size();
 
 		for(int j = 0; j < numFaces; j++)
 		{
@@ -868,7 +868,7 @@ void NvStripifier::RemoveSmallStrips(NvStripInfoVec& allStrips, NvStripInfoVec& 
 
 		int bestNumHits = -1;
 		int numHits;
-		int bestIndex = -1;
+		size_t bestIndex = -1;
 
 		while(1)
 		{
@@ -1330,10 +1330,10 @@ void NvStripifier::SplitUpStripsAndOptimize(NvStripInfoVec &allStrips, NvStripIn
 
 		float bestNumHits = -1.0f;
 		float numHits;
-		int bestIndex = -1;
+		size_t bestIndex = -1;
 		//bool done = false;
 
-		int firstIndex = 0;
+		size_t firstIndex = 0;
 		float minCost = 10000.0f;
 
 		for(size_t i = 0; i < tempStrips2.size(); i++)
@@ -1554,9 +1554,9 @@ int NvStripifier::NumNeighbors(NvFaceInfo* face, NvEdgeInfoVec& edgeInfoVec)
 //
 float NvStripifier::AvgStripSize(const NvStripInfoVec &strips)
 {
-	int sizeAccum = 0;
-	int numStrips = strips.size();
-	for(int i = 0; i < numStrips; i++)
+	size_t sizeAccum = 0;
+	size_t numStrips = strips.size();
+	for(size_t i = 0; i < numStrips; ++i)
 	{
 		NvStripInfo *strip = strips[i];
 		sizeAccum += strip->m_faces.size();
@@ -1713,7 +1713,7 @@ void NvStripifier::FindAllStrips(NvStripInfoVec &allStrips,
 		{
 			if(i != bestIndex)
 			{
-				int numStrips = experiments[i].size();
+				size_t numStrips = experiments[i].size();
 				for(int j = 0; j < numStrips; j++)
 				{
 					NvStripInfo* currStrip = experiments[i][j];
@@ -1741,10 +1741,10 @@ void NvStripifier::FindAllStrips(NvStripInfoVec &allStrips,
 // This will count the number of triangles left in the
 // strip list starting at iter and finishing up at end
 //
-int NvStripifier::CountRemainingTris(std::list<NvStripInfo*>::iterator iter,
+size_t NvStripifier::CountRemainingTris(std::list<NvStripInfo*>::iterator iter,
 	std::list<NvStripInfo*>::iterator  end)
 {
-	int count = 0;
+	size_t count = 0;
 	while(iter != end)
 	{
 		count += (*iter)->m_faces.size();

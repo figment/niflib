@@ -10,7 +10,7 @@ All rights reserved.  Please see niflib.h for license. */
 //--BEGIN FILE HEAD CUSTOM CODE--//
 #include "../../include/Inertia.h"
 #include <algorithm>
-#include "../../GlobalCode/StringFunctions.h"
+#include "StringFunctions.h"
 //--END CUSTOM CODE--//
 
 #include "../../include/FixLink.h"

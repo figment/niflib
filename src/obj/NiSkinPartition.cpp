@@ -1327,7 +1327,7 @@ NiSkinPartition::NiSkinPartition(Ref<NiTriBasedGeom> shape, int maxBonesPerParti
 	if(faceMap)
 	{
 		Triangles::iterator it = triangles.begin();
-		for(int idx = 0, n = triangles.size(); idx < n; ++idx)
+		for(size_t idx = 0, n = triangles.size(); idx < n; ++idx)
 		{
 			int partIdx = faceMap[idx];
 			if(partIdx < 0)

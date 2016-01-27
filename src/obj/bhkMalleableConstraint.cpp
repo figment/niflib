@@ -8,7 +8,7 @@ All rights reserved.  Please see niflib.h for license. */
 //-----------------------------------NOTICE----------------------------------//
 
 //--BEGIN FILE HEAD CUSTOM CODE--//
-#include "../../GlobalCode/StringFunctions.h"
+#include "StringFunctions.h"
 //--END CUSTOM CODE--//
 
 #include "../../include/FixLink.h"

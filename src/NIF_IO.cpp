@@ -11,6 +11,7 @@ namespace Niflib
 	EndianType DetectEndianType();
 	int SwapEndian(int in);
 	unsigned int SwapEndian(unsigned int in);
+	size_t SwapEndian(size_t in);
 	short SwapEndian(short in);
 	unsigned short SwapEndian(unsigned short in);
 	float SwapEndian(float in);
@@ -56,6 +57,23 @@ namespace Niflib
 	unsigned int SwapEndian(unsigned int in)
 	{
 		unsigned int out = 0;
+		char * temp_in;
+		char * temp_out;
+
+		temp_in = (char*) &in;
+		temp_out = (char*) &out;
+
+		temp_out[0] = temp_in[3];
+		temp_out[1] = temp_in[2];
+		temp_out[2] = temp_in[1];
+		temp_out[3] = temp_in[0];
+
+		return out;
+	}
+
+	size_t SwapEndian(size_t in)
+	{
+		size_t out = 0;
 		char * temp_in;
 		char * temp_out;
 
@@ -131,6 +149,15 @@ namespace Niflib
 	unsigned int ReadUInt(istream& in)
 	{
 		unsigned int tmp = 0;
+		in.read((char*) &tmp, 4);
+		if(in.fail())
+			throw runtime_error("premature end of stream");
+		return tmp;
+	}
+
+	size_t ReadSizeT(istream& in)
+	{
+		size_t tmp = 0;
 		in.read((char*) &tmp, 4);
 		if(in.fail())
 			throw runtime_error("premature end of stream");
@@ -214,6 +241,11 @@ namespace Niflib
 		out.write((char*) &val, 4);
 	}
 
+	void WriteSizeT(size_t val, ostream& out)
+	{
+		out.write((char*) &val, 4);
+	}
+
 	void WritePtr32(void * val, ostream& out)
 	{
 #if __SIZEOF_POINTER__ == 4
@@ -237,6 +269,15 @@ namespace Niflib
 		// (maybe a more advanced hash function would be better, experience will tell)
 		WriteUInt(ptr.id1 ^ ptr.id2, out);
 #endif
+	}
+
+	void WritePointerString(void * val, ostream& out)
+	{
+		int address(reinterpret_cast<int>(val));
+		std::stringstream ss;
+		ss << address;
+		std::string AddressString = ss.str();
+		out << AddressString;
 	}
 
 	void WriteUShort(unsigned short val, ostream& out)
@@ -331,6 +372,31 @@ namespace Niflib
 	};
 
 	void NifStream(unsigned int const & val, ostream& out, const NifInfo & info)
+	{
+		if(info.endian == sys_endian)
+		{
+			WriteUInt(val, out);
+		}
+		else
+		{
+			WriteUInt(SwapEndian(val), out);
+		}
+	}
+
+	//size_t
+	void NifStream(size_t & val, istream& in, const NifInfo & info)
+	{
+		if(info.endian == sys_endian)
+		{
+			val = ReadUInt(in);
+		}
+		else
+		{
+			val = SwapEndian(ReadUInt(in));
+		}
+	};
+
+	void NifStream(size_t const & val, ostream& out, const NifInfo & info)
 	{
 		if(info.endian == sys_endian)
 		{

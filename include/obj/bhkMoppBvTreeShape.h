@@ -227,7 +227,7 @@ namespace Niflib
 		NIFLIB_API virtual void CalcMassProperties(float density, bool solid, float &mass, float &volume, Vector3 &center, InertiaMatrix& inertia);
 
 		// size calculation helper
-		NIFLIB_HIDDEN unsigned int moppDataSizeCalc(const NifInfo& info) const;
+		NIFLIB_HIDDEN size_t moppDataSizeCalc(const NifInfo& info) const;
 
 		//--END CUSTOM CODE--//
 	protected:

@@ -15,6 +15,7 @@ All rights reserved.  Please see niflib.h for license. */
 #include "../../include/ObjectRegistry.h"
 #include "../../include/NIF_IO.h"
 #include "../../include/obj/bhkConvexVerticesShape.h"
+#include "gen/enums_intl.h"
 using namespace Niflib;
 
 //Definition of TYPE constant
@@ -102,7 +103,7 @@ std::string bhkConvexVerticesShape::asString(bool verbose) const
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	unsigned int array_output_count = 0;
+	size_t array_output_count = 0;
 	out << bhkConvexShape::asString(verbose);
 	numNormals = (unsigned int) (normals.size());
 	numVertices = (unsigned int) (vertices.size());
@@ -218,7 +219,7 @@ vector<Vector3> bhkConvexVerticesShape::GetNormals() const
 	return good_normals;
 }
 
-int bhkConvexVerticesShape::GetVertexCount() const
+size_t bhkConvexVerticesShape::GetVertexCount() const
 {
 	return vertices.size();
 }

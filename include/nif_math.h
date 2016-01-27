@@ -10,6 +10,7 @@ All rights reserved.  Please see niflib.h for license. */
 #include <stdexcept>
 #include "dll_export.h"
 #include <stdint.h>
+#include "half.hpp"
 
 using namespace std;
 namespace Niflib
@@ -1458,8 +1459,10 @@ namespace Niflib
 		NIFLIB_API float Adjoint(int skip_r, int skip_c) const;
 	};
 
-	// Declaration of half float
-	typedef uint16_t hfloat;
+	//Switched to new half_float library
+	using hfloat = half_float::half;
+	//// Declaration of half float
+	//typedef uint16_t hfloat;
 
 	NIFLIB_API float ConvertHFloatToFloat(hfloat h);
 	NIFLIB_API hfloat ConvertFloatToHFloat(float f);

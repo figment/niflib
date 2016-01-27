@@ -35,6 +35,7 @@ All rights reserved.  Please see niflib.h for license. */
 #include "../include/gen/Header.h"
 #include "../include/gen/Footer.h"
 #include "../GlobalCode/StringFunctions.h"
+#include "../NifNodeTreeFiles/NifNodeTree.h"
 
 namespace Niflib
 {
@@ -770,12 +771,12 @@ namespace Niflib
 		if(type_map.find(t) == type_map.end())
 		{
 			//The type has not yet been registered, so register it
-			unsigned int n = type_map.size();
+			size_t n = type_map.size();
 			type_map[t] = n;
 		}
 
 		// add the block
-		unsigned int n = link_map.size();
+		size_t n = link_map.size();
 		link_map[root] = n;
 
 		// add children that come after the block
@@ -1663,3 +1664,10 @@ namespace Niflib
 		return root;
 	}
 } // namespace NifLib
+
+//This very requires NifInfo to already be created rather than creating temporar new version as required
+NIFLIB_API NifNodeTreeData::NifNodeTree Niflib::ReadNifNodeTree(string const & file_name)
+{
+	NifNodeTreeData::NifNodeTree StorageTree(file_name);
+	return StorageTree;
+}
