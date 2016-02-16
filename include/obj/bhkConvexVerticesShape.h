@@ -91,7 +91,7 @@ namespace Niflib
 		* Returns the number of vertices that make up this mesh.  This is also the number of normals, colors, and UV coordinates if these are used.
 		* \return The number of vertices that make up this mesh.
 		*/
-		NIFLIB_API size_t GetVertexCount() const;
+		NIFLIB_API int GetVertexCount() const;
 
 		/*!
 		* Used to retrieve the vertices used by this mesh.  The size of the vector will be the same as the vertex count retrieved with the IShapeData::GetVertexCount function.
@@ -162,7 +162,7 @@ namespace Niflib
 		/*! Vertices. Fourth component is 0. Lexicographically sorted. */
 		vector<Vector4 > vertices;
 		/*! The number of half spaces. */
-		mutable size_t numNormals;
+		mutable unsigned int numNormals;
 		/*!
 		 * Half spaces as determined by the set of vertices above. First three components
 		 * define the normal pointing to the exterior, fourth component is the signed

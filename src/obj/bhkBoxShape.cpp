@@ -10,7 +10,7 @@ All rights reserved.  Please see niflib.h for license. */
 //--BEGIN FILE HEAD CUSTOM CODE--//
 #include "../../include/Inertia.h"
 #include <algorithm>
-#include "StringFunctions.h"
+#include "../../GlobalCode/VariableConversionFunctions.h"
 //--END CUSTOM CODE--//
 
 #include "../../include/FixLink.h"
@@ -102,8 +102,8 @@ std::string bhkBoxShape::asString(bool verbose) const
 		out << "    Unknown 8 Bytes[" << i1 << "]:  " << unknown8Bytes[i1] << endl;
 		array_output_count++;
 	};
-	out << "  Dimensions:  " << StringFunctions::DisplayFullValues_Vector(dimensions.x, dimensions.y, dimensions.z) << endl;
-	out << "  Minimum Size:  " << StringFunctions::FloatToStringConversion(minimumSize) << endl;
+	out << "  Dimensions:  " << VariableConversionFunctions::DisplayFullValues_Vector(dimensions.x, dimensions.y, dimensions.z) << endl;
+	out << "  Minimum Size:  " << VariableConversionFunctions::FloatToStringConversion(minimumSize) << endl;
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

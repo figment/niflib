@@ -9,7 +9,7 @@ All rights reserved.  Please see niflib.h for license. */
 
 //--BEGIN FILE HEAD CUSTOM CODE--//
 #include "../../include/Inertia.h"
-#include "StringFunctions.h"
+#include "../../GlobalCode/VariableConversionFunctions.h"
 //--END CUSTOM CODE--//
 
 #include "../../include/FixLink.h"
@@ -104,10 +104,10 @@ std::string bhkCapsuleShape::asString(bool verbose) const
 		out << "    Unknown 8 Bytes[" << i1 << "]:  " << unknown8Bytes[i1] << endl;
 		array_output_count++;
 	};
-	out << "  First Point:  " << StringFunctions::DisplayFullValues_Vector(firstPoint.x, firstPoint.y, firstPoint.z) << endl;
-	out << "  Radius 1:  " << StringFunctions::FloatToStringConversion(radius1) << endl;
-	out << "  Second Point:  " << StringFunctions::DisplayFullValues_Vector(secondPoint.x, secondPoint.y, secondPoint.z) << endl;
-	out << "  Radius 2:  " << StringFunctions::FloatToStringConversion(radius2) << endl;
+	out << "  First Point:  " << VariableConversionFunctions::DisplayFullValues_Vector(firstPoint.x, firstPoint.y, firstPoint.z) << endl;
+	out << "  Radius 1:  " << VariableConversionFunctions::FloatToStringConversion(radius1) << endl;
+	out << "  Second Point:  " << VariableConversionFunctions::DisplayFullValues_Vector(secondPoint.x, secondPoint.y, secondPoint.z) << endl;
+	out << "  Radius 2:  " << VariableConversionFunctions::FloatToStringConversion(radius2) << endl;
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//

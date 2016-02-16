@@ -52,14 +52,10 @@ POSSIBILITY OF SUCH DAMAGE. */
 #include "nif_versions.h"
 #include "Ref.h"
 #include "nif_basic_types.h"
-#include "..\NifNodeTreeFiles\NifNodeTree.h"
 
+using namespace std;
 namespace Niflib
 {
-	using namespace std;
-#ifndef EnabledSizeTAlternativeCode//After I setup alternative code, comment out these define lines to return to non-size_t storage(size_t to storage full vector/string size during 64Bit build(vector.size()=size_t)
-#define EnabledSizeTAlternativeCode
-#endif
 	//Classes used
 	class NiObject;
 	class NiNode;
@@ -161,9 +157,6 @@ namespace Niflib
 	 * \return All the NIF objects read from the stream.
 	 */
 	NIFLIB_API vector< Ref<NiObject> > ReadNifList(istream & in, NifInfo * info = NULL);
-
-	//Based on vector< Ref<NiObject> > ReadNifList but less use of non-vector/list new variables although requires NifInfo be created at local scope
-	NIFLIB_API NifNodeTreeData::NifNodeTree ReadNifNodeTree(std::string const & file_name);
 
 	/*!
 	 * Like ReadNifList but returns root.

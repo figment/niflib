@@ -9,7 +9,7 @@ All rights reserved.  Please see niflib.h for license. */
 
 //--BEGIN FILE HEAD CUSTOM CODE--//
 #include "../../include/obj/NiNode.h"
-#include "StringFunctions.h"
+#include "../../GlobalCode/VariableConversionFunctions.h"
 //--END CUSTOM CODE--//
 
 #include "../../include/FixLink.h"
@@ -240,10 +240,10 @@ std::string NiAVObject::asString(bool verbose) const
 	numProperties = (unsigned int) (properties.size());
 	out << "  Flags:  " << flags << endl;
 	out << "  Unknown Short 1:  " << unknownShort1 << endl;
-	out << "  Translation:  " << StringFunctions::DisplayFullValues_Vector(translation.x, translation.y, translation.z) << endl;
+	out << "  Translation:  " << VariableConversionFunctions::DisplayFullValues_Vector(translation.x, translation.y, translation.z) << endl;
 	out << "  Rotation:  " << rotation << endl;
 	out << "  Scale:  " << scale << endl;
-	out << "  Velocity:  " << StringFunctions::DisplayFullValues_Vector(velocity.x, velocity.y, velocity.z) << endl;
+	out << "  Velocity:  " << VariableConversionFunctions::DisplayFullValues_Vector(velocity.x, velocity.y, velocity.z) << endl;
 	out << "  Num Properties:  " << numProperties << endl;
 	array_output_count = 0;
 	for(unsigned int i1 = 0; i1 < properties.size(); i1++)
@@ -280,9 +280,9 @@ std::string NiAVObject::asString(bool verbose) const
 	if(hasBoundingBox)
 	{
 		out << "    Unknown Int:  " << boundingBox.unknownInt << endl;
-		out << "    Translation:  " << StringFunctions::DisplayFullValues_Vector(boundingBox.translation.x, boundingBox.translation.y, boundingBox.translation.z) << endl;
+		out << "    Translation:  " << VariableConversionFunctions::DisplayFullValues_Vector(boundingBox.translation.x, boundingBox.translation.y, boundingBox.translation.z) << endl;
 		out << "    Rotation:  " << boundingBox.rotation << endl;
-		out << "    Radius:  " << StringFunctions::DisplayFullValues_Vector(boundingBox.radius.x, boundingBox.radius.y, boundingBox.radius.z) << endl;
+		out << "    Radius:  " << VariableConversionFunctions::DisplayFullValues_Vector(boundingBox.radius.x, boundingBox.radius.y, boundingBox.radius.z) << endl;
 	};
 	out << "  Collision Object:  " << collisionObject << endl;
 	return out.str();

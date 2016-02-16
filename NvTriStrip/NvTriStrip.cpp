@@ -240,7 +240,7 @@ namespace NvTriStrip
 			PrimitiveGroup* primGroupArray = *primGroups;
 
 			//count the total number of indices
-			size_t numIndices = 0;
+			unsigned int numIndices = 0;
 			for(size_t i = 0; i < tempStrips.size(); i++)
 			{
 				numIndices += tempStrips[i]->m_faces.size() * 3;
@@ -301,7 +301,7 @@ namespace NvTriStrip
 			int startingLoc = 0;
 			for(size_t stripCtr = 0; stripCtr < numSeparateStrips; stripCtr++)
 			{
-				size_t stripLength = 0;
+				int stripLength = 0;
 
 				if(!bStitchStrips)
 				{

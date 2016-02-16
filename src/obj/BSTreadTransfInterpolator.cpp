@@ -8,7 +8,7 @@ All rights reserved.  Please see niflib.h for license. */
 //-----------------------------------NOTICE----------------------------------//
 
 //--BEGIN FILE HEAD CUSTOM CODE--//
-#include "StringFunctions.h"
+#include "../../GlobalCode/VariableConversionFunctions.h"
 //--END CUSTOM CODE--//
 
 #include "../../include/FixLink.h"
@@ -148,12 +148,12 @@ std::string BSTreadTransfInterpolator::asString(bool verbose) const
 			break;
 		};
 		out << "    Name:  " << treadTransforms[i1].name << endl;
-		out << "    Translation:  " << StringFunctions::DisplayFullValues_Vector(treadTransforms[i1].transform1.translation.x, treadTransforms[i1].transform1.translation.y, treadTransforms[i1].transform1.translation.z) << endl;
+		out << "    Translation:  " << VariableConversionFunctions::DisplayFullValues_Vector(treadTransforms[i1].transform1.translation.x, treadTransforms[i1].transform1.translation.y, treadTransforms[i1].transform1.translation.z) << endl;
 		out << "    Rotation:  " << treadTransforms[i1].transform1.rotation << endl;
-		out << "    Scale:  " << StringFunctions::FloatToStringConversion(treadTransforms[i1].transform1.scale) << endl;
-		out << "    Translation:  " << StringFunctions::DisplayFullValues_Vector(treadTransforms[i1].transform2.translation.x, treadTransforms[i1].transform2.translation.y, treadTransforms[i1].transform2.translation.z) << endl;
+		out << "    Scale:  " << VariableConversionFunctions::FloatToStringConversion(treadTransforms[i1].transform1.scale) << endl;
+		out << "    Translation:  " << VariableConversionFunctions::DisplayFullValues_Vector(treadTransforms[i1].transform2.translation.x, treadTransforms[i1].transform2.translation.y, treadTransforms[i1].transform2.translation.z) << endl;
 		out << "    Rotation:  " << treadTransforms[i1].transform2.rotation << endl;
-		out << "    Scale:  " << StringFunctions::FloatToStringConversion(treadTransforms[i1].transform2.scale) << endl;
+		out << "    Scale:  " << VariableConversionFunctions::FloatToStringConversion(treadTransforms[i1].transform2.scale) << endl;
 	};
 	out << "  Data:  " << data << endl;
 	return out.str();

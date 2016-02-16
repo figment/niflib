@@ -8,7 +8,7 @@ All rights reserved.  Please see niflib.h for license. */
 //-----------------------------------NOTICE----------------------------------//
 
 //--BEGIN FILE HEAD CUSTOM CODE--//
-#include "StringFunctions.h"
+#include "../../GlobalCode/VariableConversionFunctions.h"
 //--END CUSTOM CODE--//
 
 #include "../../include/FixLink.h"
@@ -370,65 +370,65 @@ std::string bhkMalleableConstraint::asString(bool verbose) const
 	out << "  Unknown Int 3:  " << unknownInt3 << endl;
 	if((type == 1))
 	{
-		out << "    Pivot A:  " << StringFunctions::DisplayFullValues_Vector(hinge.pivotA.x, hinge.pivotA.y, hinge.pivotA.z, hinge.pivotA.w) << endl;
-		out << "    Perp2 Axle In A1:  " << StringFunctions::DisplayFullValues_Vector(hinge.perp2AxleInA1.x, hinge.perp2AxleInA1.y, hinge.perp2AxleInA1.z, hinge.perp2AxleInA1.w) << endl;
-		out << "    Perp2 Axle In A2:  " << StringFunctions::DisplayFullValues_Vector(hinge.perp2AxleInA2.x, hinge.perp2AxleInA2.y, hinge.perp2AxleInA2.z, hinge.perp2AxleInA2.w) << endl;
-		out << "    Pivot B:  " << StringFunctions::DisplayFullValues_Vector(hinge.pivotB.x, hinge.pivotB.y, hinge.pivotB.z, hinge.pivotB.w) << endl;
-		out << "    Axle B:  " << StringFunctions::DisplayFullValues_Vector(hinge.axleB.x, hinge.axleB.y, hinge.axleB.z, hinge.axleB.w) << endl;
-		out << "    Axle A:  " << StringFunctions::DisplayFullValues_Vector(hinge.axleA.x, hinge.axleA.y, hinge.axleA.z, hinge.axleA.w) << endl;
-		out << "    Perp2 Axle In B1:  " << StringFunctions::DisplayFullValues_Vector(hinge.perp2AxleInB1.x, hinge.perp2AxleInB1.y, hinge.perp2AxleInB1.z, hinge.perp2AxleInB1.w) << endl;
-		out << "    Perp2 Axle In B2:  " << StringFunctions::DisplayFullValues_Vector(hinge.perp2AxleInB2.x, hinge.perp2AxleInB2.y, hinge.perp2AxleInB2.z, hinge.perp2AxleInB2.w) << endl;
+		out << "    Pivot A:  " << VariableConversionFunctions::DisplayFullValues_Vector(hinge.pivotA.x, hinge.pivotA.y, hinge.pivotA.z, hinge.pivotA.w) << endl;
+		out << "    Perp2 Axle In A1:  " << VariableConversionFunctions::DisplayFullValues_Vector(hinge.perp2AxleInA1.x, hinge.perp2AxleInA1.y, hinge.perp2AxleInA1.z, hinge.perp2AxleInA1.w) << endl;
+		out << "    Perp2 Axle In A2:  " << VariableConversionFunctions::DisplayFullValues_Vector(hinge.perp2AxleInA2.x, hinge.perp2AxleInA2.y, hinge.perp2AxleInA2.z, hinge.perp2AxleInA2.w) << endl;
+		out << "    Pivot B:  " << VariableConversionFunctions::DisplayFullValues_Vector(hinge.pivotB.x, hinge.pivotB.y, hinge.pivotB.z, hinge.pivotB.w) << endl;
+		out << "    Axle B:  " << VariableConversionFunctions::DisplayFullValues_Vector(hinge.axleB.x, hinge.axleB.y, hinge.axleB.z, hinge.axleB.w) << endl;
+		out << "    Axle A:  " << VariableConversionFunctions::DisplayFullValues_Vector(hinge.axleA.x, hinge.axleA.y, hinge.axleA.z, hinge.axleA.w) << endl;
+		out << "    Perp2 Axle In B1:  " << VariableConversionFunctions::DisplayFullValues_Vector(hinge.perp2AxleInB1.x, hinge.perp2AxleInB1.y, hinge.perp2AxleInB1.z, hinge.perp2AxleInB1.w) << endl;
+		out << "    Perp2 Axle In B2:  " << VariableConversionFunctions::DisplayFullValues_Vector(hinge.perp2AxleInB2.x, hinge.perp2AxleInB2.y, hinge.perp2AxleInB2.z, hinge.perp2AxleInB2.w) << endl;
 	};
 	if((type == 7))
 	{
-		out << "    Pivot A:  " << StringFunctions::DisplayFullValues_Vector(ragdoll.pivotA.x, ragdoll.pivotA.y, ragdoll.pivotA.z, ragdoll.pivotA.w) << endl;
-		out << "    Plane A:  " << StringFunctions::DisplayFullValues_Vector(ragdoll.planeA.x, ragdoll.planeA.y, ragdoll.planeA.z, ragdoll.planeA.w) << endl;
-		out << "    Twist A:  " << StringFunctions::DisplayFullValues_Vector(ragdoll.twistA.x, ragdoll.twistA.y, ragdoll.twistA.z, ragdoll.twistA.w) << endl;
-		out << "    Pivot B:  " << StringFunctions::DisplayFullValues_Vector(ragdoll.pivotB.x, ragdoll.pivotB.y, ragdoll.pivotB.z, ragdoll.pivotB.w) << endl;
-		out << "    Plane B:  " << StringFunctions::DisplayFullValues_Vector(ragdoll.planeB.x, ragdoll.planeB.y, ragdoll.planeB.z, ragdoll.planeB.w) << endl;
-		out << "    Twist B:  " << StringFunctions::DisplayFullValues_Vector(ragdoll.twistB.x, ragdoll.twistB.y, ragdoll.twistB.z, ragdoll.twistB.w) << endl;
-		out << "    Motor A:  " << StringFunctions::DisplayFullValues_Vector(ragdoll.motorA.x, ragdoll.motorA.y, ragdoll.motorA.z, ragdoll.motorA.w) << endl;
-		out << "    Motor B:  " << StringFunctions::DisplayFullValues_Vector(ragdoll.motorB.x, ragdoll.motorB.y, ragdoll.motorB.z, ragdoll.motorB.w) << endl;
-		out << "    Cone Max Angle:  " << StringFunctions::FloatToStringConversion(ragdoll.coneMaxAngle) << endl;
-		out << "    Plane Min Angle:  " << StringFunctions::FloatToStringConversion(ragdoll.planeMinAngle) << endl;
-		out << "    Plane Max Angle:  " << StringFunctions::FloatToStringConversion(ragdoll.planeMaxAngle) << endl;
-		out << "    Twist Min Angle:  " << StringFunctions::FloatToStringConversion(ragdoll.twistMinAngle) << endl;
-		out << "    Twist Max Angle:  " << StringFunctions::FloatToStringConversion(ragdoll.twistMaxAngle) << endl;
-		out << "    Max Friction:  " << StringFunctions::FloatToStringConversion(ragdoll.maxFriction) << endl;
+		out << "    Pivot A:  " << VariableConversionFunctions::DisplayFullValues_Vector(ragdoll.pivotA.x, ragdoll.pivotA.y, ragdoll.pivotA.z, ragdoll.pivotA.w) << endl;
+		out << "    Plane A:  " << VariableConversionFunctions::DisplayFullValues_Vector(ragdoll.planeA.x, ragdoll.planeA.y, ragdoll.planeA.z, ragdoll.planeA.w) << endl;
+		out << "    Twist A:  " << VariableConversionFunctions::DisplayFullValues_Vector(ragdoll.twistA.x, ragdoll.twistA.y, ragdoll.twistA.z, ragdoll.twistA.w) << endl;
+		out << "    Pivot B:  " << VariableConversionFunctions::DisplayFullValues_Vector(ragdoll.pivotB.x, ragdoll.pivotB.y, ragdoll.pivotB.z, ragdoll.pivotB.w) << endl;
+		out << "    Plane B:  " << VariableConversionFunctions::DisplayFullValues_Vector(ragdoll.planeB.x, ragdoll.planeB.y, ragdoll.planeB.z, ragdoll.planeB.w) << endl;
+		out << "    Twist B:  " << VariableConversionFunctions::DisplayFullValues_Vector(ragdoll.twistB.x, ragdoll.twistB.y, ragdoll.twistB.z, ragdoll.twistB.w) << endl;
+		out << "    Motor A:  " << VariableConversionFunctions::DisplayFullValues_Vector(ragdoll.motorA.x, ragdoll.motorA.y, ragdoll.motorA.z, ragdoll.motorA.w) << endl;
+		out << "    Motor B:  " << VariableConversionFunctions::DisplayFullValues_Vector(ragdoll.motorB.x, ragdoll.motorB.y, ragdoll.motorB.z, ragdoll.motorB.w) << endl;
+		out << "    Cone Max Angle:  " << VariableConversionFunctions::FloatToStringConversion(ragdoll.coneMaxAngle) << endl;
+		out << "    Plane Min Angle:  " << VariableConversionFunctions::FloatToStringConversion(ragdoll.planeMinAngle) << endl;
+		out << "    Plane Max Angle:  " << VariableConversionFunctions::FloatToStringConversion(ragdoll.planeMaxAngle) << endl;
+		out << "    Twist Min Angle:  " << VariableConversionFunctions::FloatToStringConversion(ragdoll.twistMinAngle) << endl;
+		out << "    Twist Max Angle:  " << VariableConversionFunctions::FloatToStringConversion(ragdoll.twistMaxAngle) << endl;
+		out << "    Max Friction:  " << VariableConversionFunctions::FloatToStringConversion(ragdoll.maxFriction) << endl;
 		out << "    Enable Motor:  " << ragdoll.enableMotor << endl;
 		if(ragdoll.enableMotor)
 		{
-			out << "      Unknown Float 1:  " << StringFunctions::FloatToStringConversion(ragdoll.motor.unknownFloat1) << endl;
-			out << "      Unknown Float 2:  " << StringFunctions::FloatToStringConversion(ragdoll.motor.unknownFloat2) << endl;
-			out << "      Unknown Float 3:  " << StringFunctions::FloatToStringConversion(ragdoll.motor.unknownFloat3) << endl;
-			out << "      Unknown Float 4:  " << StringFunctions::FloatToStringConversion(ragdoll.motor.unknownFloat4) << endl;
-			out << "      Unknown Float 5:  " << StringFunctions::FloatToStringConversion(ragdoll.motor.unknownFloat5) << endl;
-			out << "      Unknown Float 6:  " << StringFunctions::FloatToStringConversion(ragdoll.motor.unknownFloat6) << endl;
+			out << "      Unknown Float 1:  " << VariableConversionFunctions::FloatToStringConversion(ragdoll.motor.unknownFloat1) << endl;
+			out << "      Unknown Float 2:  " << VariableConversionFunctions::FloatToStringConversion(ragdoll.motor.unknownFloat2) << endl;
+			out << "      Unknown Float 3:  " << VariableConversionFunctions::FloatToStringConversion(ragdoll.motor.unknownFloat3) << endl;
+			out << "      Unknown Float 4:  " << VariableConversionFunctions::FloatToStringConversion(ragdoll.motor.unknownFloat4) << endl;
+			out << "      Unknown Float 5:  " << VariableConversionFunctions::FloatToStringConversion(ragdoll.motor.unknownFloat5) << endl;
+			out << "      Unknown Float 6:  " << VariableConversionFunctions::FloatToStringConversion(ragdoll.motor.unknownFloat6) << endl;
 			out << "      Unknown Byte 1:  " << ragdoll.motor.unknownByte1 << endl;
 		};
 	};
 	if((type == 2))
 	{
-		out << "    Pivot A:  " << StringFunctions::DisplayFullValues_Vector(limitedHinge.pivotA.x, limitedHinge.pivotA.y, limitedHinge.pivotA.z, limitedHinge.pivotA.w) << endl;
-		out << "    Axle A:  " << StringFunctions::DisplayFullValues_Vector(limitedHinge.axleA.x, limitedHinge.axleA.y, limitedHinge.axleA.z, limitedHinge.axleA.w) << endl;
-		out << "    Perp2 Axle In A1:  " << StringFunctions::DisplayFullValues_Vector(limitedHinge.perp2AxleInA1.x, limitedHinge.perp2AxleInA1.y, limitedHinge.perp2AxleInA1.z, limitedHinge.perp2AxleInA1.w) << endl;
-		out << "    Perp2 Axle In A2:  " << StringFunctions::DisplayFullValues_Vector(limitedHinge.perp2AxleInA2.x, limitedHinge.perp2AxleInA2.y, limitedHinge.perp2AxleInA2.z, limitedHinge.perp2AxleInA2.w) << endl;
-		out << "    Pivot B:  " << StringFunctions::DisplayFullValues_Vector(limitedHinge.pivotB.x, limitedHinge.pivotB.y, limitedHinge.pivotB.z, limitedHinge.pivotB.w) << endl;
-		out << "    Axle B:  " << StringFunctions::DisplayFullValues_Vector(limitedHinge.axleB.x, limitedHinge.axleB.y, limitedHinge.axleB.z, limitedHinge.axleB.w) << endl;
-		out << "    Perp2 Axle In B2:  " << StringFunctions::DisplayFullValues_Vector(limitedHinge.perp2AxleInB2.x, limitedHinge.perp2AxleInB2.y, limitedHinge.perp2AxleInB2.z, limitedHinge.perp2AxleInB2.w) << endl;
-		out << "    Perp2 Axle In B1:  " << StringFunctions::DisplayFullValues_Vector(limitedHinge.perp2AxleInB1.x, limitedHinge.perp2AxleInB1.y, limitedHinge.perp2AxleInB1.z, limitedHinge.perp2AxleInB1.w) << endl;
-		out << "    Min Angle:  " << StringFunctions::FloatToStringConversion(limitedHinge.minAngle) << endl;
-		out << "    Max Angle:  " << StringFunctions::FloatToStringConversion(limitedHinge.maxAngle) << endl;
-		out << "    Max Friction:  " << StringFunctions::FloatToStringConversion(limitedHinge.maxFriction) << endl;
+		out << "    Pivot A:  " << VariableConversionFunctions::DisplayFullValues_Vector(limitedHinge.pivotA.x, limitedHinge.pivotA.y, limitedHinge.pivotA.z, limitedHinge.pivotA.w) << endl;
+		out << "    Axle A:  " << VariableConversionFunctions::DisplayFullValues_Vector(limitedHinge.axleA.x, limitedHinge.axleA.y, limitedHinge.axleA.z, limitedHinge.axleA.w) << endl;
+		out << "    Perp2 Axle In A1:  " << VariableConversionFunctions::DisplayFullValues_Vector(limitedHinge.perp2AxleInA1.x, limitedHinge.perp2AxleInA1.y, limitedHinge.perp2AxleInA1.z, limitedHinge.perp2AxleInA1.w) << endl;
+		out << "    Perp2 Axle In A2:  " << VariableConversionFunctions::DisplayFullValues_Vector(limitedHinge.perp2AxleInA2.x, limitedHinge.perp2AxleInA2.y, limitedHinge.perp2AxleInA2.z, limitedHinge.perp2AxleInA2.w) << endl;
+		out << "    Pivot B:  " << VariableConversionFunctions::DisplayFullValues_Vector(limitedHinge.pivotB.x, limitedHinge.pivotB.y, limitedHinge.pivotB.z, limitedHinge.pivotB.w) << endl;
+		out << "    Axle B:  " << VariableConversionFunctions::DisplayFullValues_Vector(limitedHinge.axleB.x, limitedHinge.axleB.y, limitedHinge.axleB.z, limitedHinge.axleB.w) << endl;
+		out << "    Perp2 Axle In B2:  " << VariableConversionFunctions::DisplayFullValues_Vector(limitedHinge.perp2AxleInB2.x, limitedHinge.perp2AxleInB2.y, limitedHinge.perp2AxleInB2.z, limitedHinge.perp2AxleInB2.w) << endl;
+		out << "    Perp2 Axle In B1:  " << VariableConversionFunctions::DisplayFullValues_Vector(limitedHinge.perp2AxleInB1.x, limitedHinge.perp2AxleInB1.y, limitedHinge.perp2AxleInB1.z, limitedHinge.perp2AxleInB1.w) << endl;
+		out << "    Min Angle:  " << VariableConversionFunctions::FloatToStringConversion(limitedHinge.minAngle) << endl;
+		out << "    Max Angle:  " << VariableConversionFunctions::FloatToStringConversion(limitedHinge.maxAngle) << endl;
+		out << "    Max Friction:  " << VariableConversionFunctions::FloatToStringConversion(limitedHinge.maxFriction) << endl;
 		out << "    Enable Motor:  " << limitedHinge.enableMotor << endl;
 		if(limitedHinge.enableMotor)
 		{
-			out << "      Unknown Float 1:  " << StringFunctions::FloatToStringConversion(limitedHinge.motor.unknownFloat1) << endl;
-			out << "      Unknown Float 2:  " << StringFunctions::FloatToStringConversion(limitedHinge.motor.unknownFloat2) << endl;
-			out << "      Unknown Float 3:  " << StringFunctions::FloatToStringConversion(limitedHinge.motor.unknownFloat3) << endl;
-			out << "      Unknown Float 4:  " << StringFunctions::FloatToStringConversion(limitedHinge.motor.unknownFloat4) << endl;
-			out << "      Unknown Float 5:  " << StringFunctions::FloatToStringConversion(limitedHinge.motor.unknownFloat5) << endl;
-			out << "      Unknown Float 6:  " << StringFunctions::FloatToStringConversion(limitedHinge.motor.unknownFloat6) << endl;
+			out << "      Unknown Float 1:  " << VariableConversionFunctions::FloatToStringConversion(limitedHinge.motor.unknownFloat1) << endl;
+			out << "      Unknown Float 2:  " << VariableConversionFunctions::FloatToStringConversion(limitedHinge.motor.unknownFloat2) << endl;
+			out << "      Unknown Float 3:  " << VariableConversionFunctions::FloatToStringConversion(limitedHinge.motor.unknownFloat3) << endl;
+			out << "      Unknown Float 4:  " << VariableConversionFunctions::FloatToStringConversion(limitedHinge.motor.unknownFloat4) << endl;
+			out << "      Unknown Float 5:  " << VariableConversionFunctions::FloatToStringConversion(limitedHinge.motor.unknownFloat5) << endl;
+			out << "      Unknown Float 6:  " << VariableConversionFunctions::FloatToStringConversion(limitedHinge.motor.unknownFloat6) << endl;
 			out << "      Unknown Byte 1:  " << limitedHinge.motor.unknownByte1 << endl;
 		};
 	};

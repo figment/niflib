@@ -207,7 +207,7 @@
   <PropertyGroup Label="UserMacros" />
   <ItemDefinitionGroup Label="ItemGroupGlobals">
     <ClCompile>
-      <AdditionalOptions>/FI"pch.h" %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/bigobj /FI"pch.h" %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>$(ProjectDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
@@ -225,7 +225,7 @@
     </ClCompile>
     <Lib>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;$(SolutionDir)StaticLibraries\qhull_64Bit.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;$(SolutionDir)StaticLibraries\qhull_$(Platform).lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Platform)'=='Win32'" Label="32BitGlobals">
@@ -266,7 +266,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="('$(Configuration)'=='Release - Static') Or ('$(Configuration)'=='Debug - Static') Or ('$(Configuration)'=='Release-ShowIncludes')" Label="Static Library Globals">
     <ClCompile>
-      <PreprocessorDefinitions>NIFLIB_STATIC_LINK;WIN32;NDEBUG;_CONSOLE;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>EnabledSizeTAlternativeCode;NIFLIB_STATIC_LINK;WIN32;NDEBUG;_CONSOLE;_CRT_SECURE_NO_DEPRECATE;_CRT_NONSTDC_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)'=='Debug - Static'">
@@ -523,7 +523,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="NifNodeTreeFiles\NifNodeTree.cpp" />
+    <ClCompile Include="GlobalCode\VariableConversionFunctions.cpp" />
     <ClCompile Include="NvTriStrip\NvTriStrip.cpp" />
     <ClCompile Include="NvTriStrip\NvTriStripObjects.cpp" />
     <ClCompile Include="NvTriStrip\VertexCache.cpp" />
@@ -1093,6 +1093,7 @@
     <ClCompile Include="TriStripper\tri_stripper.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GlobalCode\VariableConversionFunctions.h" />
     <ClInclude Include="include\ComplexShape.h" />
     <ClInclude Include="include\dll_export.h" />
     <ClInclude Include="include\FixLink.h" />
@@ -1664,8 +1665,6 @@
     <ClInclude Include="include\Ref.h" />
     <ClInclude Include="include\RefObject.h" />
     <ClInclude Include="include\Type.h" />
-    <ClInclude Include="NifNodeTreeFiles\NifNodeTree.h" />
-    <ClInclude Include="NifNodeTreeFiles\ObjectRegistryClasses.h" />
     <ClInclude Include="NvTriStrip\NvTriStrip.h" />
     <ClInclude Include="NvTriStrip\NvTriStripObjects.h" />
     <ClInclude Include="NvTriStrip\VertexCache.h" />

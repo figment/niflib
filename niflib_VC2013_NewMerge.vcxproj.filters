@@ -40,8 +40,8 @@
     <Filter Include="Header Files\NvTriStrip">
       <UniqueIdentifier>{58eb6a63-0b5b-43ba-a569-131e0a0a018b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="NifNodeTreeFiles">
-      <UniqueIdentifier>{7e3b5195-a335-4b0a-8f57-03b66261dfb5}</UniqueIdentifier>
+    <Filter Include="GlobalCode">
+      <UniqueIdentifier>{80133d7b-b9c4-46ed-b66a-97d97cd976a3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1746,8 +1746,8 @@
     <ClCompile Include="src\obj\NiLightRadiusController.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="NifNodeTreeFiles\NifNodeTree.cpp">
-      <Filter>NifNodeTreeFiles</Filter>
+    <ClCompile Include="GlobalCode\VariableConversionFunctions.cpp">
+      <Filter>GlobalCode</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -3497,11 +3497,8 @@
     <ClInclude Include="include\half.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="NifNodeTreeFiles\NifNodeTree.h">
-      <Filter>NifNodeTreeFiles</Filter>
-    </ClInclude>
-    <ClInclude Include="NifNodeTreeFiles\ObjectRegistryClasses.h">
-      <Filter>NifNodeTreeFiles</Filter>
+    <ClInclude Include="GlobalCode\VariableConversionFunctions.h">
+      <Filter>GlobalCode</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

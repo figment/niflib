@@ -673,9 +673,9 @@ void ComplexShape::Merge(NiAVObject * root)
 						has_vertex_map = true;
 					}
 
-					for(size_t z = 0; z < partition_triangles.size(); z++)
+					for(unsigned int z = 0; z < partition_triangles.size(); z++)
 					{
-						size_t w = faces.size() - shapeTris.size();
+						unsigned int w = faces.size() - shapeTris.size();
 
 						int merged_x;
 						int merged_y;

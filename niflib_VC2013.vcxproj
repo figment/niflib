@@ -287,7 +287,7 @@
     </ClCompile>
     <Lib />
     <Lib>
-      <AdditionalDependencies>$(SolutionDir)StaticLibraries\qhull_64Bit.lib</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)StaticLibraries\qhull_x64.lib</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release-ShowIncludes|x64'">
@@ -309,7 +309,7 @@
     </ClCompile>
     <Lib />
     <Lib>
-      <AdditionalDependencies>$(SolutionDir)StaticLibraries\qhull_64Bit.lib</AdditionalDependencies>
+      <AdditionalDependencies>$(SolutionDir)StaticLibraries\qhull_x64.lib</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release - DLL|Win32'">

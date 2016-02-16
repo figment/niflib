@@ -28,7 +28,6 @@ namespace Niflib
 	//-- Read Utility Functions--//
 	int ReadInt(istream& in);
 	unsigned int ReadUInt(istream& in);
-	size_t ReadSizeT(istream& in);
 	unsigned short ReadUShort(istream& in);
 	short ReadShort(istream& in);
 	byte ReadByte(istream& in);
@@ -39,9 +38,7 @@ namespace Niflib
 	//-- Write Utility Functions --//
 	void WriteInt(int val, ostream& out);
 	void WriteUInt(unsigned int val, ostream& out);
-	void WriteSizeT(size_t val, ostream& out);
 	void WritePtr32(void * val, ostream& out);
-	void WritePointerString(void * val, ostream& out);
 	void WriteUShort(unsigned short val, ostream& out);
 	void WriteShort(short val, ostream& out);
 	void WriteByte(byte val, ostream& out);
@@ -116,10 +113,6 @@ namespace Niflib
 	//unsigned int
 	void NifStream(unsigned int & val, istream& in, const NifInfo & info);
 	void NifStream(unsigned int const & val, ostream& out, const NifInfo & info);
-
-	//size_t
-	void NifStream(size_t & val, istream& in, const NifInfo & info);
-	void NifStream(size_t const & val, ostream& out, const NifInfo & info);
 
 	//unsigned short
 	void NifStream(unsigned short & val, istream& in, const NifInfo & info);

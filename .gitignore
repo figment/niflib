@@ -3,7 +3,8 @@
 /*.opensdf
 /*.user
 /bin
-/lib
 /obj
 /x64
 /ipch
+/qhull
+/*.lib

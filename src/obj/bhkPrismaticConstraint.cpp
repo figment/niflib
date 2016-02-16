@@ -8,7 +8,7 @@ All rights reserved.  Please see niflib.h for license. */
 //-----------------------------------NOTICE----------------------------------//
 
 //--BEGIN FILE HEAD CUSTOM CODE--//
-#include "StringFunctions.h"
+#include "../../GlobalCode/VariableConversionFunctions.h"
 //--END CUSTOM CODE--//
 
 #include "../../include/FixLink.h"
@@ -147,16 +147,16 @@ std::string bhkPrismaticConstraint::asString(bool verbose) const
 		out << "    Rotation Matrix A[" << i1 << "]:  " << rotationMatrixA[i1] << endl;
 		array_output_count++;
 	};
-	out << "  Pivot B:  " << StringFunctions::DisplayFullValues_Vector(pivotB.x, pivotB.y, pivotB.z, pivotB.w) << endl;
-	out << "  Sliding B:  " << StringFunctions::DisplayFullValues_Vector(slidingB.x, slidingB.y, slidingB.z, slidingB.w) << endl;
-	out << "  Plane B:  " << StringFunctions::DisplayFullValues_Vector(planeB.x, planeB.y, planeB.z, planeB.w) << endl;
-	out << "  Sliding A:  " << StringFunctions::DisplayFullValues_Vector(slidingA.x, slidingA.y, slidingA.z, slidingA.w) << endl;
-	out << "  Rotation A:  " << StringFunctions::DisplayFullValues_Vector(rotationA.x, rotationA.y, rotationA.z, rotationA.w) << endl;
-	out << "  Plane A:  " << StringFunctions::DisplayFullValues_Vector(planeA.x, planeA.y, planeA.z, planeA.w) << endl;
-	out << "  Rotation B:  " << StringFunctions::DisplayFullValues_Vector(rotationB.x, rotationB.y, rotationB.z, rotationB.w) << endl;
-	out << "  Min Distance:  " << StringFunctions::FloatToStringConversion(minDistance) << endl;
-	out << "  Max Distance:  " << StringFunctions::FloatToStringConversion(maxDistance) << endl;
-	out << "  Friction:  " << StringFunctions::FloatToStringConversion(friction) << endl;
+	out << "  Pivot B:  " << VariableConversionFunctions::DisplayFullValues_Vector(pivotB.x, pivotB.y, pivotB.z, pivotB.w) << endl;
+	out << "  Sliding B:  " << VariableConversionFunctions::DisplayFullValues_Vector(slidingB.x, slidingB.y, slidingB.z, slidingB.w) << endl;
+	out << "  Plane B:  " << VariableConversionFunctions::DisplayFullValues_Vector(planeB.x, planeB.y, planeB.z, planeB.w) << endl;
+	out << "  Sliding A:  " << VariableConversionFunctions::DisplayFullValues_Vector(slidingA.x, slidingA.y, slidingA.z, slidingA.w) << endl;
+	out << "  Rotation A:  " << VariableConversionFunctions::DisplayFullValues_Vector(rotationA.x, rotationA.y, rotationA.z, rotationA.w) << endl;
+	out << "  Plane A:  " << VariableConversionFunctions::DisplayFullValues_Vector(planeA.x, planeA.y, planeA.z, planeA.w) << endl;
+	out << "  Rotation B:  " << VariableConversionFunctions::DisplayFullValues_Vector(rotationB.x, rotationB.y, rotationB.z, rotationB.w) << endl;
+	out << "  Min Distance:  " << VariableConversionFunctions::FloatToStringConversion(minDistance) << endl;
+	out << "  Max Distance:  " << VariableConversionFunctions::FloatToStringConversion(maxDistance) << endl;
+	out << "  Friction:  " << VariableConversionFunctions::FloatToStringConversion(friction) << endl;
 	out << "  Unknown Byte 1:  " << unknownByte1 << endl;
 	return out.str();
 

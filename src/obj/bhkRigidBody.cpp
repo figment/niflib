@@ -9,7 +9,7 @@ All rights reserved.  Please see niflib.h for license. */
 
 //--BEGIN FILE HEAD CUSTOM CODE--//
 #include "../../include/obj/bhkShape.h"
-#include "StringFunctions.h"
+#include "../../GlobalCode/VariableConversionFunctions.h"
 //--END CUSTOM CODE--//
 
 #include "../../include/FixLink.h"
@@ -314,26 +314,26 @@ std::string bhkRigidBody::asString(bool verbose) const
 		out << "    Unknown 7 Shorts[" << i1 << "]:  " << unknown7Shorts[i1] << endl;
 		array_output_count++;
 	};
-	out << "  Translation:  " << StringFunctions::DisplayFullValues_Vector(translation.x, translation.y, translation.z, translation.w) << endl;
+	out << "  Translation:  " << VariableConversionFunctions::DisplayFullValues_Vector(translation.x, translation.y, translation.z, translation.w) << endl;
 	out << "  x:  " << rotation.x << endl;
 	out << "  y:  " << rotation.y << endl;
 	out << "  z:  " << rotation.z << endl;
 	out << "  w:  " << rotation.w << endl;
-	out << "  Linear Velocity:  " << StringFunctions::DisplayFullValues_Vector(linearVelocity.x, linearVelocity.y, linearVelocity.z, linearVelocity.w) << endl;
-	out << "  Angular Velocity:  " << StringFunctions::DisplayFullValues_Vector(angularVelocity.x, angularVelocity.y, angularVelocity.z, angularVelocity.w) << endl;
+	out << "  Linear Velocity:  " << VariableConversionFunctions::DisplayFullValues_Vector(linearVelocity.x, linearVelocity.y, linearVelocity.z, linearVelocity.w) << endl;
+	out << "  Angular Velocity:  " << VariableConversionFunctions::DisplayFullValues_Vector(angularVelocity.x, angularVelocity.y, angularVelocity.z, angularVelocity.w) << endl;
 	out << "  Inertia:  " << inertia << endl;
-	out << "  Center:  " << StringFunctions::DisplayFullValues_Vector(center.x, center.y, center.z, center.w) << endl;
-	out << "  Mass:  " << StringFunctions::FloatToStringConversion(mass) << endl;
-	out << "  Linear Damping:  " << StringFunctions::FloatToStringConversion(linearDamping) << endl;
-	out << "  Angular Damping:  " << StringFunctions::FloatToStringConversion(angularDamping) << endl;
-	out << "  Unknown TimeFactor or GravityFactor 1:  " << StringFunctions::FloatToStringConversion(unknownTimefactorOrGravityfactor1) << endl;
-	out << "  Unknown TimeFactor or GravityFactor 2:  " << StringFunctions::FloatToStringConversion(unknownTimefactorOrGravityfactor2) << endl;
-	out << "  Friction:  " << StringFunctions::FloatToStringConversion(friction) << endl;
-	out << "  RollingFrictionMultiplier?:  " << StringFunctions::FloatToStringConversion(rollingfrictionmultiplier_) << endl;
-	out << "  Restitution:  " << StringFunctions::FloatToStringConversion(restitution) << endl;
-	out << "  Max Linear Velocity:  " << StringFunctions::FloatToStringConversion(maxLinearVelocity) << endl;
-	out << "  Max Angular Velocity:  " << StringFunctions::FloatToStringConversion(maxAngularVelocity) << endl;
-	out << "  Penetration Depth:  " << StringFunctions::FloatToStringConversion(penetrationDepth) << endl;
+	out << "  Center:  " << VariableConversionFunctions::DisplayFullValues_Vector(center.x, center.y, center.z, center.w) << endl;
+	out << "  Mass:  " << VariableConversionFunctions::FloatToStringConversion(mass) << endl;
+	out << "  Linear Damping:  " << VariableConversionFunctions::FloatToStringConversion(linearDamping) << endl;
+	out << "  Angular Damping:  " << VariableConversionFunctions::FloatToStringConversion(angularDamping) << endl;
+	out << "  Unknown TimeFactor or GravityFactor 1:  " << VariableConversionFunctions::FloatToStringConversion(unknownTimefactorOrGravityfactor1) << endl;
+	out << "  Unknown TimeFactor or GravityFactor 2:  " << VariableConversionFunctions::FloatToStringConversion(unknownTimefactorOrGravityfactor2) << endl;
+	out << "  Friction:  " << VariableConversionFunctions::FloatToStringConversion(friction) << endl;
+	out << "  RollingFrictionMultiplier?:  " << VariableConversionFunctions::FloatToStringConversion(rollingfrictionmultiplier_) << endl;
+	out << "  Restitution:  " << VariableConversionFunctions::FloatToStringConversion(restitution) << endl;
+	out << "  Max Linear Velocity:  " << VariableConversionFunctions::FloatToStringConversion(maxLinearVelocity) << endl;
+	out << "  Max Angular Velocity:  " << VariableConversionFunctions::FloatToStringConversion(maxAngularVelocity) << endl;
+	out << "  Penetration Depth:  " << VariableConversionFunctions::FloatToStringConversion(penetrationDepth) << endl;
 	out << "  Motion System:  " << motionSystem << endl;
 	out << "  Deactivator Type:  " << deactivatorType << endl;
 	out << "  Solver Deactivation:  " << solverDeactivation << endl;
