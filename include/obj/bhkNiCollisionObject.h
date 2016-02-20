@@ -17,104 +17,104 @@ All rights reserved.  Please see niflib.h for license. */
 
 // Include structures
 #include "../Ref.h"
-namespace Niflib {
+namespace Niflib
+{
+	// Forward define of referenced NIF objects
+	class NiObject;
+	class bhkNiCollisionObject;
+	typedef Ref<bhkNiCollisionObject> bhkNiCollisionObjectRef;
 
-// Forward define of referenced NIF objects
-class NiObject;
-class bhkNiCollisionObject;
-typedef Ref<bhkNiCollisionObject> bhkNiCollisionObjectRef;
+	/*! Havok related collision object? */
+	class bhkNiCollisionObject : public NiCollisionObject
+	{
+	public:
+		/*! Constructor */
+		NIFLIB_API bhkNiCollisionObject();
 
-/*! Havok related collision object? */
-class bhkNiCollisionObject : public NiCollisionObject {
-public:
-	/*! Constructor */
-	NIFLIB_API bhkNiCollisionObject();
+		/*! Destructor */
+		NIFLIB_API virtual ~bhkNiCollisionObject();
 
-	/*! Destructor */
-	NIFLIB_API virtual ~bhkNiCollisionObject();
+		/*!
+		 * A constant value which uniquly identifies objects of this type.
+		 */
+		NIFLIB_API static const Type TYPE;
 
-	/*!
-	 * A constant value which uniquly identifies objects of this type.
-	 */
-	NIFLIB_API static const Type TYPE;
+		/*!
+		 * A factory function used during file reading to create an instance of this type of object.
+		 * \return A pointer to a newly allocated instance of this type of object.
+		 */
+		NIFLIB_API static NiObject * Create();
 
-	/*!
-	 * A factory function used during file reading to create an instance of this type of object.
-	 * \return A pointer to a newly allocated instance of this type of object.
-	 */
-	NIFLIB_API static NiObject * Create();
+		/*!
+		 * Summarizes the information contained in this object in English.
+		 * \param[in] verbose Determines whether or not detailed information about large areas of data will be printed out.
+		 * \return A string containing a summary of the information within the object in English.  This is the function that Niflyze calls to generate its analysis, so the output is the same.
+		 */
+		NIFLIB_API virtual string asString(bool verbose = false) const;
 
-	/*!
-	 * Summarizes the information contained in this object in English.
-	 * \param[in] verbose Determines whether or not detailed information about large areas of data will be printed out.
-	 * \return A string containing a summary of the information within the object in English.  This is the function that Niflyze calls to generate its analysis, so the output is the same.
-	 */
-	NIFLIB_API virtual string asString( bool verbose = false ) const;
+		/*!
+		 * Used to determine the type of a particular instance of this object.
+		 * \return The type constant for the actual type of the object.
+		 */
+		NIFLIB_API virtual const Type & GetType() const;
 
-	/*!
-	 * Used to determine the type of a particular instance of this object.
-	 * \return The type constant for the actual type of the object.
-	 */
-	NIFLIB_API virtual const Type & GetType() const;
+		/***Begin Example Naive Implementation****
 
-	/***Begin Example Naive Implementation****
+		// Set to 1 for most objects, and to 41 for animated objects (OL_ANIM_STATIC).
+		// Bits: 0=Active 2=Notify 3=Set Local 6=Reset.
+		// \return The current value.
+		unsigned short GetFlags() const;
 
-	// Set to 1 for most objects, and to 41 for animated objects (OL_ANIM_STATIC).
-	// Bits: 0=Active 2=Notify 3=Set Local 6=Reset.
-	// \return The current value.
-	unsigned short GetFlags() const;
+		// Set to 1 for most objects, and to 41 for animated objects (OL_ANIM_STATIC).
+		// Bits: 0=Active 2=Notify 3=Set Local 6=Reset.
+		// \param[in] value The new value.
+		void SetFlags( unsigned short value );
 
-	// Set to 1 for most objects, and to 41 for animated objects (OL_ANIM_STATIC).
-	// Bits: 0=Active 2=Notify 3=Set Local 6=Reset.
-	// \param[in] value The new value.
-	void SetFlags( unsigned short value );
+		// Links to the collision object data
+		// \return The current value.
+		Ref<NiObject > GetBody() const;
 
-	// Links to the collision object data
-	// \return The current value.
-	Ref<NiObject > GetBody() const;
+		// Links to the collision object data
+		// \param[in] value The new value.
+		void SetBody( Ref<NiObject > value );
 
-	// Links to the collision object data
-	// \param[in] value The new value.
-	void SetBody( Ref<NiObject > value );
+		****End Example Naive Implementation***/
 
-	****End Example Naive Implementation***/
+		//--BEGIN MISC CUSTOM CODE--//
+		/*!
+		* Gets the rigid body that this collision object uses, if any.
+		* \return The rigid body that this object references, or a NULL reference if it does not reference any.
+		*/
+		NIFLIB_API Ref<NiObject> GetBody() const;
 
-	//--BEGIN MISC CUSTOM CODE--//
-   /*!
-   * Gets the rigid body that this collision object uses, if any.
-   * \return The rigid body that this object references, or a NULL reference if it does not reference any.
-   */
-   NIFLIB_API Ref<NiObject> GetBody() const;
+		/*!
+		* Sets the new rigid body that this collision object uses.
+		* \param[in] value The new rigid body for this collision object to use, or NULL to clear the current reference.
+		*/
+		NIFLIB_API void SetBody(NiObject * value);
+		//--END CUSTOM CODE--//
+	protected:
+		/*!
+		 * Set to 1 for most objects, and to 41 for animated objects (OL_ANIM_STATIC).
+		 * Bits: 0=Active 2=Notify 3=Set Local 6=Reset.
+		 */
+		unsigned short flags;
+		/*! Links to the collision object data */
+		Ref<NiObject > body;
+	public:
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info);
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const;
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info);
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual list<NiObjectRef> GetRefs() const;
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual list<NiObject *> GetPtrs() const;
+	};
 
-   /*!
-   * Sets the new rigid body that this collision object uses.
-   * \param[in] value The new rigid body for this collision object to use, or NULL to clear the current reference.
-   */
-   NIFLIB_API void SetBody( NiObject * value );
+	//--BEGIN FILE FOOT CUSTOM CODE--//
 	//--END CUSTOM CODE--//
-protected:
-	/*!
-	 * Set to 1 for most objects, and to 41 for animated objects (OL_ANIM_STATIC).
-	 * Bits: 0=Active 2=Notify 3=Set Local 6=Reset.
-	 */
-	unsigned short flags;
-	/*! Links to the collision object data */
-	Ref<NiObject > body;
-public:
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const;
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info );
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual list<NiObjectRef> GetRefs() const;
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual list<NiObject *> GetPtrs() const;
-};
-
-//--BEGIN FILE FOOT CUSTOM CODE--//
-//--END CUSTOM CODE--//
-
 } //End Niflib namespace
 #endif

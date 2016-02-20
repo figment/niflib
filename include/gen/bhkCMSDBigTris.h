@@ -10,33 +10,32 @@ All rights reserved.  Please see niflib.h for license. */
 
 #include "../NIF_IO.h"
 
-namespace Niflib {
+namespace Niflib
+{
+	/*! Triangle indices used in pair with "Big Verts" in a bhkCompressedMeshShapeData. */
+	struct bhkCMSDBigTris
+	{
+		/*! Default Constructor */
+		NIFLIB_API bhkCMSDBigTris();
+		/*! Default Destructor */
+		NIFLIB_API ~bhkCMSDBigTris();
+		/*! Copy Constructor */
+		NIFLIB_API bhkCMSDBigTris(const bhkCMSDBigTris & src);
+		/*! Copy Operator */
+		NIFLIB_API bhkCMSDBigTris & operator=(const bhkCMSDBigTris & src);
+		/*! Unknown. */
+		unsigned short triangle1;
+		/*! Unknown. */
+		unsigned short triangle2;
+		/*! Unknown. */
+		unsigned short triangle3;
+		/*! Material Index */
+		unsigned int material;
+		/*! Welding Info */
+		unsigned short weldingInfo;
+		//--BEGIN MISC CUSTOM CODE--//
 
-
-/*! Triangle indices used in pair with "Big Verts" in a bhkCompressedMeshShapeData. */
-struct bhkCMSDBigTris {
-	/*! Default Constructor */
-	NIFLIB_API bhkCMSDBigTris();
-	/*! Default Destructor */
-	NIFLIB_API ~bhkCMSDBigTris();
-	/*! Copy Constructor */
-	NIFLIB_API bhkCMSDBigTris( const bhkCMSDBigTris & src );
-	/*! Copy Operator */
-	NIFLIB_API bhkCMSDBigTris & operator=( const bhkCMSDBigTris & src );
-	/*! Unknown. */
-	unsigned short triangle1;
-	/*! Unknown. */
-	unsigned short triangle2;
-	/*! Unknown. */
-	unsigned short triangle3;
-	/*! Material Index */
-	unsigned int material;
-	/*! Welding Info */
-	unsigned short weldingInfo;
-	//--BEGIN MISC CUSTOM CODE--//
-
-	//--END CUSTOM CODE--//
-};
-
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

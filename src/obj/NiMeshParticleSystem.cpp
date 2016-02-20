@@ -17,75 +17,85 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiMeshParticleSystem::TYPE("NiMeshParticleSystem", &NiParticleSystem::TYPE );
+const Type NiMeshParticleSystem::TYPE("NiMeshParticleSystem", &NiParticleSystem::TYPE);
 
-NiMeshParticleSystem::NiMeshParticleSystem() {
+NiMeshParticleSystem::NiMeshParticleSystem()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-NiMeshParticleSystem::~NiMeshParticleSystem() {
+NiMeshParticleSystem::~NiMeshParticleSystem()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiMeshParticleSystem::GetType() const {
+const Type & NiMeshParticleSystem::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiMeshParticleSystem::Create() {
+NiObject * NiMeshParticleSystem::Create()
+{
 	return new NiMeshParticleSystem;
 }
 
-void NiMeshParticleSystem::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiMeshParticleSystem::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiParticleSystem::Read( in, link_stack, info );
+	NiParticleSystem::Read(in, link_stack, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void NiMeshParticleSystem::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiMeshParticleSystem::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiParticleSystem::Write( out, link_map, missing_link_stack, info );
+	NiParticleSystem::Write(out, link_map, missing_link_stack, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string NiMeshParticleSystem::asString( bool verbose ) const {
+std::string NiMeshParticleSystem::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiParticleSystem::asString();
+	out << NiParticleSystem::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void NiMeshParticleSystem::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiMeshParticleSystem::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiParticleSystem::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiParticleSystem::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiMeshParticleSystem::GetRefs() const {
+std::list<NiObjectRef> NiMeshParticleSystem::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiParticleSystem::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiMeshParticleSystem::GetPtrs() const {
+std::list<NiObject *> NiMeshParticleSystem::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiParticleSystem::GetPtrs();
 	return ptrs;

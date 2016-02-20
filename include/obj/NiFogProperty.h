@@ -14,150 +14,150 @@ All rights reserved.  Please see niflib.h for license. */
 //--END CUSTOM CODE--//
 
 #include "NiProperty.h"
-namespace Niflib {
+namespace Niflib
+{
+	class NiFogProperty;
+	typedef Ref<NiFogProperty> NiFogPropertyRef;
 
-class NiFogProperty;
-typedef Ref<NiFogProperty> NiFogPropertyRef;
+	/*! Describes... fog? */
+	class NiFogProperty : public NiProperty
+	{
+	public:
+		/*! Constructor */
+		NIFLIB_API NiFogProperty();
 
-/*! Describes... fog? */
-class NiFogProperty : public NiProperty {
-public:
-	/*! Constructor */
-	NIFLIB_API NiFogProperty();
+		/*! Destructor */
+		NIFLIB_API virtual ~NiFogProperty();
 
-	/*! Destructor */
-	NIFLIB_API virtual ~NiFogProperty();
+		/*!
+		 * A constant value which uniquly identifies objects of this type.
+		 */
+		NIFLIB_API static const Type TYPE;
 
-	/*!
-	 * A constant value which uniquly identifies objects of this type.
-	 */
-	NIFLIB_API static const Type TYPE;
+		/*!
+		 * A factory function used during file reading to create an instance of this type of object.
+		 * \return A pointer to a newly allocated instance of this type of object.
+		 */
+		NIFLIB_API static NiObject * Create();
 
-	/*!
-	 * A factory function used during file reading to create an instance of this type of object.
-	 * \return A pointer to a newly allocated instance of this type of object.
-	 */
-	NIFLIB_API static NiObject * Create();
+		/*!
+		 * Summarizes the information contained in this object in English.
+		 * \param[in] verbose Determines whether or not detailed information about large areas of data will be printed out.
+		 * \return A string containing a summary of the information within the object in English.  This is the function that Niflyze calls to generate its analysis, so the output is the same.
+		 */
+		NIFLIB_API virtual string asString(bool verbose = false) const;
 
-	/*!
-	 * Summarizes the information contained in this object in English.
-	 * \param[in] verbose Determines whether or not detailed information about large areas of data will be printed out.
-	 * \return A string containing a summary of the information within the object in English.  This is the function that Niflyze calls to generate its analysis, so the output is the same.
-	 */
-	NIFLIB_API virtual string asString( bool verbose = false ) const;
+		/*!
+		 * Used to determine the type of a particular instance of this object.
+		 * \return The type constant for the actual type of the object.
+		 */
+		NIFLIB_API virtual const Type & GetType() const;
 
-	/*!
-	 * Used to determine the type of a particular instance of this object.
-	 * \return The type constant for the actual type of the object.
-	 */
-	NIFLIB_API virtual const Type & GetType() const;
+		/***Begin Example Naive Implementation****
 
-	/***Begin Example Naive Implementation****
+		// 1's bit: Enables Fog
+		//             2's bit: Sets Fog Function to FOG_RANGE_SQ
+		//             4's bit: Sets Fog Function to FOG_VERTEX_ALPHA
+		//
+		//             If 2's and 4's bit are not set, but fog is enabled, Fog function is
+		// FOG_Z_LINEAR.
+		// \return The current value.
+		unsigned short GetFlags() const;
 
-	// 1's bit: Enables Fog
-	//             2's bit: Sets Fog Function to FOG_RANGE_SQ
-	//             4's bit: Sets Fog Function to FOG_VERTEX_ALPHA
-	//
-	//             If 2's and 4's bit are not set, but fog is enabled, Fog function is
-	// FOG_Z_LINEAR.
-	// \return The current value.
-	unsigned short GetFlags() const;
+		// 1's bit: Enables Fog
+		//             2's bit: Sets Fog Function to FOG_RANGE_SQ
+		//             4's bit: Sets Fog Function to FOG_VERTEX_ALPHA
+		//
+		//             If 2's and 4's bit are not set, but fog is enabled, Fog function is
+		// FOG_Z_LINEAR.
+		// \param[in] value The new value.
+		void SetFlags( unsigned short value );
 
-	// 1's bit: Enables Fog
-	//             2's bit: Sets Fog Function to FOG_RANGE_SQ
-	//             4's bit: Sets Fog Function to FOG_VERTEX_ALPHA
-	//
-	//             If 2's and 4's bit are not set, but fog is enabled, Fog function is
-	// FOG_Z_LINEAR.
-	// \param[in] value The new value.
-	void SetFlags( unsigned short value );
+		// The thickness of the fog?  Default is 1.0
+		// \return The current value.
+		float GetFogDepth() const;
 
-	// The thickness of the fog?  Default is 1.0
-	// \return The current value.
-	float GetFogDepth() const;
+		// The thickness of the fog?  Default is 1.0
+		// \param[in] value The new value.
+		void SetFogDepth( float value );
 
-	// The thickness of the fog?  Default is 1.0
-	// \param[in] value The new value.
-	void SetFogDepth( float value );
+		// The color of the fog.
+		// \return The current value.
+		Color3 GetFogColor() const;
 
-	// The color of the fog.
-	// \return The current value.
-	Color3 GetFogColor() const;
+		// The color of the fog.
+		// \param[in] value The new value.
+		void SetFogColor( const Color3 & value );
 
-	// The color of the fog.
-	// \param[in] value The new value.
-	void SetFogColor( const Color3 & value );
+		****End Example Naive Implementation***/
 
-	****End Example Naive Implementation***/
+		//--BEGIN MISC CUSTOM CODE--//
 
-	//--BEGIN MISC CUSTOM CODE--//
+		/*!
+		 * Can be used to get the data stored in the flags field for this object.  It is usually better to call more specific flag-toggle functions if they are availiable.
+		 * \return The flag data.
+		 */
+		NIFLIB_API unsigned short GetFlags() const;
 
-	/*!
-	 * Can be used to get the data stored in the flags field for this object.  It is usually better to call more specific flag-toggle functions if they are availiable.
-	 * \return The flag data.
-	 */
-	NIFLIB_API unsigned short GetFlags() const;
+		/*!
+		 * Can be used to set the data stored in the flags field for this object.  It is usually better to call more specific flag-toggle functions if they are availiable.
+		 * \param[in] n The new flag data.  Will overwrite any existing flag data.
+		 */
+		NIFLIB_API void SetFlags(unsigned short n);
 
-	/*!
-	 * Can be used to set the data stored in the flags field for this object.  It is usually better to call more specific flag-toggle functions if they are availiable.
-	 * \param[in] n The new flag data.  Will overwrite any existing flag data.
-	 */
-	NIFLIB_API void SetFlags( unsigned short n );
+		/*!
+		 * Used to get the current distance when fog begins to appear, also known as fog density.
+		 * \return The current fog depth.
+		 */
+		NIFLIB_API float GetFogDepth() const;
 
-	/*!
-	 * Used to get the current distance when fog begins to appear, also known as fog density.
-	 * \return The current fog depth.
-	 */
-	NIFLIB_API float GetFogDepth() const;
+		/*!
+		 * Used to set the distance when fog begins to appear, also known as fog density.
+		 * \param[in] value The new fog depth.
+		 */
+		NIFLIB_API void SetFogDepth(float value);
 
-	/*!
-	 * Used to set the distance when fog begins to appear, also known as fog density.
-	 * \param[in] value The new fog depth.
-	 */
-	NIFLIB_API void SetFogDepth(float value);
+		/*!
+		 * Used to get the current color of the fog.
+		 * \return The current fog color.
+		 */
+		NIFLIB_API Color3 GetFogColor() const;
 
-	/*!
-	 * Used to get the current color of the fog.
-	 * \return The current fog color.
-	 */
-	NIFLIB_API Color3 GetFogColor() const;
+		/*!
+		 * Used to set the color of the fog.
+		 * \param[in] value The new fog color.
+		 */
+		NIFLIB_API void SetFogColor(Color3 value);
 
-	/*!
-	 * Used to set the color of the fog.
-	 * \param[in] value The new fog color.
-	 */
-	NIFLIB_API void SetFogColor(Color3 value);
+		//--END CUSTOM CODE--//
+	protected:
+		/*!
+		 * 1's bit: Enables Fog
+		 *             2's bit: Sets Fog Function to FOG_RANGE_SQ
+		 *             4's bit: Sets Fog Function to FOG_VERTEX_ALPHA
+		 *
+		 *             If 2's and 4's bit are not set, but fog is enabled, Fog function is
+		 * FOG_Z_LINEAR.
+		 */
+		unsigned short flags;
+		/*! The thickness of the fog?  Default is 1.0 */
+		float fogDepth;
+		/*! The color of the fog. */
+		Color3 fogColor;
+	public:
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info);
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const;
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info);
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual list<NiObjectRef> GetRefs() const;
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual list<NiObject *> GetPtrs() const;
+	};
 
+	//--BEGIN FILE FOOT CUSTOM CODE--//
 	//--END CUSTOM CODE--//
-protected:
-	/*!
-	 * 1's bit: Enables Fog
-	 *             2's bit: Sets Fog Function to FOG_RANGE_SQ
-	 *             4's bit: Sets Fog Function to FOG_VERTEX_ALPHA
-	 * 
-	 *             If 2's and 4's bit are not set, but fog is enabled, Fog function is
-	 * FOG_Z_LINEAR.
-	 */
-	unsigned short flags;
-	/*! The thickness of the fog?  Default is 1.0 */
-	float fogDepth;
-	/*! The color of the fog. */
-	Color3 fogColor;
-public:
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const;
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info );
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual list<NiObjectRef> GetRefs() const;
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual list<NiObject *> GetPtrs() const;
-};
-
-//--BEGIN FILE FOOT CUSTOM CODE--//
-//--END CUSTOM CODE--//
-
 } //End Niflib namespace
 #endif

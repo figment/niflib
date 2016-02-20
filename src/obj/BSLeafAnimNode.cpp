@@ -18,59 +18,66 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type BSLeafAnimNode::TYPE("BSLeafAnimNode", &NiNode::TYPE );
+const Type BSLeafAnimNode::TYPE("BSLeafAnimNode", &NiNode::TYPE);
 
-BSLeafAnimNode::BSLeafAnimNode() {
+BSLeafAnimNode::BSLeafAnimNode()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-BSLeafAnimNode::~BSLeafAnimNode() {
+BSLeafAnimNode::~BSLeafAnimNode()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & BSLeafAnimNode::GetType() const {
+const Type & BSLeafAnimNode::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * BSLeafAnimNode::Create() {
+NiObject * BSLeafAnimNode::Create()
+{
 	return new BSLeafAnimNode;
 }
 
-void BSLeafAnimNode::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void BSLeafAnimNode::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiNode::Read( in, link_stack, info );
+	NiNode::Read(in, link_stack, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-void BSLeafAnimNode::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void BSLeafAnimNode::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiNode::Write( out, link_map, missing_link_stack, info );
+	NiNode::Write(out, link_map, missing_link_stack, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::string BSLeafAnimNode::asString( bool verbose ) const {
+std::string BSLeafAnimNode::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiNode::asString();
+	out << NiNode::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//
@@ -78,25 +85,28 @@ std::string BSLeafAnimNode::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void BSLeafAnimNode::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void BSLeafAnimNode::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiNode::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiNode::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> BSLeafAnimNode::GetRefs() const {
+std::list<NiObjectRef> BSLeafAnimNode::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiNode::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> BSLeafAnimNode::GetPtrs() const {
+std::list<NiObject *> BSLeafAnimNode::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiNode::GetPtrs();
 	return ptrs;

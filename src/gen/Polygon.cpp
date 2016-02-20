@@ -9,15 +9,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-Polygon::Polygon() : numVertices((unsigned short)0), vertexOffset((unsigned short)0), numTriangles((unsigned short)0), triangleOffset((unsigned short)0) {};
+Polygon::Polygon() : numVertices((unsigned short) 0), vertexOffset((unsigned short) 0), numTriangles((unsigned short) 0), triangleOffset((unsigned short) 0) {};
 
 //Copy Constructor
-Polygon::Polygon( const Polygon & src ) {
+Polygon::Polygon(const Polygon & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-Polygon & Polygon::operator=( const Polygon & src ) {
+Polygon & Polygon::operator=(const Polygon & src)
+{
 	this->numVertices = src.numVertices;
 	this->vertexOffset = src.vertexOffset;
 	this->numTriangles = src.numTriangles;

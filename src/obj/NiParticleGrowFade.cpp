@@ -17,56 +17,63 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiParticleGrowFade::TYPE("NiParticleGrowFade", &NiParticleModifier::TYPE );
+const Type NiParticleGrowFade::TYPE("NiParticleGrowFade", &NiParticleModifier::TYPE);
 
-NiParticleGrowFade::NiParticleGrowFade() : grow(0.0f), fade(0.0f) {
+NiParticleGrowFade::NiParticleGrowFade() : grow(0.0f), fade(0.0f)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-NiParticleGrowFade::~NiParticleGrowFade() {
+NiParticleGrowFade::~NiParticleGrowFade()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiParticleGrowFade::GetType() const {
+const Type & NiParticleGrowFade::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiParticleGrowFade::Create() {
+NiObject * NiParticleGrowFade::Create()
+{
 	return new NiParticleGrowFade;
 }
 
-void NiParticleGrowFade::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiParticleGrowFade::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiParticleModifier::Read( in, link_stack, info );
-	NifStream( grow, in, info );
-	NifStream( fade, in, info );
+	NiParticleModifier::Read(in, link_stack, info);
+	NifStream(grow, in, info);
+	NifStream(fade, in, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void NiParticleGrowFade::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiParticleGrowFade::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiParticleModifier::Write( out, link_map, missing_link_stack, info );
-	NifStream( grow, out, info );
-	NifStream( fade, out, info );
+	NiParticleModifier::Write(out, link_map, missing_link_stack, info);
+	NifStream(grow, out, info);
+	NifStream(fade, out, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string NiParticleGrowFade::asString( bool verbose ) const {
+std::string NiParticleGrowFade::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiParticleModifier::asString();
+	out << NiParticleModifier::asString(verbose);
 	out << "  Grow:  " << grow << endl;
 	out << "  Fade:  " << fade << endl;
 	return out.str();
@@ -75,23 +82,26 @@ std::string NiParticleGrowFade::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiParticleGrowFade::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiParticleGrowFade::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiParticleModifier::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiParticleModifier::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiParticleGrowFade::GetRefs() const {
+std::list<NiObjectRef> NiParticleGrowFade::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiParticleModifier::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiParticleGrowFade::GetPtrs() const {
+std::list<NiObject *> NiParticleGrowFade::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiParticleModifier::GetPtrs();
 	return ptrs;
@@ -100,19 +110,19 @@ std::list<NiObject *> NiParticleGrowFade::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 float NiParticleGrowFade::GetGrow() const {
-	return grow;
+return grow;
 }
 
 void NiParticleGrowFade::SetGrow( float value ) {
-	grow = value;
+grow = value;
 }
 
 float NiParticleGrowFade::GetFade() const {
-	return fade;
+return fade;
 }
 
 void NiParticleGrowFade::SetFade( float value ) {
-	fade = value;
+fade = value;
 }
 
 ****End Example Naive Implementation***/

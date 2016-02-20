@@ -15,117 +15,117 @@ All rights reserved.  Please see niflib.h for license. */
 //--END CUSTOM CODE--//
 
 #include "NiExtraData.h"
-namespace Niflib {
-
-class BSInvMarker;
-typedef Ref<BSInvMarker> BSInvMarkerRef;
-
-/*!
- * Orientation marker for Skyrim's inventory view.
- *         How to show the nif in the player's inventory.
- *         Typically attached to the root node of the nif tree.
- *         If not present, then Skyrim will still show the nif in inventory,
- *         using the default values.
- *         Name should be 'INV' (without the quotes).
- *         For rotations, a short of "4712" appears as "4.712" but "959" appears as
- * "0.959"  meshes\weapons\daedric\daedricbowskinned.nif
- */
-class BSInvMarker : public NiExtraData {
-public:
-	/*! Constructor */
-	NIFLIB_API BSInvMarker();
-
-	/*! Destructor */
-	NIFLIB_API virtual ~BSInvMarker();
+namespace Niflib
+{
+	class BSInvMarker;
+	typedef Ref<BSInvMarker> BSInvMarkerRef;
 
 	/*!
-	 * A constant value which uniquly identifies objects of this type.
+	 * Orientation marker for Skyrim's inventory view.
+	 *         How to show the nif in the player's inventory.
+	 *         Typically attached to the root node of the nif tree.
+	 *         If not present, then Skyrim will still show the nif in inventory,
+	 *         using the default values.
+	 *         Name should be 'INV' (without the quotes).
+	 *         For rotations, a short of "4712" appears as "4.712" but "959" appears as
+	 * "0.959"  meshes\weapons\daedric\daedricbowskinned.nif
 	 */
-	NIFLIB_API static const Type TYPE;
+	class BSInvMarker : public NiExtraData
+	{
+	public:
+		/*! Constructor */
+		NIFLIB_API BSInvMarker();
 
-	/*!
-	 * A factory function used during file reading to create an instance of this type of object.
-	 * \return A pointer to a newly allocated instance of this type of object.
-	 */
-	NIFLIB_API static NiObject * Create();
+		/*! Destructor */
+		NIFLIB_API virtual ~BSInvMarker();
 
-	/*!
-	 * Summarizes the information contained in this object in English.
-	 * \param[in] verbose Determines whether or not detailed information about large areas of data will be printed out.
-	 * \return A string containing a summary of the information within the object in English.  This is the function that Niflyze calls to generate its analysis, so the output is the same.
-	 */
-	NIFLIB_API virtual string asString( bool verbose = false ) const;
+		/*!
+		 * A constant value which uniquly identifies objects of this type.
+		 */
+		NIFLIB_API static const Type TYPE;
 
-	/*!
-	 * Used to determine the type of a particular instance of this object.
-	 * \return The type constant for the actual type of the object.
-	 */
-	NIFLIB_API virtual const Type & GetType() const;
+		/*!
+		 * A factory function used during file reading to create an instance of this type of object.
+		 * \return A pointer to a newly allocated instance of this type of object.
+		 */
+		NIFLIB_API static NiObject * Create();
 
-	/***Begin Example Naive Implementation****
+		/*!
+		 * Summarizes the information contained in this object in English.
+		 * \param[in] verbose Determines whether or not detailed information about large areas of data will be printed out.
+		 * \return A string containing a summary of the information within the object in English.  This is the function that Niflyze calls to generate its analysis, so the output is the same.
+		 */
+		NIFLIB_API virtual string asString(bool verbose = false) const;
 
-	// Unknown.
-	// \return The current value.
-	unsigned short GetRotationX() const;
+		/*!
+		 * Used to determine the type of a particular instance of this object.
+		 * \return The type constant for the actual type of the object.
+		 */
+		NIFLIB_API virtual const Type & GetType() const;
 
-	// Unknown.
-	// \param[in] value The new value.
-	void SetRotationX( unsigned short value );
+		/***Begin Example Naive Implementation****
 
-	// Unknown.
-	// \return The current value.
-	unsigned short GetRotationY() const;
+		// Unknown.
+		// \return The current value.
+		unsigned short GetRotationX() const;
 
-	// Unknown.
-	// \param[in] value The new value.
-	void SetRotationY( unsigned short value );
+		// Unknown.
+		// \param[in] value The new value.
+		void SetRotationX( unsigned short value );
 
-	// Unknown.
-	// \return The current value.
-	unsigned short GetRotationZ() const;
+		// Unknown.
+		// \return The current value.
+		unsigned short GetRotationY() const;
 
-	// Unknown.
-	// \param[in] value The new value.
-	void SetRotationZ( unsigned short value );
+		// Unknown.
+		// \param[in] value The new value.
+		void SetRotationY( unsigned short value );
 
-	// Zoom factor.
-	// \return The current value.
-	float GetZoom() const;
+		// Unknown.
+		// \return The current value.
+		unsigned short GetRotationZ() const;
 
-	// Zoom factor.
-	// \param[in] value The new value.
-	void SetZoom( float value );
+		// Unknown.
+		// \param[in] value The new value.
+		void SetRotationZ( unsigned short value );
 
-	****End Example Naive Implementation***/
+		// Zoom factor.
+		// \return The current value.
+		float GetZoom() const;
 
-	//--BEGIN MISC CUSTOM CODE--//
+		// Zoom factor.
+		// \param[in] value The new value.
+		void SetZoom( float value );
+
+		****End Example Naive Implementation***/
+
+		//--BEGIN MISC CUSTOM CODE--//
+
+		//--END CUSTOM CODE--//
+	protected:
+		/*! Unknown. */
+		unsigned short rotationX;
+		/*! Unknown. */
+		unsigned short rotationY;
+		/*! Unknown. */
+		unsigned short rotationZ;
+		/*! Zoom factor. */
+		float zoom;
+	public:
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info);
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const;
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info);
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual list<NiObjectRef> GetRefs() const;
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual list<NiObject *> GetPtrs() const;
+	};
+
+	//--BEGIN FILE FOOT CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
-protected:
-	/*! Unknown. */
-	unsigned short rotationX;
-	/*! Unknown. */
-	unsigned short rotationY;
-	/*! Unknown. */
-	unsigned short rotationZ;
-	/*! Zoom factor. */
-	float zoom;
-public:
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const;
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info );
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual list<NiObjectRef> GetRefs() const;
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual list<NiObject *> GetPtrs() const;
-};
-
-//--BEGIN FILE FOOT CUSTOM CODE--//
-
-//--END CUSTOM CODE--//
-
 } //End Niflib namespace
 #endif

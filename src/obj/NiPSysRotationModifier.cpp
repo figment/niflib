@@ -17,70 +17,79 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiPSysRotationModifier::TYPE("NiPSysRotationModifier", &NiPSysModifier::TYPE );
+const Type NiPSysRotationModifier::TYPE("NiPSysRotationModifier", &NiPSysModifier::TYPE);
 
-NiPSysRotationModifier::NiPSysRotationModifier() : initialRotationSpeed(0.0f), initialRotationSpeedVariation(0.0f), initialRotationAngle(0.0f), initialRotationAngleVariation(0.0f), randomRotSpeedSign(false), randomInitialAxis(false) {
+NiPSysRotationModifier::NiPSysRotationModifier() : initialRotationSpeed(0.0f), initialRotationSpeedVariation(0.0f), initialRotationAngle(0.0f), initialRotationAngleVariation(0.0f), randomRotSpeedSign(false), randomInitialAxis(false)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-NiPSysRotationModifier::~NiPSysRotationModifier() {
+NiPSysRotationModifier::~NiPSysRotationModifier()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiPSysRotationModifier::GetType() const {
+const Type & NiPSysRotationModifier::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiPSysRotationModifier::Create() {
+NiObject * NiPSysRotationModifier::Create()
+{
 	return new NiPSysRotationModifier;
 }
 
-void NiPSysRotationModifier::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiPSysRotationModifier::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiPSysModifier::Read( in, link_stack, info );
-	NifStream( initialRotationSpeed, in, info );
-	if ( info.version >= 0x14000004 ) {
-		NifStream( initialRotationSpeedVariation, in, info );
-		NifStream( initialRotationAngle, in, info );
-		NifStream( initialRotationAngleVariation, in, info );
-		NifStream( randomRotSpeedSign, in, info );
+	NiPSysModifier::Read(in, link_stack, info);
+	NifStream(initialRotationSpeed, in, info);
+	if(info.version >= 0x14000004)
+	{
+		NifStream(initialRotationSpeedVariation, in, info);
+		NifStream(initialRotationAngle, in, info);
+		NifStream(initialRotationAngleVariation, in, info);
+		NifStream(randomRotSpeedSign, in, info);
 	};
-	NifStream( randomInitialAxis, in, info );
-	NifStream( initialAxis, in, info );
+	NifStream(randomInitialAxis, in, info);
+	NifStream(initialAxis, in, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void NiPSysRotationModifier::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiPSysRotationModifier::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiPSysModifier::Write( out, link_map, missing_link_stack, info );
-	NifStream( initialRotationSpeed, out, info );
-	if ( info.version >= 0x14000004 ) {
-		NifStream( initialRotationSpeedVariation, out, info );
-		NifStream( initialRotationAngle, out, info );
-		NifStream( initialRotationAngleVariation, out, info );
-		NifStream( randomRotSpeedSign, out, info );
+	NiPSysModifier::Write(out, link_map, missing_link_stack, info);
+	NifStream(initialRotationSpeed, out, info);
+	if(info.version >= 0x14000004)
+	{
+		NifStream(initialRotationSpeedVariation, out, info);
+		NifStream(initialRotationAngle, out, info);
+		NifStream(initialRotationAngleVariation, out, info);
+		NifStream(randomRotSpeedSign, out, info);
 	};
-	NifStream( randomInitialAxis, out, info );
-	NifStream( initialAxis, out, info );
+	NifStream(randomInitialAxis, out, info);
+	NifStream(initialAxis, out, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string NiPSysRotationModifier::asString( bool verbose ) const {
+std::string NiPSysRotationModifier::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSysModifier::asString();
+	out << NiPSysModifier::asString(verbose);
 	out << "  Initial Rotation Speed:  " << initialRotationSpeed << endl;
 	out << "  Initial Rotation Speed Variation:  " << initialRotationSpeedVariation << endl;
 	out << "  Initial Rotation Angle:  " << initialRotationAngle << endl;
@@ -94,23 +103,26 @@ std::string NiPSysRotationModifier::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiPSysRotationModifier::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiPSysRotationModifier::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiPSysModifier::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiPSysModifier::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiPSysRotationModifier::GetRefs() const {
+std::list<NiObjectRef> NiPSysRotationModifier::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiPSysModifier::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiPSysRotationModifier::GetPtrs() const {
+std::list<NiObject *> NiPSysRotationModifier::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiPSysModifier::GetPtrs();
 	return ptrs;
@@ -119,59 +131,59 @@ std::list<NiObject *> NiPSysRotationModifier::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 float NiPSysRotationModifier::GetInitialRotationSpeed() const {
-	return initialRotationSpeed;
+return initialRotationSpeed;
 }
 
 void NiPSysRotationModifier::SetInitialRotationSpeed( float value ) {
-	initialRotationSpeed = value;
+initialRotationSpeed = value;
 }
 
 float NiPSysRotationModifier::GetInitialRotationSpeedVariation() const {
-	return initialRotationSpeedVariation;
+return initialRotationSpeedVariation;
 }
 
 void NiPSysRotationModifier::SetInitialRotationSpeedVariation( float value ) {
-	initialRotationSpeedVariation = value;
+initialRotationSpeedVariation = value;
 }
 
 float NiPSysRotationModifier::GetInitialRotationAngle() const {
-	return initialRotationAngle;
+return initialRotationAngle;
 }
 
 void NiPSysRotationModifier::SetInitialRotationAngle( float value ) {
-	initialRotationAngle = value;
+initialRotationAngle = value;
 }
 
 float NiPSysRotationModifier::GetInitialRotationAngleVariation() const {
-	return initialRotationAngleVariation;
+return initialRotationAngleVariation;
 }
 
 void NiPSysRotationModifier::SetInitialRotationAngleVariation( float value ) {
-	initialRotationAngleVariation = value;
+initialRotationAngleVariation = value;
 }
 
 bool NiPSysRotationModifier::GetRandomRotSpeedSign() const {
-	return randomRotSpeedSign;
+return randomRotSpeedSign;
 }
 
 void NiPSysRotationModifier::SetRandomRotSpeedSign( bool value ) {
-	randomRotSpeedSign = value;
+randomRotSpeedSign = value;
 }
 
 bool NiPSysRotationModifier::GetRandomInitialAxis() const {
-	return randomInitialAxis;
+return randomInitialAxis;
 }
 
 void NiPSysRotationModifier::SetRandomInitialAxis( bool value ) {
-	randomInitialAxis = value;
+randomInitialAxis = value;
 }
 
 Vector3 NiPSysRotationModifier::GetInitialAxis() const {
-	return initialAxis;
+return initialAxis;
 }
 
 void NiPSysRotationModifier::SetInitialAxis( const Vector3 & value ) {
-	initialAxis = value;
+initialAxis = value;
 }
 
 ****End Example Naive Implementation***/

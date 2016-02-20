@@ -17,78 +17,87 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiPSysEmitter::TYPE("NiPSysEmitter", &NiPSysModifier::TYPE );
+const Type NiPSysEmitter::TYPE("NiPSysEmitter", &NiPSysModifier::TYPE);
 
-NiPSysEmitter::NiPSysEmitter() : speed(0.0f), speedVariation(0.0f), declination(0.0f), declinationVariation(0.0f), planarAngle(0.0f), planarAngleVariation(0.0f), initialRadius(0.0f), radiusVariation(0.0f), lifeSpan(0.0f), lifeSpanVariation(0.0f) {
+NiPSysEmitter::NiPSysEmitter() : speed(0.0f), speedVariation(0.0f), declination(0.0f), declinationVariation(0.0f), planarAngle(0.0f), planarAngleVariation(0.0f), initialRadius(0.0f), radiusVariation(0.0f), lifeSpan(0.0f), lifeSpanVariation(0.0f)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-NiPSysEmitter::~NiPSysEmitter() {
+NiPSysEmitter::~NiPSysEmitter()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiPSysEmitter::GetType() const {
+const Type & NiPSysEmitter::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiPSysEmitter::Create() {
+NiObject * NiPSysEmitter::Create()
+{
 	return new NiPSysEmitter;
 }
 
-void NiPSysEmitter::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiPSysEmitter::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiPSysModifier::Read( in, link_stack, info );
-	NifStream( speed, in, info );
-	NifStream( speedVariation, in, info );
-	NifStream( declination, in, info );
-	NifStream( declinationVariation, in, info );
-	NifStream( planarAngle, in, info );
-	NifStream( planarAngleVariation, in, info );
-	NifStream( initialColor, in, info );
-	NifStream( initialRadius, in, info );
-	if ( info.version >= 0x0A040001 ) {
-		NifStream( radiusVariation, in, info );
+	NiPSysModifier::Read(in, link_stack, info);
+	NifStream(speed, in, info);
+	NifStream(speedVariation, in, info);
+	NifStream(declination, in, info);
+	NifStream(declinationVariation, in, info);
+	NifStream(planarAngle, in, info);
+	NifStream(planarAngleVariation, in, info);
+	NifStream(initialColor, in, info);
+	NifStream(initialRadius, in, info);
+	if(info.version >= 0x0A040001)
+	{
+		NifStream(radiusVariation, in, info);
 	};
-	NifStream( lifeSpan, in, info );
-	NifStream( lifeSpanVariation, in, info );
+	NifStream(lifeSpan, in, info);
+	NifStream(lifeSpanVariation, in, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void NiPSysEmitter::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiPSysEmitter::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiPSysModifier::Write( out, link_map, missing_link_stack, info );
-	NifStream( speed, out, info );
-	NifStream( speedVariation, out, info );
-	NifStream( declination, out, info );
-	NifStream( declinationVariation, out, info );
-	NifStream( planarAngle, out, info );
-	NifStream( planarAngleVariation, out, info );
-	NifStream( initialColor, out, info );
-	NifStream( initialRadius, out, info );
-	if ( info.version >= 0x0A040001 ) {
-		NifStream( radiusVariation, out, info );
+	NiPSysModifier::Write(out, link_map, missing_link_stack, info);
+	NifStream(speed, out, info);
+	NifStream(speedVariation, out, info);
+	NifStream(declination, out, info);
+	NifStream(declinationVariation, out, info);
+	NifStream(planarAngle, out, info);
+	NifStream(planarAngleVariation, out, info);
+	NifStream(initialColor, out, info);
+	NifStream(initialRadius, out, info);
+	if(info.version >= 0x0A040001)
+	{
+		NifStream(radiusVariation, out, info);
 	};
-	NifStream( lifeSpan, out, info );
-	NifStream( lifeSpanVariation, out, info );
+	NifStream(lifeSpan, out, info);
+	NifStream(lifeSpanVariation, out, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string NiPSysEmitter::asString( bool verbose ) const {
+std::string NiPSysEmitter::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSysModifier::asString();
+	out << NiPSysModifier::asString(verbose);
 	out << "  Speed:  " << speed << endl;
 	out << "  Speed Variation:  " << speedVariation << endl;
 	out << "  Declination:  " << declination << endl;
@@ -106,23 +115,26 @@ std::string NiPSysEmitter::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiPSysEmitter::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiPSysEmitter::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiPSysModifier::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiPSysModifier::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiPSysEmitter::GetRefs() const {
+std::list<NiObjectRef> NiPSysEmitter::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiPSysModifier::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiPSysEmitter::GetPtrs() const {
+std::list<NiObject *> NiPSysEmitter::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiPSysModifier::GetPtrs();
 	return ptrs;
@@ -131,181 +143,203 @@ std::list<NiObject *> NiPSysEmitter::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 float NiPSysEmitter::GetSpeed() const {
-	return speed;
+return speed;
 }
 
 void NiPSysEmitter::SetSpeed( float value ) {
-	speed = value;
+speed = value;
 }
 
 float NiPSysEmitter::GetSpeedVariation() const {
-	return speedVariation;
+return speedVariation;
 }
 
 void NiPSysEmitter::SetSpeedVariation( float value ) {
-	speedVariation = value;
+speedVariation = value;
 }
 
 float NiPSysEmitter::GetDeclination() const {
-	return declination;
+return declination;
 }
 
 void NiPSysEmitter::SetDeclination( float value ) {
-	declination = value;
+declination = value;
 }
 
 float NiPSysEmitter::GetDeclinationVariation() const {
-	return declinationVariation;
+return declinationVariation;
 }
 
 void NiPSysEmitter::SetDeclinationVariation( float value ) {
-	declinationVariation = value;
+declinationVariation = value;
 }
 
 float NiPSysEmitter::GetPlanarAngle() const {
-	return planarAngle;
+return planarAngle;
 }
 
 void NiPSysEmitter::SetPlanarAngle( float value ) {
-	planarAngle = value;
+planarAngle = value;
 }
 
 float NiPSysEmitter::GetPlanarAngleVariation() const {
-	return planarAngleVariation;
+return planarAngleVariation;
 }
 
 void NiPSysEmitter::SetPlanarAngleVariation( float value ) {
-	planarAngleVariation = value;
+planarAngleVariation = value;
 }
 
 Color4 NiPSysEmitter::GetInitialColor() const {
-	return initialColor;
+return initialColor;
 }
 
 void NiPSysEmitter::SetInitialColor( const Color4 & value ) {
-	initialColor = value;
+initialColor = value;
 }
 
 float NiPSysEmitter::GetInitialRadius() const {
-	return initialRadius;
+return initialRadius;
 }
 
 void NiPSysEmitter::SetInitialRadius( float value ) {
-	initialRadius = value;
+initialRadius = value;
 }
 
 float NiPSysEmitter::GetRadiusVariation() const {
-	return radiusVariation;
+return radiusVariation;
 }
 
 void NiPSysEmitter::SetRadiusVariation( float value ) {
-	radiusVariation = value;
+radiusVariation = value;
 }
 
 float NiPSysEmitter::GetLifeSpan() const {
-	return lifeSpan;
+return lifeSpan;
 }
 
 void NiPSysEmitter::SetLifeSpan( float value ) {
-	lifeSpan = value;
+lifeSpan = value;
 }
 
 float NiPSysEmitter::GetLifeSpanVariation() const {
-	return lifeSpanVariation;
+return lifeSpanVariation;
 }
 
 void NiPSysEmitter::SetLifeSpanVariation( float value ) {
-	lifeSpanVariation = value;
+lifeSpanVariation = value;
 }
 
 ****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
-float NiPSysEmitter::GetSpeed() const {
+float NiPSysEmitter::GetSpeed() const
+{
 	return speed;
 }
 
-void NiPSysEmitter::SetSpeed(float value) {
+void NiPSysEmitter::SetSpeed(float value)
+{
 	speed = value;
 }
 
-float NiPSysEmitter::GetSpeedVariation() const {
+float NiPSysEmitter::GetSpeedVariation() const
+{
 	return speedVariation;
 }
 
-void NiPSysEmitter::SetSpeedVariation(float value) {
+void NiPSysEmitter::SetSpeedVariation(float value)
+{
 	speedVariation = value;
 }
 
-float NiPSysEmitter::GetDeclination() const {
+float NiPSysEmitter::GetDeclination() const
+{
 	return declination;
 }
 
-void NiPSysEmitter::SetDeclination(float value) {
+void NiPSysEmitter::SetDeclination(float value)
+{
 	declination = value;
 }
 
-float NiPSysEmitter::GetDeclinationVariation() const {
+float NiPSysEmitter::GetDeclinationVariation() const
+{
 	return declinationVariation;
 }
 
-void NiPSysEmitter::SetDeclinationVariation(float value) {
+void NiPSysEmitter::SetDeclinationVariation(float value)
+{
 	declinationVariation = value;
 }
 
-float NiPSysEmitter::GetPlanarAngle() const {
+float NiPSysEmitter::GetPlanarAngle() const
+{
 	return planarAngle;
 }
 
-void NiPSysEmitter::SetPlanarAngle(float value) {
+void NiPSysEmitter::SetPlanarAngle(float value)
+{
 	planarAngle = value;
 }
 
-float NiPSysEmitter::GetPlanarAngleVariation() const {
+float NiPSysEmitter::GetPlanarAngleVariation() const
+{
 	return planarAngleVariation;
 }
 
-void NiPSysEmitter::SetPlanarAngleVariation(float value) {
+void NiPSysEmitter::SetPlanarAngleVariation(float value)
+{
 	planarAngleVariation = value;
 }
 
-Color4 NiPSysEmitter::GetInitialColor() const {
+Color4 NiPSysEmitter::GetInitialColor() const
+{
 	return initialColor;
 }
 
-void NiPSysEmitter::SetInitialColor(const Color4 & value) {
+void NiPSysEmitter::SetInitialColor(const Color4 & value)
+{
 	initialColor = value;
 }
 
-float NiPSysEmitter::GetInitialRadius() const {
+float NiPSysEmitter::GetInitialRadius() const
+{
 	return initialRadius;
 }
 
-void NiPSysEmitter::SetInitialRadius(float value) {
+void NiPSysEmitter::SetInitialRadius(float value)
+{
 	initialRadius = value;
 }
 
-float NiPSysEmitter::GetRadiusVariation() const {
+float NiPSysEmitter::GetRadiusVariation() const
+{
 	return radiusVariation;
 }
 
-void NiPSysEmitter::SetRadiusVariation(float value) {
+void NiPSysEmitter::SetRadiusVariation(float value)
+{
 	radiusVariation = value;
 }
 
-float NiPSysEmitter::GetLifeSpan() const {
+float NiPSysEmitter::GetLifeSpan() const
+{
 	return lifeSpan;
 }
 
-void NiPSysEmitter::SetLifeSpan(float value) {
+void NiPSysEmitter::SetLifeSpan(float value)
+{
 	lifeSpan = value;
 }
 
-float NiPSysEmitter::GetLifeSpanVariation() const {
+float NiPSysEmitter::GetLifeSpanVariation() const
+{
 	return lifeSpanVariation;
 }
 
-void NiPSysEmitter::SetLifeSpanVariation(float value) {
+void NiPSysEmitter::SetLifeSpanVariation(float value)
+{
 	lifeSpanVariation = value;
 }
 //--END CUSTOM CODE--//

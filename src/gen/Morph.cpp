@@ -9,15 +9,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-Morph::Morph() : numKeys((unsigned int)0), interpolation((KeyType)0), unknownInt((unsigned int)0) {};
+Morph::Morph() : numKeys((unsigned int) 0), interpolation((KeyType) 0), unknownInt((unsigned int) 0) {};
 
 //Copy Constructor
-Morph::Morph( const Morph & src ) {
+Morph::Morph(const Morph & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-Morph & Morph::operator=( const Morph & src ) {
+Morph & Morph::operator=(const Morph & src)
+{
 	this->frameName = src.frameName;
 	this->numKeys = src.numKeys;
 	this->interpolation = src.interpolation;

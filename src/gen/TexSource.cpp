@@ -11,15 +11,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-TexSource::TexSource() : useExternal((byte)0), unknownLink(NULL), unknownByte((byte)0), pixelData(NULL) {};
+TexSource::TexSource() : useExternal((byte) 0), unknownLink(NULL), unknownByte((byte) 0), pixelData(NULL) {};
 
 //Copy Constructor
-TexSource::TexSource( const TexSource & src ) {
+TexSource::TexSource(const TexSource & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-TexSource & TexSource::operator=( const TexSource & src ) {
+TexSource & TexSource::operator=(const TexSource & src)
+{
 	this->useExternal = src.useExternal;
 	this->fileName = src.fileName;
 	this->unknownLink = src.unknownLink;

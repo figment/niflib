@@ -10,27 +10,26 @@ All rights reserved.  Please see niflib.h for license. */
 
 #include "../NIF_IO.h"
 
-namespace Niflib {
+namespace Niflib
+{
+	/*! Texture coordinates (u,v). */
+	struct HalfTexCoord
+	{
+		/*! Default Constructor */
+		NIFLIB_API HalfTexCoord();
+		/*! Default Destructor */
+		NIFLIB_API ~HalfTexCoord();
+		/*! Copy Constructor */
+		NIFLIB_API HalfTexCoord(const HalfTexCoord & src);
+		/*! Copy Operator */
+		NIFLIB_API HalfTexCoord & operator=(const HalfTexCoord & src);
+		/*! First coordinate. */
+		hfloat u;
+		/*! Second coordinate. */
+		hfloat v;
+		//--BEGIN MISC CUSTOM CODE--//
 
-
-/*! Texture coordinates (u,v). */
-struct HalfTexCoord {
-	/*! Default Constructor */
-	NIFLIB_API HalfTexCoord();
-	/*! Default Destructor */
-	NIFLIB_API ~HalfTexCoord();
-	/*! Copy Constructor */
-	NIFLIB_API HalfTexCoord( const HalfTexCoord & src );
-	/*! Copy Operator */
-	NIFLIB_API HalfTexCoord & operator=( const HalfTexCoord & src );
-	/*! First coordinate. */
-	hfloat u;
-	/*! Second coordinate. */
-	hfloat v;
-	//--BEGIN MISC CUSTOM CODE--//
-
-	//--END CUSTOM CODE--//
-};
-
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

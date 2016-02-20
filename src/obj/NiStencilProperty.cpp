@@ -17,88 +17,101 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiStencilProperty::TYPE("NiStencilProperty", &NiProperty::TYPE );
+const Type NiStencilProperty::TYPE("NiStencilProperty", &NiProperty::TYPE);
 
-NiStencilProperty::NiStencilProperty() : flags((unsigned short)0), stencilEnabled((byte)0), stencilFunction((StencilCompareMode)0), stencilRef((unsigned int)0), stencilMask((unsigned int)4294967295), failAction((StencilAction)0), zFailAction((StencilAction)0), passAction((StencilAction)0), drawMode((FaceDrawMode)DRAW_BOTH) {
+NiStencilProperty::NiStencilProperty() : flags((unsigned short) 0), stencilEnabled((byte) 0), stencilFunction((StencilCompareMode) 0), stencilRef((unsigned int) 0), stencilMask((unsigned int) 4294967295), failAction((StencilAction) 0), zFailAction((StencilAction) 0), passAction((StencilAction) 0), drawMode((FaceDrawMode) DRAW_BOTH)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-NiStencilProperty::~NiStencilProperty() {
+NiStencilProperty::~NiStencilProperty()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiStencilProperty::GetType() const {
+const Type & NiStencilProperty::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiStencilProperty::Create() {
+NiObject * NiStencilProperty::Create()
+{
 	return new NiStencilProperty;
 }
 
-void NiStencilProperty::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiStencilProperty::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiProperty::Read( in, link_stack, info );
-	if ( info.version <= 0x0A000102 ) {
-		NifStream( flags, in, info );
+	NiProperty::Read(in, link_stack, info);
+	if(info.version <= 0x0A000102)
+	{
+		NifStream(flags, in, info);
 	};
-	if ( info.version <= 0x14000005 ) {
-		NifStream( stencilEnabled, in, info );
-		NifStream( stencilFunction, in, info );
-		NifStream( stencilRef, in, info );
-		NifStream( stencilMask, in, info );
-		NifStream( failAction, in, info );
-		NifStream( zFailAction, in, info );
-		NifStream( passAction, in, info );
-		NifStream( drawMode, in, info );
+	if(info.version <= 0x14000005)
+	{
+		NifStream(stencilEnabled, in, info);
+		NifStream(stencilFunction, in, info);
+		NifStream(stencilRef, in, info);
+		NifStream(stencilMask, in, info);
+		NifStream(failAction, in, info);
+		NifStream(zFailAction, in, info);
+		NifStream(passAction, in, info);
+		NifStream(drawMode, in, info);
 	};
-	if ( info.version >= 0x14010003 ) {
-		NifStream( flags, in, info );
-		NifStream( stencilRef, in, info );
-		NifStream( stencilMask, in, info );
+	if(info.version >= 0x14010003)
+	{
+		NifStream(flags, in, info);
+		NifStream(stencilRef, in, info);
+		NifStream(stencilMask, in, info);
 	};
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void NiStencilProperty::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiStencilProperty::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiProperty::Write( out, link_map, missing_link_stack, info );
-	if ( info.version <= 0x0A000102 ) {
-		NifStream( flags, out, info );
+	NiProperty::Write(out, link_map, missing_link_stack, info);
+	if(info.version <= 0x0A000102)
+	{
+		NifStream(flags, out, info);
 	};
-	if ( info.version <= 0x14000005 ) {
-		NifStream( stencilEnabled, out, info );
-		NifStream( stencilFunction, out, info );
-		NifStream( stencilRef, out, info );
-		NifStream( stencilMask, out, info );
-		NifStream( failAction, out, info );
-		NifStream( zFailAction, out, info );
-		NifStream( passAction, out, info );
-		NifStream( drawMode, out, info );
+	if(info.version <= 0x14000005)
+	{
+		NifStream(stencilEnabled, out, info);
+		NifStream(stencilFunction, out, info);
+		NifStream(stencilRef, out, info);
+		NifStream(stencilMask, out, info);
+		NifStream(failAction, out, info);
+		NifStream(zFailAction, out, info);
+		NifStream(passAction, out, info);
+		NifStream(drawMode, out, info);
 	};
-	if ( info.version >= 0x14010003 ) {
-		NifStream( flags, out, info );
-		NifStream( stencilRef, out, info );
-		NifStream( stencilMask, out, info );
+	if(info.version >= 0x14010003)
+	{
+		NifStream(flags, out, info);
+		NifStream(stencilRef, out, info);
+		NifStream(stencilMask, out, info);
 	};
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string NiStencilProperty::asString( bool verbose ) const {
+std::string NiStencilProperty::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiProperty::asString();
+	out << NiProperty::asString(verbose);
 	out << "  Flags:  " << flags << endl;
 	out << "  Stencil Enabled:  " << stencilEnabled << endl;
 	out << "  Stencil Function:  " << stencilFunction << endl;
@@ -114,23 +127,26 @@ std::string NiStencilProperty::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiStencilProperty::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiStencilProperty::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiProperty::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiProperty::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiStencilProperty::GetRefs() const {
+std::list<NiObjectRef> NiStencilProperty::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiProperty::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiStencilProperty::GetPtrs() const {
+std::list<NiObject *> NiStencilProperty::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiProperty::GetPtrs();
 	return ptrs;
@@ -139,175 +155,193 @@ std::list<NiObject *> NiStencilProperty::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 unsigned short NiStencilProperty::GetFlags() const {
-	return flags;
+return flags;
 }
 
 void NiStencilProperty::SetFlags( unsigned short value ) {
-	flags = value;
+flags = value;
 }
 
 byte NiStencilProperty::GetStencilEnabled() const {
-	return stencilEnabled;
+return stencilEnabled;
 }
 
 void NiStencilProperty::SetStencilEnabled( byte value ) {
-	stencilEnabled = value;
+stencilEnabled = value;
 }
 
 StencilCompareMode NiStencilProperty::GetStencilFunction() const {
-	return stencilFunction;
+return stencilFunction;
 }
 
 void NiStencilProperty::SetStencilFunction( const StencilCompareMode & value ) {
-	stencilFunction = value;
+stencilFunction = value;
 }
 
 unsigned int NiStencilProperty::GetStencilRef() const {
-	return stencilRef;
+return stencilRef;
 }
 
 void NiStencilProperty::SetStencilRef( unsigned int value ) {
-	stencilRef = value;
+stencilRef = value;
 }
 
 unsigned int NiStencilProperty::GetStencilMask() const {
-	return stencilMask;
+return stencilMask;
 }
 
 void NiStencilProperty::SetStencilMask( unsigned int value ) {
-	stencilMask = value;
+stencilMask = value;
 }
 
 StencilAction NiStencilProperty::GetFailAction() const {
-	return failAction;
+return failAction;
 }
 
 void NiStencilProperty::SetFailAction( const StencilAction & value ) {
-	failAction = value;
+failAction = value;
 }
 
 StencilAction NiStencilProperty::GetZFailAction() const {
-	return zFailAction;
+return zFailAction;
 }
 
 void NiStencilProperty::SetZFailAction( const StencilAction & value ) {
-	zFailAction = value;
+zFailAction = value;
 }
 
 StencilAction NiStencilProperty::GetPassAction() const {
-	return passAction;
+return passAction;
 }
 
 void NiStencilProperty::SetPassAction( const StencilAction & value ) {
-	passAction = value;
+passAction = value;
 }
 
 FaceDrawMode NiStencilProperty::GetDrawMode() const {
-	return drawMode;
+return drawMode;
 }
 
 void NiStencilProperty::SetDrawMode( const FaceDrawMode & value ) {
-	drawMode = value;
+drawMode = value;
 }
 
 unsigned short NiStencilProperty::GetFlags() const {
-	return flags;
+return flags;
 }
 
 void NiStencilProperty::SetFlags( unsigned short value ) {
-	flags = value;
+flags = value;
 }
 
 unsigned int NiStencilProperty::GetStencilRef() const {
-	return stencilRef;
+return stencilRef;
 }
 
 void NiStencilProperty::SetStencilRef( unsigned int value ) {
-	stencilRef = value;
+stencilRef = value;
 }
 
 unsigned int NiStencilProperty::GetStencilMask() const {
-	return stencilMask;
+return stencilMask;
 }
 
 void NiStencilProperty::SetStencilMask( unsigned int value ) {
-	stencilMask = value;
+stencilMask = value;
 }
 
 ****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 
-unsigned short NiStencilProperty::GetFlags() const {
-   return flags;
+unsigned short NiStencilProperty::GetFlags() const
+{
+	return flags;
 }
 
-void NiStencilProperty::SetFlags(unsigned short value) {
-   flags = value;
+void NiStencilProperty::SetFlags(unsigned short value)
+{
+	flags = value;
 }
 
-bool NiStencilProperty::GetStencilState() const {
-   return (stencilEnabled != 0);
+bool NiStencilProperty::GetStencilState() const
+{
+	return (stencilEnabled != 0);
 }
 
-void NiStencilProperty::SetStencilState(bool value) {
-   stencilEnabled = value;
+void NiStencilProperty::SetStencilState(bool value)
+{
+	stencilEnabled = value;
 }
 
-StencilCompareMode NiStencilProperty::GetStencilFunction() const {
-   return stencilFunction;
+StencilCompareMode NiStencilProperty::GetStencilFunction() const
+{
+	return stencilFunction;
 }
 
-void NiStencilProperty::SetStencilFunction(StencilCompareMode value) {
-   stencilFunction = value;
+void NiStencilProperty::SetStencilFunction(StencilCompareMode value)
+{
+	stencilFunction = value;
 }
 
-unsigned int NiStencilProperty::GetStencilRef() const {
-   return stencilRef;
+unsigned int NiStencilProperty::GetStencilRef() const
+{
+	return stencilRef;
 }
 
-void NiStencilProperty::SetStencilRef(unsigned int value) {
-   stencilRef = value;
+void NiStencilProperty::SetStencilRef(unsigned int value)
+{
+	stencilRef = value;
 }
 
-unsigned int NiStencilProperty::GetStencilMask() const {
-   return stencilMask;
+unsigned int NiStencilProperty::GetStencilMask() const
+{
+	return stencilMask;
 }
 
-void NiStencilProperty::SetStencilMask(unsigned int value) {
-   stencilMask = value;
+void NiStencilProperty::SetStencilMask(unsigned int value)
+{
+	stencilMask = value;
 }
 
-StencilAction NiStencilProperty::GetFailAction() const {
-   return failAction;
+StencilAction NiStencilProperty::GetFailAction() const
+{
+	return failAction;
 }
 
-void NiStencilProperty::SetFailAction(StencilAction value) {
-   failAction = value;
+void NiStencilProperty::SetFailAction(StencilAction value)
+{
+	failAction = value;
 }
 
-StencilAction NiStencilProperty::GetZFailAction() const {
-   return zFailAction;
+StencilAction NiStencilProperty::GetZFailAction() const
+{
+	return zFailAction;
 }
 
-void NiStencilProperty::SetZFailAction(StencilAction value) {
-   zFailAction = value;
+void NiStencilProperty::SetZFailAction(StencilAction value)
+{
+	zFailAction = value;
 }
 
-StencilAction NiStencilProperty::GetPassAction() const {
-   return passAction;
+StencilAction NiStencilProperty::GetPassAction() const
+{
+	return passAction;
 }
 
-void NiStencilProperty::SetPassAction(StencilAction value) {
-   passAction = value;
+void NiStencilProperty::SetPassAction(StencilAction value)
+{
+	passAction = value;
 }
 
-FaceDrawMode NiStencilProperty::GetFaceDrawMode() const {
-   return drawMode;
+FaceDrawMode NiStencilProperty::GetFaceDrawMode() const
+{
+	return drawMode;
 }
 
-void NiStencilProperty::SetFaceDrawMode(FaceDrawMode value) {
-   drawMode = value;
+void NiStencilProperty::SetFaceDrawMode(FaceDrawMode value)
+{
+	drawMode = value;
 }
 
 //--END CUSTOM CODE--//

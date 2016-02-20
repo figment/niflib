@@ -13,12 +13,14 @@ using namespace Niflib;
 bhkCMSDTransform::bhkCMSDTransform() {};
 
 //Copy Constructor
-bhkCMSDTransform::bhkCMSDTransform( const bhkCMSDTransform & src ) {
+bhkCMSDTransform::bhkCMSDTransform(const bhkCMSDTransform & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-bhkCMSDTransform & bhkCMSDTransform::operator=( const bhkCMSDTransform & src ) {
+bhkCMSDTransform & bhkCMSDTransform::operator=(const bhkCMSDTransform & src)
+{
 	this->translation = src.translation;
 	this->rotation = src.rotation;
 	return *this;

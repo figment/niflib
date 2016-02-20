@@ -12,26 +12,25 @@ All rights reserved.  Please see niflib.h for license. */
 
 // Include structures
 #include "BoundingVolume.h"
-namespace Niflib {
-
-
-/*!  */
-struct UnionBV {
-	/*! Default Constructor */
-	NIFLIB_API UnionBV();
-	/*! Default Destructor */
-	NIFLIB_API ~UnionBV();
-	/*! Copy Constructor */
-	NIFLIB_API UnionBV( const UnionBV & src );
-	/*! Copy Operator */
-	NIFLIB_API UnionBV & operator=( const UnionBV & src );
-	/*! Number of Bounding Volumes. */
-	mutable unsigned int numBv;
-	/*! Bounding Volume. */
-	vector<BoundingVolume > boundingVolumes;
-	//--BEGIN MISC CUSTOM CODE--//
-	//--END CUSTOM CODE--//
-};
-
+namespace Niflib
+{
+	/*!  */
+	struct UnionBV
+	{
+		/*! Default Constructor */
+		NIFLIB_API UnionBV();
+		/*! Default Destructor */
+		NIFLIB_API ~UnionBV();
+		/*! Copy Constructor */
+		NIFLIB_API UnionBV(const UnionBV & src);
+		/*! Copy Operator */
+		NIFLIB_API UnionBV & operator=(const UnionBV & src);
+		/*! Number of Bounding Volumes. */
+		mutable unsigned int numBv;
+		/*! Bounding Volume. */
+		vector<BoundingVolume > boundingVolumes;
+		//--BEGIN MISC CUSTOM CODE--//
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

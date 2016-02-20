@@ -17,74 +17,85 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiSphericalCollider::TYPE("NiSphericalCollider", &NiParticleModifier::TYPE );
+const Type NiSphericalCollider::TYPE("NiSphericalCollider", &NiParticleModifier::TYPE);
 
-NiSphericalCollider::NiSphericalCollider() : unknownFloat1(0.0f), unknownShort1((unsigned short)0), unknownFloat2(0.0f), unknownShort2((unsigned short)0), unknownFloat3(0.0f), unknownFloat4(0.0f), unknownFloat5(0.0f) {
+NiSphericalCollider::NiSphericalCollider() : unknownFloat1(0.0f), unknownShort1((unsigned short) 0), unknownFloat2(0.0f), unknownShort2((unsigned short) 0), unknownFloat3(0.0f), unknownFloat4(0.0f), unknownFloat5(0.0f)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-NiSphericalCollider::~NiSphericalCollider() {
+NiSphericalCollider::~NiSphericalCollider()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiSphericalCollider::GetType() const {
+const Type & NiSphericalCollider::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiSphericalCollider::Create() {
+NiObject * NiSphericalCollider::Create()
+{
 	return new NiSphericalCollider;
 }
 
-void NiSphericalCollider::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiSphericalCollider::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiParticleModifier::Read( in, link_stack, info );
-	NifStream( unknownFloat1, in, info );
-	NifStream( unknownShort1, in, info );
-	NifStream( unknownFloat2, in, info );
-	if ( info.version <= 0x04020002 ) {
-		NifStream( unknownShort2, in, info );
+	NiParticleModifier::Read(in, link_stack, info);
+	NifStream(unknownFloat1, in, info);
+	NifStream(unknownShort1, in, info);
+	NifStream(unknownFloat2, in, info);
+	if(info.version <= 0x04020002)
+	{
+		NifStream(unknownShort2, in, info);
 	};
-	if ( info.version >= 0x04020100 ) {
-		NifStream( unknownFloat3, in, info );
+	if(info.version >= 0x04020100)
+	{
+		NifStream(unknownFloat3, in, info);
 	};
-	NifStream( unknownFloat4, in, info );
-	NifStream( unknownFloat5, in, info );
+	NifStream(unknownFloat4, in, info);
+	NifStream(unknownFloat5, in, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void NiSphericalCollider::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiSphericalCollider::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiParticleModifier::Write( out, link_map, missing_link_stack, info );
-	NifStream( unknownFloat1, out, info );
-	NifStream( unknownShort1, out, info );
-	NifStream( unknownFloat2, out, info );
-	if ( info.version <= 0x04020002 ) {
-		NifStream( unknownShort2, out, info );
+	NiParticleModifier::Write(out, link_map, missing_link_stack, info);
+	NifStream(unknownFloat1, out, info);
+	NifStream(unknownShort1, out, info);
+	NifStream(unknownFloat2, out, info);
+	if(info.version <= 0x04020002)
+	{
+		NifStream(unknownShort2, out, info);
 	};
-	if ( info.version >= 0x04020100 ) {
-		NifStream( unknownFloat3, out, info );
+	if(info.version >= 0x04020100)
+	{
+		NifStream(unknownFloat3, out, info);
 	};
-	NifStream( unknownFloat4, out, info );
-	NifStream( unknownFloat5, out, info );
+	NifStream(unknownFloat4, out, info);
+	NifStream(unknownFloat5, out, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string NiSphericalCollider::asString( bool verbose ) const {
+std::string NiSphericalCollider::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiParticleModifier::asString();
+	out << NiParticleModifier::asString(verbose);
 	out << "  Unknown Float 1:  " << unknownFloat1 << endl;
 	out << "  Unknown Short 1:  " << unknownShort1 << endl;
 	out << "  Unknown Float 2:  " << unknownFloat2 << endl;
@@ -98,23 +109,26 @@ std::string NiSphericalCollider::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiSphericalCollider::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiSphericalCollider::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiParticleModifier::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiParticleModifier::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiSphericalCollider::GetRefs() const {
+std::list<NiObjectRef> NiSphericalCollider::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiParticleModifier::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiSphericalCollider::GetPtrs() const {
+std::list<NiObject *> NiSphericalCollider::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiParticleModifier::GetPtrs();
 	return ptrs;

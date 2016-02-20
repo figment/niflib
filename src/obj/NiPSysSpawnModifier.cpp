@@ -17,74 +17,83 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiPSysSpawnModifier::TYPE("NiPSysSpawnModifier", &NiPSysModifier::TYPE );
+const Type NiPSysSpawnModifier::TYPE("NiPSysSpawnModifier", &NiPSysModifier::TYPE);
 
-NiPSysSpawnModifier::NiPSysSpawnModifier() : numSpawnGenerations((unsigned short)0), percentageSpawned(0.0f), minNumToSpawn((unsigned short)0), maxNumToSpawn((unsigned short)0), spawnSpeedChaos(0.0f), spawnDirChaos(0.0f), lifeSpan(0.0f), lifeSpanVariation(0.0f), unknownInt((int)0) {
+NiPSysSpawnModifier::NiPSysSpawnModifier() : numSpawnGenerations((unsigned short) 0), percentageSpawned(0.0f), minNumToSpawn((unsigned short) 0), maxNumToSpawn((unsigned short) 0), spawnSpeedChaos(0.0f), spawnDirChaos(0.0f), lifeSpan(0.0f), lifeSpanVariation(0.0f), unknownInt((int) 0)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-NiPSysSpawnModifier::~NiPSysSpawnModifier() {
+NiPSysSpawnModifier::~NiPSysSpawnModifier()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiPSysSpawnModifier::GetType() const {
+const Type & NiPSysSpawnModifier::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiPSysSpawnModifier::Create() {
+NiObject * NiPSysSpawnModifier::Create()
+{
 	return new NiPSysSpawnModifier;
 }
 
-void NiPSysSpawnModifier::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiPSysSpawnModifier::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiPSysModifier::Read( in, link_stack, info );
-	NifStream( numSpawnGenerations, in, info );
-	NifStream( percentageSpawned, in, info );
-	NifStream( minNumToSpawn, in, info );
-	NifStream( maxNumToSpawn, in, info );
-	NifStream( spawnSpeedChaos, in, info );
-	NifStream( spawnDirChaos, in, info );
-	NifStream( lifeSpan, in, info );
-	NifStream( lifeSpanVariation, in, info );
-	if ( ( info.version >= 0x0A040001 ) && ( info.version <= 0x0A040001 ) ) {
-		NifStream( unknownInt, in, info );
+	NiPSysModifier::Read(in, link_stack, info);
+	NifStream(numSpawnGenerations, in, info);
+	NifStream(percentageSpawned, in, info);
+	NifStream(minNumToSpawn, in, info);
+	NifStream(maxNumToSpawn, in, info);
+	NifStream(spawnSpeedChaos, in, info);
+	NifStream(spawnDirChaos, in, info);
+	NifStream(lifeSpan, in, info);
+	NifStream(lifeSpanVariation, in, info);
+	if((info.version >= 0x0A040001) && (info.version <= 0x0A040001))
+	{
+		NifStream(unknownInt, in, info);
 	};
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void NiPSysSpawnModifier::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiPSysSpawnModifier::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiPSysModifier::Write( out, link_map, missing_link_stack, info );
-	NifStream( numSpawnGenerations, out, info );
-	NifStream( percentageSpawned, out, info );
-	NifStream( minNumToSpawn, out, info );
-	NifStream( maxNumToSpawn, out, info );
-	NifStream( spawnSpeedChaos, out, info );
-	NifStream( spawnDirChaos, out, info );
-	NifStream( lifeSpan, out, info );
-	NifStream( lifeSpanVariation, out, info );
-	if ( ( info.version >= 0x0A040001 ) && ( info.version <= 0x0A040001 ) ) {
-		NifStream( unknownInt, out, info );
+	NiPSysModifier::Write(out, link_map, missing_link_stack, info);
+	NifStream(numSpawnGenerations, out, info);
+	NifStream(percentageSpawned, out, info);
+	NifStream(minNumToSpawn, out, info);
+	NifStream(maxNumToSpawn, out, info);
+	NifStream(spawnSpeedChaos, out, info);
+	NifStream(spawnDirChaos, out, info);
+	NifStream(lifeSpan, out, info);
+	NifStream(lifeSpanVariation, out, info);
+	if((info.version >= 0x0A040001) && (info.version <= 0x0A040001))
+	{
+		NifStream(unknownInt, out, info);
 	};
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string NiPSysSpawnModifier::asString( bool verbose ) const {
+std::string NiPSysSpawnModifier::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSysModifier::asString();
+	out << NiPSysModifier::asString(verbose);
 	out << "  Num Spawn Generations:  " << numSpawnGenerations << endl;
 	out << "  Percentage Spawned:  " << percentageSpawned << endl;
 	out << "  Min Num to Spawn:  " << minNumToSpawn << endl;
@@ -100,23 +109,26 @@ std::string NiPSysSpawnModifier::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiPSysSpawnModifier::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiPSysSpawnModifier::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiPSysModifier::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiPSysModifier::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiPSysSpawnModifier::GetRefs() const {
+std::list<NiObjectRef> NiPSysSpawnModifier::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiPSysModifier::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiPSysSpawnModifier::GetPtrs() const {
+std::list<NiObject *> NiPSysSpawnModifier::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiPSysModifier::GetPtrs();
 	return ptrs;
@@ -125,67 +137,67 @@ std::list<NiObject *> NiPSysSpawnModifier::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 unsigned short NiPSysSpawnModifier::GetNumSpawnGenerations() const {
-	return numSpawnGenerations;
+return numSpawnGenerations;
 }
 
 void NiPSysSpawnModifier::SetNumSpawnGenerations( unsigned short value ) {
-	numSpawnGenerations = value;
+numSpawnGenerations = value;
 }
 
 float NiPSysSpawnModifier::GetPercentageSpawned() const {
-	return percentageSpawned;
+return percentageSpawned;
 }
 
 void NiPSysSpawnModifier::SetPercentageSpawned( float value ) {
-	percentageSpawned = value;
+percentageSpawned = value;
 }
 
 unsigned short NiPSysSpawnModifier::GetMinNumToSpawn() const {
-	return minNumToSpawn;
+return minNumToSpawn;
 }
 
 void NiPSysSpawnModifier::SetMinNumToSpawn( unsigned short value ) {
-	minNumToSpawn = value;
+minNumToSpawn = value;
 }
 
 unsigned short NiPSysSpawnModifier::GetMaxNumToSpawn() const {
-	return maxNumToSpawn;
+return maxNumToSpawn;
 }
 
 void NiPSysSpawnModifier::SetMaxNumToSpawn( unsigned short value ) {
-	maxNumToSpawn = value;
+maxNumToSpawn = value;
 }
 
 float NiPSysSpawnModifier::GetSpawnSpeedChaos() const {
-	return spawnSpeedChaos;
+return spawnSpeedChaos;
 }
 
 void NiPSysSpawnModifier::SetSpawnSpeedChaos( float value ) {
-	spawnSpeedChaos = value;
+spawnSpeedChaos = value;
 }
 
 float NiPSysSpawnModifier::GetSpawnDirChaos() const {
-	return spawnDirChaos;
+return spawnDirChaos;
 }
 
 void NiPSysSpawnModifier::SetSpawnDirChaos( float value ) {
-	spawnDirChaos = value;
+spawnDirChaos = value;
 }
 
 float NiPSysSpawnModifier::GetLifeSpan() const {
-	return lifeSpan;
+return lifeSpan;
 }
 
 void NiPSysSpawnModifier::SetLifeSpan( float value ) {
-	lifeSpan = value;
+lifeSpan = value;
 }
 
 float NiPSysSpawnModifier::GetLifeSpanVariation() const {
-	return lifeSpanVariation;
+return lifeSpanVariation;
 }
 
 void NiPSysSpawnModifier::SetLifeSpanVariation( float value ) {
-	lifeSpanVariation = value;
+lifeSpanVariation = value;
 }
 
 ****End Example Naive Implementation***/

@@ -9,15 +9,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-ParticleDesc::ParticleDesc() : unknownFloat1(0.9f), unknownFloat2(0.9f), unknownFloat3(3.0f), unknownInt1((int)0) {};
+ParticleDesc::ParticleDesc() : unknownFloat1(0.9f), unknownFloat2(0.9f), unknownFloat3(3.0f), unknownInt1((int) 0) {};
 
 //Copy Constructor
-ParticleDesc::ParticleDesc( const ParticleDesc & src ) {
+ParticleDesc::ParticleDesc(const ParticleDesc & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-ParticleDesc & ParticleDesc::operator=( const ParticleDesc & src ) {
+ParticleDesc & ParticleDesc::operator=(const ParticleDesc & src)
+{
 	this->translation = src.translation;
 	this->unknownFloats1 = src.unknownFloats1;
 	this->unknownFloat1 = src.unknownFloat1;

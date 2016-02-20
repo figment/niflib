@@ -20,177 +20,222 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiKeyframeData::TYPE("NiKeyframeData", &NiObject::TYPE );
+const Type NiKeyframeData::TYPE("NiKeyframeData", &NiObject::TYPE);
 
-NiKeyframeData::NiKeyframeData() : numRotationKeys((unsigned int)0), rotationType((KeyType)0), unknownFloat(0.0f) {
+NiKeyframeData::NiKeyframeData() : numRotationKeys((unsigned int) 0), rotationType((KeyType) 0), unknownFloat(0.0f)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-NiKeyframeData::~NiKeyframeData() {
+NiKeyframeData::~NiKeyframeData()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiKeyframeData::GetType() const {
+const Type & NiKeyframeData::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiKeyframeData::Create() {
+NiObject * NiKeyframeData::Create()
+{
 	return new NiKeyframeData;
 }
 
-void NiKeyframeData::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiKeyframeData::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiObject::Read( in, link_stack, info );
-	NifStream( numRotationKeys, in, info );
-	if ( (numRotationKeys != 0) ) {
-		NifStream( rotationType, in, info );
+	NiObject::Read(in, link_stack, info);
+	NifStream(numRotationKeys, in, info);
+	if((numRotationKeys != 0))
+	{
+		NifStream(rotationType, in, info);
 	};
-	if ( (rotationType != 4) ) {
+	if((rotationType != 4))
+	{
 		quaternionKeys.resize(numRotationKeys);
-		for (unsigned int i2 = 0; i2 < quaternionKeys.size(); i2++) {
-			NifStream( quaternionKeys[i2], in, info, rotationType );
+		for(unsigned int i2 = 0; i2 < quaternionKeys.size(); i2++)
+		{
+			NifStream(quaternionKeys[i2], in, info, rotationType);
 		};
 	};
-	if ( info.version <= 0x0A010000 ) {
-		if ( (rotationType == 4) ) {
-			NifStream( unknownFloat, in, info );
+	if(info.version <= 0x0A010000)
+	{
+		if((rotationType == 4))
+		{
+			NifStream(unknownFloat, in, info);
 		};
 	};
-	if ( (rotationType == 4) ) {
-		for (unsigned int i2 = 0; i2 < 3; i2++) {
-			NifStream( xyzRotations[i2].numKeys, in, info );
-			if ( (xyzRotations[i2].numKeys != 0) ) {
-				NifStream( xyzRotations[i2].interpolation, in, info );
+	if((rotationType == 4))
+	{
+		for(unsigned int i2 = 0; i2 < 3; i2++)
+		{
+			NifStream(xyzRotations[i2].numKeys, in, info);
+			if((xyzRotations[i2].numKeys != 0))
+			{
+				NifStream(xyzRotations[i2].interpolation, in, info);
 			};
 			xyzRotations[i2].keys.resize(xyzRotations[i2].numKeys);
-			for (unsigned int i3 = 0; i3 < xyzRotations[i2].keys.size(); i3++) {
-				NifStream( xyzRotations[i2].keys[i3], in, info, xyzRotations[i2].interpolation );
+			for(unsigned int i3 = 0; i3 < xyzRotations[i2].keys.size(); i3++)
+			{
+				NifStream(xyzRotations[i2].keys[i3], in, info, xyzRotations[i2].interpolation);
 			};
 		};
 	};
-	NifStream( translations.numKeys, in, info );
-	if ( (translations.numKeys != 0) ) {
-		NifStream( translations.interpolation, in, info );
+	NifStream(translations.numKeys, in, info);
+	if((translations.numKeys != 0))
+	{
+		NifStream(translations.interpolation, in, info);
 	};
 	translations.keys.resize(translations.numKeys);
-	for (unsigned int i1 = 0; i1 < translations.keys.size(); i1++) {
-		NifStream( translations.keys[i1], in, info, translations.interpolation );
+	for(unsigned int i1 = 0; i1 < translations.keys.size(); i1++)
+	{
+		NifStream(translations.keys[i1], in, info, translations.interpolation);
 	};
-	NifStream( scales.numKeys, in, info );
-	if ( (scales.numKeys != 0) ) {
-		NifStream( scales.interpolation, in, info );
+	NifStream(scales.numKeys, in, info);
+	if((scales.numKeys != 0))
+	{
+		NifStream(scales.interpolation, in, info);
 	};
 	scales.keys.resize(scales.numKeys);
-	for (unsigned int i1 = 0; i1 < scales.keys.size(); i1++) {
-		NifStream( scales.keys[i1], in, info, scales.interpolation );
+	for(unsigned int i1 = 0; i1 < scales.keys.size(); i1++)
+	{
+		NifStream(scales.keys[i1], in, info, scales.interpolation);
 	};
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void NiKeyframeData::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiKeyframeData::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiObject::Write( out, link_map, missing_link_stack, info );
+	NiObject::Write(out, link_map, missing_link_stack, info);
 	numRotationKeys = numRotationKeysCalc(info);
-	NifStream( numRotationKeys, out, info );
-	if ( (numRotationKeys != 0) ) {
-		NifStream( rotationType, out, info );
+	NifStream(numRotationKeys, out, info);
+	if((numRotationKeys != 0))
+	{
+		NifStream(rotationType, out, info);
 	};
-	if ( (rotationType != 4) ) {
-		for (unsigned int i2 = 0; i2 < quaternionKeys.size(); i2++) {
-			NifStream( quaternionKeys[i2], out, info, rotationType );
+	if((rotationType != 4))
+	{
+		for(unsigned int i2 = 0; i2 < quaternionKeys.size(); i2++)
+		{
+			NifStream(quaternionKeys[i2], out, info, rotationType);
 		};
 	};
-	if ( info.version <= 0x0A010000 ) {
-		if ( (rotationType == 4) ) {
-			NifStream( unknownFloat, out, info );
+	if(info.version <= 0x0A010000)
+	{
+		if((rotationType == 4))
+		{
+			NifStream(unknownFloat, out, info);
 		};
 	};
-	if ( (rotationType == 4) ) {
-		for (unsigned int i2 = 0; i2 < 3; i2++) {
-			xyzRotations[i2].numKeys = (unsigned int)(xyzRotations[i2].keys.size());
-			NifStream( xyzRotations[i2].numKeys, out, info );
-			if ( (xyzRotations[i2].numKeys != 0) ) {
-				NifStream( xyzRotations[i2].interpolation, out, info );
+	if((rotationType == 4))
+	{
+		for(unsigned int i2 = 0; i2 < 3; i2++)
+		{
+			xyzRotations[i2].numKeys = (unsigned int) (xyzRotations[i2].keys.size());
+			NifStream(xyzRotations[i2].numKeys, out, info);
+			if((xyzRotations[i2].numKeys != 0))
+			{
+				NifStream(xyzRotations[i2].interpolation, out, info);
 			};
-			for (unsigned int i3 = 0; i3 < xyzRotations[i2].keys.size(); i3++) {
-				NifStream( xyzRotations[i2].keys[i3], out, info, xyzRotations[i2].interpolation );
+			for(unsigned int i3 = 0; i3 < xyzRotations[i2].keys.size(); i3++)
+			{
+				NifStream(xyzRotations[i2].keys[i3], out, info, xyzRotations[i2].interpolation);
 			};
 		};
 	};
-	translations.numKeys = (unsigned int)(translations.keys.size());
-	NifStream( translations.numKeys, out, info );
-	if ( (translations.numKeys != 0) ) {
-		NifStream( translations.interpolation, out, info );
+	translations.numKeys = (unsigned int) (translations.keys.size());
+	NifStream(translations.numKeys, out, info);
+	if((translations.numKeys != 0))
+	{
+		NifStream(translations.interpolation, out, info);
 	};
-	for (unsigned int i1 = 0; i1 < translations.keys.size(); i1++) {
-		NifStream( translations.keys[i1], out, info, translations.interpolation );
+	for(unsigned int i1 = 0; i1 < translations.keys.size(); i1++)
+	{
+		NifStream(translations.keys[i1], out, info, translations.interpolation);
 	};
-	scales.numKeys = (unsigned int)(scales.keys.size());
-	NifStream( scales.numKeys, out, info );
-	if ( (scales.numKeys != 0) ) {
-		NifStream( scales.interpolation, out, info );
+	scales.numKeys = (unsigned int) (scales.keys.size());
+	NifStream(scales.numKeys, out, info);
+	if((scales.numKeys != 0))
+	{
+		NifStream(scales.interpolation, out, info);
 	};
-	for (unsigned int i1 = 0; i1 < scales.keys.size(); i1++) {
-		NifStream( scales.keys[i1], out, info, scales.interpolation );
+	for(unsigned int i1 = 0; i1 < scales.keys.size(); i1++)
+	{
+		NifStream(scales.keys[i1], out, info, scales.interpolation);
 	};
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string NiKeyframeData::asString( bool verbose ) const {
+std::string NiKeyframeData::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	out << "  Num Rotation Keys:  " << numRotationKeys << endl;
-	if ( (numRotationKeys != 0) ) {
+	if((numRotationKeys != 0))
+	{
 		out << "    Rotation Type:  " << rotationType << endl;
 	};
-	if ( (rotationType != 4) ) {
+	if((rotationType != 4))
+	{
 		array_output_count = 0;
-		for (unsigned int i2 = 0; i2 < quaternionKeys.size(); i2++) {
-			if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+		for(unsigned int i2 = 0; i2 < quaternionKeys.size(); i2++)
+		{
+			if(!verbose && (array_output_count > MAXARRAYDUMP))
+			{
 				out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 				break;
 			};
-			if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+			if(!verbose && (array_output_count > MAXARRAYDUMP))
+			{
 				break;
 			};
 			out << "      Quaternion Keys[" << i2 << "]:  " << quaternionKeys[i2] << endl;
 			array_output_count++;
 		};
 	};
-	if ( (rotationType == 4) ) {
+	if((rotationType == 4))
+	{
 		out << "    Unknown Float:  " << unknownFloat << endl;
 		array_output_count = 0;
-		for (unsigned int i2 = 0; i2 < 3; i2++) {
-			if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+		for(unsigned int i2 = 0; i2 < 3; i2++)
+		{
+			if(!verbose && (array_output_count > MAXARRAYDUMP))
+			{
 				out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 				break;
 			};
-			xyzRotations[i2].numKeys = (unsigned int)(xyzRotations[i2].keys.size());
+			xyzRotations[i2].numKeys = (unsigned int) (xyzRotations[i2].keys.size());
 			out << "      Num Keys:  " << xyzRotations[i2].numKeys << endl;
-			if ( (xyzRotations[i2].numKeys != 0) ) {
+			if((xyzRotations[i2].numKeys != 0))
+			{
 				out << "        Interpolation:  " << xyzRotations[i2].interpolation << endl;
 			};
 			array_output_count = 0;
-			for (unsigned int i3 = 0; i3 < xyzRotations[i2].keys.size(); i3++) {
-				if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+			for(unsigned int i3 = 0; i3 < xyzRotations[i2].keys.size(); i3++)
+			{
+				if(!verbose && (array_output_count > MAXARRAYDUMP))
+				{
 					out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 					break;
 				};
-				if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+				if(!verbose && (array_output_count > MAXARRAYDUMP))
+				{
 					break;
 				};
 				out << "        Keys[" << i3 << "]:  " << xyzRotations[i2].keys[i3] << endl;
@@ -198,35 +243,43 @@ std::string NiKeyframeData::asString( bool verbose ) const {
 			};
 		};
 	};
-	translations.numKeys = (unsigned int)(translations.keys.size());
+	translations.numKeys = (unsigned int) (translations.keys.size());
 	out << "  Num Keys:  " << translations.numKeys << endl;
-	if ( (translations.numKeys != 0) ) {
+	if((translations.numKeys != 0))
+	{
 		out << "    Interpolation:  " << translations.interpolation << endl;
 	};
 	array_output_count = 0;
-	for (unsigned int i1 = 0; i1 < translations.keys.size(); i1++) {
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+	for(unsigned int i1 = 0; i1 < translations.keys.size(); i1++)
+	{
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 			break;
 		};
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			break;
 		};
 		out << "    Keys[" << i1 << "]:  " << translations.keys[i1] << endl;
 		array_output_count++;
 	};
-	scales.numKeys = (unsigned int)(scales.keys.size());
+	scales.numKeys = (unsigned int) (scales.keys.size());
 	out << "  Num Keys:  " << scales.numKeys << endl;
-	if ( (scales.numKeys != 0) ) {
+	if((scales.numKeys != 0))
+	{
 		out << "    Interpolation:  " << scales.interpolation << endl;
 	};
 	array_output_count = 0;
-	for (unsigned int i1 = 0; i1 < scales.keys.size(); i1++) {
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+	for(unsigned int i1 = 0; i1 < scales.keys.size(); i1++)
+	{
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 			break;
 		};
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			break;
 		};
 		out << "    Keys[" << i1 << "]:  " << scales.keys[i1] << endl;
@@ -238,23 +291,26 @@ std::string NiKeyframeData::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiKeyframeData::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiKeyframeData::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiObject::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiObject::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiKeyframeData::GetRefs() const {
+std::list<NiObjectRef> NiKeyframeData::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiObject::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiKeyframeData::GetPtrs() const {
+std::list<NiObject *> NiKeyframeData::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiObject::GetPtrs();
 	return ptrs;
@@ -263,159 +319,185 @@ std::list<NiObject *> NiKeyframeData::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 KeyType NiKeyframeData::GetRotationType() const {
-	return rotationType;
+return rotationType;
 }
 
 void NiKeyframeData::SetRotationType( const KeyType & value ) {
-	rotationType = value;
+rotationType = value;
 }
 
 vector<Key<Quaternion > > NiKeyframeData::GetQuaternionKeys() const {
-	return quaternionKeys;
+return quaternionKeys;
 }
 
 void NiKeyframeData::SetQuaternionKeys( const vector<Key<Quaternion > >& value ) {
-	quaternionKeys = value;
+quaternionKeys = value;
 }
 
 array<3,KeyGroup<float > >  NiKeyframeData::GetXyzRotations() const {
-	return xyzRotations;
+return xyzRotations;
 }
 
 void NiKeyframeData::SetXyzRotations( const array<3,KeyGroup<float > >&  value ) {
-	xyzRotations = value;
+xyzRotations = value;
 }
 
 PosKeyGroup<Vector3 > NiKeyframeData::GetTranslations() const {
-	return translations;
+return translations;
 }
 
 void NiKeyframeData::SetTranslations( const PosKeyGroup<Vector3 > & value ) {
-	translations = value;
+translations = value;
 }
 
 KeyGroup<float > NiKeyframeData::GetScales() const {
-	return scales;
+return scales;
 }
 
 void NiKeyframeData::SetScales( const KeyGroup<float > & value ) {
-	scales = value;
+scales = value;
 }
 
 ****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 
-void NiKeyframeData::NormalizeKeys( float phase, float frequency ) {
-	NormalizeKeyVector( this->translations.keys, phase, frequency );
-	NormalizeKeyVector( this->scales.keys, phase, frequency );
-	NormalizeKeyVector( this->quaternionKeys, phase, frequency );
-	NormalizeKeyVector( this->xyzRotations[0].keys, phase, frequency );
-	NormalizeKeyVector( this->xyzRotations[1].keys, phase, frequency );
-	NormalizeKeyVector( this->xyzRotations[2].keys, phase, frequency );
-
+void NiKeyframeData::NormalizeKeys(float phase, float frequency)
+{
+	NormalizeKeyVector(this->translations.keys, phase, frequency);
+	NormalizeKeyVector(this->scales.keys, phase, frequency);
+	NormalizeKeyVector(this->quaternionKeys, phase, frequency);
+	NormalizeKeyVector(this->xyzRotations[0].keys, phase, frequency);
+	NormalizeKeyVector(this->xyzRotations[1].keys, phase, frequency);
+	NormalizeKeyVector(this->xyzRotations[2].keys, phase, frequency);
 }
 
-KeyType NiKeyframeData::GetRotateType() const {
+KeyType NiKeyframeData::GetRotateType() const
+{
 	return rotationType;
 }
 
-void NiKeyframeData::SetRotateType( KeyType t ) {
+void NiKeyframeData::SetRotateType(KeyType t)
+{
 	rotationType = t;
 }
 
-vector< Key<Quaternion> > NiKeyframeData::GetQuatRotateKeys() const {
+vector< Key<Quaternion> > NiKeyframeData::GetQuatRotateKeys() const
+{
 	return quaternionKeys;
 }
 
-unsigned int NiKeyframeData::numRotationKeysCalc(const NifInfo & info) const {
-	if (rotationType == XYZ_ROTATION_KEY) {
+unsigned int NiKeyframeData::numRotationKeysCalc(const NifInfo & info) const
+{
+	if(rotationType == XYZ_ROTATION_KEY)
+	{
 		return 1;
 	}
-	return (unsigned int)(quaternionKeys.size());
+	return (unsigned int) (quaternionKeys.size());
 }
 
-void NiKeyframeData::SetQuatRotateKeys( const vector< Key<Quaternion> > & keys ) {
+void NiKeyframeData::SetQuatRotateKeys(const vector< Key<Quaternion> > & keys)
+{
 	quaternionKeys = keys;
 }
 
-KeyType NiKeyframeData::GetXRotateType() const {
+KeyType NiKeyframeData::GetXRotateType() const
+{
 	return xyzRotations[0].interpolation;
 }
 
-void NiKeyframeData::SetXRotateType( KeyType t ) {
+void NiKeyframeData::SetXRotateType(KeyType t)
+{
 	xyzRotations[0].interpolation = t;
 }
 
-vector< Key<float> > NiKeyframeData::GetXRotateKeys() const {
+vector< Key<float> > NiKeyframeData::GetXRotateKeys() const
+{
 	return xyzRotations[0].keys;
 }
 
-void NiKeyframeData::SetXRotateKeys( const vector< Key<float> > & keys ) {
+void NiKeyframeData::SetXRotateKeys(const vector< Key<float> > & keys)
+{
 	xyzRotations[0].keys = keys;
 }
 
-KeyType NiKeyframeData::GetYRotateType() const {
+KeyType NiKeyframeData::GetYRotateType() const
+{
 	return xyzRotations[1].interpolation;
 }
 
-void NiKeyframeData::SetYRotateType( KeyType t ) {
+void NiKeyframeData::SetYRotateType(KeyType t)
+{
 	xyzRotations[1].interpolation = t;
 }
 
-vector< Key<float> > NiKeyframeData::GetYRotateKeys() const {
+vector< Key<float> > NiKeyframeData::GetYRotateKeys() const
+{
 	return xyzRotations[1].keys;
 }
 
-void NiKeyframeData::SetYRotateKeys( const vector< Key<float> > & keys ) {
+void NiKeyframeData::SetYRotateKeys(const vector< Key<float> > & keys)
+{
 	xyzRotations[1].keys = keys;
 }
 
-KeyType NiKeyframeData::GetZRotateType() const {
+KeyType NiKeyframeData::GetZRotateType() const
+{
 	return xyzRotations[2].interpolation;
 }
 
-void NiKeyframeData::SetZRotateType( KeyType t ) {
+void NiKeyframeData::SetZRotateType(KeyType t)
+{
 	xyzRotations[2].interpolation = t;
 }
 
-vector< Key<float> > NiKeyframeData::GetZRotateKeys() const {
+vector< Key<float> > NiKeyframeData::GetZRotateKeys() const
+{
 	return xyzRotations[2].keys;
 }
 
-void NiKeyframeData::SetZRotateKeys( const vector< Key<float> > & keys ) {
+void NiKeyframeData::SetZRotateKeys(const vector< Key<float> > & keys)
+{
 	xyzRotations[2].keys = keys;
 }
 
-KeyType NiKeyframeData::GetTranslateType() const {
+KeyType NiKeyframeData::GetTranslateType() const
+{
 	return translations.interpolation;
 }
 
-void NiKeyframeData::SetTranslateType( KeyType t ) {
+void NiKeyframeData::SetTranslateType(KeyType t)
+{
 	translations.interpolation = t;
 }
 
-vector< Key<Vector3> > NiKeyframeData::GetTranslateKeys() const {
+vector< Key<Vector3> > NiKeyframeData::GetTranslateKeys() const
+{
 	return translations.keys;
 }
 
-void NiKeyframeData::SetTranslateKeys( vector< Key<Vector3> > const & keys ) {
+void NiKeyframeData::SetTranslateKeys(vector< Key<Vector3> > const & keys)
+{
 	translations.keys = keys;
 }
 
-KeyType NiKeyframeData::GetScaleType() const {
+KeyType NiKeyframeData::GetScaleType() const
+{
 	return scales.interpolation;
 }
 
-void NiKeyframeData::SetScaleType( KeyType t ) {
+void NiKeyframeData::SetScaleType(KeyType t)
+{
 	scales.interpolation = t;
 }
 
-vector< Key<float> > NiKeyframeData::GetScaleKeys() const { 
+vector< Key<float> > NiKeyframeData::GetScaleKeys() const
+{
 	return scales.keys;
 }
 
-void NiKeyframeData::SetScaleKeys( vector< Key<float> > const & keys ) {
+void NiKeyframeData::SetScaleKeys(vector< Key<float> > const & keys)
+{
 	scales.keys = keys;
 }
 

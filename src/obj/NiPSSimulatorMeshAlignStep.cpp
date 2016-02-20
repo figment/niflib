@@ -18,81 +18,93 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiPSSimulatorMeshAlignStep::TYPE("NiPSSimulatorMeshAlignStep", &NiPSSimulatorStep::TYPE );
+const Type NiPSSimulatorMeshAlignStep::TYPE("NiPSSimulatorMeshAlignStep", &NiPSSimulatorStep::TYPE);
 
-NiPSSimulatorMeshAlignStep::NiPSSimulatorMeshAlignStep() : numRotationKeys((byte)0), rotationLoopBehavior((PSLoopBehavior)0) {
+NiPSSimulatorMeshAlignStep::NiPSSimulatorMeshAlignStep() : numRotationKeys((byte) 0), rotationLoopBehavior((PSLoopBehavior) 0)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-NiPSSimulatorMeshAlignStep::~NiPSSimulatorMeshAlignStep() {
+NiPSSimulatorMeshAlignStep::~NiPSSimulatorMeshAlignStep()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiPSSimulatorMeshAlignStep::GetType() const {
+const Type & NiPSSimulatorMeshAlignStep::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiPSSimulatorMeshAlignStep::Create() {
+NiObject * NiPSSimulatorMeshAlignStep::Create()
+{
 	return new NiPSSimulatorMeshAlignStep;
 }
 
-void NiPSSimulatorMeshAlignStep::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiPSSimulatorMeshAlignStep::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSSimulatorStep::Read( in, link_stack, info );
-	NifStream( numRotationKeys, in, info );
+	NiPSSimulatorStep::Read(in, link_stack, info);
+	NifStream(numRotationKeys, in, info);
 	rotationKeys.resize(numRotationKeys);
-	for (unsigned int i1 = 0; i1 < rotationKeys.size(); i1++) {
-		NifStream( rotationKeys[i1], in, info, 1 );
+	for(unsigned int i1 = 0; i1 < rotationKeys.size(); i1++)
+	{
+		NifStream(rotationKeys[i1], in, info, 1);
 	};
-	NifStream( rotationLoopBehavior, in, info );
+	NifStream(rotationLoopBehavior, in, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-void NiPSSimulatorMeshAlignStep::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiPSSimulatorMeshAlignStep::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSSimulatorStep::Write( out, link_map, missing_link_stack, info );
-	numRotationKeys = (byte)(rotationKeys.size());
-	NifStream( numRotationKeys, out, info );
-	for (unsigned int i1 = 0; i1 < rotationKeys.size(); i1++) {
-		NifStream( rotationKeys[i1], out, info, 1 );
+	NiPSSimulatorStep::Write(out, link_map, missing_link_stack, info);
+	numRotationKeys = (byte) (rotationKeys.size());
+	NifStream(numRotationKeys, out, info);
+	for(unsigned int i1 = 0; i1 < rotationKeys.size(); i1++)
+	{
+		NifStream(rotationKeys[i1], out, info, 1);
 	};
-	NifStream( rotationLoopBehavior, out, info );
+	NifStream(rotationLoopBehavior, out, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::string NiPSSimulatorMeshAlignStep::asString( bool verbose ) const {
+std::string NiPSSimulatorMeshAlignStep::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiPSSimulatorStep::asString();
-	numRotationKeys = (byte)(rotationKeys.size());
+	out << NiPSSimulatorStep::asString(verbose);
+	numRotationKeys = (byte) (rotationKeys.size());
 	out << "  Num Rotation Keys:  " << numRotationKeys << endl;
 	array_output_count = 0;
-	for (unsigned int i1 = 0; i1 < rotationKeys.size(); i1++) {
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+	for(unsigned int i1 = 0; i1 < rotationKeys.size(); i1++)
+	{
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 			break;
 		};
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			break;
 		};
 		out << "    Rotation Keys[" << i1 << "]:  " << rotationKeys[i1] << endl;
@@ -106,25 +118,28 @@ std::string NiPSSimulatorMeshAlignStep::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiPSSimulatorMeshAlignStep::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiPSSimulatorMeshAlignStep::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSSimulatorStep::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiPSSimulatorStep::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiPSSimulatorMeshAlignStep::GetRefs() const {
+std::list<NiObjectRef> NiPSSimulatorMeshAlignStep::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiPSSimulatorStep::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiPSSimulatorMeshAlignStep::GetPtrs() const {
+std::list<NiObject *> NiPSSimulatorMeshAlignStep::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiPSSimulatorStep::GetPtrs();
 	return ptrs;
@@ -133,19 +148,19 @@ std::list<NiObject *> NiPSSimulatorMeshAlignStep::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 vector<Key<Quaternion > > NiPSSimulatorMeshAlignStep::GetRotationKeys() const {
-	return rotationKeys;
+return rotationKeys;
 }
 
 void NiPSSimulatorMeshAlignStep::SetRotationKeys( const vector<Key<Quaternion > >& value ) {
-	rotationKeys = value;
+rotationKeys = value;
 }
 
 PSLoopBehavior NiPSSimulatorMeshAlignStep::GetRotationLoopBehavior() const {
-	return rotationLoopBehavior;
+return rotationLoopBehavior;
 }
 
 void NiPSSimulatorMeshAlignStep::SetRotationLoopBehavior( const PSLoopBehavior & value ) {
-	rotationLoopBehavior = value;
+rotationLoopBehavior = value;
 }
 
 ****End Example Naive Implementation***/

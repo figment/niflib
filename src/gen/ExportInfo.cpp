@@ -9,15 +9,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-ExportInfo::ExportInfo() : unknown((unsigned int)3) {};
+ExportInfo::ExportInfo() : unknown((unsigned int) 3) {};
 
 //Copy Constructor
-ExportInfo::ExportInfo( const ExportInfo & src ) {
+ExportInfo::ExportInfo(const ExportInfo & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-ExportInfo & ExportInfo::operator=( const ExportInfo & src ) {
+ExportInfo & ExportInfo::operator=(const ExportInfo & src)
+{
 	this->unknown = src.unknown;
 	this->creator = src.creator;
 	this->exportInfo1 = src.exportInfo1;

@@ -10,28 +10,27 @@ All rights reserved.  Please see niflib.h for license. */
 
 #include "../NIF_IO.h"
 
-namespace Niflib {
-
-
-/*! Unknown. */
-struct ByteColor3 {
-	/*! Default Constructor */
-	NIFLIB_API ByteColor3();
-	/*! Default Destructor */
-	NIFLIB_API ~ByteColor3();
-	/*! Copy Constructor */
-	NIFLIB_API ByteColor3( const ByteColor3 & src );
-	/*! Copy Operator */
-	NIFLIB_API ByteColor3 & operator=( const ByteColor3 & src );
-	/*! Red color component. */
-	byte r;
-	/*! Green color component. */
-	byte g;
-	/*! Blue color component. */
-	byte b;
-	//--BEGIN MISC CUSTOM CODE--//
-	//--END CUSTOM CODE--//
-};
-
+namespace Niflib
+{
+	/*! Unknown. */
+	struct ByteColor3
+	{
+		/*! Default Constructor */
+		NIFLIB_API ByteColor3();
+		/*! Default Destructor */
+		NIFLIB_API ~ByteColor3();
+		/*! Copy Constructor */
+		NIFLIB_API ByteColor3(const ByteColor3 & src);
+		/*! Copy Operator */
+		NIFLIB_API ByteColor3 & operator=(const ByteColor3 & src);
+		/*! Red color component. */
+		byte r;
+		/*! Green color component. */
+		byte g;
+		/*! Blue color component. */
+		byte b;
+		//--BEGIN MISC CUSTOM CODE--//
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

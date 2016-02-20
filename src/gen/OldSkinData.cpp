@@ -9,15 +9,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-OldSkinData::OldSkinData() : vertexWeight(0.0f), vertexIndex((unsigned short)0) {};
+OldSkinData::OldSkinData() : vertexWeight(0.0f), vertexIndex((unsigned short) 0) {};
 
 //Copy Constructor
-OldSkinData::OldSkinData( const OldSkinData & src ) {
+OldSkinData::OldSkinData(const OldSkinData & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-OldSkinData & OldSkinData::operator=( const OldSkinData & src ) {
+OldSkinData & OldSkinData::operator=(const OldSkinData & src)
+{
 	this->vertexWeight = src.vertexWeight;
 	this->vertexIndex = src.vertexIndex;
 	this->unknownVector = src.unknownVector;

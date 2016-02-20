@@ -18,59 +18,66 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type WaterShaderProperty::TYPE("WaterShaderProperty", &BSShaderProperty::TYPE );
+const Type WaterShaderProperty::TYPE("WaterShaderProperty", &BSShaderProperty::TYPE);
 
-WaterShaderProperty::WaterShaderProperty() {
+WaterShaderProperty::WaterShaderProperty()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-WaterShaderProperty::~WaterShaderProperty() {
+WaterShaderProperty::~WaterShaderProperty()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & WaterShaderProperty::GetType() const {
+const Type & WaterShaderProperty::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * WaterShaderProperty::Create() {
+NiObject * WaterShaderProperty::Create()
+{
 	return new WaterShaderProperty;
 }
 
-void WaterShaderProperty::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void WaterShaderProperty::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	BSShaderProperty::Read( in, link_stack, info );
+	BSShaderProperty::Read(in, link_stack, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-void WaterShaderProperty::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void WaterShaderProperty::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	BSShaderProperty::Write( out, link_map, missing_link_stack, info );
+	BSShaderProperty::Write(out, link_map, missing_link_stack, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::string WaterShaderProperty::asString( bool verbose ) const {
+std::string WaterShaderProperty::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << BSShaderProperty::asString();
+	out << BSShaderProperty::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//
@@ -78,25 +85,28 @@ std::string WaterShaderProperty::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void WaterShaderProperty::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void WaterShaderProperty::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	BSShaderProperty::FixLinks( objects, link_stack, missing_link_stack, info );
+	BSShaderProperty::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> WaterShaderProperty::GetRefs() const {
+std::list<NiObjectRef> WaterShaderProperty::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = BSShaderProperty::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> WaterShaderProperty::GetPtrs() const {
+std::list<NiObject *> WaterShaderProperty::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = BSShaderProperty::GetPtrs();
 	return ptrs;

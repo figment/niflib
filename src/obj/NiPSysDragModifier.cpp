@@ -18,80 +18,96 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiPSysDragModifier::TYPE("NiPSysDragModifier", &NiPSysModifier::TYPE );
+const Type NiPSysDragModifier::TYPE("NiPSysDragModifier", &NiPSysModifier::TYPE);
 
-NiPSysDragModifier::NiPSysDragModifier() : parent(NULL), percentage(0.0f), range(0.0f), rangeFalloff(0.0f) {
+NiPSysDragModifier::NiPSysDragModifier() : parent(NULL), percentage(0.0f), range(0.0f), rangeFalloff(0.0f)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-NiPSysDragModifier::~NiPSysDragModifier() {
+NiPSysDragModifier::~NiPSysDragModifier()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiPSysDragModifier::GetType() const {
+const Type & NiPSysDragModifier::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiPSysDragModifier::Create() {
+NiObject * NiPSysDragModifier::Create()
+{
 	return new NiPSysDragModifier;
 }
 
-void NiPSysDragModifier::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiPSysDragModifier::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
 	unsigned int block_num;
-	NiPSysModifier::Read( in, link_stack, info );
-	NifStream( block_num, in, info );
-	link_stack.push_back( block_num );
-	NifStream( dragAxis, in, info );
-	NifStream( percentage, in, info );
-	NifStream( range, in, info );
-	NifStream( rangeFalloff, in, info );
+	NiPSysModifier::Read(in, link_stack, info);
+	NifStream(block_num, in, info);
+	link_stack.push_back(block_num);
+	NifStream(dragAxis, in, info);
+	NifStream(percentage, in, info);
+	NifStream(range, in, info);
+	NifStream(rangeFalloff, in, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void NiPSysDragModifier::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiPSysDragModifier::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiPSysModifier::Write( out, link_map, missing_link_stack, info );
-	if ( info.version < VER_3_3_0_13 ) {
-		WritePtr32( &(*parent), out );
-	} else {
-		if ( parent != NULL ) {
-			map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(parent) );
-			if (it != link_map.end()) {
-				NifStream( it->second, out, info );
-				missing_link_stack.push_back( NULL );
-			} else {
-				NifStream( 0xFFFFFFFF, out, info );
-				missing_link_stack.push_back( parent );
+	NiPSysModifier::Write(out, link_map, missing_link_stack, info);
+	if(info.version < VER_3_3_0_13)
+	{
+		WritePtr32(&(*parent), out);
+	}
+	else
+	{
+		if(parent != NULL)
+		{
+			map<NiObjectRef, unsigned int>::const_iterator it = link_map.find(StaticCast<NiObject>(parent));
+			if(it != link_map.end())
+			{
+				NifStream(it->second, out, info);
+				missing_link_stack.push_back(NULL);
 			}
-		} else {
-			NifStream( 0xFFFFFFFF, out, info );
-			missing_link_stack.push_back( NULL );
+			else
+			{
+				NifStream(0xFFFFFFFF, out, info);
+				missing_link_stack.push_back(parent);
+			}
+		}
+		else
+		{
+			NifStream(0xFFFFFFFF, out, info);
+			missing_link_stack.push_back(NULL);
 		}
 	}
-	NifStream( dragAxis, out, info );
-	NifStream( percentage, out, info );
-	NifStream( range, out, info );
-	NifStream( rangeFalloff, out, info );
+	NifStream(dragAxis, out, info);
+	NifStream(percentage, out, info);
+	NifStream(range, out, info);
+	NifStream(rangeFalloff, out, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string NiPSysDragModifier::asString( bool verbose ) const {
+std::string NiPSysDragModifier::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSysModifier::asString();
+	out << NiPSysModifier::asString(verbose);
 	out << "  Parent:  " << parent << endl;
 	out << "  Drag Axis:  " << dragAxis << endl;
 	out << "  Percentage:  " << percentage << endl;
@@ -103,71 +119,74 @@ std::string NiPSysDragModifier::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiPSysDragModifier::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiPSysDragModifier::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiPSysModifier::FixLinks( objects, link_stack, missing_link_stack, info );
-	parent = FixLink<NiObject>( objects, link_stack, missing_link_stack, info );
+	NiPSysModifier::FixLinks(objects, link_stack, missing_link_stack, info);
+	parent = FixLink<NiObject>(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiPSysDragModifier::GetRefs() const {
+std::list<NiObjectRef> NiPSysDragModifier::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiPSysModifier::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiPSysDragModifier::GetPtrs() const {
+std::list<NiObject *> NiPSysDragModifier::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiPSysModifier::GetPtrs();
-	if ( parent != NULL )
-		ptrs.push_back((NiObject *)(parent));
+	if(parent != NULL)
+		ptrs.push_back((NiObject *) (parent));
 	return ptrs;
 }
 
 /***Begin Example Naive Implementation****
 
 NiObject * NiPSysDragModifier::GetParent() const {
-	return parent;
+return parent;
 }
 
 void NiPSysDragModifier::SetParent( NiObject * value ) {
-	parent = value;
+parent = value;
 }
 
 Vector3 NiPSysDragModifier::GetDragAxis() const {
-	return dragAxis;
+return dragAxis;
 }
 
 void NiPSysDragModifier::SetDragAxis( const Vector3 & value ) {
-	dragAxis = value;
+dragAxis = value;
 }
 
 float NiPSysDragModifier::GetPercentage() const {
-	return percentage;
+return percentage;
 }
 
 void NiPSysDragModifier::SetPercentage( float value ) {
-	percentage = value;
+percentage = value;
 }
 
 float NiPSysDragModifier::GetRange() const {
-	return range;
+return range;
 }
 
 void NiPSysDragModifier::SetRange( float value ) {
-	range = value;
+range = value;
 }
 
 float NiPSysDragModifier::GetRangeFalloff() const {
-	return rangeFalloff;
+return rangeFalloff;
 }
 
 void NiPSysDragModifier::SetRangeFalloff( float value ) {
-	rangeFalloff = value;
+rangeFalloff = value;
 }
 
 ****End Example Naive Implementation***/

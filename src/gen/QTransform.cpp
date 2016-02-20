@@ -12,12 +12,14 @@ using namespace Niflib;
 QTransform::QTransform() : scale(1.0f) {};
 
 //Copy Constructor
-QTransform::QTransform( const QTransform & src ) {
+QTransform::QTransform(const QTransform & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-QTransform & QTransform::operator=( const QTransform & src ) {
+QTransform & QTransform::operator=(const QTransform & src)
+{
 	this->translation = src.translation;
 	this->rotation = src.rotation;
 	this->scale = src.scale;

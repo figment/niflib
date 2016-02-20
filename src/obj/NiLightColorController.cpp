@@ -17,75 +17,85 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiLightColorController::TYPE("NiLightColorController", &NiPoint3InterpController::TYPE );
+const Type NiLightColorController::TYPE("NiLightColorController", &NiPoint3InterpController::TYPE);
 
-NiLightColorController::NiLightColorController() {
+NiLightColorController::NiLightColorController()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-NiLightColorController::~NiLightColorController() {
+NiLightColorController::~NiLightColorController()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiLightColorController::GetType() const {
+const Type & NiLightColorController::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiLightColorController::Create() {
+NiObject * NiLightColorController::Create()
+{
 	return new NiLightColorController;
 }
 
-void NiLightColorController::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiLightColorController::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiPoint3InterpController::Read( in, link_stack, info );
+	NiPoint3InterpController::Read(in, link_stack, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void NiLightColorController::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiLightColorController::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiPoint3InterpController::Write( out, link_map, missing_link_stack, info );
+	NiPoint3InterpController::Write(out, link_map, missing_link_stack, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string NiLightColorController::asString( bool verbose ) const {
+std::string NiLightColorController::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPoint3InterpController::asString();
+	out << NiPoint3InterpController::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void NiLightColorController::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiLightColorController::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiPoint3InterpController::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiPoint3InterpController::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiLightColorController::GetRefs() const {
+std::list<NiObjectRef> NiLightColorController::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiPoint3InterpController::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiLightColorController::GetPtrs() const {
+std::list<NiObject *> NiLightColorController::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiPoint3InterpController::GetPtrs();
 	return ptrs;

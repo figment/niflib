@@ -14,15 +14,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-BSVertexData::BSVertexData() : bitangentX((hfloat)0), unknownShort1((unsigned int)0), bitangentX2(0.0f), bitangentY((byte)0), bitangentZ((byte)0), unknownInt2((unsigned int)0) {};
+BSVertexData::BSVertexData() : bitangentX((hfloat) 0), unknownShort1((unsigned int) 0), bitangentX2(0.0f), bitangentY((byte) 0), bitangentZ((byte) 0), unknownInt2((unsigned int) 0) {};
 
 //Copy Constructor
-BSVertexData::BSVertexData( const BSVertexData & src ) {
+BSVertexData::BSVertexData(const BSVertexData & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-BSVertexData & BSVertexData::operator=( const BSVertexData & src ) {
+BSVertexData & BSVertexData::operator=(const BSVertexData & src)
+{
 	this->vertex = src.vertex;
 	this->bitangentX = src.bitangentX;
 	this->unknownShort1 = src.unknownShort1;

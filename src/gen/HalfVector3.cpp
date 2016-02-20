@@ -9,15 +9,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-HalfVector3::HalfVector3() : x((hfloat)0), y((hfloat)0), z((hfloat)0) {};
+HalfVector3::HalfVector3() : x((hfloat) 0), y((hfloat) 0), z((hfloat) 0) {};
 
 //Copy Constructor
-HalfVector3::HalfVector3( const HalfVector3 & src ) {
+HalfVector3::HalfVector3(const HalfVector3 & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-HalfVector3 & HalfVector3::operator=( const HalfVector3 & src ) {
+HalfVector3 & HalfVector3::operator=(const HalfVector3 & src)
+{
 	this->x = src.x;
 	this->y = src.y;
 	this->z = src.z;

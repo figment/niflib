@@ -10,33 +10,32 @@ All rights reserved.  Please see niflib.h for license. */
 
 #include "../NIF_IO.h"
 
-namespace Niflib {
+namespace Niflib
+{
+	/*!  */
+	struct BSConnectPoint
+	{
+		/*! Default Constructor */
+		NIFLIB_API BSConnectPoint();
+		/*! Default Destructor */
+		NIFLIB_API ~BSConnectPoint();
+		/*! Copy Constructor */
+		NIFLIB_API BSConnectPoint(const BSConnectPoint & src);
+		/*! Copy Operator */
+		NIFLIB_API BSConnectPoint & operator=(const BSConnectPoint & src);
+		/*! Unknown. */
+		string root;
+		/*! Unknown. */
+		string variableName;
+		/*! Unknown. */
+		Quaternion rotation;
+		/*! Unknown. */
+		Vector3 translation;
+		/*! Unknown. */
+		float scale;
+		//--BEGIN MISC CUSTOM CODE--//
 
-
-/*!  */
-struct BSConnectPoint {
-	/*! Default Constructor */
-	NIFLIB_API BSConnectPoint();
-	/*! Default Destructor */
-	NIFLIB_API ~BSConnectPoint();
-	/*! Copy Constructor */
-	NIFLIB_API BSConnectPoint( const BSConnectPoint & src );
-	/*! Copy Operator */
-	NIFLIB_API BSConnectPoint & operator=( const BSConnectPoint & src );
-	/*! Unknown. */
-	string root;
-	/*! Unknown. */
-	string variableName;
-	/*! Unknown. */
-	Quaternion rotation;
-	/*! Unknown. */
-	Vector3 translation;
-	/*! Unknown. */
-	float scale;
-	//--BEGIN MISC CUSTOM CODE--//
-
-	//--END CUSTOM CODE--//
-};
-
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

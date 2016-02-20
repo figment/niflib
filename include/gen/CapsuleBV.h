@@ -10,30 +10,29 @@ All rights reserved.  Please see niflib.h for license. */
 
 #include "../NIF_IO.h"
 
-namespace Niflib {
-
-
-/*! Capsule Bounding Volume */
-struct CapsuleBV {
-	/*! Default Constructor */
-	NIFLIB_API CapsuleBV();
-	/*! Default Destructor */
-	NIFLIB_API ~CapsuleBV();
-	/*! Copy Constructor */
-	NIFLIB_API CapsuleBV( const CapsuleBV & src );
-	/*! Copy Operator */
-	NIFLIB_API CapsuleBV & operator=( const CapsuleBV & src );
-	/*! Center */
-	Vector3 center;
-	/*! Origin */
-	Vector3 origin;
-	/*! Unknown. */
-	float unknownFloat1;
-	/*! Unknown. */
-	float unknownFloat2;
-	//--BEGIN MISC CUSTOM CODE--//
-	//--END CUSTOM CODE--//
-};
-
+namespace Niflib
+{
+	/*! Capsule Bounding Volume */
+	struct CapsuleBV
+	{
+		/*! Default Constructor */
+		NIFLIB_API CapsuleBV();
+		/*! Default Destructor */
+		NIFLIB_API ~CapsuleBV();
+		/*! Copy Constructor */
+		NIFLIB_API CapsuleBV(const CapsuleBV & src);
+		/*! Copy Operator */
+		NIFLIB_API CapsuleBV & operator=(const CapsuleBV & src);
+		/*! Center */
+		Vector3 center;
+		/*! Origin */
+		Vector3 origin;
+		/*! Unknown. */
+		float unknownFloat1;
+		/*! Unknown. */
+		float unknownFloat2;
+		//--BEGIN MISC CUSTOM CODE--//
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

@@ -18,59 +18,66 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type BSDistantTreeShaderProperty::TYPE("BSDistantTreeShaderProperty", &BSShaderProperty::TYPE );
+const Type BSDistantTreeShaderProperty::TYPE("BSDistantTreeShaderProperty", &BSShaderProperty::TYPE);
 
-BSDistantTreeShaderProperty::BSDistantTreeShaderProperty() {
+BSDistantTreeShaderProperty::BSDistantTreeShaderProperty()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-BSDistantTreeShaderProperty::~BSDistantTreeShaderProperty() {
+BSDistantTreeShaderProperty::~BSDistantTreeShaderProperty()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & BSDistantTreeShaderProperty::GetType() const {
+const Type & BSDistantTreeShaderProperty::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * BSDistantTreeShaderProperty::Create() {
+NiObject * BSDistantTreeShaderProperty::Create()
+{
 	return new BSDistantTreeShaderProperty;
 }
 
-void BSDistantTreeShaderProperty::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void BSDistantTreeShaderProperty::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	BSShaderProperty::Read( in, link_stack, info );
+	BSShaderProperty::Read(in, link_stack, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-void BSDistantTreeShaderProperty::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void BSDistantTreeShaderProperty::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	BSShaderProperty::Write( out, link_map, missing_link_stack, info );
+	BSShaderProperty::Write(out, link_map, missing_link_stack, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::string BSDistantTreeShaderProperty::asString( bool verbose ) const {
+std::string BSDistantTreeShaderProperty::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << BSShaderProperty::asString();
+	out << BSShaderProperty::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//
@@ -78,25 +85,28 @@ std::string BSDistantTreeShaderProperty::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void BSDistantTreeShaderProperty::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void BSDistantTreeShaderProperty::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	BSShaderProperty::FixLinks( objects, link_stack, missing_link_stack, info );
+	BSShaderProperty::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> BSDistantTreeShaderProperty::GetRefs() const {
+std::list<NiObjectRef> BSDistantTreeShaderProperty::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = BSShaderProperty::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> BSDistantTreeShaderProperty::GetPtrs() const {
+std::list<NiObject *> BSDistantTreeShaderProperty::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = BSShaderProperty::GetPtrs();
 	return ptrs;

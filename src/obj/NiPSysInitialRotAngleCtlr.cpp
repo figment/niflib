@@ -18,59 +18,66 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiPSysInitialRotAngleCtlr::TYPE("NiPSysInitialRotAngleCtlr", &NiPSysModifierFloatCtlr::TYPE );
+const Type NiPSysInitialRotAngleCtlr::TYPE("NiPSysInitialRotAngleCtlr", &NiPSysModifierFloatCtlr::TYPE);
 
-NiPSysInitialRotAngleCtlr::NiPSysInitialRotAngleCtlr() {
+NiPSysInitialRotAngleCtlr::NiPSysInitialRotAngleCtlr()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-NiPSysInitialRotAngleCtlr::~NiPSysInitialRotAngleCtlr() {
+NiPSysInitialRotAngleCtlr::~NiPSysInitialRotAngleCtlr()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiPSysInitialRotAngleCtlr::GetType() const {
+const Type & NiPSysInitialRotAngleCtlr::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiPSysInitialRotAngleCtlr::Create() {
+NiObject * NiPSysInitialRotAngleCtlr::Create()
+{
 	return new NiPSysInitialRotAngleCtlr;
 }
 
-void NiPSysInitialRotAngleCtlr::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiPSysInitialRotAngleCtlr::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSysModifierFloatCtlr::Read( in, link_stack, info );
+	NiPSysModifierFloatCtlr::Read(in, link_stack, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-void NiPSysInitialRotAngleCtlr::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiPSysInitialRotAngleCtlr::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSysModifierFloatCtlr::Write( out, link_map, missing_link_stack, info );
+	NiPSysModifierFloatCtlr::Write(out, link_map, missing_link_stack, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::string NiPSysInitialRotAngleCtlr::asString( bool verbose ) const {
+std::string NiPSysInitialRotAngleCtlr::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSysModifierFloatCtlr::asString();
+	out << NiPSysModifierFloatCtlr::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//
@@ -78,25 +85,28 @@ std::string NiPSysInitialRotAngleCtlr::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiPSysInitialRotAngleCtlr::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiPSysInitialRotAngleCtlr::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSysModifierFloatCtlr::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiPSysModifierFloatCtlr::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiPSysInitialRotAngleCtlr::GetRefs() const {
+std::list<NiObjectRef> NiPSysInitialRotAngleCtlr::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiPSysModifierFloatCtlr::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiPSysInitialRotAngleCtlr::GetPtrs() const {
+std::list<NiObject *> NiPSysInitialRotAngleCtlr::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiPSysModifierFloatCtlr::GetPtrs();
 	return ptrs;

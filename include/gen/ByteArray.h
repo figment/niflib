@@ -10,26 +10,25 @@ All rights reserved.  Please see niflib.h for license. */
 
 #include "../NIF_IO.h"
 
-namespace Niflib {
-
-
-/*! An array of bytes. */
-struct ByteArray {
-	/*! Default Constructor */
-	NIFLIB_API ByteArray();
-	/*! Default Destructor */
-	NIFLIB_API ~ByteArray();
-	/*! Copy Constructor */
-	NIFLIB_API ByteArray( const ByteArray & src );
-	/*! Copy Operator */
-	NIFLIB_API ByteArray & operator=( const ByteArray & src );
-	/*! The number of bytes in this array */
-	mutable unsigned int dataSize;
-	/*! The bytes which make up the array */
-	vector<byte > data;
-	//--BEGIN MISC CUSTOM CODE--//
-	//--END CUSTOM CODE--//
-};
-
+namespace Niflib
+{
+	/*! An array of bytes. */
+	struct ByteArray
+	{
+		/*! Default Constructor */
+		NIFLIB_API ByteArray();
+		/*! Default Destructor */
+		NIFLIB_API ~ByteArray();
+		/*! Copy Constructor */
+		NIFLIB_API ByteArray(const ByteArray & src);
+		/*! Copy Operator */
+		NIFLIB_API ByteArray & operator=(const ByteArray & src);
+		/*! The number of bytes in this array */
+		mutable unsigned int dataSize;
+		/*! The bytes which make up the array */
+		vector<byte > data;
+		//--BEGIN MISC CUSTOM CODE--//
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

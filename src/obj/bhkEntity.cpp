@@ -17,75 +17,85 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type bhkEntity::TYPE("bhkEntity", &bhkWorldObject::TYPE );
+const Type bhkEntity::TYPE("bhkEntity", &bhkWorldObject::TYPE);
 
-bhkEntity::bhkEntity() {
+bhkEntity::bhkEntity()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-bhkEntity::~bhkEntity() {
+bhkEntity::~bhkEntity()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & bhkEntity::GetType() const {
+const Type & bhkEntity::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * bhkEntity::Create() {
+NiObject * bhkEntity::Create()
+{
 	return new bhkEntity;
 }
 
-void bhkEntity::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void bhkEntity::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	bhkWorldObject::Read( in, link_stack, info );
+	bhkWorldObject::Read(in, link_stack, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void bhkEntity::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void bhkEntity::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	bhkWorldObject::Write( out, link_map, missing_link_stack, info );
+	bhkWorldObject::Write(out, link_map, missing_link_stack, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string bhkEntity::asString( bool verbose ) const {
+std::string bhkEntity::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << bhkWorldObject::asString();
+	out << bhkWorldObject::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void bhkEntity::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void bhkEntity::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	bhkWorldObject::FixLinks( objects, link_stack, missing_link_stack, info );
+	bhkWorldObject::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> bhkEntity::GetRefs() const {
+std::list<NiObjectRef> bhkEntity::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = bhkWorldObject::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> bhkEntity::GetPtrs() const {
+std::list<NiObject *> bhkEntity::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = bhkWorldObject::GetPtrs();
 	return ptrs;

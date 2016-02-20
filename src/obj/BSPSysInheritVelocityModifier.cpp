@@ -18,67 +18,74 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type BSPSysInheritVelocityModifier::TYPE("BSPSysInheritVelocityModifier", &NiPSysModifier::TYPE );
+const Type BSPSysInheritVelocityModifier::TYPE("BSPSysInheritVelocityModifier", &NiPSysModifier::TYPE);
 
-BSPSysInheritVelocityModifier::BSPSysInheritVelocityModifier() : unknownInt1((unsigned int)0), unknownFloat1(0.0f), unknownFloat2(0.0f), unknownFloat3(0.0f) {
+BSPSysInheritVelocityModifier::BSPSysInheritVelocityModifier() : unknownInt1((unsigned int) 0), unknownFloat1(0.0f), unknownFloat2(0.0f), unknownFloat3(0.0f)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-BSPSysInheritVelocityModifier::~BSPSysInheritVelocityModifier() {
+BSPSysInheritVelocityModifier::~BSPSysInheritVelocityModifier()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & BSPSysInheritVelocityModifier::GetType() const {
+const Type & BSPSysInheritVelocityModifier::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * BSPSysInheritVelocityModifier::Create() {
+NiObject * BSPSysInheritVelocityModifier::Create()
+{
 	return new BSPSysInheritVelocityModifier;
 }
 
-void BSPSysInheritVelocityModifier::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void BSPSysInheritVelocityModifier::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSysModifier::Read( in, link_stack, info );
-	NifStream( unknownInt1, in, info );
-	NifStream( unknownFloat1, in, info );
-	NifStream( unknownFloat2, in, info );
-	NifStream( unknownFloat3, in, info );
+	NiPSysModifier::Read(in, link_stack, info);
+	NifStream(unknownInt1, in, info);
+	NifStream(unknownFloat1, in, info);
+	NifStream(unknownFloat2, in, info);
+	NifStream(unknownFloat3, in, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-void BSPSysInheritVelocityModifier::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void BSPSysInheritVelocityModifier::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSysModifier::Write( out, link_map, missing_link_stack, info );
-	NifStream( unknownInt1, out, info );
-	NifStream( unknownFloat1, out, info );
-	NifStream( unknownFloat2, out, info );
-	NifStream( unknownFloat3, out, info );
+	NiPSysModifier::Write(out, link_map, missing_link_stack, info);
+	NifStream(unknownInt1, out, info);
+	NifStream(unknownFloat1, out, info);
+	NifStream(unknownFloat2, out, info);
+	NifStream(unknownFloat3, out, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::string BSPSysInheritVelocityModifier::asString( bool verbose ) const {
+std::string BSPSysInheritVelocityModifier::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSysModifier::asString();
+	out << NiPSysModifier::asString(verbose);
 	out << "  Unknown Int 1:  " << unknownInt1 << endl;
 	out << "  Unknown Float 1:  " << unknownFloat1 << endl;
 	out << "  Unknown Float 2:  " << unknownFloat2 << endl;
@@ -90,25 +97,28 @@ std::string BSPSysInheritVelocityModifier::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void BSPSysInheritVelocityModifier::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void BSPSysInheritVelocityModifier::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSysModifier::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiPSysModifier::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> BSPSysInheritVelocityModifier::GetRefs() const {
+std::list<NiObjectRef> BSPSysInheritVelocityModifier::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiPSysModifier::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> BSPSysInheritVelocityModifier::GetPtrs() const {
+std::list<NiObject *> BSPSysInheritVelocityModifier::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiPSysModifier::GetPtrs();
 	return ptrs;

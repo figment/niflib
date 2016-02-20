@@ -12,12 +12,14 @@ using namespace Niflib;
 MTransform::MTransform() : scale(1.0f) {};
 
 //Copy Constructor
-MTransform::MTransform( const MTransform & src ) {
+MTransform::MTransform(const MTransform & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-MTransform & MTransform::operator=( const MTransform & src ) {
+MTransform & MTransform::operator=(const MTransform & src)
+{
 	this->translation = src.translation;
 	this->rotation = src.rotation;
 	this->scale = src.scale;

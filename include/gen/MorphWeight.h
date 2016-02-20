@@ -12,28 +12,28 @@ All rights reserved.  Please see niflib.h for license. */
 
 // Include structures
 #include "../Ref.h"
-namespace Niflib {
+namespace Niflib
+{
+	// Forward define of referenced NIF objects
+	class NiInterpolator;
 
-// Forward define of referenced NIF objects
-class NiInterpolator;
-
-/*!  */
-struct MorphWeight {
-	/*! Default Constructor */
-	NIFLIB_API MorphWeight();
-	/*! Default Destructor */
-	NIFLIB_API ~MorphWeight();
-	/*! Copy Constructor */
-	NIFLIB_API MorphWeight( const MorphWeight & src );
-	/*! Copy Operator */
-	NIFLIB_API MorphWeight & operator=( const MorphWeight & src );
-	/*! Interpolator */
-	Ref<NiInterpolator > interpolator;
-	/*! Weight */
-	float weight_;
-	//--BEGIN MISC CUSTOM CODE--//
-	//--END CUSTOM CODE--//
-};
-
+	/*!  */
+	struct MorphWeight
+	{
+		/*! Default Constructor */
+		NIFLIB_API MorphWeight();
+		/*! Default Destructor */
+		NIFLIB_API ~MorphWeight();
+		/*! Copy Constructor */
+		NIFLIB_API MorphWeight(const MorphWeight & src);
+		/*! Copy Operator */
+		NIFLIB_API MorphWeight & operator=(const MorphWeight & src);
+		/*! Interpolator */
+		Ref<NiInterpolator > interpolator;
+		/*! Weight */
+		float weight_;
+		//--BEGIN MISC CUSTOM CODE--//
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

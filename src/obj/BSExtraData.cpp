@@ -18,59 +18,66 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type BSExtraData::TYPE("BSExtraData", &NiExtraData::TYPE );
+const Type BSExtraData::TYPE("BSExtraData", &NiExtraData::TYPE);
 
-BSExtraData::BSExtraData() {
+BSExtraData::BSExtraData()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-BSExtraData::~BSExtraData() {
+BSExtraData::~BSExtraData()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & BSExtraData::GetType() const {
+const Type & BSExtraData::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * BSExtraData::Create() {
+NiObject * BSExtraData::Create()
+{
 	return new BSExtraData;
 }
 
-void BSExtraData::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void BSExtraData::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiExtraData::Read( in, link_stack, info );
+	NiExtraData::Read(in, link_stack, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-void BSExtraData::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void BSExtraData::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiExtraData::Write( out, link_map, missing_link_stack, info );
+	NiExtraData::Write(out, link_map, missing_link_stack, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::string BSExtraData::asString( bool verbose ) const {
+std::string BSExtraData::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiExtraData::asString();
+	out << NiExtraData::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//
@@ -78,25 +85,28 @@ std::string BSExtraData::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void BSExtraData::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void BSExtraData::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiExtraData::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiExtraData::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> BSExtraData::GetRefs() const {
+std::list<NiObjectRef> BSExtraData::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiExtraData::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> BSExtraData::GetPtrs() const {
+std::list<NiObject *> BSExtraData::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiExtraData::GetPtrs();
 	return ptrs;

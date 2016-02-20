@@ -9,15 +9,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-AdditionalDataBlock::AdditionalDataBlock() : hasData(false), blockSize((int)0), numBlocks((int)0), numData((int)0) {};
+AdditionalDataBlock::AdditionalDataBlock() : hasData(false), blockSize((int) 0), numBlocks((int) 0), numData((int) 0) {};
 
 //Copy Constructor
-AdditionalDataBlock::AdditionalDataBlock( const AdditionalDataBlock & src ) {
+AdditionalDataBlock::AdditionalDataBlock(const AdditionalDataBlock & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-AdditionalDataBlock & AdditionalDataBlock::operator=( const AdditionalDataBlock & src ) {
+AdditionalDataBlock & AdditionalDataBlock::operator=(const AdditionalDataBlock & src)
+{
 	this->hasData = src.hasData;
 	this->blockSize = src.blockSize;
 	this->numBlocks = src.numBlocks;

@@ -17,54 +17,61 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiPSysModifierCtlr::TYPE("NiPSysModifierCtlr", &NiSingleInterpController::TYPE );
+const Type NiPSysModifierCtlr::TYPE("NiPSysModifierCtlr", &NiSingleInterpController::TYPE);
 
-NiPSysModifierCtlr::NiPSysModifierCtlr() {
+NiPSysModifierCtlr::NiPSysModifierCtlr()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-NiPSysModifierCtlr::~NiPSysModifierCtlr() {
+NiPSysModifierCtlr::~NiPSysModifierCtlr()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiPSysModifierCtlr::GetType() const {
+const Type & NiPSysModifierCtlr::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiPSysModifierCtlr::Create() {
+NiObject * NiPSysModifierCtlr::Create()
+{
 	return new NiPSysModifierCtlr;
 }
 
-void NiPSysModifierCtlr::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiPSysModifierCtlr::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiSingleInterpController::Read( in, link_stack, info );
-	NifStream( modifierName, in, info );
+	NiSingleInterpController::Read(in, link_stack, info);
+	NifStream(modifierName, in, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void NiPSysModifierCtlr::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiPSysModifierCtlr::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiSingleInterpController::Write( out, link_map, missing_link_stack, info );
-	NifStream( modifierName, out, info );
+	NiSingleInterpController::Write(out, link_map, missing_link_stack, info);
+	NifStream(modifierName, out, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string NiPSysModifierCtlr::asString( bool verbose ) const {
+std::string NiPSysModifierCtlr::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiSingleInterpController::asString();
+	out << NiSingleInterpController::asString(verbose);
 	out << "  Modifier Name:  " << modifierName << endl;
 	return out.str();
 
@@ -72,23 +79,26 @@ std::string NiPSysModifierCtlr::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiPSysModifierCtlr::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiPSysModifierCtlr::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiSingleInterpController::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiSingleInterpController::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiPSysModifierCtlr::GetRefs() const {
+std::list<NiObjectRef> NiPSysModifierCtlr::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiSingleInterpController::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiPSysModifierCtlr::GetPtrs() const {
+std::list<NiObject *> NiPSysModifierCtlr::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiSingleInterpController::GetPtrs();
 	return ptrs;
@@ -97,11 +107,11 @@ std::list<NiObject *> NiPSysModifierCtlr::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 IndexString NiPSysModifierCtlr::GetModifierName() const {
-	return modifierName;
+return modifierName;
 }
 
 void NiPSysModifierCtlr::SetModifierName( const IndexString & value ) {
-	modifierName = value;
+modifierName = value;
 }
 
 ****End Example Naive Implementation***/

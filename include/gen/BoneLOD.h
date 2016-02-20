@@ -10,27 +10,26 @@ All rights reserved.  Please see niflib.h for license. */
 
 #include "../NIF_IO.h"
 
-namespace Niflib {
+namespace Niflib
+{
+	/*! Stores Bone Level of Detail info in a BSBoneLODExtraData */
+	struct BoneLOD
+	{
+		/*! Default Constructor */
+		NIFLIB_API BoneLOD();
+		/*! Default Destructor */
+		NIFLIB_API ~BoneLOD();
+		/*! Copy Constructor */
+		NIFLIB_API BoneLOD(const BoneLOD & src);
+		/*! Copy Operator */
+		NIFLIB_API BoneLOD & operator=(const BoneLOD & src);
+		/*! Distance to cull? */
+		unsigned int distance;
+		/*! The bones name */
+		IndexString boneName;
+		//--BEGIN MISC CUSTOM CODE--//
 
-
-/*! Stores Bone Level of Detail info in a BSBoneLODExtraData */
-struct BoneLOD {
-	/*! Default Constructor */
-	NIFLIB_API BoneLOD();
-	/*! Default Destructor */
-	NIFLIB_API ~BoneLOD();
-	/*! Copy Constructor */
-	NIFLIB_API BoneLOD( const BoneLOD & src );
-	/*! Copy Operator */
-	NIFLIB_API BoneLOD & operator=( const BoneLOD & src );
-	/*! Distance to cull? */
-	unsigned int distance;
-	/*! The bones name */
-	IndexString boneName;
-	//--BEGIN MISC CUSTOM CODE--//
-
-	//--END CUSTOM CODE--//
-};
-
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

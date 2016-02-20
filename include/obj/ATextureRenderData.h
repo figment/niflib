@@ -20,209 +20,209 @@ All rights reserved.  Please see niflib.h for license. */
 #include "../gen/ChannelData.h"
 #include "../Ref.h"
 #include "../gen/MipMap.h"
-namespace Niflib {
+namespace Niflib
+{
+	// Forward define of referenced NIF objects
+	class NiPalette;
+	class ATextureRenderData;
+	typedef Ref<ATextureRenderData> ATextureRenderDataRef;
 
-// Forward define of referenced NIF objects
-class NiPalette;
-class ATextureRenderData;
-typedef Ref<ATextureRenderData> ATextureRenderDataRef;
+	/*!  */
+	class ATextureRenderData : public NiObject
+	{
+	public:
+		/*! Constructor */
+		NIFLIB_API ATextureRenderData();
 
-/*!  */
-class ATextureRenderData : public NiObject {
-public:
-	/*! Constructor */
-	NIFLIB_API ATextureRenderData();
+		/*! Destructor */
+		NIFLIB_API virtual ~ATextureRenderData();
 
-	/*! Destructor */
-	NIFLIB_API virtual ~ATextureRenderData();
+		/*!
+		 * A constant value which uniquly identifies objects of this type.
+		 */
+		NIFLIB_API static const Type TYPE;
 
-	/*!
-	 * A constant value which uniquly identifies objects of this type.
-	 */
-	NIFLIB_API static const Type TYPE;
+		/*!
+		 * A factory function used during file reading to create an instance of this type of object.
+		 * \return A pointer to a newly allocated instance of this type of object.
+		 */
+		NIFLIB_API static NiObject * Create();
 
-	/*!
-	 * A factory function used during file reading to create an instance of this type of object.
-	 * \return A pointer to a newly allocated instance of this type of object.
-	 */
-	NIFLIB_API static NiObject * Create();
+		/*!
+		 * Summarizes the information contained in this object in English.
+		 * \param[in] verbose Determines whether or not detailed information about large areas of data will be printed out.
+		 * \return A string containing a summary of the information within the object in English.  This is the function that Niflyze calls to generate its analysis, so the output is the same.
+		 */
+		NIFLIB_API virtual string asString(bool verbose = false) const;
 
-	/*!
-	 * Summarizes the information contained in this object in English.
-	 * \param[in] verbose Determines whether or not detailed information about large areas of data will be printed out.
-	 * \return A string containing a summary of the information within the object in English.  This is the function that Niflyze calls to generate its analysis, so the output is the same.
-	 */
-	NIFLIB_API virtual string asString( bool verbose = false ) const;
+		/*!
+		 * Used to determine the type of a particular instance of this object.
+		 * \return The type constant for the actual type of the object.
+		 */
+		NIFLIB_API virtual const Type & GetType() const;
 
-	/*!
-	 * Used to determine the type of a particular instance of this object.
-	 * \return The type constant for the actual type of the object.
-	 */
-	NIFLIB_API virtual const Type & GetType() const;
+		/***Begin Example Naive Implementation****
 
-	/***Begin Example Naive Implementation****
+		// The format of the pixels in this internally stored image.
+		// \return The current value.
+		PixelFormat GetPixelFormat() const;
 
-	// The format of the pixels in this internally stored image.
-	// \return The current value.
-	PixelFormat GetPixelFormat() const;
+		// The format of the pixels in this internally stored image.
+		// \param[in] value The new value.
+		void SetPixelFormat( const PixelFormat & value );
 
-	// The format of the pixels in this internally stored image.
-	// \param[in] value The new value.
-	void SetPixelFormat( const PixelFormat & value );
+		// 0x000000ff (for 24bpp and 32bpp) or 0x00000000 (for 8bpp)
+		// \return The current value.
+		unsigned int GetRedMask() const;
 
-	// 0x000000ff (for 24bpp and 32bpp) or 0x00000000 (for 8bpp)
-	// \return The current value.
-	unsigned int GetRedMask() const;
+		// 0x000000ff (for 24bpp and 32bpp) or 0x00000000 (for 8bpp)
+		// \param[in] value The new value.
+		void SetRedMask( unsigned int value );
 
-	// 0x000000ff (for 24bpp and 32bpp) or 0x00000000 (for 8bpp)
-	// \param[in] value The new value.
-	void SetRedMask( unsigned int value );
+		// 0x0000ff00 (for 24bpp and 32bpp) or 0x00000000 (for 8bpp)
+		// \return The current value.
+		unsigned int GetGreenMask() const;
 
-	// 0x0000ff00 (for 24bpp and 32bpp) or 0x00000000 (for 8bpp)
-	// \return The current value.
-	unsigned int GetGreenMask() const;
+		// 0x0000ff00 (for 24bpp and 32bpp) or 0x00000000 (for 8bpp)
+		// \param[in] value The new value.
+		void SetGreenMask( unsigned int value );
 
-	// 0x0000ff00 (for 24bpp and 32bpp) or 0x00000000 (for 8bpp)
-	// \param[in] value The new value.
-	void SetGreenMask( unsigned int value );
+		// 0x00ff0000 (for 24bpp and 32bpp) or 0x00000000 (for 8bpp)
+		// \return The current value.
+		unsigned int GetBlueMask() const;
 
-	// 0x00ff0000 (for 24bpp and 32bpp) or 0x00000000 (for 8bpp)
-	// \return The current value.
-	unsigned int GetBlueMask() const;
+		// 0x00ff0000 (for 24bpp and 32bpp) or 0x00000000 (for 8bpp)
+		// \param[in] value The new value.
+		void SetBlueMask( unsigned int value );
 
-	// 0x00ff0000 (for 24bpp and 32bpp) or 0x00000000 (for 8bpp)
-	// \param[in] value The new value.
-	void SetBlueMask( unsigned int value );
+		// 0xff000000 (for 32bpp) or 0x00000000 (for 24bpp and 8bpp)
+		// \return The current value.
+		unsigned int GetAlphaMask() const;
 
-	// 0xff000000 (for 32bpp) or 0x00000000 (for 24bpp and 8bpp)
-	// \return The current value.
-	unsigned int GetAlphaMask() const;
+		// 0xff000000 (for 32bpp) or 0x00000000 (for 24bpp and 8bpp)
+		// \param[in] value The new value.
+		void SetAlphaMask( unsigned int value );
 
-	// 0xff000000 (for 32bpp) or 0x00000000 (for 24bpp and 8bpp)
-	// \param[in] value The new value.
-	void SetAlphaMask( unsigned int value );
+		// Bits per pixel, 0 (?), 8, 24 or 32.
+		// \return The current value.
+		byte GetBitsPerPixel() const;
 
-	// Bits per pixel, 0 (?), 8, 24 or 32.
-	// \return The current value.
-	byte GetBitsPerPixel() const;
+		// Bits per pixel, 0 (?), 8, 24 or 32.
+		// \param[in] value The new value.
+		void SetBitsPerPixel( byte value );
 
-	// Bits per pixel, 0 (?), 8, 24 or 32.
-	// \param[in] value The new value.
-	void SetBitsPerPixel( byte value );
+		// Bits per pixel, 0 (?), 8, 24 or 32.
+		// \return The current value.
+		byte GetBitsPerPixel() const;
 
-	// Bits per pixel, 0 (?), 8, 24 or 32.
-	// \return The current value.
-	byte GetBitsPerPixel() const;
+		// Bits per pixel, 0 (?), 8, 24 or 32.
+		// \param[in] value The new value.
+		void SetBitsPerPixel( byte value );
 
-	// Bits per pixel, 0 (?), 8, 24 or 32.
-	// \param[in] value The new value.
-	void SetBitsPerPixel( byte value );
+		// Flags
+		// \return The current value.
+		byte GetFlags() const;
 
-	// Flags
-	// \return The current value.
-	byte GetFlags() const;
+		// Flags
+		// \param[in] value The new value.
+		void SetFlags( byte value );
 
-	// Flags
-	// \param[in] value The new value.
-	void SetFlags( byte value );
+		// Channel Data
+		// \return The current value.
+		array<4,ChannelData >  GetChannels() const;
 
-	// Channel Data
-	// \return The current value.
-	array<4,ChannelData >  GetChannels() const;
+		// Channel Data
+		// \param[in] value The new value.
+		void SetChannels( const array<4,ChannelData >&  value );
 
-	// Channel Data
-	// \param[in] value The new value.
-	void SetChannels( const array<4,ChannelData >&  value );
+		// Link to NiPalette, for 8-bit textures.
+		// \return The current value.
+		Ref<NiPalette > GetPalette() const;
 
-	// Link to NiPalette, for 8-bit textures.
-	// \return The current value.
-	Ref<NiPalette > GetPalette() const;
+		// Link to NiPalette, for 8-bit textures.
+		// \param[in] value The new value.
+		void SetPalette( Ref<NiPalette > value );
 
-	// Link to NiPalette, for 8-bit textures.
-	// \param[in] value The new value.
-	void SetPalette( Ref<NiPalette > value );
+		// Bytes per pixel (Bits Per Pixel / 8).
+		// \return The current value.
+		unsigned int GetBytesPerPixel() const;
 
-	// Bytes per pixel (Bits Per Pixel / 8).
-	// \return The current value.
-	unsigned int GetBytesPerPixel() const;
+		// Bytes per pixel (Bits Per Pixel / 8).
+		// \param[in] value The new value.
+		void SetBytesPerPixel( unsigned int value );
 
-	// Bytes per pixel (Bits Per Pixel / 8).
-	// \param[in] value The new value.
-	void SetBytesPerPixel( unsigned int value );
+		// Mipmap descriptions (width, height, offset).
+		// \return The current value.
+		vector<MipMap > GetMipmaps() const;
 
-	// Mipmap descriptions (width, height, offset).
-	// \return The current value.
-	vector<MipMap > GetMipmaps() const;
+		// Mipmap descriptions (width, height, offset).
+		// \param[in] value The new value.
+		void SetMipmaps( const vector<MipMap >& value );
 
-	// Mipmap descriptions (width, height, offset).
-	// \param[in] value The new value.
-	void SetMipmaps( const vector<MipMap >& value );
+		****End Example Naive Implementation***/
 
-	****End Example Naive Implementation***/
+		//--BEGIN MISC CUSTOM CODE--//
 
-	//--BEGIN MISC CUSTOM CODE--//
+		//--END CUSTOM CODE--//
+	protected:
+		/*! The format of the pixels in this internally stored image. */
+		PixelFormat pixelFormat;
+		/*! 0x000000ff (for 24bpp and 32bpp) or 0x00000000 (for 8bpp) */
+		unsigned int redMask;
+		/*! 0x0000ff00 (for 24bpp and 32bpp) or 0x00000000 (for 8bpp) */
+		unsigned int greenMask;
+		/*! 0x00ff0000 (for 24bpp and 32bpp) or 0x00000000 (for 8bpp) */
+		unsigned int blueMask;
+		/*! 0xff000000 (for 32bpp) or 0x00000000 (for 24bpp and 8bpp) */
+		unsigned int alphaMask;
+		/*! Bits per pixel, 0 (?), 8, 24 or 32. */
+		byte bitsPerPixel;
+		/*! Zero? */
+		array<3, byte > unknown3Bytes;
+		/*!
+		 * [96,8,130,0,0,65,0,0] if 24 bits per pixel
+		 *             [129,8,130,32,0,65,12,0] if 32 bits per pixel
+		 *             [34,0,0,0,0,0,0,0] if 8 bits per pixel
+		 *             [4,0,0,0,0,0,0,0] if 0 (?) bits per pixel
+		 */
+		array<8, byte > unknown8Bytes;
+		/*! Seems to always be zero. */
+		unsigned int unknownInt;
+		/*! Unknown.  Could be reference pointer. */
+		int unknownInt2;
+		/*! Seems to always be zero. */
+		unsigned int unknownInt3;
+		/*! Flags */
+		byte flags;
+		/*! Unkown. Often zero. */
+		unsigned int unknownInt4;
+		/*! Unknown. */
+		byte unknownByte1;
+		/*! Channel Data */
+		array<4, ChannelData > channels;
+		/*! Link to NiPalette, for 8-bit textures. */
+		Ref<NiPalette > palette;
+		/*! Number of mipmaps in the texture. */
+		mutable unsigned int numMipmaps;
+		/*! Bytes per pixel (Bits Per Pixel / 8). */
+		unsigned int bytesPerPixel;
+		/*! Mipmap descriptions (width, height, offset). */
+		vector<MipMap > mipmaps;
+	public:
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info);
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const;
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual void FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info);
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual list<NiObjectRef> GetRefs() const;
+		/*! NIFLIB_HIDDEN function.  For internal use only. */
+		NIFLIB_HIDDEN virtual list<NiObject *> GetPtrs() const;
+	};
+
+	//--BEGIN FILE FOOT CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
-protected:
-	/*! The format of the pixels in this internally stored image. */
-	PixelFormat pixelFormat;
-	/*! 0x000000ff (for 24bpp and 32bpp) or 0x00000000 (for 8bpp) */
-	unsigned int redMask;
-	/*! 0x0000ff00 (for 24bpp and 32bpp) or 0x00000000 (for 8bpp) */
-	unsigned int greenMask;
-	/*! 0x00ff0000 (for 24bpp and 32bpp) or 0x00000000 (for 8bpp) */
-	unsigned int blueMask;
-	/*! 0xff000000 (for 32bpp) or 0x00000000 (for 24bpp and 8bpp) */
-	unsigned int alphaMask;
-	/*! Bits per pixel, 0 (?), 8, 24 or 32. */
-	byte bitsPerPixel;
-	/*! Zero? */
-	array<3,byte > unknown3Bytes;
-	/*!
-	 * [96,8,130,0,0,65,0,0] if 24 bits per pixel
-	 *             [129,8,130,32,0,65,12,0] if 32 bits per pixel
-	 *             [34,0,0,0,0,0,0,0] if 8 bits per pixel
-	 *             [4,0,0,0,0,0,0,0] if 0 (?) bits per pixel
-	 */
-	array<8,byte > unknown8Bytes;
-	/*! Seems to always be zero. */
-	unsigned int unknownInt;
-	/*! Unknown.  Could be reference pointer. */
-	int unknownInt2;
-	/*! Seems to always be zero. */
-	unsigned int unknownInt3;
-	/*! Flags */
-	byte flags;
-	/*! Unkown. Often zero. */
-	unsigned int unknownInt4;
-	/*! Unknown. */
-	byte unknownByte1;
-	/*! Channel Data */
-	array<4,ChannelData > channels;
-	/*! Link to NiPalette, for 8-bit textures. */
-	Ref<NiPalette > palette;
-	/*! Number of mipmaps in the texture. */
-	mutable unsigned int numMipmaps;
-	/*! Bytes per pixel (Bits Per Pixel / 8). */
-	unsigned int bytesPerPixel;
-	/*! Mipmap descriptions (width, height, offset). */
-	vector<MipMap > mipmaps;
-public:
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info );
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const;
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual void FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info );
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual list<NiObjectRef> GetRefs() const;
-	/*! NIFLIB_HIDDEN function.  For internal use only. */
-	NIFLIB_HIDDEN virtual list<NiObject *> GetPtrs() const;
-};
-
-//--BEGIN FILE FOOT CUSTOM CODE--//
-
-//--END CUSTOM CODE--//
-
 } //End Niflib namespace
 #endif

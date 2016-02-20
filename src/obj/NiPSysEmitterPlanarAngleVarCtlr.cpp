@@ -18,59 +18,66 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiPSysEmitterPlanarAngleVarCtlr::TYPE("NiPSysEmitterPlanarAngleVarCtlr", &NiPSysModifierFloatCtlr::TYPE );
+const Type NiPSysEmitterPlanarAngleVarCtlr::TYPE("NiPSysEmitterPlanarAngleVarCtlr", &NiPSysModifierFloatCtlr::TYPE);
 
-NiPSysEmitterPlanarAngleVarCtlr::NiPSysEmitterPlanarAngleVarCtlr() {
+NiPSysEmitterPlanarAngleVarCtlr::NiPSysEmitterPlanarAngleVarCtlr()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-NiPSysEmitterPlanarAngleVarCtlr::~NiPSysEmitterPlanarAngleVarCtlr() {
+NiPSysEmitterPlanarAngleVarCtlr::~NiPSysEmitterPlanarAngleVarCtlr()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiPSysEmitterPlanarAngleVarCtlr::GetType() const {
+const Type & NiPSysEmitterPlanarAngleVarCtlr::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiPSysEmitterPlanarAngleVarCtlr::Create() {
+NiObject * NiPSysEmitterPlanarAngleVarCtlr::Create()
+{
 	return new NiPSysEmitterPlanarAngleVarCtlr;
 }
 
-void NiPSysEmitterPlanarAngleVarCtlr::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiPSysEmitterPlanarAngleVarCtlr::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSysModifierFloatCtlr::Read( in, link_stack, info );
+	NiPSysModifierFloatCtlr::Read(in, link_stack, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-void NiPSysEmitterPlanarAngleVarCtlr::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiPSysEmitterPlanarAngleVarCtlr::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSysModifierFloatCtlr::Write( out, link_map, missing_link_stack, info );
+	NiPSysModifierFloatCtlr::Write(out, link_map, missing_link_stack, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::string NiPSysEmitterPlanarAngleVarCtlr::asString( bool verbose ) const {
+std::string NiPSysEmitterPlanarAngleVarCtlr::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSysModifierFloatCtlr::asString();
+	out << NiPSysModifierFloatCtlr::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//
@@ -78,25 +85,28 @@ std::string NiPSysEmitterPlanarAngleVarCtlr::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiPSysEmitterPlanarAngleVarCtlr::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiPSysEmitterPlanarAngleVarCtlr::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSysModifierFloatCtlr::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiPSysModifierFloatCtlr::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiPSysEmitterPlanarAngleVarCtlr::GetRefs() const {
+std::list<NiObjectRef> NiPSysEmitterPlanarAngleVarCtlr::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiPSysModifierFloatCtlr::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiPSysEmitterPlanarAngleVarCtlr::GetPtrs() const {
+std::list<NiObject *> NiPSysEmitterPlanarAngleVarCtlr::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiPSysModifierFloatCtlr::GetPtrs();
 	return ptrs;

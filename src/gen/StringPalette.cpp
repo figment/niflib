@@ -9,15 +9,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-StringPalette::StringPalette() : length((unsigned int)0) {};
+StringPalette::StringPalette() : length((unsigned int) 0) {};
 
 //Copy Constructor
-StringPalette::StringPalette( const StringPalette & src ) {
+StringPalette::StringPalette(const StringPalette & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-StringPalette & StringPalette::operator=( const StringPalette & src ) {
+StringPalette & StringPalette::operator=(const StringPalette & src)
+{
 	this->palette = src.palette;
 	this->length = src.length;
 	return *this;

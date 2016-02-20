@@ -9,15 +9,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-ByteVector3::ByteVector3() : x((byte)0), y((byte)0), z((byte)0) {};
+ByteVector3::ByteVector3() : x((byte) 0), y((byte) 0), z((byte) 0) {};
 
 //Copy Constructor
-ByteVector3::ByteVector3( const ByteVector3 & src ) {
+ByteVector3::ByteVector3(const ByteVector3 & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-ByteVector3 & ByteVector3::operator=( const ByteVector3 & src ) {
+ByteVector3 & ByteVector3::operator=(const ByteVector3 & src)
+{
 	this->x = src.x;
 	this->y = src.y;
 	this->z = src.z;

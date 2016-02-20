@@ -9,15 +9,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-SkinWeight::SkinWeight() : index((unsigned short)0), weight(0.0f) {};
+SkinWeight::SkinWeight() : index((unsigned short) 0), weight(0.0f) {};
 
 //Copy Constructor
-SkinWeight::SkinWeight( const SkinWeight & src ) {
+SkinWeight::SkinWeight(const SkinWeight & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-SkinWeight & SkinWeight::operator=( const SkinWeight & src ) {
+SkinWeight & SkinWeight::operator=(const SkinWeight & src)
+{
 	this->index = src.index;
 	this->weight = src.weight;
 	return *this;

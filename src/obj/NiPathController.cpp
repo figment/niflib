@@ -19,92 +19,118 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiPathController::TYPE("NiPathController", &NiTimeController::TYPE );
+const Type NiPathController::TYPE("NiPathController", &NiTimeController::TYPE);
 
-NiPathController::NiPathController() : unknownShort2((unsigned short)0), unknownInt1((unsigned int)0), unknownFloat2(0.0f), unknownFloat3(0.0f), unknownShort((unsigned short)0), posData(NULL), floatData(NULL) {
+NiPathController::NiPathController() : unknownShort2((unsigned short) 0), unknownInt1((unsigned int) 0), unknownFloat2(0.0f), unknownFloat3(0.0f), unknownShort((unsigned short) 0), posData(NULL), floatData(NULL)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-NiPathController::~NiPathController() {
+NiPathController::~NiPathController()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiPathController::GetType() const {
+const Type & NiPathController::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiPathController::Create() {
+NiObject * NiPathController::Create()
+{
 	return new NiPathController;
 }
 
-void NiPathController::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiPathController::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
 	unsigned int block_num;
-	NiTimeController::Read( in, link_stack, info );
-	if ( info.version >= 0x0A010000 ) {
-		NifStream( unknownShort2, in, info );
+	NiTimeController::Read(in, link_stack, info);
+	if(info.version >= 0x0A010000)
+	{
+		NifStream(unknownShort2, in, info);
 	};
-	NifStream( unknownInt1, in, info );
-	NifStream( unknownFloat2, in, info );
-	NifStream( unknownFloat3, in, info );
-	NifStream( unknownShort, in, info );
-	NifStream( block_num, in, info );
-	link_stack.push_back( block_num );
-	NifStream( block_num, in, info );
-	link_stack.push_back( block_num );
+	NifStream(unknownInt1, in, info);
+	NifStream(unknownFloat2, in, info);
+	NifStream(unknownFloat3, in, info);
+	NifStream(unknownShort, in, info);
+	NifStream(block_num, in, info);
+	link_stack.push_back(block_num);
+	NifStream(block_num, in, info);
+	link_stack.push_back(block_num);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void NiPathController::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiPathController::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiTimeController::Write( out, link_map, missing_link_stack, info );
-	if ( info.version >= 0x0A010000 ) {
-		NifStream( unknownShort2, out, info );
+	NiTimeController::Write(out, link_map, missing_link_stack, info);
+	if(info.version >= 0x0A010000)
+	{
+		NifStream(unknownShort2, out, info);
 	};
-	NifStream( unknownInt1, out, info );
-	NifStream( unknownFloat2, out, info );
-	NifStream( unknownFloat3, out, info );
-	NifStream( unknownShort, out, info );
-	if ( info.version < VER_3_3_0_13 ) {
-		WritePtr32( &(*posData), out );
-	} else {
-		if ( posData != NULL ) {
-			map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(posData) );
-			if (it != link_map.end()) {
-				NifStream( it->second, out, info );
-				missing_link_stack.push_back( NULL );
-			} else {
-				NifStream( 0xFFFFFFFF, out, info );
-				missing_link_stack.push_back( posData );
+	NifStream(unknownInt1, out, info);
+	NifStream(unknownFloat2, out, info);
+	NifStream(unknownFloat3, out, info);
+	NifStream(unknownShort, out, info);
+	if(info.version < VER_3_3_0_13)
+	{
+		WritePtr32(&(*posData), out);
+	}
+	else
+	{
+		if(posData != NULL)
+		{
+			map<NiObjectRef, unsigned int>::const_iterator it = link_map.find(StaticCast<NiObject>(posData));
+			if(it != link_map.end())
+			{
+				NifStream(it->second, out, info);
+				missing_link_stack.push_back(NULL);
 			}
-		} else {
-			NifStream( 0xFFFFFFFF, out, info );
-			missing_link_stack.push_back( NULL );
+			else
+			{
+				NifStream(0xFFFFFFFF, out, info);
+				missing_link_stack.push_back(posData);
+			}
+		}
+		else
+		{
+			NifStream(0xFFFFFFFF, out, info);
+			missing_link_stack.push_back(NULL);
 		}
 	}
-	if ( info.version < VER_3_3_0_13 ) {
-		WritePtr32( &(*floatData), out );
-	} else {
-		if ( floatData != NULL ) {
-			map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(floatData) );
-			if (it != link_map.end()) {
-				NifStream( it->second, out, info );
-				missing_link_stack.push_back( NULL );
-			} else {
-				NifStream( 0xFFFFFFFF, out, info );
-				missing_link_stack.push_back( floatData );
+	if(info.version < VER_3_3_0_13)
+	{
+		WritePtr32(&(*floatData), out);
+	}
+	else
+	{
+		if(floatData != NULL)
+		{
+			map<NiObjectRef, unsigned int>::const_iterator it = link_map.find(StaticCast<NiObject>(floatData));
+			if(it != link_map.end())
+			{
+				NifStream(it->second, out, info);
+				missing_link_stack.push_back(NULL);
 			}
-		} else {
-			NifStream( 0xFFFFFFFF, out, info );
-			missing_link_stack.push_back( NULL );
+			else
+			{
+				NifStream(0xFFFFFFFF, out, info);
+				missing_link_stack.push_back(floatData);
+			}
+		}
+		else
+		{
+			NifStream(0xFFFFFFFF, out, info);
+			missing_link_stack.push_back(NULL);
 		}
 	}
 
@@ -112,12 +138,13 @@ void NiPathController::Write( ostream& out, const map<NiObjectRef,unsigned int> 
 	//--END CUSTOM CODE--//
 }
 
-std::string NiPathController::asString( bool verbose ) const {
+std::string NiPathController::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiTimeController::asString();
+	out << NiTimeController::asString(verbose);
 	out << "  Unknown Short 2:  " << unknownShort2 << endl;
 	out << "  Unknown Int 1:  " << unknownInt1 << endl;
 	out << "  Unknown Float 2:  " << unknownFloat2 << endl;
@@ -131,29 +158,32 @@ std::string NiPathController::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiPathController::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiPathController::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiTimeController::FixLinks( objects, link_stack, missing_link_stack, info );
-	posData = FixLink<NiPosData>( objects, link_stack, missing_link_stack, info );
-	floatData = FixLink<NiFloatData>( objects, link_stack, missing_link_stack, info );
+	NiTimeController::FixLinks(objects, link_stack, missing_link_stack, info);
+	posData = FixLink<NiPosData>(objects, link_stack, missing_link_stack, info);
+	floatData = FixLink<NiFloatData>(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiPathController::GetRefs() const {
+std::list<NiObjectRef> NiPathController::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiTimeController::GetRefs();
-	if ( posData != NULL )
+	if(posData != NULL)
 		refs.push_back(StaticCast<NiObject>(posData));
-	if ( floatData != NULL )
+	if(floatData != NULL)
 		refs.push_back(StaticCast<NiObject>(floatData));
 	return refs;
 }
 
-std::list<NiObject *> NiPathController::GetPtrs() const {
+std::list<NiObject *> NiPathController::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiTimeController::GetPtrs();
 	return ptrs;
@@ -162,38 +192,42 @@ std::list<NiObject *> NiPathController::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 Ref<NiPosData > NiPathController::GetPosData() const {
-	return posData;
+return posData;
 }
 
 void NiPathController::SetPosData( Ref<NiPosData > value ) {
-	posData = value;
+posData = value;
 }
 
 Ref<NiFloatData > NiPathController::GetFloatData() const {
-	return floatData;
+return floatData;
 }
 
 void NiPathController::SetFloatData( Ref<NiFloatData > value ) {
-	floatData = value;
+floatData = value;
 }
 
 ****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 
-Ref<NiFloatData> NiPathController::GetFloatData() const {
+Ref<NiFloatData> NiPathController::GetFloatData() const
+{
 	return floatData;
 }
 
-void NiPathController::SetFloatData( NiFloatData * n ) {
+void NiPathController::SetFloatData(NiFloatData * n)
+{
 	floatData = n;
 }
 
-Ref<NiPosData> NiPathController::GetPosData() const {
+Ref<NiPosData> NiPathController::GetPosData() const
+{
 	return posData;
 }
 
-void NiPathController::SetPosData( NiPosData * n ) {
+void NiPathController::SetPosData(NiPosData * n)
+{
 	posData = n;
 }
 

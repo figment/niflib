@@ -13,15 +13,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-BoundingVolume::BoundingVolume() : collisionType((BoundVolumeType)0) {};
+BoundingVolume::BoundingVolume() : collisionType((BoundVolumeType) 0) {};
 
 //Copy Constructor
-BoundingVolume::BoundingVolume( const BoundingVolume & src ) {
+BoundingVolume::BoundingVolume(const BoundingVolume & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-BoundingVolume & BoundingVolume::operator=( const BoundingVolume & src ) {
+BoundingVolume & BoundingVolume::operator=(const BoundingVolume & src)
+{
 	this->collisionType = src.collisionType;
 	this->sphere = src.sphere;
 	this->box = src.box;

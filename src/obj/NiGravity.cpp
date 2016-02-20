@@ -17,66 +17,75 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiGravity::TYPE("NiGravity", &NiParticleModifier::TYPE );
+const Type NiGravity::TYPE("NiGravity", &NiParticleModifier::TYPE);
 
-NiGravity::NiGravity() : unknownFloat1(0.0f), force(0.0f), type((FieldType)0) {
+NiGravity::NiGravity() : unknownFloat1(0.0f), force(0.0f), type((FieldType) 0)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-NiGravity::~NiGravity() {
+NiGravity::~NiGravity()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiGravity::GetType() const {
+const Type & NiGravity::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiGravity::Create() {
+NiObject * NiGravity::Create()
+{
 	return new NiGravity;
 }
 
-void NiGravity::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiGravity::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiParticleModifier::Read( in, link_stack, info );
-	if ( info.version >= 0x04000002 ) {
-		NifStream( unknownFloat1, in, info );
+	NiParticleModifier::Read(in, link_stack, info);
+	if(info.version >= 0x04000002)
+	{
+		NifStream(unknownFloat1, in, info);
 	};
-	NifStream( force, in, info );
-	NifStream( type, in, info );
-	NifStream( position, in, info );
-	NifStream( direction, in, info );
+	NifStream(force, in, info);
+	NifStream(type, in, info);
+	NifStream(position, in, info);
+	NifStream(direction, in, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void NiGravity::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiGravity::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiParticleModifier::Write( out, link_map, missing_link_stack, info );
-	if ( info.version >= 0x04000002 ) {
-		NifStream( unknownFloat1, out, info );
+	NiParticleModifier::Write(out, link_map, missing_link_stack, info);
+	if(info.version >= 0x04000002)
+	{
+		NifStream(unknownFloat1, out, info);
 	};
-	NifStream( force, out, info );
-	NifStream( type, out, info );
-	NifStream( position, out, info );
-	NifStream( direction, out, info );
+	NifStream(force, out, info);
+	NifStream(type, out, info);
+	NifStream(position, out, info);
+	NifStream(direction, out, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string NiGravity::asString( bool verbose ) const {
+std::string NiGravity::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiParticleModifier::asString();
+	out << NiParticleModifier::asString(verbose);
 	out << "  Unknown Float 1:  " << unknownFloat1 << endl;
 	out << "  Force:  " << force << endl;
 	out << "  Type:  " << type << endl;
@@ -88,23 +97,26 @@ std::string NiGravity::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiGravity::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiGravity::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiParticleModifier::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiParticleModifier::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiGravity::GetRefs() const {
+std::list<NiObjectRef> NiGravity::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiParticleModifier::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiGravity::GetPtrs() const {
+std::list<NiObject *> NiGravity::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiParticleModifier::GetPtrs();
 	return ptrs;
@@ -113,35 +125,35 @@ std::list<NiObject *> NiGravity::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 float NiGravity::GetForce() const {
-	return force;
+return force;
 }
 
 void NiGravity::SetForce( float value ) {
-	force = value;
+force = value;
 }
 
 FieldType NiGravity::GetType() const {
-	return type;
+return type;
 }
 
 void NiGravity::SetType( const FieldType & value ) {
-	type = value;
+type = value;
 }
 
 Vector3 NiGravity::GetPosition() const {
-	return position;
+return position;
 }
 
 void NiGravity::SetPosition( const Vector3 & value ) {
-	position = value;
+position = value;
 }
 
 Vector3 NiGravity::GetDirection() const {
-	return direction;
+return direction;
 }
 
 void NiGravity::SetDirection( const Vector3 & value ) {
-	direction = value;
+direction = value;
 }
 
 ****End Example Naive Implementation***/

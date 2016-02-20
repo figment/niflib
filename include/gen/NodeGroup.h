@@ -10,28 +10,28 @@ All rights reserved.  Please see niflib.h for license. */
 
 #include "../NIF_IO.h"
 
-namespace Niflib {
+namespace Niflib
+{
+	// Forward define of referenced NIF objects
+	class NiNode;
 
-// Forward define of referenced NIF objects
-class NiNode;
-
-/*! A group of NiNodes references. */
-struct NodeGroup {
-	/*! Default Constructor */
-	NIFLIB_API NodeGroup();
-	/*! Default Destructor */
-	NIFLIB_API ~NodeGroup();
-	/*! Copy Constructor */
-	NIFLIB_API NodeGroup( const NodeGroup & src );
-	/*! Copy Operator */
-	NIFLIB_API NodeGroup & operator=( const NodeGroup & src );
-	/*! Number of node references that follow. */
-	mutable unsigned int numNodes;
-	/*! The list of NiNode references. */
-	vector<NiNode * > nodes;
-	//--BEGIN MISC CUSTOM CODE--//
-	//--END CUSTOM CODE--//
-};
-
+	/*! A group of NiNodes references. */
+	struct NodeGroup
+	{
+		/*! Default Constructor */
+		NIFLIB_API NodeGroup();
+		/*! Default Destructor */
+		NIFLIB_API ~NodeGroup();
+		/*! Copy Constructor */
+		NIFLIB_API NodeGroup(const NodeGroup & src);
+		/*! Copy Operator */
+		NIFLIB_API NodeGroup & operator=(const NodeGroup & src);
+		/*! Number of node references that follow. */
+		mutable unsigned int numNodes;
+		/*! The list of NiNode references. */
+		vector<NiNode * > nodes;
+		//--BEGIN MISC CUSTOM CODE--//
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

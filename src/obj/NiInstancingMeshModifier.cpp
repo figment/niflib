@@ -18,59 +18,66 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiInstancingMeshModifier::TYPE("NiInstancingMeshModifier", &NiMeshModifier::TYPE );
+const Type NiInstancingMeshModifier::TYPE("NiInstancingMeshModifier", &NiMeshModifier::TYPE);
 
-NiInstancingMeshModifier::NiInstancingMeshModifier() {
+NiInstancingMeshModifier::NiInstancingMeshModifier()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-NiInstancingMeshModifier::~NiInstancingMeshModifier() {
+NiInstancingMeshModifier::~NiInstancingMeshModifier()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiInstancingMeshModifier::GetType() const {
+const Type & NiInstancingMeshModifier::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiInstancingMeshModifier::Create() {
+NiObject * NiInstancingMeshModifier::Create()
+{
 	return new NiInstancingMeshModifier;
 }
 
-void NiInstancingMeshModifier::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiInstancingMeshModifier::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiMeshModifier::Read( in, link_stack, info );
+	NiMeshModifier::Read(in, link_stack, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-void NiInstancingMeshModifier::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiInstancingMeshModifier::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiMeshModifier::Write( out, link_map, missing_link_stack, info );
+	NiMeshModifier::Write(out, link_map, missing_link_stack, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::string NiInstancingMeshModifier::asString( bool verbose ) const {
+std::string NiInstancingMeshModifier::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiMeshModifier::asString();
+	out << NiMeshModifier::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//
@@ -78,25 +85,28 @@ std::string NiInstancingMeshModifier::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiInstancingMeshModifier::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiInstancingMeshModifier::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiMeshModifier::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiMeshModifier::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiInstancingMeshModifier::GetRefs() const {
+std::list<NiObjectRef> NiInstancingMeshModifier::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiMeshModifier::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiInstancingMeshModifier::GetPtrs() const {
+std::list<NiObject *> NiInstancingMeshModifier::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiMeshModifier::GetPtrs();
 	return ptrs;

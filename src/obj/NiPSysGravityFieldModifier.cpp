@@ -18,61 +18,68 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiPSysGravityFieldModifier::TYPE("NiPSysGravityFieldModifier", &NiPSysFieldModifier::TYPE );
+const Type NiPSysGravityFieldModifier::TYPE("NiPSysGravityFieldModifier", &NiPSysFieldModifier::TYPE);
 
-NiPSysGravityFieldModifier::NiPSysGravityFieldModifier() {
+NiPSysGravityFieldModifier::NiPSysGravityFieldModifier()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-NiPSysGravityFieldModifier::~NiPSysGravityFieldModifier() {
+NiPSysGravityFieldModifier::~NiPSysGravityFieldModifier()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiPSysGravityFieldModifier::GetType() const {
+const Type & NiPSysGravityFieldModifier::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiPSysGravityFieldModifier::Create() {
+NiObject * NiPSysGravityFieldModifier::Create()
+{
 	return new NiPSysGravityFieldModifier;
 }
 
-void NiPSysGravityFieldModifier::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiPSysGravityFieldModifier::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSysFieldModifier::Read( in, link_stack, info );
-	NifStream( direction, in, info );
+	NiPSysFieldModifier::Read(in, link_stack, info);
+	NifStream(direction, in, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-void NiPSysGravityFieldModifier::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiPSysGravityFieldModifier::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSysFieldModifier::Write( out, link_map, missing_link_stack, info );
-	NifStream( direction, out, info );
+	NiPSysFieldModifier::Write(out, link_map, missing_link_stack, info);
+	NifStream(direction, out, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::string NiPSysGravityFieldModifier::asString( bool verbose ) const {
+std::string NiPSysGravityFieldModifier::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSysFieldModifier::asString();
+	out << NiPSysFieldModifier::asString(verbose);
 	out << "  Direction:  " << direction << endl;
 	return out.str();
 
@@ -81,25 +88,28 @@ std::string NiPSysGravityFieldModifier::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiPSysGravityFieldModifier::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiPSysGravityFieldModifier::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSysFieldModifier::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiPSysFieldModifier::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiPSysGravityFieldModifier::GetRefs() const {
+std::list<NiObjectRef> NiPSysGravityFieldModifier::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiPSysFieldModifier::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiPSysGravityFieldModifier::GetPtrs() const {
+std::list<NiObject *> NiPSysGravityFieldModifier::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiPSysFieldModifier::GetPtrs();
 	return ptrs;
@@ -108,11 +118,11 @@ std::list<NiObject *> NiPSysGravityFieldModifier::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 Vector3 NiPSysGravityFieldModifier::GetDirection() const {
-	return direction;
+return direction;
 }
 
 void NiPSysGravityFieldModifier::SetDirection( const Vector3 & value ) {
-	direction = value;
+direction = value;
 }
 
 ****End Example Naive Implementation***/

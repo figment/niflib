@@ -18,61 +18,68 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type BSPSysStripUpdateModifier::TYPE("BSPSysStripUpdateModifier", &NiPSysModifier::TYPE );
+const Type BSPSysStripUpdateModifier::TYPE("BSPSysStripUpdateModifier", &NiPSysModifier::TYPE);
 
-BSPSysStripUpdateModifier::BSPSysStripUpdateModifier() : updateDeltaTime(0.0f) {
+BSPSysStripUpdateModifier::BSPSysStripUpdateModifier() : updateDeltaTime(0.0f)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-BSPSysStripUpdateModifier::~BSPSysStripUpdateModifier() {
+BSPSysStripUpdateModifier::~BSPSysStripUpdateModifier()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & BSPSysStripUpdateModifier::GetType() const {
+const Type & BSPSysStripUpdateModifier::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * BSPSysStripUpdateModifier::Create() {
+NiObject * BSPSysStripUpdateModifier::Create()
+{
 	return new BSPSysStripUpdateModifier;
 }
 
-void BSPSysStripUpdateModifier::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void BSPSysStripUpdateModifier::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSysModifier::Read( in, link_stack, info );
-	NifStream( updateDeltaTime, in, info );
+	NiPSysModifier::Read(in, link_stack, info);
+	NifStream(updateDeltaTime, in, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-void BSPSysStripUpdateModifier::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void BSPSysStripUpdateModifier::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSysModifier::Write( out, link_map, missing_link_stack, info );
-	NifStream( updateDeltaTime, out, info );
+	NiPSysModifier::Write(out, link_map, missing_link_stack, info);
+	NifStream(updateDeltaTime, out, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::string BSPSysStripUpdateModifier::asString( bool verbose ) const {
+std::string BSPSysStripUpdateModifier::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSysModifier::asString();
+	out << NiPSysModifier::asString(verbose);
 	out << "  Update Delta Time:  " << updateDeltaTime << endl;
 	return out.str();
 
@@ -81,25 +88,28 @@ std::string BSPSysStripUpdateModifier::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void BSPSysStripUpdateModifier::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void BSPSysStripUpdateModifier::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSysModifier::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiPSysModifier::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> BSPSysStripUpdateModifier::GetRefs() const {
+std::list<NiObjectRef> BSPSysStripUpdateModifier::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiPSysModifier::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> BSPSysStripUpdateModifier::GetPtrs() const {
+std::list<NiObject *> BSPSysStripUpdateModifier::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiPSysModifier::GetPtrs();
 	return ptrs;
@@ -108,11 +118,11 @@ std::list<NiObject *> BSPSysStripUpdateModifier::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 float BSPSysStripUpdateModifier::GetUpdateDeltaTime() const {
-	return updateDeltaTime;
+return updateDeltaTime;
 }
 
 void BSPSysStripUpdateModifier::SetUpdateDeltaTime( float value ) {
-	updateDeltaTime = value;
+updateDeltaTime = value;
 }
 
 ****End Example Naive Implementation***/

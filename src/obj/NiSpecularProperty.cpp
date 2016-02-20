@@ -17,54 +17,61 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiSpecularProperty::TYPE("NiSpecularProperty", &NiProperty::TYPE );
+const Type NiSpecularProperty::TYPE("NiSpecularProperty", &NiProperty::TYPE);
 
-NiSpecularProperty::NiSpecularProperty() : flags((unsigned short)0) {
+NiSpecularProperty::NiSpecularProperty() : flags((unsigned short) 0)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-NiSpecularProperty::~NiSpecularProperty() {
+NiSpecularProperty::~NiSpecularProperty()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiSpecularProperty::GetType() const {
+const Type & NiSpecularProperty::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiSpecularProperty::Create() {
+NiObject * NiSpecularProperty::Create()
+{
 	return new NiSpecularProperty;
 }
 
-void NiSpecularProperty::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiSpecularProperty::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiProperty::Read( in, link_stack, info );
-	NifStream( flags, in, info );
+	NiProperty::Read(in, link_stack, info);
+	NifStream(flags, in, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void NiSpecularProperty::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiSpecularProperty::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiProperty::Write( out, link_map, missing_link_stack, info );
-	NifStream( flags, out, info );
+	NiProperty::Write(out, link_map, missing_link_stack, info);
+	NifStream(flags, out, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string NiSpecularProperty::asString( bool verbose ) const {
+std::string NiSpecularProperty::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiProperty::asString();
+	out << NiProperty::asString(verbose);
 	out << "  Flags:  " << flags << endl;
 	return out.str();
 
@@ -72,23 +79,26 @@ std::string NiSpecularProperty::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiSpecularProperty::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiSpecularProperty::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiProperty::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiProperty::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiSpecularProperty::GetRefs() const {
+std::list<NiObjectRef> NiSpecularProperty::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiProperty::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiSpecularProperty::GetPtrs() const {
+std::list<NiObject *> NiSpecularProperty::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiProperty::GetPtrs();
 	return ptrs;
@@ -97,31 +107,35 @@ std::list<NiObject *> NiSpecularProperty::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 unsigned short NiSpecularProperty::GetFlags() const {
-	return flags;
+return flags;
 }
 
 void NiSpecularProperty::SetFlags( unsigned short value ) {
-	flags = value;
+flags = value;
 }
 
 ****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 
-bool NiSpecularProperty::GetSpecularState() const {
-	return UnpackFlag<unsigned short>( flags, 0 );
+bool NiSpecularProperty::GetSpecularState() const
+{
+	return UnpackFlag<unsigned short>(flags, 0);
 }
 
-void NiSpecularProperty::SetSpecularState( bool n ) {
-	PackFlag<unsigned short>( flags, (unsigned short)n, 0 );
+void NiSpecularProperty::SetSpecularState(bool n)
+{
+	PackFlag<unsigned short>(flags, (unsigned short) n, 0);
 }
 
-unsigned short NiSpecularProperty::GetFlags() const {
-   return flags;
+unsigned short NiSpecularProperty::GetFlags() const
+{
+	return flags;
 }
 
-void NiSpecularProperty::SetFlags( unsigned short n ) {
-   flags = n;
+void NiSpecularProperty::SetFlags(unsigned short n)
+{
+	flags = n;
 }
 
 //--END CUSTOM CODE--//

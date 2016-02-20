@@ -11,15 +11,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-MeshData::MeshData() : stream(NULL), isPerInstance(0), numSubmeshes((unsigned short)1), numComponents((int)1) {};
+MeshData::MeshData() : stream(NULL), isPerInstance(0), numSubmeshes((unsigned short) 1), numComponents((int) 1) {};
 
 //Copy Constructor
-MeshData::MeshData( const MeshData & src ) {
+MeshData::MeshData(const MeshData & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-MeshData & MeshData::operator=( const MeshData & src ) {
+MeshData & MeshData::operator=(const MeshData & src)
+{
 	this->stream = src.stream;
 	this->isPerInstance = src.isPerInstance;
 	this->numSubmeshes = src.numSubmeshes;

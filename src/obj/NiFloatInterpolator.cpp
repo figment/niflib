@@ -18,61 +18,76 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiFloatInterpolator::TYPE("NiFloatInterpolator", &NiKeyBasedInterpolator::TYPE );
+const Type NiFloatInterpolator::TYPE("NiFloatInterpolator", &NiKeyBasedInterpolator::TYPE);
 
-NiFloatInterpolator::NiFloatInterpolator() : floatValue(0.0f), data(NULL) {
+NiFloatInterpolator::NiFloatInterpolator() : floatValue(0.0f), data(NULL)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-NiFloatInterpolator::~NiFloatInterpolator() {
+NiFloatInterpolator::~NiFloatInterpolator()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiFloatInterpolator::GetType() const {
+const Type & NiFloatInterpolator::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiFloatInterpolator::Create() {
+NiObject * NiFloatInterpolator::Create()
+{
 	return new NiFloatInterpolator;
 }
 
-void NiFloatInterpolator::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiFloatInterpolator::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
 	unsigned int block_num;
-	NiKeyBasedInterpolator::Read( in, link_stack, info );
-	NifStream( floatValue, in, info );
-	NifStream( block_num, in, info );
-	link_stack.push_back( block_num );
+	NiKeyBasedInterpolator::Read(in, link_stack, info);
+	NifStream(floatValue, in, info);
+	NifStream(block_num, in, info);
+	link_stack.push_back(block_num);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void NiFloatInterpolator::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiFloatInterpolator::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiKeyBasedInterpolator::Write( out, link_map, missing_link_stack, info );
-	NifStream( floatValue, out, info );
-	if ( info.version < VER_3_3_0_13 ) {
-		WritePtr32( &(*data), out );
-	} else {
-		if ( data != NULL ) {
-			map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(data) );
-			if (it != link_map.end()) {
-				NifStream( it->second, out, info );
-				missing_link_stack.push_back( NULL );
-			} else {
-				NifStream( 0xFFFFFFFF, out, info );
-				missing_link_stack.push_back( data );
+	NiKeyBasedInterpolator::Write(out, link_map, missing_link_stack, info);
+	NifStream(floatValue, out, info);
+	if(info.version < VER_3_3_0_13)
+	{
+		WritePtr32(&(*data), out);
+	}
+	else
+	{
+		if(data != NULL)
+		{
+			map<NiObjectRef, unsigned int>::const_iterator it = link_map.find(StaticCast<NiObject>(data));
+			if(it != link_map.end())
+			{
+				NifStream(it->second, out, info);
+				missing_link_stack.push_back(NULL);
 			}
-		} else {
-			NifStream( 0xFFFFFFFF, out, info );
-			missing_link_stack.push_back( NULL );
+			else
+			{
+				NifStream(0xFFFFFFFF, out, info);
+				missing_link_stack.push_back(data);
+			}
+		}
+		else
+		{
+			NifStream(0xFFFFFFFF, out, info);
+			missing_link_stack.push_back(NULL);
 		}
 	}
 
@@ -80,12 +95,13 @@ void NiFloatInterpolator::Write( ostream& out, const map<NiObjectRef,unsigned in
 	//--END CUSTOM CODE--//
 }
 
-std::string NiFloatInterpolator::asString( bool verbose ) const {
+std::string NiFloatInterpolator::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiKeyBasedInterpolator::asString();
+	out << NiKeyBasedInterpolator::asString(verbose);
 	out << "  Float Value:  " << floatValue << endl;
 	out << "  Data:  " << data << endl;
 	return out.str();
@@ -94,26 +110,29 @@ std::string NiFloatInterpolator::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiFloatInterpolator::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiFloatInterpolator::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiKeyBasedInterpolator::FixLinks( objects, link_stack, missing_link_stack, info );
-	data = FixLink<NiFloatData>( objects, link_stack, missing_link_stack, info );
+	NiKeyBasedInterpolator::FixLinks(objects, link_stack, missing_link_stack, info);
+	data = FixLink<NiFloatData>(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiFloatInterpolator::GetRefs() const {
+std::list<NiObjectRef> NiFloatInterpolator::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiKeyBasedInterpolator::GetRefs();
-	if ( data != NULL )
+	if(data != NULL)
 		refs.push_back(StaticCast<NiObject>(data));
 	return refs;
 }
 
-std::list<NiObject *> NiFloatInterpolator::GetPtrs() const {
+std::list<NiObject *> NiFloatInterpolator::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiKeyBasedInterpolator::GetPtrs();
 	return ptrs;
@@ -122,44 +141,50 @@ std::list<NiObject *> NiFloatInterpolator::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 float NiFloatInterpolator::GetFloatValue() const {
-	return floatValue;
+return floatValue;
 }
 
 void NiFloatInterpolator::SetFloatValue( float value ) {
-	floatValue = value;
+floatValue = value;
 }
 
 Ref<NiFloatData > NiFloatInterpolator::GetData() const {
-	return data;
+return data;
 }
 
 void NiFloatInterpolator::SetData( Ref<NiFloatData > value ) {
-	data = value;
+data = value;
 }
 
 ****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 
-float NiFloatInterpolator::GetFloatValue() const {
+float NiFloatInterpolator::GetFloatValue() const
+{
 	return floatValue;
 }
 
-void NiFloatInterpolator::SetFloatValue( float value ) {
+void NiFloatInterpolator::SetFloatValue(float value)
+{
 	floatValue = value;
 }
 
-Ref<NiFloatData > NiFloatInterpolator::GetData() const {
+Ref<NiFloatData > NiFloatInterpolator::GetData() const
+{
 	return data;
 }
 
-void NiFloatInterpolator::SetData( NiFloatData * value ) {
+void NiFloatInterpolator::SetData(NiFloatData * value)
+{
 	data = value;
 }
 
-void NiFloatInterpolator::NormalizeKeys( float phase, float frequency ) {
-	if ( data != NULL ) {
-		data->NormalizeKeys( phase, frequency );
+void NiFloatInterpolator::NormalizeKeys(float phase, float frequency)
+{
+	if(data != NULL)
+	{
+		data->NormalizeKeys(phase, frequency);
 	}
 }
 

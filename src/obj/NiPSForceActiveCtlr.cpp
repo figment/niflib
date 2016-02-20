@@ -19,81 +19,97 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiPSForceActiveCtlr::TYPE("NiPSForceActiveCtlr", &NiTimeController::TYPE );
+const Type NiPSForceActiveCtlr::TYPE("NiPSForceActiveCtlr", &NiTimeController::TYPE);
 
-NiPSForceActiveCtlr::NiPSForceActiveCtlr() : interpolator(NULL), unknown2((int)0) {
+NiPSForceActiveCtlr::NiPSForceActiveCtlr() : interpolator(NULL), unknown2((int) 0)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-NiPSForceActiveCtlr::~NiPSForceActiveCtlr() {
+NiPSForceActiveCtlr::~NiPSForceActiveCtlr()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiPSForceActiveCtlr::GetType() const {
+const Type & NiPSForceActiveCtlr::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiPSForceActiveCtlr::Create() {
+NiObject * NiPSForceActiveCtlr::Create()
+{
 	return new NiPSForceActiveCtlr;
 }
 
-void NiPSForceActiveCtlr::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiPSForceActiveCtlr::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
 	unsigned int block_num;
-	NiTimeController::Read( in, link_stack, info );
-	NifStream( block_num, in, info );
-	link_stack.push_back( block_num );
-	NifStream( unknown2, in, info );
+	NiTimeController::Read(in, link_stack, info);
+	NifStream(block_num, in, info);
+	link_stack.push_back(block_num);
+	NifStream(unknown2, in, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-void NiPSForceActiveCtlr::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiPSForceActiveCtlr::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiTimeController::Write( out, link_map, missing_link_stack, info );
-	if ( info.version < VER_3_3_0_13 ) {
-		WritePtr32( &(*interpolator), out );
-	} else {
-		if ( interpolator != NULL ) {
-			map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(interpolator) );
-			if (it != link_map.end()) {
-				NifStream( it->second, out, info );
-				missing_link_stack.push_back( NULL );
-			} else {
-				NifStream( 0xFFFFFFFF, out, info );
-				missing_link_stack.push_back( interpolator );
+	NiTimeController::Write(out, link_map, missing_link_stack, info);
+	if(info.version < VER_3_3_0_13)
+	{
+		WritePtr32(&(*interpolator), out);
+	}
+	else
+	{
+		if(interpolator != NULL)
+		{
+			map<NiObjectRef, unsigned int>::const_iterator it = link_map.find(StaticCast<NiObject>(interpolator));
+			if(it != link_map.end())
+			{
+				NifStream(it->second, out, info);
+				missing_link_stack.push_back(NULL);
 			}
-		} else {
-			NifStream( 0xFFFFFFFF, out, info );
-			missing_link_stack.push_back( NULL );
+			else
+			{
+				NifStream(0xFFFFFFFF, out, info);
+				missing_link_stack.push_back(interpolator);
+			}
+		}
+		else
+		{
+			NifStream(0xFFFFFFFF, out, info);
+			missing_link_stack.push_back(NULL);
 		}
 	}
-	NifStream( unknown2, out, info );
+	NifStream(unknown2, out, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::string NiPSForceActiveCtlr::asString( bool verbose ) const {
+std::string NiPSForceActiveCtlr::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiTimeController::asString();
+	out << NiTimeController::asString(verbose);
 	out << "  Interpolator:  " << interpolator << endl;
 	out << "  Unknown 2:  " << unknown2 << endl;
 	return out.str();
@@ -103,28 +119,31 @@ std::string NiPSForceActiveCtlr::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiPSForceActiveCtlr::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiPSForceActiveCtlr::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiTimeController::FixLinks( objects, link_stack, missing_link_stack, info );
-	interpolator = FixLink<NiObject>( objects, link_stack, missing_link_stack, info );
+	NiTimeController::FixLinks(objects, link_stack, missing_link_stack, info);
+	interpolator = FixLink<NiObject>(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiPSForceActiveCtlr::GetRefs() const {
+std::list<NiObjectRef> NiPSForceActiveCtlr::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiTimeController::GetRefs();
-	if ( interpolator != NULL )
+	if(interpolator != NULL)
 		refs.push_back(StaticCast<NiObject>(interpolator));
 	return refs;
 }
 
-std::list<NiObject *> NiPSForceActiveCtlr::GetPtrs() const {
+std::list<NiObject *> NiPSForceActiveCtlr::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiTimeController::GetPtrs();
 	return ptrs;
@@ -133,11 +152,11 @@ std::list<NiObject *> NiPSForceActiveCtlr::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 Ref<NiObject > NiPSForceActiveCtlr::GetInterpolator() const {
-	return interpolator;
+return interpolator;
 }
 
 void NiPSForceActiveCtlr::SetInterpolator( Ref<NiObject > value ) {
-	interpolator = value;
+interpolator = value;
 }
 
 ****End Example Naive Implementation***/

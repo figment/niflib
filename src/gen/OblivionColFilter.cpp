@@ -9,15 +9,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-OblivionColFilter::OblivionColFilter() : layer((OblivionLayer)0), colFilter((byte)0), unknownShort((unsigned short)0) {};
+OblivionColFilter::OblivionColFilter() : layer((OblivionLayer) 0), colFilter((byte) 0), unknownShort((unsigned short) 0) {};
 
 //Copy Constructor
-OblivionColFilter::OblivionColFilter( const OblivionColFilter & src ) {
+OblivionColFilter::OblivionColFilter(const OblivionColFilter & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-OblivionColFilter & OblivionColFilter::operator=( const OblivionColFilter & src ) {
+OblivionColFilter & OblivionColFilter::operator=(const OblivionColFilter & src)
+{
 	this->layer = src.layer;
 	this->colFilter = src.colFilter;
 	this->unknownShort = src.unknownShort;

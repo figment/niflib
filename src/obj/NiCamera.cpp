@@ -18,120 +18,144 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiCamera::TYPE("NiCamera", &NiAVObject::TYPE );
+const Type NiCamera::TYPE("NiCamera", &NiAVObject::TYPE);
 
-NiCamera::NiCamera() : unknownShort((unsigned short)0), frustumLeft(0.0f), frustumRight(0.0f), frustumTop(0.0f), frustumBottom(0.0f), frustumNear(0.0f), frustumFar(0.0f), useOrthographicProjection(false), viewportLeft(0.0f), viewportRight(0.0f), viewportTop(0.0f), viewportBottom(0.0f), lodAdjust(0.0f), unknownLink(NULL), unknownInt((unsigned int)0), unknownInt2((unsigned int)0), unknownInt3((unsigned int)0) {
+NiCamera::NiCamera() : unknownShort((unsigned short) 0), frustumLeft(0.0f), frustumRight(0.0f), frustumTop(0.0f), frustumBottom(0.0f), frustumNear(0.0f), frustumFar(0.0f), useOrthographicProjection(false), viewportLeft(0.0f), viewportRight(0.0f), viewportTop(0.0f), viewportBottom(0.0f), lodAdjust(0.0f), unknownLink(NULL), unknownInt((unsigned int) 0), unknownInt2((unsigned int) 0), unknownInt3((unsigned int) 0)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-NiCamera::~NiCamera() {
+NiCamera::~NiCamera()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiCamera::GetType() const {
+const Type & NiCamera::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiCamera::Create() {
+NiObject * NiCamera::Create()
+{
 	return new NiCamera;
 }
 
-void NiCamera::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiCamera::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
 	unsigned int block_num;
-	NiAVObject::Read( in, link_stack, info );
-	if ( info.version >= 0x0A010000 ) {
-		NifStream( unknownShort, in, info );
+	NiAVObject::Read(in, link_stack, info);
+	if(info.version >= 0x0A010000)
+	{
+		NifStream(unknownShort, in, info);
 	};
-	NifStream( frustumLeft, in, info );
-	NifStream( frustumRight, in, info );
-	NifStream( frustumTop, in, info );
-	NifStream( frustumBottom, in, info );
-	NifStream( frustumNear, in, info );
-	NifStream( frustumFar, in, info );
-	if ( info.version >= 0x0A010000 ) {
-		NifStream( useOrthographicProjection, in, info );
+	NifStream(frustumLeft, in, info);
+	NifStream(frustumRight, in, info);
+	NifStream(frustumTop, in, info);
+	NifStream(frustumBottom, in, info);
+	NifStream(frustumNear, in, info);
+	NifStream(frustumFar, in, info);
+	if(info.version >= 0x0A010000)
+	{
+		NifStream(useOrthographicProjection, in, info);
 	};
-	NifStream( viewportLeft, in, info );
-	NifStream( viewportRight, in, info );
-	NifStream( viewportTop, in, info );
-	NifStream( viewportBottom, in, info );
-	NifStream( lodAdjust, in, info );
-	NifStream( block_num, in, info );
-	link_stack.push_back( block_num );
-	NifStream( unknownInt, in, info );
-	if ( info.version >= 0x04020100 ) {
-		NifStream( unknownInt2, in, info );
+	NifStream(viewportLeft, in, info);
+	NifStream(viewportRight, in, info);
+	NifStream(viewportTop, in, info);
+	NifStream(viewportBottom, in, info);
+	NifStream(lodAdjust, in, info);
+	NifStream(block_num, in, info);
+	link_stack.push_back(block_num);
+	NifStream(unknownInt, in, info);
+	if(info.version >= 0x04020100)
+	{
+		NifStream(unknownInt2, in, info);
 	};
-	if ( info.version <= 0x03010000 ) {
-		NifStream( unknownInt3, in, info );
+	if(info.version <= 0x03010000)
+	{
+		NifStream(unknownInt3, in, info);
 	};
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void NiCamera::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiCamera::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiAVObject::Write( out, link_map, missing_link_stack, info );
-	if ( info.version >= 0x0A010000 ) {
-		NifStream( unknownShort, out, info );
+	NiAVObject::Write(out, link_map, missing_link_stack, info);
+	if(info.version >= 0x0A010000)
+	{
+		NifStream(unknownShort, out, info);
 	};
-	NifStream( frustumLeft, out, info );
-	NifStream( frustumRight, out, info );
-	NifStream( frustumTop, out, info );
-	NifStream( frustumBottom, out, info );
-	NifStream( frustumNear, out, info );
-	NifStream( frustumFar, out, info );
-	if ( info.version >= 0x0A010000 ) {
-		NifStream( useOrthographicProjection, out, info );
+	NifStream(frustumLeft, out, info);
+	NifStream(frustumRight, out, info);
+	NifStream(frustumTop, out, info);
+	NifStream(frustumBottom, out, info);
+	NifStream(frustumNear, out, info);
+	NifStream(frustumFar, out, info);
+	if(info.version >= 0x0A010000)
+	{
+		NifStream(useOrthographicProjection, out, info);
 	};
-	NifStream( viewportLeft, out, info );
-	NifStream( viewportRight, out, info );
-	NifStream( viewportTop, out, info );
-	NifStream( viewportBottom, out, info );
-	NifStream( lodAdjust, out, info );
-	if ( info.version < VER_3_3_0_13 ) {
-		WritePtr32( &(*unknownLink), out );
-	} else {
-		if ( unknownLink != NULL ) {
-			map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(unknownLink) );
-			if (it != link_map.end()) {
-				NifStream( it->second, out, info );
-				missing_link_stack.push_back( NULL );
-			} else {
-				NifStream( 0xFFFFFFFF, out, info );
-				missing_link_stack.push_back( unknownLink );
+	NifStream(viewportLeft, out, info);
+	NifStream(viewportRight, out, info);
+	NifStream(viewportTop, out, info);
+	NifStream(viewportBottom, out, info);
+	NifStream(lodAdjust, out, info);
+	if(info.version < VER_3_3_0_13)
+	{
+		WritePtr32(&(*unknownLink), out);
+	}
+	else
+	{
+		if(unknownLink != NULL)
+		{
+			map<NiObjectRef, unsigned int>::const_iterator it = link_map.find(StaticCast<NiObject>(unknownLink));
+			if(it != link_map.end())
+			{
+				NifStream(it->second, out, info);
+				missing_link_stack.push_back(NULL);
 			}
-		} else {
-			NifStream( 0xFFFFFFFF, out, info );
-			missing_link_stack.push_back( NULL );
+			else
+			{
+				NifStream(0xFFFFFFFF, out, info);
+				missing_link_stack.push_back(unknownLink);
+			}
+		}
+		else
+		{
+			NifStream(0xFFFFFFFF, out, info);
+			missing_link_stack.push_back(NULL);
 		}
 	}
-	NifStream( unknownInt, out, info );
-	if ( info.version >= 0x04020100 ) {
-		NifStream( unknownInt2, out, info );
+	NifStream(unknownInt, out, info);
+	if(info.version >= 0x04020100)
+	{
+		NifStream(unknownInt2, out, info);
 	};
-	if ( info.version <= 0x03010000 ) {
-		NifStream( unknownInt3, out, info );
+	if(info.version <= 0x03010000)
+	{
+		NifStream(unknownInt3, out, info);
 	};
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string NiCamera::asString( bool verbose ) const {
+std::string NiCamera::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiAVObject::asString();
+	out << NiAVObject::asString(verbose);
 	out << "  Unknown Short:  " << unknownShort << endl;
 	out << "  Frustum Left:  " << frustumLeft << endl;
 	out << "  Frustum Right:  " << frustumRight << endl;
@@ -155,26 +179,29 @@ std::string NiCamera::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiCamera::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiCamera::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiAVObject::FixLinks( objects, link_stack, missing_link_stack, info );
-	unknownLink = FixLink<NiObject>( objects, link_stack, missing_link_stack, info );
+	NiAVObject::FixLinks(objects, link_stack, missing_link_stack, info);
+	unknownLink = FixLink<NiObject>(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiCamera::GetRefs() const {
+std::list<NiObjectRef> NiCamera::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiAVObject::GetRefs();
-	if ( unknownLink != NULL )
+	if(unknownLink != NULL)
 		refs.push_back(StaticCast<NiObject>(unknownLink));
 	return refs;
 }
 
-std::list<NiObject *> NiCamera::GetPtrs() const {
+std::list<NiObject *> NiCamera::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiAVObject::GetPtrs();
 	return ptrs;
@@ -183,198 +210,222 @@ std::list<NiObject *> NiCamera::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 float NiCamera::GetFrustumLeft() const {
-	return frustumLeft;
+return frustumLeft;
 }
 
 void NiCamera::SetFrustumLeft( float value ) {
-	frustumLeft = value;
+frustumLeft = value;
 }
 
 float NiCamera::GetFrustumRight() const {
-	return frustumRight;
+return frustumRight;
 }
 
 void NiCamera::SetFrustumRight( float value ) {
-	frustumRight = value;
+frustumRight = value;
 }
 
 float NiCamera::GetFrustumTop() const {
-	return frustumTop;
+return frustumTop;
 }
 
 void NiCamera::SetFrustumTop( float value ) {
-	frustumTop = value;
+frustumTop = value;
 }
 
 float NiCamera::GetFrustumBottom() const {
-	return frustumBottom;
+return frustumBottom;
 }
 
 void NiCamera::SetFrustumBottom( float value ) {
-	frustumBottom = value;
+frustumBottom = value;
 }
 
 float NiCamera::GetFrustumNear() const {
-	return frustumNear;
+return frustumNear;
 }
 
 void NiCamera::SetFrustumNear( float value ) {
-	frustumNear = value;
+frustumNear = value;
 }
 
 float NiCamera::GetFrustumFar() const {
-	return frustumFar;
+return frustumFar;
 }
 
 void NiCamera::SetFrustumFar( float value ) {
-	frustumFar = value;
+frustumFar = value;
 }
 
 bool NiCamera::GetUseOrthographicProjection() const {
-	return useOrthographicProjection;
+return useOrthographicProjection;
 }
 
 void NiCamera::SetUseOrthographicProjection( bool value ) {
-	useOrthographicProjection = value;
+useOrthographicProjection = value;
 }
 
 float NiCamera::GetViewportLeft() const {
-	return viewportLeft;
+return viewportLeft;
 }
 
 void NiCamera::SetViewportLeft( float value ) {
-	viewportLeft = value;
+viewportLeft = value;
 }
 
 float NiCamera::GetViewportRight() const {
-	return viewportRight;
+return viewportRight;
 }
 
 void NiCamera::SetViewportRight( float value ) {
-	viewportRight = value;
+viewportRight = value;
 }
 
 float NiCamera::GetViewportTop() const {
-	return viewportTop;
+return viewportTop;
 }
 
 void NiCamera::SetViewportTop( float value ) {
-	viewportTop = value;
+viewportTop = value;
 }
 
 float NiCamera::GetViewportBottom() const {
-	return viewportBottom;
+return viewportBottom;
 }
 
 void NiCamera::SetViewportBottom( float value ) {
-	viewportBottom = value;
+viewportBottom = value;
 }
 
 float NiCamera::GetLodAdjust() const {
-	return lodAdjust;
+return lodAdjust;
 }
 
 void NiCamera::SetLodAdjust( float value ) {
-	lodAdjust = value;
+lodAdjust = value;
 }
 
 ****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 
-float NiCamera::GetFrustumLeft() const {
+float NiCamera::GetFrustumLeft() const
+{
 	return frustumLeft;
 }
 
-void NiCamera::SetFrustumLeft( float value ) {
+void NiCamera::SetFrustumLeft(float value)
+{
 	frustumLeft = value;
 }
 
-float NiCamera::GetFrustumRight() const {
+float NiCamera::GetFrustumRight() const
+{
 	return frustumRight;
 }
 
-void NiCamera::SetFrustumRight( float value ) {
+void NiCamera::SetFrustumRight(float value)
+{
 	frustumRight = value;
 }
 
-float NiCamera::GetFrustumTop() const {
+float NiCamera::GetFrustumTop() const
+{
 	return frustumTop;
 }
 
-void NiCamera::SetFrustumTop( float value ) {
+void NiCamera::SetFrustumTop(float value)
+{
 	frustumTop = value;
 }
 
-float NiCamera::GetFrustumBottom() const {
+float NiCamera::GetFrustumBottom() const
+{
 	return frustumBottom;
 }
 
-void NiCamera::SetFrustumBottom( float value ) {
+void NiCamera::SetFrustumBottom(float value)
+{
 	frustumBottom = value;
 }
 
-float NiCamera::GetFrustumNear() const {
+float NiCamera::GetFrustumNear() const
+{
 	return frustumNear;
 }
 
-void NiCamera::SetFrustumNear( float value ) {
+void NiCamera::SetFrustumNear(float value)
+{
 	frustumNear = value;
 }
 
-float NiCamera::GetFrustumFar() const {
+float NiCamera::GetFrustumFar() const
+{
 	return frustumFar;
 }
 
-void NiCamera::SetFrustumFar( float value ) {
+void NiCamera::SetFrustumFar(float value)
+{
 	frustumFar = value;
 }
 
-bool NiCamera::GetUseOrthographicProjection() const {
+bool NiCamera::GetUseOrthographicProjection() const
+{
 	return useOrthographicProjection;
 }
 
-void NiCamera::SetUseOrthographicProjection( bool value ) {
+void NiCamera::SetUseOrthographicProjection(bool value)
+{
 	useOrthographicProjection = value;
 }
 
-float NiCamera::GetViewportLeft() const {
+float NiCamera::GetViewportLeft() const
+{
 	return viewportLeft;
 }
 
-void NiCamera::SetViewportLeft( float value ) {
+void NiCamera::SetViewportLeft(float value)
+{
 	viewportLeft = value;
 }
 
-float NiCamera::GetViewportRight() const {
+float NiCamera::GetViewportRight() const
+{
 	return viewportRight;
 }
 
-void NiCamera::SetViewportRight( float value ) {
+void NiCamera::SetViewportRight(float value)
+{
 	viewportRight = value;
 }
 
-float NiCamera::GetViewportTop() const {
+float NiCamera::GetViewportTop() const
+{
 	return viewportTop;
 }
 
-void NiCamera::SetViewportTop( float value ) {
+void NiCamera::SetViewportTop(float value)
+{
 	viewportTop = value;
 }
 
-float NiCamera::GetViewportBottom() const {
+float NiCamera::GetViewportBottom() const
+{
 	return viewportBottom;
 }
 
-void NiCamera::SetViewportBottom( float value ) {
+void NiCamera::SetViewportBottom(float value)
+{
 	viewportBottom = value;
 }
 
-float NiCamera::GetLodAdjust() const {
+float NiCamera::GetLodAdjust() const
+{
 	return lodAdjust;
 }
 
-void NiCamera::SetLodAdjust( float value ) {
+void NiCamera::SetLodAdjust(float value)
+{
 	lodAdjust = value;
 }
 

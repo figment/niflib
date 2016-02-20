@@ -13,12 +13,14 @@ using namespace Niflib;
 LimitedHingeDescriptor::LimitedHingeDescriptor() : minAngle(0.0f), maxAngle(0.0f), maxFriction(0.0f), enableMotor(false) {};
 
 //Copy Constructor
-LimitedHingeDescriptor::LimitedHingeDescriptor( const LimitedHingeDescriptor & src ) {
+LimitedHingeDescriptor::LimitedHingeDescriptor(const LimitedHingeDescriptor & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-LimitedHingeDescriptor & LimitedHingeDescriptor::operator=( const LimitedHingeDescriptor & src ) {
+LimitedHingeDescriptor & LimitedHingeDescriptor::operator=(const LimitedHingeDescriptor & src)
+{
 	this->pivotA = src.pivotA;
 	this->axleA = src.axleA;
 	this->perp2AxleInA1 = src.perp2AxleInA1;

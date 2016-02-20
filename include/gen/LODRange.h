@@ -10,28 +10,27 @@ All rights reserved.  Please see niflib.h for license. */
 
 #include "../NIF_IO.h"
 
-namespace Niflib {
-
-
-/*! The distance range where a specific level of detail applies. */
-struct LODRange {
-	/*! Default Constructor */
-	NIFLIB_API LODRange();
-	/*! Default Destructor */
-	NIFLIB_API ~LODRange();
-	/*! Copy Constructor */
-	NIFLIB_API LODRange( const LODRange & src );
-	/*! Copy Operator */
-	NIFLIB_API LODRange & operator=( const LODRange & src );
-	/*! Begining of range. */
-	float nearExtent;
-	/*! End of Range. */
-	float farExtent;
-	/*! Unknown (0,0,0). */
-	array<3,unsigned int > unknownInts;
-	//--BEGIN MISC CUSTOM CODE--//
-	//--END CUSTOM CODE--//
-};
-
+namespace Niflib
+{
+	/*! The distance range where a specific level of detail applies. */
+	struct LODRange
+	{
+		/*! Default Constructor */
+		NIFLIB_API LODRange();
+		/*! Default Destructor */
+		NIFLIB_API ~LODRange();
+		/*! Copy Constructor */
+		NIFLIB_API LODRange(const LODRange & src);
+		/*! Copy Operator */
+		NIFLIB_API LODRange & operator=(const LODRange & src);
+		/*! Begining of range. */
+		float nearExtent;
+		/*! End of Range. */
+		float farExtent;
+		/*! Unknown (0,0,0). */
+		array<3, unsigned int > unknownInts;
+		//--BEGIN MISC CUSTOM CODE--//
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

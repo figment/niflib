@@ -19,63 +19,72 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type bhkLimitedHingeConstraint::TYPE("bhkLimitedHingeConstraint", &bhkConstraint::TYPE );
+const Type bhkLimitedHingeConstraint::TYPE("bhkLimitedHingeConstraint", &bhkConstraint::TYPE);
 
-bhkLimitedHingeConstraint::bhkLimitedHingeConstraint() {
+bhkLimitedHingeConstraint::bhkLimitedHingeConstraint()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-bhkLimitedHingeConstraint::~bhkLimitedHingeConstraint() {
+bhkLimitedHingeConstraint::~bhkLimitedHingeConstraint()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & bhkLimitedHingeConstraint::GetType() const {
+const Type & bhkLimitedHingeConstraint::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * bhkLimitedHingeConstraint::Create() {
+NiObject * bhkLimitedHingeConstraint::Create()
+{
 	return new bhkLimitedHingeConstraint;
 }
 
-void bhkLimitedHingeConstraint::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void bhkLimitedHingeConstraint::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	bhkConstraint::Read( in, link_stack, info );
-	if ( info.version <= 0x14000005 ) {
-		NifStream( limitedHinge.pivotA, in, info );
-		NifStream( limitedHinge.axleA, in, info );
-		NifStream( limitedHinge.perp2AxleInA1, in, info );
-		NifStream( limitedHinge.perp2AxleInA2, in, info );
-		NifStream( limitedHinge.pivotB, in, info );
-		NifStream( limitedHinge.axleB, in, info );
-		NifStream( limitedHinge.perp2AxleInB2, in, info );
+	bhkConstraint::Read(in, link_stack, info);
+	if(info.version <= 0x14000005)
+	{
+		NifStream(limitedHinge.pivotA, in, info);
+		NifStream(limitedHinge.axleA, in, info);
+		NifStream(limitedHinge.perp2AxleInA1, in, info);
+		NifStream(limitedHinge.perp2AxleInA2, in, info);
+		NifStream(limitedHinge.pivotB, in, info);
+		NifStream(limitedHinge.axleB, in, info);
+		NifStream(limitedHinge.perp2AxleInB2, in, info);
 	};
-	if ( info.version >= 0x14020007 ) {
-		NifStream( limitedHinge.axleA, in, info );
-		NifStream( limitedHinge.perp2AxleInA1, in, info );
-		NifStream( limitedHinge.perp2AxleInA2, in, info );
-		NifStream( limitedHinge.pivotA, in, info );
-		NifStream( limitedHinge.axleB, in, info );
-		NifStream( limitedHinge.perp2AxleInB1, in, info );
-		NifStream( limitedHinge.perp2AxleInB2, in, info );
-		NifStream( limitedHinge.pivotB, in, info );
+	if(info.version >= 0x14020007)
+	{
+		NifStream(limitedHinge.axleA, in, info);
+		NifStream(limitedHinge.perp2AxleInA1, in, info);
+		NifStream(limitedHinge.perp2AxleInA2, in, info);
+		NifStream(limitedHinge.pivotA, in, info);
+		NifStream(limitedHinge.axleB, in, info);
+		NifStream(limitedHinge.perp2AxleInB1, in, info);
+		NifStream(limitedHinge.perp2AxleInB2, in, info);
+		NifStream(limitedHinge.pivotB, in, info);
 	};
-	NifStream( limitedHinge.minAngle, in, info );
-	NifStream( limitedHinge.maxAngle, in, info );
-	NifStream( limitedHinge.maxFriction, in, info );
-	if ( info.version >= 0x14020007 ) {
-		NifStream( limitedHinge.enableMotor, in, info );
-		if ( limitedHinge.enableMotor ) {
-			NifStream( limitedHinge.motor.unknownFloat1, in, info );
-			NifStream( limitedHinge.motor.unknownFloat2, in, info );
-			NifStream( limitedHinge.motor.unknownFloat3, in, info );
-			NifStream( limitedHinge.motor.unknownFloat4, in, info );
-			NifStream( limitedHinge.motor.unknownFloat5, in, info );
-			NifStream( limitedHinge.motor.unknownFloat6, in, info );
-			NifStream( limitedHinge.motor.unknownByte1, in, info );
+	NifStream(limitedHinge.minAngle, in, info);
+	NifStream(limitedHinge.maxAngle, in, info);
+	NifStream(limitedHinge.maxFriction, in, info);
+	if(info.version >= 0x14020007)
+	{
+		NifStream(limitedHinge.enableMotor, in, info);
+		if(limitedHinge.enableMotor)
+		{
+			NifStream(limitedHinge.motor.unknownFloat1, in, info);
+			NifStream(limitedHinge.motor.unknownFloat2, in, info);
+			NifStream(limitedHinge.motor.unknownFloat3, in, info);
+			NifStream(limitedHinge.motor.unknownFloat4, in, info);
+			NifStream(limitedHinge.motor.unknownFloat5, in, info);
+			NifStream(limitedHinge.motor.unknownFloat6, in, info);
+			NifStream(limitedHinge.motor.unknownByte1, in, info);
 		};
 	};
 
@@ -83,43 +92,48 @@ void bhkLimitedHingeConstraint::Read( istream& in, list<unsigned int> & link_sta
 	//--END CUSTOM CODE--//
 }
 
-void bhkLimitedHingeConstraint::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void bhkLimitedHingeConstraint::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	bhkConstraint::Write( out, link_map, missing_link_stack, info );
-	if ( info.version <= 0x14000005 ) {
-		NifStream( limitedHinge.pivotA, out, info );
-		NifStream( limitedHinge.axleA, out, info );
-		NifStream( limitedHinge.perp2AxleInA1, out, info );
-		NifStream( limitedHinge.perp2AxleInA2, out, info );
-		NifStream( limitedHinge.pivotB, out, info );
-		NifStream( limitedHinge.axleB, out, info );
-		NifStream( limitedHinge.perp2AxleInB2, out, info );
+	bhkConstraint::Write(out, link_map, missing_link_stack, info);
+	if(info.version <= 0x14000005)
+	{
+		NifStream(limitedHinge.pivotA, out, info);
+		NifStream(limitedHinge.axleA, out, info);
+		NifStream(limitedHinge.perp2AxleInA1, out, info);
+		NifStream(limitedHinge.perp2AxleInA2, out, info);
+		NifStream(limitedHinge.pivotB, out, info);
+		NifStream(limitedHinge.axleB, out, info);
+		NifStream(limitedHinge.perp2AxleInB2, out, info);
 	};
-	if ( info.version >= 0x14020007 ) {
-		NifStream( limitedHinge.axleA, out, info );
-		NifStream( limitedHinge.perp2AxleInA1, out, info );
-		NifStream( limitedHinge.perp2AxleInA2, out, info );
-		NifStream( limitedHinge.pivotA, out, info );
-		NifStream( limitedHinge.axleB, out, info );
-		NifStream( limitedHinge.perp2AxleInB1, out, info );
-		NifStream( limitedHinge.perp2AxleInB2, out, info );
-		NifStream( limitedHinge.pivotB, out, info );
+	if(info.version >= 0x14020007)
+	{
+		NifStream(limitedHinge.axleA, out, info);
+		NifStream(limitedHinge.perp2AxleInA1, out, info);
+		NifStream(limitedHinge.perp2AxleInA2, out, info);
+		NifStream(limitedHinge.pivotA, out, info);
+		NifStream(limitedHinge.axleB, out, info);
+		NifStream(limitedHinge.perp2AxleInB1, out, info);
+		NifStream(limitedHinge.perp2AxleInB2, out, info);
+		NifStream(limitedHinge.pivotB, out, info);
 	};
-	NifStream( limitedHinge.minAngle, out, info );
-	NifStream( limitedHinge.maxAngle, out, info );
-	NifStream( limitedHinge.maxFriction, out, info );
-	if ( info.version >= 0x14020007 ) {
-		NifStream( limitedHinge.enableMotor, out, info );
-		if ( limitedHinge.enableMotor ) {
-			NifStream( limitedHinge.motor.unknownFloat1, out, info );
-			NifStream( limitedHinge.motor.unknownFloat2, out, info );
-			NifStream( limitedHinge.motor.unknownFloat3, out, info );
-			NifStream( limitedHinge.motor.unknownFloat4, out, info );
-			NifStream( limitedHinge.motor.unknownFloat5, out, info );
-			NifStream( limitedHinge.motor.unknownFloat6, out, info );
-			NifStream( limitedHinge.motor.unknownByte1, out, info );
+	NifStream(limitedHinge.minAngle, out, info);
+	NifStream(limitedHinge.maxAngle, out, info);
+	NifStream(limitedHinge.maxFriction, out, info);
+	if(info.version >= 0x14020007)
+	{
+		NifStream(limitedHinge.enableMotor, out, info);
+		if(limitedHinge.enableMotor)
+		{
+			NifStream(limitedHinge.motor.unknownFloat1, out, info);
+			NifStream(limitedHinge.motor.unknownFloat2, out, info);
+			NifStream(limitedHinge.motor.unknownFloat3, out, info);
+			NifStream(limitedHinge.motor.unknownFloat4, out, info);
+			NifStream(limitedHinge.motor.unknownFloat5, out, info);
+			NifStream(limitedHinge.motor.unknownFloat6, out, info);
+			NifStream(limitedHinge.motor.unknownByte1, out, info);
 		};
 	};
 
@@ -127,12 +141,13 @@ void bhkLimitedHingeConstraint::Write( ostream& out, const map<NiObjectRef,unsig
 	//--END CUSTOM CODE--//
 }
 
-std::string bhkLimitedHingeConstraint::asString( bool verbose ) const {
+std::string bhkLimitedHingeConstraint::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << bhkConstraint::asString();
+	out << bhkConstraint::asString(verbose);
 	out << "  Pivot A:  " << limitedHinge.pivotA << endl;
 	out << "  Axle A:  " << limitedHinge.axleA << endl;
 	out << "  Perp2 Axle In A1:  " << limitedHinge.perp2AxleInA1 << endl;
@@ -145,7 +160,8 @@ std::string bhkLimitedHingeConstraint::asString( bool verbose ) const {
 	out << "  Max Angle:  " << limitedHinge.maxAngle << endl;
 	out << "  Max Friction:  " << limitedHinge.maxFriction << endl;
 	out << "  Enable Motor:  " << limitedHinge.enableMotor << endl;
-	if ( limitedHinge.enableMotor ) {
+	if(limitedHinge.enableMotor)
+	{
 		out << "    Unknown Float 1:  " << limitedHinge.motor.unknownFloat1 << endl;
 		out << "    Unknown Float 2:  " << limitedHinge.motor.unknownFloat2 << endl;
 		out << "    Unknown Float 3:  " << limitedHinge.motor.unknownFloat3 << endl;
@@ -160,23 +176,26 @@ std::string bhkLimitedHingeConstraint::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void bhkLimitedHingeConstraint::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void bhkLimitedHingeConstraint::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	bhkConstraint::FixLinks( objects, link_stack, missing_link_stack, info );
+	bhkConstraint::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> bhkLimitedHingeConstraint::GetRefs() const {
+std::list<NiObjectRef> bhkLimitedHingeConstraint::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = bhkConstraint::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> bhkLimitedHingeConstraint::GetPtrs() const {
+std::list<NiObject *> bhkLimitedHingeConstraint::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = bhkConstraint::GetPtrs();
 	return ptrs;
@@ -185,11 +204,11 @@ std::list<NiObject *> bhkLimitedHingeConstraint::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 LimitedHingeDescriptor bhkLimitedHingeConstraint::GetLimitedHinge() const {
-	return limitedHinge;
+return limitedHinge;
 }
 
 void bhkLimitedHingeConstraint::SetLimitedHinge( const LimitedHingeDescriptor & value ) {
-	limitedHinge = value;
+limitedHinge = value;
 }
 
 ****End Example Naive Implementation***/

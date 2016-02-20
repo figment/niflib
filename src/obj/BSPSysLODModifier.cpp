@@ -18,67 +18,74 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type BSPSysLODModifier::TYPE("BSPSysLODModifier", &NiPSysModifier::TYPE );
+const Type BSPSysLODModifier::TYPE("BSPSysLODModifier", &NiPSysModifier::TYPE);
 
-BSPSysLODModifier::BSPSysLODModifier() : uknownFloat1(0.0f), uknownFloat2(0.0f), uknownFloat3(0.0f), uknownFloat4(0.0f) {
+BSPSysLODModifier::BSPSysLODModifier() : uknownFloat1(0.0f), uknownFloat2(0.0f), uknownFloat3(0.0f), uknownFloat4(0.0f)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-BSPSysLODModifier::~BSPSysLODModifier() {
+BSPSysLODModifier::~BSPSysLODModifier()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & BSPSysLODModifier::GetType() const {
+const Type & BSPSysLODModifier::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * BSPSysLODModifier::Create() {
+NiObject * BSPSysLODModifier::Create()
+{
 	return new BSPSysLODModifier;
 }
 
-void BSPSysLODModifier::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void BSPSysLODModifier::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSysModifier::Read( in, link_stack, info );
-	NifStream( uknownFloat1, in, info );
-	NifStream( uknownFloat2, in, info );
-	NifStream( uknownFloat3, in, info );
-	NifStream( uknownFloat4, in, info );
+	NiPSysModifier::Read(in, link_stack, info);
+	NifStream(uknownFloat1, in, info);
+	NifStream(uknownFloat2, in, info);
+	NifStream(uknownFloat3, in, info);
+	NifStream(uknownFloat4, in, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-void BSPSysLODModifier::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void BSPSysLODModifier::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSysModifier::Write( out, link_map, missing_link_stack, info );
-	NifStream( uknownFloat1, out, info );
-	NifStream( uknownFloat2, out, info );
-	NifStream( uknownFloat3, out, info );
-	NifStream( uknownFloat4, out, info );
+	NiPSysModifier::Write(out, link_map, missing_link_stack, info);
+	NifStream(uknownFloat1, out, info);
+	NifStream(uknownFloat2, out, info);
+	NifStream(uknownFloat3, out, info);
+	NifStream(uknownFloat4, out, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::string BSPSysLODModifier::asString( bool verbose ) const {
+std::string BSPSysLODModifier::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSysModifier::asString();
+	out << NiPSysModifier::asString(verbose);
 	out << "  Uknown Float 1:  " << uknownFloat1 << endl;
 	out << "  Uknown Float 2:  " << uknownFloat2 << endl;
 	out << "  Uknown Float 3:  " << uknownFloat3 << endl;
@@ -90,25 +97,28 @@ std::string BSPSysLODModifier::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void BSPSysLODModifier::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void BSPSysLODModifier::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSysModifier::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiPSysModifier::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> BSPSysLODModifier::GetRefs() const {
+std::list<NiObjectRef> BSPSysLODModifier::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiPSysModifier::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> BSPSysLODModifier::GetPtrs() const {
+std::list<NiObject *> BSPSysLODModifier::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiPSysModifier::GetPtrs();
 	return ptrs;
@@ -117,35 +127,35 @@ std::list<NiObject *> BSPSysLODModifier::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 float BSPSysLODModifier::GetUknownFloat1() const {
-	return uknownFloat1;
+return uknownFloat1;
 }
 
 void BSPSysLODModifier::SetUknownFloat1( float value ) {
-	uknownFloat1 = value;
+uknownFloat1 = value;
 }
 
 float BSPSysLODModifier::GetUknownFloat2() const {
-	return uknownFloat2;
+return uknownFloat2;
 }
 
 void BSPSysLODModifier::SetUknownFloat2( float value ) {
-	uknownFloat2 = value;
+uknownFloat2 = value;
 }
 
 float BSPSysLODModifier::GetUknownFloat3() const {
-	return uknownFloat3;
+return uknownFloat3;
 }
 
 void BSPSysLODModifier::SetUknownFloat3( float value ) {
-	uknownFloat3 = value;
+uknownFloat3 = value;
 }
 
 float BSPSysLODModifier::GetUknownFloat4() const {
-	return uknownFloat4;
+return uknownFloat4;
 }
 
 void BSPSysLODModifier::SetUknownFloat4( float value ) {
-	uknownFloat4 = value;
+uknownFloat4 = value;
 }
 
 ****End Example Naive Implementation***/

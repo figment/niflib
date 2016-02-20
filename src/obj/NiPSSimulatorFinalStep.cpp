@@ -18,59 +18,66 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiPSSimulatorFinalStep::TYPE("NiPSSimulatorFinalStep", &NiPSSimulatorStep::TYPE );
+const Type NiPSSimulatorFinalStep::TYPE("NiPSSimulatorFinalStep", &NiPSSimulatorStep::TYPE);
 
-NiPSSimulatorFinalStep::NiPSSimulatorFinalStep() {
+NiPSSimulatorFinalStep::NiPSSimulatorFinalStep()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-NiPSSimulatorFinalStep::~NiPSSimulatorFinalStep() {
+NiPSSimulatorFinalStep::~NiPSSimulatorFinalStep()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiPSSimulatorFinalStep::GetType() const {
+const Type & NiPSSimulatorFinalStep::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiPSSimulatorFinalStep::Create() {
+NiObject * NiPSSimulatorFinalStep::Create()
+{
 	return new NiPSSimulatorFinalStep;
 }
 
-void NiPSSimulatorFinalStep::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiPSSimulatorFinalStep::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSSimulatorStep::Read( in, link_stack, info );
+	NiPSSimulatorStep::Read(in, link_stack, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-void NiPSSimulatorFinalStep::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiPSSimulatorFinalStep::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSSimulatorStep::Write( out, link_map, missing_link_stack, info );
+	NiPSSimulatorStep::Write(out, link_map, missing_link_stack, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::string NiPSSimulatorFinalStep::asString( bool verbose ) const {
+std::string NiPSSimulatorFinalStep::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiPSSimulatorStep::asString();
+	out << NiPSSimulatorStep::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//
@@ -78,25 +85,28 @@ std::string NiPSSimulatorFinalStep::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiPSSimulatorFinalStep::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiPSSimulatorFinalStep::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiPSSimulatorStep::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiPSSimulatorStep::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiPSSimulatorFinalStep::GetRefs() const {
+std::list<NiObjectRef> NiPSSimulatorFinalStep::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiPSSimulatorStep::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiPSSimulatorFinalStep::GetPtrs() const {
+std::list<NiObject *> NiPSSimulatorFinalStep::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiPSSimulatorStep::GetPtrs();
 	return ptrs;

@@ -18,72 +18,84 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiBinaryExtraData::TYPE("NiBinaryExtraData", &NiExtraData::TYPE );
+const Type NiBinaryExtraData::TYPE("NiBinaryExtraData", &NiExtraData::TYPE);
 
-NiBinaryExtraData::NiBinaryExtraData() {
+NiBinaryExtraData::NiBinaryExtraData()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-NiBinaryExtraData::~NiBinaryExtraData() {
+NiBinaryExtraData::~NiBinaryExtraData()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiBinaryExtraData::GetType() const {
+const Type & NiBinaryExtraData::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiBinaryExtraData::Create() {
+NiObject * NiBinaryExtraData::Create()
+{
 	return new NiBinaryExtraData;
 }
 
-void NiBinaryExtraData::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiBinaryExtraData::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiExtraData::Read( in, link_stack, info );
-	NifStream( binaryData.dataSize, in, info );
+	NiExtraData::Read(in, link_stack, info);
+	NifStream(binaryData.dataSize, in, info);
 	binaryData.data.resize(binaryData.dataSize);
-	for (unsigned int i1 = 0; i1 < binaryData.data.size(); i1++) {
-		NifStream( binaryData.data[i1], in, info );
+	for(unsigned int i1 = 0; i1 < binaryData.data.size(); i1++)
+	{
+		NifStream(binaryData.data[i1], in, info);
 	};
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void NiBinaryExtraData::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiBinaryExtraData::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiExtraData::Write( out, link_map, missing_link_stack, info );
-	binaryData.dataSize = (unsigned int)(binaryData.data.size());
-	NifStream( binaryData.dataSize, out, info );
-	for (unsigned int i1 = 0; i1 < binaryData.data.size(); i1++) {
-		NifStream( binaryData.data[i1], out, info );
+	NiExtraData::Write(out, link_map, missing_link_stack, info);
+	binaryData.dataSize = (unsigned int) (binaryData.data.size());
+	NifStream(binaryData.dataSize, out, info);
+	for(unsigned int i1 = 0; i1 < binaryData.data.size(); i1++)
+	{
+		NifStream(binaryData.data[i1], out, info);
 	};
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string NiBinaryExtraData::asString( bool verbose ) const {
+std::string NiBinaryExtraData::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiExtraData::asString();
-	binaryData.dataSize = (unsigned int)(binaryData.data.size());
+	out << NiExtraData::asString(verbose);
+	binaryData.dataSize = (unsigned int) (binaryData.data.size());
 	out << "  Data Size:  " << binaryData.dataSize << endl;
 	array_output_count = 0;
-	for (unsigned int i1 = 0; i1 < binaryData.data.size(); i1++) {
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+	for(unsigned int i1 = 0; i1 < binaryData.data.size(); i1++)
+	{
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 			break;
 		};
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			break;
 		};
 		out << "    Data[" << i1 << "]:  " << binaryData.data[i1] << endl;
@@ -95,23 +107,26 @@ std::string NiBinaryExtraData::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiBinaryExtraData::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiBinaryExtraData::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiExtraData::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiExtraData::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiBinaryExtraData::GetRefs() const {
+std::list<NiObjectRef> NiBinaryExtraData::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiExtraData::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiBinaryExtraData::GetPtrs() const {
+std::list<NiObject *> NiBinaryExtraData::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiExtraData::GetPtrs();
 	return ptrs;
@@ -120,23 +135,25 @@ std::list<NiObject *> NiBinaryExtraData::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 ByteArray NiBinaryExtraData::GetBinaryData() const {
-	return binaryData;
+return binaryData;
 }
 
 void NiBinaryExtraData::SetBinaryData( const ByteArray & value ) {
-	binaryData = value;
+binaryData = value;
 }
 
 ****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 
-vector<byte> NiBinaryExtraData::GetData() const {
+vector<byte> NiBinaryExtraData::GetData() const
+{
 	return binaryData.data;
 };
 
-void NiBinaryExtraData::SetData( const vector<byte> & n ) {
-	binaryData.dataSize = (unsigned int)(n.size());
+void NiBinaryExtraData::SetData(const vector<byte> & n)
+{
+	binaryData.dataSize = (unsigned int) (n.size());
 	binaryData.data = n;
 };
 

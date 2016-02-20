@@ -18,36 +18,42 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type BSShaderLightingProperty::TYPE("BSShaderLightingProperty", &BSShaderProperty::TYPE );
+const Type BSShaderLightingProperty::TYPE("BSShaderLightingProperty", &BSShaderProperty::TYPE);
 
-BSShaderLightingProperty::BSShaderLightingProperty() : unknownInt3((int)3) {
+BSShaderLightingProperty::BSShaderLightingProperty() : unknownInt3((int) 3)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-BSShaderLightingProperty::~BSShaderLightingProperty() {
+BSShaderLightingProperty::~BSShaderLightingProperty()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & BSShaderLightingProperty::GetType() const {
+const Type & BSShaderLightingProperty::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * BSShaderLightingProperty::Create() {
+NiObject * BSShaderLightingProperty::Create()
+{
 	return new BSShaderLightingProperty;
 }
 
-void BSShaderLightingProperty::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void BSShaderLightingProperty::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	BSShaderProperty::Read( in, link_stack, info );
-	if ( (info.userVersion <= 11) ) {
-		NifStream( unknownInt3, in, info );
+	BSShaderProperty::Read(in, link_stack, info);
+	if((info.userVersion <= 11))
+	{
+		NifStream(unknownInt3, in, info);
 	};
 
 	//--BEGIN POST-READ CUSTOM CODE--//
@@ -55,14 +61,16 @@ void BSShaderLightingProperty::Read( istream& in, list<unsigned int> & link_stac
 	//--END CUSTOM CODE--//
 }
 
-void BSShaderLightingProperty::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void BSShaderLightingProperty::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	BSShaderProperty::Write( out, link_map, missing_link_stack, info );
-	if ( (info.userVersion <= 11) ) {
-		NifStream( unknownInt3, out, info );
+	BSShaderProperty::Write(out, link_map, missing_link_stack, info);
+	if((info.userVersion <= 11))
+	{
+		NifStream(unknownInt3, out, info);
 	};
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
@@ -70,13 +78,14 @@ void BSShaderLightingProperty::Write( ostream& out, const map<NiObjectRef,unsign
 	//--END CUSTOM CODE--//
 }
 
-std::string BSShaderLightingProperty::asString( bool verbose ) const {
+std::string BSShaderLightingProperty::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << BSShaderProperty::asString();
+	out << BSShaderProperty::asString(verbose);
 	out << "  Unknown Int 3:  " << unknownInt3 << endl;
 	return out.str();
 
@@ -85,25 +94,28 @@ std::string BSShaderLightingProperty::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void BSShaderLightingProperty::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void BSShaderLightingProperty::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	BSShaderProperty::FixLinks( objects, link_stack, missing_link_stack, info );
+	BSShaderProperty::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> BSShaderLightingProperty::GetRefs() const {
+std::list<NiObjectRef> BSShaderLightingProperty::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = BSShaderProperty::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> BSShaderLightingProperty::GetPtrs() const {
+std::list<NiObject *> BSShaderLightingProperty::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = BSShaderProperty::GetPtrs();
 	return ptrs;

@@ -19,64 +19,79 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type BSMultiBound::TYPE("BSMultiBound", &NiObject::TYPE );
+const Type BSMultiBound::TYPE("BSMultiBound", &NiObject::TYPE);
 
-BSMultiBound::BSMultiBound() : data(NULL) {
+BSMultiBound::BSMultiBound() : data(NULL)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-BSMultiBound::~BSMultiBound() {
+BSMultiBound::~BSMultiBound()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & BSMultiBound::GetType() const {
+const Type & BSMultiBound::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * BSMultiBound::Create() {
+NiObject * BSMultiBound::Create()
+{
 	return new BSMultiBound;
 }
 
-void BSMultiBound::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void BSMultiBound::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
 	unsigned int block_num;
-	NiObject::Read( in, link_stack, info );
-	NifStream( block_num, in, info );
-	link_stack.push_back( block_num );
+	NiObject::Read(in, link_stack, info);
+	NifStream(block_num, in, info);
+	link_stack.push_back(block_num);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-void BSMultiBound::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void BSMultiBound::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiObject::Write( out, link_map, missing_link_stack, info );
-	if ( info.version < VER_3_3_0_13 ) {
-		WritePtr32( &(*data), out );
-	} else {
-		if ( data != NULL ) {
-			map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(data) );
-			if (it != link_map.end()) {
-				NifStream( it->second, out, info );
-				missing_link_stack.push_back( NULL );
-			} else {
-				NifStream( 0xFFFFFFFF, out, info );
-				missing_link_stack.push_back( data );
+	NiObject::Write(out, link_map, missing_link_stack, info);
+	if(info.version < VER_3_3_0_13)
+	{
+		WritePtr32(&(*data), out);
+	}
+	else
+	{
+		if(data != NULL)
+		{
+			map<NiObjectRef, unsigned int>::const_iterator it = link_map.find(StaticCast<NiObject>(data));
+			if(it != link_map.end())
+			{
+				NifStream(it->second, out, info);
+				missing_link_stack.push_back(NULL);
 			}
-		} else {
-			NifStream( 0xFFFFFFFF, out, info );
-			missing_link_stack.push_back( NULL );
+			else
+			{
+				NifStream(0xFFFFFFFF, out, info);
+				missing_link_stack.push_back(data);
+			}
+		}
+		else
+		{
+			NifStream(0xFFFFFFFF, out, info);
+			missing_link_stack.push_back(NULL);
 		}
 	}
 
@@ -85,13 +100,14 @@ void BSMultiBound::Write( ostream& out, const map<NiObjectRef,unsigned int> & li
 	//--END CUSTOM CODE--//
 }
 
-std::string BSMultiBound::asString( bool verbose ) const {
+std::string BSMultiBound::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	out << "  Data:  " << data << endl;
 	return out.str();
 
@@ -100,28 +116,31 @@ std::string BSMultiBound::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void BSMultiBound::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void BSMultiBound::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiObject::FixLinks( objects, link_stack, missing_link_stack, info );
-	data = FixLink<BSMultiBoundData>( objects, link_stack, missing_link_stack, info );
+	NiObject::FixLinks(objects, link_stack, missing_link_stack, info);
+	data = FixLink<BSMultiBoundData>(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> BSMultiBound::GetRefs() const {
+std::list<NiObjectRef> BSMultiBound::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiObject::GetRefs();
-	if ( data != NULL )
+	if(data != NULL)
 		refs.push_back(StaticCast<NiObject>(data));
 	return refs;
 }
 
-std::list<NiObject *> BSMultiBound::GetPtrs() const {
+std::list<NiObject *> BSMultiBound::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiObject::GetPtrs();
 	return ptrs;
@@ -130,11 +149,11 @@ std::list<NiObject *> BSMultiBound::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 Ref<BSMultiBoundData > BSMultiBound::GetData() const {
-	return data;
+return data;
 }
 
 void BSMultiBound::SetData( Ref<BSMultiBoundData > value ) {
-	data = value;
+data = value;
 }
 
 ****End Example Naive Implementation***/

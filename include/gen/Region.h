@@ -10,26 +10,25 @@ All rights reserved.  Please see niflib.h for license. */
 
 #include "../NIF_IO.h"
 
-namespace Niflib {
-
-
-/*! A range of indices, which make up a region (such as a submesh). */
-struct Region {
-	/*! Default Constructor */
-	NIFLIB_API Region();
-	/*! Default Destructor */
-	NIFLIB_API ~Region();
-	/*! Copy Constructor */
-	NIFLIB_API Region( const Region & src );
-	/*! Copy Operator */
-	NIFLIB_API Region & operator=( const Region & src );
-	/*! Unknown. */
-	unsigned int startIndex;
-	/*! Unknown. */
-	unsigned int numIndices;
-	//--BEGIN MISC CUSTOM CODE--//
-	//--END CUSTOM CODE--//
-};
-
+namespace Niflib
+{
+	/*! A range of indices, which make up a region (such as a submesh). */
+	struct Region
+	{
+		/*! Default Constructor */
+		NIFLIB_API Region();
+		/*! Default Destructor */
+		NIFLIB_API ~Region();
+		/*! Copy Constructor */
+		NIFLIB_API Region(const Region & src);
+		/*! Copy Operator */
+		NIFLIB_API Region & operator=(const Region & src);
+		/*! Unknown. */
+		unsigned int startIndex;
+		/*! Unknown. */
+		unsigned int numIndices;
+		//--BEGIN MISC CUSTOM CODE--//
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

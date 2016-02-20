@@ -18,86 +18,97 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type bhkHingeConstraint::TYPE("bhkHingeConstraint", &bhkConstraint::TYPE );
+const Type bhkHingeConstraint::TYPE("bhkHingeConstraint", &bhkConstraint::TYPE);
 
-bhkHingeConstraint::bhkHingeConstraint() {
+bhkHingeConstraint::bhkHingeConstraint()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-bhkHingeConstraint::~bhkHingeConstraint() {
+bhkHingeConstraint::~bhkHingeConstraint()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & bhkHingeConstraint::GetType() const {
+const Type & bhkHingeConstraint::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * bhkHingeConstraint::Create() {
+NiObject * bhkHingeConstraint::Create()
+{
 	return new bhkHingeConstraint;
 }
 
-void bhkHingeConstraint::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void bhkHingeConstraint::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	bhkConstraint::Read( in, link_stack, info );
-	if ( info.version <= 0x14000005 ) {
-		NifStream( hinge.pivotA, in, info );
-		NifStream( hinge.perp2AxleInA1, in, info );
-		NifStream( hinge.perp2AxleInA2, in, info );
-		NifStream( hinge.pivotB, in, info );
-		NifStream( hinge.axleB, in, info );
+	bhkConstraint::Read(in, link_stack, info);
+	if(info.version <= 0x14000005)
+	{
+		NifStream(hinge.pivotA, in, info);
+		NifStream(hinge.perp2AxleInA1, in, info);
+		NifStream(hinge.perp2AxleInA2, in, info);
+		NifStream(hinge.pivotB, in, info);
+		NifStream(hinge.axleB, in, info);
 	};
-	if ( info.version >= 0x14020007 ) {
-		NifStream( hinge.axleA, in, info );
-		NifStream( hinge.perp2AxleInA1, in, info );
-		NifStream( hinge.perp2AxleInA2, in, info );
-		NifStream( hinge.pivotA, in, info );
-		NifStream( hinge.axleB, in, info );
-		NifStream( hinge.perp2AxleInB1, in, info );
-		NifStream( hinge.perp2AxleInB2, in, info );
-		NifStream( hinge.pivotB, in, info );
+	if(info.version >= 0x14020007)
+	{
+		NifStream(hinge.axleA, in, info);
+		NifStream(hinge.perp2AxleInA1, in, info);
+		NifStream(hinge.perp2AxleInA2, in, info);
+		NifStream(hinge.pivotA, in, info);
+		NifStream(hinge.axleB, in, info);
+		NifStream(hinge.perp2AxleInB1, in, info);
+		NifStream(hinge.perp2AxleInB2, in, info);
+		NifStream(hinge.pivotB, in, info);
 	};
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void bhkHingeConstraint::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void bhkHingeConstraint::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	bhkConstraint::Write( out, link_map, missing_link_stack, info );
-	if ( info.version <= 0x14000005 ) {
-		NifStream( hinge.pivotA, out, info );
-		NifStream( hinge.perp2AxleInA1, out, info );
-		NifStream( hinge.perp2AxleInA2, out, info );
-		NifStream( hinge.pivotB, out, info );
-		NifStream( hinge.axleB, out, info );
+	bhkConstraint::Write(out, link_map, missing_link_stack, info);
+	if(info.version <= 0x14000005)
+	{
+		NifStream(hinge.pivotA, out, info);
+		NifStream(hinge.perp2AxleInA1, out, info);
+		NifStream(hinge.perp2AxleInA2, out, info);
+		NifStream(hinge.pivotB, out, info);
+		NifStream(hinge.axleB, out, info);
 	};
-	if ( info.version >= 0x14020007 ) {
-		NifStream( hinge.axleA, out, info );
-		NifStream( hinge.perp2AxleInA1, out, info );
-		NifStream( hinge.perp2AxleInA2, out, info );
-		NifStream( hinge.pivotA, out, info );
-		NifStream( hinge.axleB, out, info );
-		NifStream( hinge.perp2AxleInB1, out, info );
-		NifStream( hinge.perp2AxleInB2, out, info );
-		NifStream( hinge.pivotB, out, info );
+	if(info.version >= 0x14020007)
+	{
+		NifStream(hinge.axleA, out, info);
+		NifStream(hinge.perp2AxleInA1, out, info);
+		NifStream(hinge.perp2AxleInA2, out, info);
+		NifStream(hinge.pivotA, out, info);
+		NifStream(hinge.axleB, out, info);
+		NifStream(hinge.perp2AxleInB1, out, info);
+		NifStream(hinge.perp2AxleInB2, out, info);
+		NifStream(hinge.pivotB, out, info);
 	};
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string bhkHingeConstraint::asString( bool verbose ) const {
+std::string bhkHingeConstraint::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << bhkConstraint::asString();
+	out << bhkConstraint::asString(verbose);
 	out << "  Pivot A:  " << hinge.pivotA << endl;
 	out << "  Perp2 Axle In A1:  " << hinge.perp2AxleInA1 << endl;
 	out << "  Perp2 Axle In A2:  " << hinge.perp2AxleInA2 << endl;
@@ -112,23 +123,26 @@ std::string bhkHingeConstraint::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void bhkHingeConstraint::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void bhkHingeConstraint::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	bhkConstraint::FixLinks( objects, link_stack, missing_link_stack, info );
+	bhkConstraint::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> bhkHingeConstraint::GetRefs() const {
+std::list<NiObjectRef> bhkHingeConstraint::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = bhkConstraint::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> bhkHingeConstraint::GetPtrs() const {
+std::list<NiObject *> bhkHingeConstraint::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = bhkConstraint::GetPtrs();
 	return ptrs;
@@ -137,11 +151,11 @@ std::list<NiObject *> bhkHingeConstraint::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 HingeDescriptor bhkHingeConstraint::GetHinge() const {
-	return hinge;
+return hinge;
 }
 
 void bhkHingeConstraint::SetHinge( const HingeDescriptor & value ) {
-	hinge = value;
+hinge = value;
 }
 
 ****End Example Naive Implementation***/

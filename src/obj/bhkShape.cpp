@@ -17,75 +17,85 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type bhkShape::TYPE("bhkShape", &bhkSerializable::TYPE );
+const Type bhkShape::TYPE("bhkShape", &bhkSerializable::TYPE);
 
-bhkShape::bhkShape() {
+bhkShape::bhkShape()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-bhkShape::~bhkShape() {
+bhkShape::~bhkShape()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & bhkShape::GetType() const {
+const Type & bhkShape::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * bhkShape::Create() {
+NiObject * bhkShape::Create()
+{
 	return new bhkShape;
 }
 
-void bhkShape::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void bhkShape::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	bhkSerializable::Read( in, link_stack, info );
+	bhkSerializable::Read(in, link_stack, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void bhkShape::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void bhkShape::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	bhkSerializable::Write( out, link_map, missing_link_stack, info );
+	bhkSerializable::Write(out, link_map, missing_link_stack, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string bhkShape::asString( bool verbose ) const {
+std::string bhkShape::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << bhkSerializable::asString();
+	out << bhkSerializable::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void bhkShape::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void bhkShape::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	bhkSerializable::FixLinks( objects, link_stack, missing_link_stack, info );
+	bhkSerializable::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> bhkShape::GetRefs() const {
+std::list<NiObjectRef> bhkShape::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = bhkSerializable::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> bhkShape::GetPtrs() const {
+std::list<NiObject *> bhkShape::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = bhkSerializable::GetPtrs();
 	return ptrs;
@@ -97,7 +107,7 @@ std::list<NiObject *> bhkShape::GetPtrs() const {
 
 void bhkShape::CalcMassProperties(float density, bool solid, float &mass, float &volume, Vector3 &center, InertiaMatrix& inertia)
 {
-	center = Vector3(0,0,0);
+	center = Vector3(0, 0, 0);
 	mass = 0.0f, volume = 0.0f;
 	inertia = InertiaMatrix::IDENTITY;
 }

@@ -17,75 +17,85 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiAutoNormalParticles::TYPE("NiAutoNormalParticles", &NiParticles::TYPE );
+const Type NiAutoNormalParticles::TYPE("NiAutoNormalParticles", &NiParticles::TYPE);
 
-NiAutoNormalParticles::NiAutoNormalParticles() {
+NiAutoNormalParticles::NiAutoNormalParticles()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-NiAutoNormalParticles::~NiAutoNormalParticles() {
+NiAutoNormalParticles::~NiAutoNormalParticles()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiAutoNormalParticles::GetType() const {
+const Type & NiAutoNormalParticles::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiAutoNormalParticles::Create() {
+NiObject * NiAutoNormalParticles::Create()
+{
 	return new NiAutoNormalParticles;
 }
 
-void NiAutoNormalParticles::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiAutoNormalParticles::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiParticles::Read( in, link_stack, info );
+	NiParticles::Read(in, link_stack, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void NiAutoNormalParticles::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiAutoNormalParticles::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiParticles::Write( out, link_map, missing_link_stack, info );
+	NiParticles::Write(out, link_map, missing_link_stack, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string NiAutoNormalParticles::asString( bool verbose ) const {
+std::string NiAutoNormalParticles::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiParticles::asString();
+	out << NiParticles::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void NiAutoNormalParticles::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiAutoNormalParticles::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiParticles::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiParticles::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiAutoNormalParticles::GetRefs() const {
+std::list<NiObjectRef> NiAutoNormalParticles::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiParticles::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiAutoNormalParticles::GetPtrs() const {
+std::list<NiObject *> NiAutoNormalParticles::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiParticles::GetPtrs();
 	return ptrs;

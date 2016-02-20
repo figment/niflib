@@ -12,12 +12,14 @@ using namespace Niflib;
 SphereBV::SphereBV() : radius(0.0f) {};
 
 //Copy Constructor
-SphereBV::SphereBV( const SphereBV & src ) {
+SphereBV::SphereBV(const SphereBV & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-SphereBV & SphereBV::operator=( const SphereBV & src ) {
+SphereBV & SphereBV::operator=(const SphereBV & src)
+{
 	this->center = src.center;
 	this->radius = src.radius;
 	return *this;

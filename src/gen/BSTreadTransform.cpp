@@ -14,12 +14,14 @@ using namespace Niflib;
 BSTreadTransform::BSTreadTransform() {};
 
 //Copy Constructor
-BSTreadTransform::BSTreadTransform( const BSTreadTransform & src ) {
+BSTreadTransform::BSTreadTransform(const BSTreadTransform & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-BSTreadTransform & BSTreadTransform::operator=( const BSTreadTransform & src ) {
+BSTreadTransform & BSTreadTransform::operator=(const BSTreadTransform & src)
+{
 	this->name = src.name;
 	this->transform1 = src.transform1;
 	this->transform2 = src.transform2;

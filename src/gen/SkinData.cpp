@@ -12,15 +12,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-SkinData::SkinData() : boundingSphereRadius(0.0f), numVertices((unsigned short)0) {};
+SkinData::SkinData() : boundingSphereRadius(0.0f), numVertices((unsigned short) 0) {};
 
 //Copy Constructor
-SkinData::SkinData( const SkinData & src ) {
+SkinData::SkinData(const SkinData & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-SkinData & SkinData::operator=( const SkinData & src ) {
+SkinData & SkinData::operator=(const SkinData & src)
+{
 	this->skinTransform = src.skinTransform;
 	this->boundingSphereOffset = src.boundingSphereOffset;
 	this->boundingSphereRadius = src.boundingSphereRadius;

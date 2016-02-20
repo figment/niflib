@@ -12,29 +12,28 @@ All rights reserved.  Please see niflib.h for license. */
 
 // Include structures
 #include "BSTreadTransformData.h"
-namespace Niflib {
+namespace Niflib
+{
+	/*! Bethesda-specific node. */
+	struct BSTreadTransform
+	{
+		/*! Default Constructor */
+		NIFLIB_API BSTreadTransform();
+		/*! Default Destructor */
+		NIFLIB_API ~BSTreadTransform();
+		/*! Copy Constructor */
+		NIFLIB_API BSTreadTransform(const BSTreadTransform & src);
+		/*! Copy Operator */
+		NIFLIB_API BSTreadTransform & operator=(const BSTreadTransform & src);
+		/*! Name of affected node? */
+		IndexString name;
+		/*! Transform data. */
+		BSTreadTransformData transform1;
+		/*! Transform data. */
+		BSTreadTransformData transform2;
+		//--BEGIN MISC CUSTOM CODE--//
 
-
-/*! Bethesda-specific node. */
-struct BSTreadTransform {
-	/*! Default Constructor */
-	NIFLIB_API BSTreadTransform();
-	/*! Default Destructor */
-	NIFLIB_API ~BSTreadTransform();
-	/*! Copy Constructor */
-	NIFLIB_API BSTreadTransform( const BSTreadTransform & src );
-	/*! Copy Operator */
-	NIFLIB_API BSTreadTransform & operator=( const BSTreadTransform & src );
-	/*! Name of affected node? */
-	IndexString name;
-	/*! Transform data. */
-	BSTreadTransformData transform1;
-	/*! Transform data. */
-	BSTreadTransformData transform2;
-	//--BEGIN MISC CUSTOM CODE--//
-
-	//--END CUSTOM CODE--//
-};
-
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

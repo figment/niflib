@@ -12,12 +12,14 @@ using namespace Niflib;
 BSTreadTransformData::BSTreadTransformData() : scale(0.0f) {};
 
 //Copy Constructor
-BSTreadTransformData::BSTreadTransformData( const BSTreadTransformData & src ) {
+BSTreadTransformData::BSTreadTransformData(const BSTreadTransformData & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-BSTreadTransformData & BSTreadTransformData::operator=( const BSTreadTransformData & src ) {
+BSTreadTransformData & BSTreadTransformData::operator=(const BSTreadTransformData & src)
+{
 	this->translation = src.translation;
 	this->rotation = src.rotation;
 	this->scale = src.scale;

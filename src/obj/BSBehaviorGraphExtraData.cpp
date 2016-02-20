@@ -18,63 +18,70 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type BSBehaviorGraphExtraData::TYPE("BSBehaviorGraphExtraData", &NiExtraData::TYPE );
+const Type BSBehaviorGraphExtraData::TYPE("BSBehaviorGraphExtraData", &NiExtraData::TYPE);
 
-BSBehaviorGraphExtraData::BSBehaviorGraphExtraData() : controlsBaseSkeleton((byte)0) {
+BSBehaviorGraphExtraData::BSBehaviorGraphExtraData() : controlsBaseSkeleton((byte) 0)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-BSBehaviorGraphExtraData::~BSBehaviorGraphExtraData() {
+BSBehaviorGraphExtraData::~BSBehaviorGraphExtraData()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & BSBehaviorGraphExtraData::GetType() const {
+const Type & BSBehaviorGraphExtraData::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * BSBehaviorGraphExtraData::Create() {
+NiObject * BSBehaviorGraphExtraData::Create()
+{
 	return new BSBehaviorGraphExtraData;
 }
 
-void BSBehaviorGraphExtraData::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void BSBehaviorGraphExtraData::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiExtraData::Read( in, link_stack, info );
-	NifStream( behaviourGraphFile, in, info );
-	NifStream( controlsBaseSkeleton, in, info );
+	NiExtraData::Read(in, link_stack, info);
+	NifStream(behaviourGraphFile, in, info);
+	NifStream(controlsBaseSkeleton, in, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-void BSBehaviorGraphExtraData::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void BSBehaviorGraphExtraData::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiExtraData::Write( out, link_map, missing_link_stack, info );
-	NifStream( behaviourGraphFile, out, info );
-	NifStream( controlsBaseSkeleton, out, info );
+	NiExtraData::Write(out, link_map, missing_link_stack, info);
+	NifStream(behaviourGraphFile, out, info);
+	NifStream(controlsBaseSkeleton, out, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::string BSBehaviorGraphExtraData::asString( bool verbose ) const {
+std::string BSBehaviorGraphExtraData::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiExtraData::asString();
+	out << NiExtraData::asString(verbose);
 	out << "  Behaviour Graph File:  " << behaviourGraphFile << endl;
 	out << "  Controls Base Skeleton:  " << controlsBaseSkeleton << endl;
 	return out.str();
@@ -84,25 +91,28 @@ std::string BSBehaviorGraphExtraData::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void BSBehaviorGraphExtraData::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void BSBehaviorGraphExtraData::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiExtraData::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiExtraData::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> BSBehaviorGraphExtraData::GetRefs() const {
+std::list<NiObjectRef> BSBehaviorGraphExtraData::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiExtraData::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> BSBehaviorGraphExtraData::GetPtrs() const {
+std::list<NiObject *> BSBehaviorGraphExtraData::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiExtraData::GetPtrs();
 	return ptrs;
@@ -111,19 +121,19 @@ std::list<NiObject *> BSBehaviorGraphExtraData::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 IndexString BSBehaviorGraphExtraData::GetBehaviourGraphFile() const {
-	return behaviourGraphFile;
+return behaviourGraphFile;
 }
 
 void BSBehaviorGraphExtraData::SetBehaviourGraphFile( const IndexString & value ) {
-	behaviourGraphFile = value;
+behaviourGraphFile = value;
 }
 
 byte BSBehaviorGraphExtraData::GetControlsBaseSkeleton() const {
-	return controlsBaseSkeleton;
+return controlsBaseSkeleton;
 }
 
 void BSBehaviorGraphExtraData::SetControlsBaseSkeleton( byte value ) {
-	controlsBaseSkeleton = value;
+controlsBaseSkeleton = value;
 }
 
 ****End Example Naive Implementation***/

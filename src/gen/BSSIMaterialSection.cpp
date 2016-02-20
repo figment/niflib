@@ -10,15 +10,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-BSSIMaterialSection::BSSIMaterialSection() : numSegments((unsigned int)0), numMaterials((unsigned int)0), ssfLength((unsigned short)0) {};
+BSSIMaterialSection::BSSIMaterialSection() : numSegments((unsigned int) 0), numMaterials((unsigned int) 0), ssfLength((unsigned short) 0) {};
 
 //Copy Constructor
-BSSIMaterialSection::BSSIMaterialSection( const BSSIMaterialSection & src ) {
+BSSIMaterialSection::BSSIMaterialSection(const BSSIMaterialSection & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-BSSIMaterialSection & BSSIMaterialSection::operator=( const BSSIMaterialSection & src ) {
+BSSIMaterialSection & BSSIMaterialSection::operator=(const BSSIMaterialSection & src)
+{
 	this->numSegments = src.numSegments;
 	this->numMaterials = src.numMaterials;
 	this->emptyMaterials = src.emptyMaterials;

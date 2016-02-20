@@ -17,60 +17,69 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiStringExtraData::TYPE("NiStringExtraData", &NiExtraData::TYPE );
+const Type NiStringExtraData::TYPE("NiStringExtraData", &NiExtraData::TYPE);
 
-NiStringExtraData::NiStringExtraData() : bytesRemaining((unsigned int)0) {
+NiStringExtraData::NiStringExtraData() : bytesRemaining((unsigned int) 0)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-NiStringExtraData::~NiStringExtraData() {
+NiStringExtraData::~NiStringExtraData()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiStringExtraData::GetType() const {
+const Type & NiStringExtraData::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiStringExtraData::Create() {
+NiObject * NiStringExtraData::Create()
+{
 	return new NiStringExtraData;
 }
 
-void NiStringExtraData::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiStringExtraData::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiExtraData::Read( in, link_stack, info );
-	if ( info.version <= 0x04020200 ) {
-		NifStream( bytesRemaining, in, info );
+	NiExtraData::Read(in, link_stack, info);
+	if(info.version <= 0x04020200)
+	{
+		NifStream(bytesRemaining, in, info);
 	};
-	NifStream( stringData, in, info );
+	NifStream(stringData, in, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void NiStringExtraData::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiStringExtraData::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiExtraData::Write( out, link_map, missing_link_stack, info );
-	if ( info.version <= 0x04020200 ) {
-		NifStream( bytesRemaining, out, info );
+	NiExtraData::Write(out, link_map, missing_link_stack, info);
+	if(info.version <= 0x04020200)
+	{
+		NifStream(bytesRemaining, out, info);
 	};
-	NifStream( stringData, out, info );
+	NifStream(stringData, out, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string NiStringExtraData::asString( bool verbose ) const {
+std::string NiStringExtraData::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiExtraData::asString();
+	out << NiExtraData::asString(verbose);
 	out << "  Bytes Remaining:  " << bytesRemaining << endl;
 	out << "  String Data:  " << stringData << endl;
 	return out.str();
@@ -79,23 +88,26 @@ std::string NiStringExtraData::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiStringExtraData::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiStringExtraData::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiExtraData::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiExtraData::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiStringExtraData::GetRefs() const {
+std::list<NiObjectRef> NiStringExtraData::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiExtraData::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiStringExtraData::GetPtrs() const {
+std::list<NiObject *> NiStringExtraData::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiExtraData::GetPtrs();
 	return ptrs;
@@ -104,32 +116,34 @@ std::list<NiObject *> NiStringExtraData::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 unsigned int NiStringExtraData::GetBytesRemaining() const {
-	return bytesRemaining;
+return bytesRemaining;
 }
 
 void NiStringExtraData::SetBytesRemaining( unsigned int value ) {
-	bytesRemaining = value;
+bytesRemaining = value;
 }
 
 IndexString NiStringExtraData::GetStringData() const {
-	return stringData;
+return stringData;
 }
 
 void NiStringExtraData::SetStringData( const IndexString & value ) {
-	stringData = value;
+stringData = value;
 }
 
 ****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 
-string NiStringExtraData::GetData() const {
+string NiStringExtraData::GetData() const
+{
 	return stringData;
 }
 
-void NiStringExtraData::SetData( const string & n ) {
+void NiStringExtraData::SetData(const string & n)
+{
 	stringData = n;
-	bytesRemaining = (unsigned int)(stringData.size()) + 4;
+	bytesRemaining = (unsigned int) (stringData.size()) + 4;
 }
 
 //--END CUSTOM CODE--//

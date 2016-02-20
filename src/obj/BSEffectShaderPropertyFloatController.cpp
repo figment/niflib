@@ -18,61 +18,68 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type BSEffectShaderPropertyFloatController::TYPE("BSEffectShaderPropertyFloatController", &NiFloatInterpController::TYPE );
+const Type BSEffectShaderPropertyFloatController::TYPE("BSEffectShaderPropertyFloatController", &NiFloatInterpController::TYPE);
 
-BSEffectShaderPropertyFloatController::BSEffectShaderPropertyFloatController() : typeOfControlledVariable((EffectShaderControlledVariable)0) {
+BSEffectShaderPropertyFloatController::BSEffectShaderPropertyFloatController() : typeOfControlledVariable((EffectShaderControlledVariable) 0)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-BSEffectShaderPropertyFloatController::~BSEffectShaderPropertyFloatController() {
+BSEffectShaderPropertyFloatController::~BSEffectShaderPropertyFloatController()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & BSEffectShaderPropertyFloatController::GetType() const {
+const Type & BSEffectShaderPropertyFloatController::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * BSEffectShaderPropertyFloatController::Create() {
+NiObject * BSEffectShaderPropertyFloatController::Create()
+{
 	return new BSEffectShaderPropertyFloatController;
 }
 
-void BSEffectShaderPropertyFloatController::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void BSEffectShaderPropertyFloatController::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiFloatInterpController::Read( in, link_stack, info );
-	NifStream( typeOfControlledVariable, in, info );
+	NiFloatInterpController::Read(in, link_stack, info);
+	NifStream(typeOfControlledVariable, in, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-void BSEffectShaderPropertyFloatController::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void BSEffectShaderPropertyFloatController::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiFloatInterpController::Write( out, link_map, missing_link_stack, info );
-	NifStream( typeOfControlledVariable, out, info );
+	NiFloatInterpController::Write(out, link_map, missing_link_stack, info);
+	NifStream(typeOfControlledVariable, out, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::string BSEffectShaderPropertyFloatController::asString( bool verbose ) const {
+std::string BSEffectShaderPropertyFloatController::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiFloatInterpController::asString();
+	out << NiFloatInterpController::asString(verbose);
 	out << "  Type of Controlled Variable:  " << typeOfControlledVariable << endl;
 	return out.str();
 
@@ -81,25 +88,28 @@ std::string BSEffectShaderPropertyFloatController::asString( bool verbose ) cons
 	//--END CUSTOM CODE--//
 }
 
-void BSEffectShaderPropertyFloatController::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void BSEffectShaderPropertyFloatController::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiFloatInterpController::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiFloatInterpController::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> BSEffectShaderPropertyFloatController::GetRefs() const {
+std::list<NiObjectRef> BSEffectShaderPropertyFloatController::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiFloatInterpController::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> BSEffectShaderPropertyFloatController::GetPtrs() const {
+std::list<NiObject *> BSEffectShaderPropertyFloatController::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiFloatInterpController::GetPtrs();
 	return ptrs;
@@ -108,22 +118,24 @@ std::list<NiObject *> BSEffectShaderPropertyFloatController::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 EffectShaderControlledVariable BSEffectShaderPropertyFloatController::GetTypeOfControlledVariable() const {
-	return typeOfControlledVariable;
+return typeOfControlledVariable;
 }
 
 void BSEffectShaderPropertyFloatController::SetTypeOfControlledVariable( const EffectShaderControlledVariable & value ) {
-	typeOfControlledVariable = value;
+typeOfControlledVariable = value;
 }
 
 ****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
 
-EffectShaderControlledVariable BSEffectShaderPropertyFloatController::GetTypeOfControlledVariable() const {
+EffectShaderControlledVariable BSEffectShaderPropertyFloatController::GetTypeOfControlledVariable() const
+{
 	return typeOfControlledVariable;
 }
 
-void BSEffectShaderPropertyFloatController::SetTypeOfControlledVariable(const EffectShaderControlledVariable & value) {
+void BSEffectShaderPropertyFloatController::SetTypeOfControlledVariable(const EffectShaderControlledVariable & value)
+{
 	typeOfControlledVariable = value;
 }
 

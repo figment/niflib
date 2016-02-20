@@ -18,61 +18,68 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type BSEffectShaderPropertyColorController::TYPE("BSEffectShaderPropertyColorController", &NiFloatInterpController::TYPE );
+const Type BSEffectShaderPropertyColorController::TYPE("BSEffectShaderPropertyColorController", &NiFloatInterpController::TYPE);
 
-BSEffectShaderPropertyColorController::BSEffectShaderPropertyColorController() : typeOfControlledColor((EffectShaderControlledColor)0) {
+BSEffectShaderPropertyColorController::BSEffectShaderPropertyColorController() : typeOfControlledColor((EffectShaderControlledColor) 0)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-BSEffectShaderPropertyColorController::~BSEffectShaderPropertyColorController() {
+BSEffectShaderPropertyColorController::~BSEffectShaderPropertyColorController()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & BSEffectShaderPropertyColorController::GetType() const {
+const Type & BSEffectShaderPropertyColorController::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * BSEffectShaderPropertyColorController::Create() {
+NiObject * BSEffectShaderPropertyColorController::Create()
+{
 	return new BSEffectShaderPropertyColorController;
 }
 
-void BSEffectShaderPropertyColorController::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void BSEffectShaderPropertyColorController::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiFloatInterpController::Read( in, link_stack, info );
-	NifStream( typeOfControlledColor, in, info );
+	NiFloatInterpController::Read(in, link_stack, info);
+	NifStream(typeOfControlledColor, in, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-void BSEffectShaderPropertyColorController::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void BSEffectShaderPropertyColorController::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiFloatInterpController::Write( out, link_map, missing_link_stack, info );
-	NifStream( typeOfControlledColor, out, info );
+	NiFloatInterpController::Write(out, link_map, missing_link_stack, info);
+	NifStream(typeOfControlledColor, out, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::string BSEffectShaderPropertyColorController::asString( bool verbose ) const {
+std::string BSEffectShaderPropertyColorController::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiFloatInterpController::asString();
+	out << NiFloatInterpController::asString(verbose);
 	out << "  Type of Controlled Color:  " << typeOfControlledColor << endl;
 	return out.str();
 
@@ -81,25 +88,28 @@ std::string BSEffectShaderPropertyColorController::asString( bool verbose ) cons
 	//--END CUSTOM CODE--//
 }
 
-void BSEffectShaderPropertyColorController::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void BSEffectShaderPropertyColorController::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiFloatInterpController::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiFloatInterpController::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> BSEffectShaderPropertyColorController::GetRefs() const {
+std::list<NiObjectRef> BSEffectShaderPropertyColorController::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiFloatInterpController::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> BSEffectShaderPropertyColorController::GetPtrs() const {
+std::list<NiObject *> BSEffectShaderPropertyColorController::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiFloatInterpController::GetPtrs();
 	return ptrs;
@@ -108,11 +118,11 @@ std::list<NiObject *> BSEffectShaderPropertyColorController::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 EffectShaderControlledColor BSEffectShaderPropertyColorController::GetTypeOfControlledColor() const {
-	return typeOfControlledColor;
+return typeOfControlledColor;
 }
 
 void BSEffectShaderPropertyColorController::SetTypeOfControlledColor( const EffectShaderControlledColor & value ) {
-	typeOfControlledColor = value;
+typeOfControlledColor = value;
 }
 
 ****End Example Naive Implementation***/

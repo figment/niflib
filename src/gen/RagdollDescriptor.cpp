@@ -13,12 +13,14 @@ using namespace Niflib;
 RagdollDescriptor::RagdollDescriptor() : coneMaxAngle(0.0f), planeMinAngle(0.0f), planeMaxAngle(0.0f), twistMinAngle(0.0f), twistMaxAngle(0.0f), maxFriction(0.0f), enableMotor(false) {};
 
 //Copy Constructor
-RagdollDescriptor::RagdollDescriptor( const RagdollDescriptor & src ) {
+RagdollDescriptor::RagdollDescriptor(const RagdollDescriptor & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-RagdollDescriptor & RagdollDescriptor::operator=( const RagdollDescriptor & src ) {
+RagdollDescriptor & RagdollDescriptor::operator=(const RagdollDescriptor & src)
+{
 	this->pivotA = src.pivotA;
 	this->planeA = src.planeA;
 	this->twistA = src.twistA;

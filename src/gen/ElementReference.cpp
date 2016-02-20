@@ -10,15 +10,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-ElementReference::ElementReference() : normalizeFlag((unsigned int)0) {};
+ElementReference::ElementReference() : normalizeFlag((unsigned int) 0) {};
 
 //Copy Constructor
-ElementReference::ElementReference( const ElementReference & src ) {
+ElementReference::ElementReference(const ElementReference & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-ElementReference & ElementReference::operator=( const ElementReference & src ) {
+ElementReference & ElementReference::operator=(const ElementReference & src)
+{
 	this->semantic = src.semantic;
 	this->normalizeFlag = src.normalizeFlag;
 	return *this;

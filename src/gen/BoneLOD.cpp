@@ -9,15 +9,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-BoneLOD::BoneLOD() : distance((unsigned int)0) {};
+BoneLOD::BoneLOD() : distance((unsigned int) 0) {};
 
 //Copy Constructor
-BoneLOD::BoneLOD( const BoneLOD & src ) {
+BoneLOD::BoneLOD(const BoneLOD & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-BoneLOD & BoneLOD::operator=( const BoneLOD & src ) {
+BoneLOD & BoneLOD::operator=(const BoneLOD & src)
+{
 	this->distance = src.distance;
 	this->boneName = src.boneName;
 	return *this;

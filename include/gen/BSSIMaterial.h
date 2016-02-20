@@ -10,31 +10,30 @@ All rights reserved.  Please see niflib.h for license. */
 
 #include "../NIF_IO.h"
 
-namespace Niflib {
+namespace Niflib
+{
+	/*!  */
+	struct BSSIMaterial
+	{
+		/*! Default Constructor */
+		NIFLIB_API BSSIMaterial();
+		/*! Default Destructor */
+		NIFLIB_API ~BSSIMaterial();
+		/*! Copy Constructor */
+		NIFLIB_API BSSIMaterial(const BSSIMaterial & src);
+		/*! Copy Operator */
+		NIFLIB_API BSSIMaterial & operator=(const BSSIMaterial & src);
+		/*! Unique ID Per Material Hash */
+		unsigned int bodyPartIndex;
+		/*! Unknown. */
+		unsigned int materialHash;
+		/*! Unknown. */
+		mutable unsigned int numData;
+		/*! Unknown. */
+		vector<float > extraData;
+		//--BEGIN MISC CUSTOM CODE--//
 
-
-/*!  */
-struct BSSIMaterial {
-	/*! Default Constructor */
-	NIFLIB_API BSSIMaterial();
-	/*! Default Destructor */
-	NIFLIB_API ~BSSIMaterial();
-	/*! Copy Constructor */
-	NIFLIB_API BSSIMaterial( const BSSIMaterial & src );
-	/*! Copy Operator */
-	NIFLIB_API BSSIMaterial & operator=( const BSSIMaterial & src );
-	/*! Unique ID Per Material Hash */
-	unsigned int bodyPartIndex;
-	/*! Unknown. */
-	unsigned int materialHash;
-	/*! Unknown. */
-	mutable unsigned int numData;
-	/*! Unknown. */
-	vector<float > extraData;
-	//--BEGIN MISC CUSTOM CODE--//
-
-	//--END CUSTOM CODE--//
-};
-
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

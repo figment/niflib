@@ -12,12 +12,14 @@ using namespace Niflib;
 BoxBV::BoxBV() {};
 
 //Copy Constructor
-BoxBV::BoxBV( const BoxBV & src ) {
+BoxBV::BoxBV(const BoxBV & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-BoxBV & BoxBV::operator=( const BoxBV & src ) {
+BoxBV & BoxBV::operator=(const BoxBV & src)
+{
 	this->center = src.center;
 	this->axis = src.axis;
 	this->extent = src.extent;

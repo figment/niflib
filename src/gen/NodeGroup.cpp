@@ -10,15 +10,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-NodeGroup::NodeGroup() : numNodes((unsigned int)0) {};
+NodeGroup::NodeGroup() : numNodes((unsigned int) 0) {};
 
 //Copy Constructor
-NodeGroup::NodeGroup( const NodeGroup & src ) {
+NodeGroup::NodeGroup(const NodeGroup & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-NodeGroup & NodeGroup::operator=( const NodeGroup & src ) {
+NodeGroup & NodeGroup::operator=(const NodeGroup & src)
+{
 	this->numNodes = src.numNodes;
 	this->nodes = src.nodes;
 	return *this;

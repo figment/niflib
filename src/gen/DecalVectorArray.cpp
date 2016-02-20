@@ -9,15 +9,17 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Constructor
-DecalVectorArray::DecalVectorArray() : numVectors((short)0) {};
+DecalVectorArray::DecalVectorArray() : numVectors((short) 0) {};
 
 //Copy Constructor
-DecalVectorArray::DecalVectorArray( const DecalVectorArray & src ) {
+DecalVectorArray::DecalVectorArray(const DecalVectorArray & src)
+{
 	*this = src;
 };
 
 //Copy Operator
-DecalVectorArray & DecalVectorArray::operator=( const DecalVectorArray & src ) {
+DecalVectorArray & DecalVectorArray::operator=(const DecalVectorArray & src)
+{
 	this->numVectors = src.numVectors;
 	this->points = src.points;
 	this->normals = src.normals;

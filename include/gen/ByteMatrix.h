@@ -10,28 +10,27 @@ All rights reserved.  Please see niflib.h for license. */
 
 #include "../NIF_IO.h"
 
-namespace Niflib {
-
-
-/*! An array of bytes. */
-struct ByteMatrix {
-	/*! Default Constructor */
-	NIFLIB_API ByteMatrix();
-	/*! Default Destructor */
-	NIFLIB_API ~ByteMatrix();
-	/*! Copy Constructor */
-	NIFLIB_API ByteMatrix( const ByteMatrix & src );
-	/*! Copy Operator */
-	NIFLIB_API ByteMatrix & operator=( const ByteMatrix & src );
-	/*! The number of bytes in this array */
-	mutable unsigned int dataSize1;
-	/*! The number of bytes in this array */
-	mutable unsigned int dataSize2;
-	/*! The bytes which make up the array */
-	vector< vector<byte > > data;
-	//--BEGIN MISC CUSTOM CODE--//
-	//--END CUSTOM CODE--//
-};
-
+namespace Niflib
+{
+	/*! An array of bytes. */
+	struct ByteMatrix
+	{
+		/*! Default Constructor */
+		NIFLIB_API ByteMatrix();
+		/*! Default Destructor */
+		NIFLIB_API ~ByteMatrix();
+		/*! Copy Constructor */
+		NIFLIB_API ByteMatrix(const ByteMatrix & src);
+		/*! Copy Operator */
+		NIFLIB_API ByteMatrix & operator=(const ByteMatrix & src);
+		/*! The number of bytes in this array */
+		mutable unsigned int dataSize1;
+		/*! The number of bytes in this array */
+		mutable unsigned int dataSize2;
+		/*! The bytes which make up the array */
+		vector< vector<byte > > data;
+		//--BEGIN MISC CUSTOM CODE--//
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

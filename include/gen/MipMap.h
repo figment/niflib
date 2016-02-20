@@ -10,28 +10,27 @@ All rights reserved.  Please see niflib.h for license. */
 
 #include "../NIF_IO.h"
 
-namespace Niflib {
-
-
-/*! Description of a MipMap within a NiPixelData object. */
-struct MipMap {
-	/*! Default Constructor */
-	NIFLIB_API MipMap();
-	/*! Default Destructor */
-	NIFLIB_API ~MipMap();
-	/*! Copy Constructor */
-	NIFLIB_API MipMap( const MipMap & src );
-	/*! Copy Operator */
-	NIFLIB_API MipMap & operator=( const MipMap & src );
-	/*! Width of the mipmap image. */
-	unsigned int width;
-	/*! Height of the mipmap image. */
-	unsigned int height;
-	/*! Offset into the pixel data array where this mipmap starts. */
-	unsigned int offset;
-	//--BEGIN MISC CUSTOM CODE--//
-	//--END CUSTOM CODE--//
-};
-
+namespace Niflib
+{
+	/*! Description of a MipMap within a NiPixelData object. */
+	struct MipMap
+	{
+		/*! Default Constructor */
+		NIFLIB_API MipMap();
+		/*! Default Destructor */
+		NIFLIB_API ~MipMap();
+		/*! Copy Constructor */
+		NIFLIB_API MipMap(const MipMap & src);
+		/*! Copy Operator */
+		NIFLIB_API MipMap & operator=(const MipMap & src);
+		/*! Width of the mipmap image. */
+		unsigned int width;
+		/*! Height of the mipmap image. */
+		unsigned int height;
+		/*! Offset into the pixel data array where this mipmap starts. */
+		unsigned int offset;
+		//--BEGIN MISC CUSTOM CODE--//
+		//--END CUSTOM CODE--//
+	};
 }
 #endif

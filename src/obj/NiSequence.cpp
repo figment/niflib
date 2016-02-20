@@ -23,115 +23,144 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiSequence::TYPE("NiSequence", &NiObject::TYPE );
+const Type NiSequence::TYPE("NiSequence", &NiObject::TYPE);
 
-NiSequence::NiSequence() : textKeys(NULL), unknownInt4((int)0), unknownInt5((int)0), numControlledBlocks((unsigned int)0), unknownInt1((unsigned int)0) {
+NiSequence::NiSequence() : textKeys(NULL), unknownInt4((int) 0), unknownInt5((int) 0), numControlledBlocks((unsigned int) 0), unknownInt1((unsigned int) 0)
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-NiSequence::~NiSequence() {
+NiSequence::~NiSequence()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiSequence::GetType() const {
+const Type & NiSequence::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiSequence::Create() {
+NiObject * NiSequence::Create()
+{
 	return new NiSequence;
 }
 
-void NiSequence::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiSequence::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
 	unsigned int block_num;
-	NiObject::Read( in, link_stack, info );
-	NifStream( name, in, info );
-	if ( info.version <= 0x0A010000 ) {
-		NifStream( textKeysName, in, info );
-		NifStream( block_num, in, info );
-		link_stack.push_back( block_num );
+	NiObject::Read(in, link_stack, info);
+	NifStream(name, in, info);
+	if(info.version <= 0x0A010000)
+	{
+		NifStream(textKeysName, in, info);
+		NifStream(block_num, in, info);
+		link_stack.push_back(block_num);
 	};
-	if ( ( info.version >= 0x14030009 ) && ( info.version <= 0x14030009 ) && ( info.userVersion == 131072 ) ) {
-		NifStream( unknownInt4, in, info );
-		NifStream( unknownInt5, in, info );
+	if((info.version >= 0x14030009) && (info.version <= 0x14030009) && (info.userVersion == 131072))
+	{
+		NifStream(unknownInt4, in, info);
+		NifStream(unknownInt5, in, info);
 	};
-	NifStream( numControlledBlocks, in, info );
-	if ( info.version >= 0x0A01006A ) {
-		NifStream( unknownInt1, in, info );
+	NifStream(numControlledBlocks, in, info);
+	if(info.version >= 0x0A01006A)
+	{
+		NifStream(unknownInt1, in, info);
 	};
 	controlledBlocks.resize(numControlledBlocks);
-	for (unsigned int i1 = 0; i1 < controlledBlocks.size(); i1++) {
-		if ( info.version <= 0x0A010000 ) {
-			NifStream( controlledBlocks[i1].targetName, in, info );
-			NifStream( block_num, in, info );
-			link_stack.push_back( block_num );
+	for(unsigned int i1 = 0; i1 < controlledBlocks.size(); i1++)
+	{
+		if(info.version <= 0x0A010000)
+		{
+			NifStream(controlledBlocks[i1].targetName, in, info);
+			NifStream(block_num, in, info);
+			link_stack.push_back(block_num);
 		};
-		if ( info.version >= 0x0A01006A ) {
-			NifStream( block_num, in, info );
-			link_stack.push_back( block_num );
-			NifStream( block_num, in, info );
-			link_stack.push_back( block_num );
+		if(info.version >= 0x0A01006A)
+		{
+			NifStream(block_num, in, info);
+			link_stack.push_back(block_num);
+			NifStream(block_num, in, info);
+			link_stack.push_back(block_num);
 		};
-		if ( ( info.version >= 0x0A01006A ) && ( info.version <= 0x0A01006A ) ) {
-			NifStream( block_num, in, info );
-			link_stack.push_back( block_num );
-			NifStream( controlledBlocks[i1].unknownShort0, in, info );
+		if((info.version >= 0x0A01006A) && (info.version <= 0x0A01006A))
+		{
+			NifStream(block_num, in, info);
+			link_stack.push_back(block_num);
+			NifStream(controlledBlocks[i1].unknownShort0, in, info);
 		};
-		if ( ( info.version >= 0x0A01006A ) && ( (info.userVersion >= 10) ) ) {
-			NifStream( controlledBlocks[i1].priority, in, info );
+		if((info.version >= 0x0A01006A) && ((info.userVersion >= 10)))
+		{
+			NifStream(controlledBlocks[i1].priority, in, info);
 		};
-		if ( ( info.version >= 0x0A020000 ) && ( info.version <= 0x14000005 ) ) {
-			NifStream( block_num, in, info );
-			link_stack.push_back( block_num );
+		if((info.version >= 0x0A020000) && (info.version <= 0x14000005))
+		{
+			NifStream(block_num, in, info);
+			link_stack.push_back(block_num);
 		};
-		if ( ( info.version >= 0x0A01006A ) && ( info.version <= 0x0A01006A ) ) {
-			NifStream( controlledBlocks[i1].nodeName, in, info );
+		if((info.version >= 0x0A01006A) && (info.version <= 0x0A01006A))
+		{
+			NifStream(controlledBlocks[i1].nodeName, in, info);
 		};
-		if ( info.version >= 0x14010003 ) {
-			NifStream( controlledBlocks[i1].nodeName, in, info );
+		if(info.version >= 0x14010003)
+		{
+			NifStream(controlledBlocks[i1].nodeName, in, info);
 		};
-		if ( ( info.version >= 0x0A020000 ) && ( info.version <= 0x14000005 ) ) {
-			NifStream( controlledBlocks[i1].nodeNameOffset, in, info );
+		if((info.version >= 0x0A020000) && (info.version <= 0x14000005))
+		{
+			NifStream(controlledBlocks[i1].nodeNameOffset, in, info);
 		};
-		if ( ( info.version >= 0x0A01006A ) && ( info.version <= 0x0A01006A ) ) {
-			NifStream( controlledBlocks[i1].propertyType, in, info );
+		if((info.version >= 0x0A01006A) && (info.version <= 0x0A01006A))
+		{
+			NifStream(controlledBlocks[i1].propertyType, in, info);
 		};
-		if ( info.version >= 0x14010003 ) {
-			NifStream( controlledBlocks[i1].propertyType, in, info );
+		if(info.version >= 0x14010003)
+		{
+			NifStream(controlledBlocks[i1].propertyType, in, info);
 		};
-		if ( ( info.version >= 0x0A020000 ) && ( info.version <= 0x14000005 ) ) {
-			NifStream( controlledBlocks[i1].propertyTypeOffset, in, info );
+		if((info.version >= 0x0A020000) && (info.version <= 0x14000005))
+		{
+			NifStream(controlledBlocks[i1].propertyTypeOffset, in, info);
 		};
-		if ( ( info.version >= 0x0A01006A ) && ( info.version <= 0x0A01006A ) ) {
-			NifStream( controlledBlocks[i1].controllerType, in, info );
+		if((info.version >= 0x0A01006A) && (info.version <= 0x0A01006A))
+		{
+			NifStream(controlledBlocks[i1].controllerType, in, info);
 		};
-		if ( info.version >= 0x14010003 ) {
-			NifStream( controlledBlocks[i1].controllerType, in, info );
+		if(info.version >= 0x14010003)
+		{
+			NifStream(controlledBlocks[i1].controllerType, in, info);
 		};
-		if ( ( info.version >= 0x0A020000 ) && ( info.version <= 0x14000005 ) ) {
-			NifStream( controlledBlocks[i1].controllerTypeOffset, in, info );
+		if((info.version >= 0x0A020000) && (info.version <= 0x14000005))
+		{
+			NifStream(controlledBlocks[i1].controllerTypeOffset, in, info);
 		};
-		if ( ( info.version >= 0x0A01006A ) && ( info.version <= 0x0A01006A ) ) {
-			NifStream( controlledBlocks[i1].variable1, in, info );
+		if((info.version >= 0x0A01006A) && (info.version <= 0x0A01006A))
+		{
+			NifStream(controlledBlocks[i1].variable1, in, info);
 		};
-		if ( info.version >= 0x14010003 ) {
-			NifStream( controlledBlocks[i1].variable1, in, info );
+		if(info.version >= 0x14010003)
+		{
+			NifStream(controlledBlocks[i1].variable1, in, info);
 		};
-		if ( ( info.version >= 0x0A020000 ) && ( info.version <= 0x14000005 ) ) {
-			NifStream( controlledBlocks[i1].variable1Offset, in, info );
+		if((info.version >= 0x0A020000) && (info.version <= 0x14000005))
+		{
+			NifStream(controlledBlocks[i1].variable1Offset, in, info);
 		};
-		if ( ( info.version >= 0x0A01006A ) && ( info.version <= 0x0A01006A ) ) {
-			NifStream( controlledBlocks[i1].variable2, in, info );
+		if((info.version >= 0x0A01006A) && (info.version <= 0x0A01006A))
+		{
+			NifStream(controlledBlocks[i1].variable2, in, info);
 		};
-		if ( info.version >= 0x14010003 ) {
-			NifStream( controlledBlocks[i1].variable2, in, info );
+		if(info.version >= 0x14010003)
+		{
+			NifStream(controlledBlocks[i1].variable2, in, info);
 		};
-		if ( ( info.version >= 0x0A020000 ) && ( info.version <= 0x14000005 ) ) {
-			NifStream( controlledBlocks[i1].variable2Offset, in, info );
+		if((info.version >= 0x0A020000) && (info.version <= 0x14000005))
+		{
+			NifStream(controlledBlocks[i1].variable2Offset, in, info);
 		};
 	};
 
@@ -139,184 +168,263 @@ void NiSequence::Read( istream& in, list<unsigned int> & link_stack, const NifIn
 	//--END CUSTOM CODE--//
 }
 
-void NiSequence::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiSequence::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiObject::Write( out, link_map, missing_link_stack, info );
-	numControlledBlocks = (unsigned int)(controlledBlocks.size());
-	NifStream( name, out, info );
-	if ( info.version <= 0x0A010000 ) {
-		NifStream( textKeysName, out, info );
-		if ( info.version < VER_3_3_0_13 ) {
-			WritePtr32( &(*textKeys), out );
-		} else {
-			if ( textKeys != NULL ) {
-				map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(textKeys) );
-				if (it != link_map.end()) {
-					NifStream( it->second, out, info );
-					missing_link_stack.push_back( NULL );
-				} else {
-					NifStream( 0xFFFFFFFF, out, info );
-					missing_link_stack.push_back( textKeys );
+	NiObject::Write(out, link_map, missing_link_stack, info);
+	numControlledBlocks = (unsigned int) (controlledBlocks.size());
+	NifStream(name, out, info);
+	if(info.version <= 0x0A010000)
+	{
+		NifStream(textKeysName, out, info);
+		if(info.version < VER_3_3_0_13)
+		{
+			WritePtr32(&(*textKeys), out);
+		}
+		else
+		{
+			if(textKeys != NULL)
+			{
+				map<NiObjectRef, unsigned int>::const_iterator it = link_map.find(StaticCast<NiObject>(textKeys));
+				if(it != link_map.end())
+				{
+					NifStream(it->second, out, info);
+					missing_link_stack.push_back(NULL);
 				}
-			} else {
-				NifStream( 0xFFFFFFFF, out, info );
-				missing_link_stack.push_back( NULL );
+				else
+				{
+					NifStream(0xFFFFFFFF, out, info);
+					missing_link_stack.push_back(textKeys);
+				}
+			}
+			else
+			{
+				NifStream(0xFFFFFFFF, out, info);
+				missing_link_stack.push_back(NULL);
 			}
 		}
 	};
-	if ( ( info.version >= 0x14030009 ) && ( info.version <= 0x14030009 ) && ( info.userVersion == 131072 ) ) {
-		NifStream( unknownInt4, out, info );
-		NifStream( unknownInt5, out, info );
+	if((info.version >= 0x14030009) && (info.version <= 0x14030009) && (info.userVersion == 131072))
+	{
+		NifStream(unknownInt4, out, info);
+		NifStream(unknownInt5, out, info);
 	};
-	NifStream( numControlledBlocks, out, info );
-	if ( info.version >= 0x0A01006A ) {
-		NifStream( unknownInt1, out, info );
+	NifStream(numControlledBlocks, out, info);
+	if(info.version >= 0x0A01006A)
+	{
+		NifStream(unknownInt1, out, info);
 	};
-	for (unsigned int i1 = 0; i1 < controlledBlocks.size(); i1++) {
-		if ( info.version <= 0x0A010000 ) {
-			NifStream( controlledBlocks[i1].targetName, out, info );
-			if ( info.version < VER_3_3_0_13 ) {
-				WritePtr32( &(*controlledBlocks[i1].controller), out );
-			} else {
-				if ( controlledBlocks[i1].controller != NULL ) {
-					map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(controlledBlocks[i1].controller) );
-					if (it != link_map.end()) {
-						NifStream( it->second, out, info );
-						missing_link_stack.push_back( NULL );
-					} else {
-						NifStream( 0xFFFFFFFF, out, info );
-						missing_link_stack.push_back( controlledBlocks[i1].controller );
+	for(unsigned int i1 = 0; i1 < controlledBlocks.size(); i1++)
+	{
+		if(info.version <= 0x0A010000)
+		{
+			NifStream(controlledBlocks[i1].targetName, out, info);
+			if(info.version < VER_3_3_0_13)
+			{
+				WritePtr32(&(*controlledBlocks[i1].controller), out);
+			}
+			else
+			{
+				if(controlledBlocks[i1].controller != NULL)
+				{
+					map<NiObjectRef, unsigned int>::const_iterator it = link_map.find(StaticCast<NiObject>(controlledBlocks[i1].controller));
+					if(it != link_map.end())
+					{
+						NifStream(it->second, out, info);
+						missing_link_stack.push_back(NULL);
 					}
-				} else {
-					NifStream( 0xFFFFFFFF, out, info );
-					missing_link_stack.push_back( NULL );
+					else
+					{
+						NifStream(0xFFFFFFFF, out, info);
+						missing_link_stack.push_back(controlledBlocks[i1].controller);
+					}
+				}
+				else
+				{
+					NifStream(0xFFFFFFFF, out, info);
+					missing_link_stack.push_back(NULL);
 				}
 			}
 		};
-		if ( info.version >= 0x0A01006A ) {
-			if ( info.version < VER_3_3_0_13 ) {
-				WritePtr32( &(*controlledBlocks[i1].interpolator), out );
-			} else {
-				if ( controlledBlocks[i1].interpolator != NULL ) {
-					map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(controlledBlocks[i1].interpolator) );
-					if (it != link_map.end()) {
-						NifStream( it->second, out, info );
-						missing_link_stack.push_back( NULL );
-					} else {
-						NifStream( 0xFFFFFFFF, out, info );
-						missing_link_stack.push_back( controlledBlocks[i1].interpolator );
+		if(info.version >= 0x0A01006A)
+		{
+			if(info.version < VER_3_3_0_13)
+			{
+				WritePtr32(&(*controlledBlocks[i1].interpolator), out);
+			}
+			else
+			{
+				if(controlledBlocks[i1].interpolator != NULL)
+				{
+					map<NiObjectRef, unsigned int>::const_iterator it = link_map.find(StaticCast<NiObject>(controlledBlocks[i1].interpolator));
+					if(it != link_map.end())
+					{
+						NifStream(it->second, out, info);
+						missing_link_stack.push_back(NULL);
 					}
-				} else {
-					NifStream( 0xFFFFFFFF, out, info );
-					missing_link_stack.push_back( NULL );
+					else
+					{
+						NifStream(0xFFFFFFFF, out, info);
+						missing_link_stack.push_back(controlledBlocks[i1].interpolator);
+					}
+				}
+				else
+				{
+					NifStream(0xFFFFFFFF, out, info);
+					missing_link_stack.push_back(NULL);
 				}
 			}
-			if ( info.version < VER_3_3_0_13 ) {
-				WritePtr32( &(*controlledBlocks[i1].controller), out );
-			} else {
-				if ( controlledBlocks[i1].controller != NULL ) {
-					map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(controlledBlocks[i1].controller) );
-					if (it != link_map.end()) {
-						NifStream( it->second, out, info );
-						missing_link_stack.push_back( NULL );
-					} else {
-						NifStream( 0xFFFFFFFF, out, info );
-						missing_link_stack.push_back( controlledBlocks[i1].controller );
-					}
-				} else {
-					NifStream( 0xFFFFFFFF, out, info );
-					missing_link_stack.push_back( NULL );
-				}
+			if(info.version < VER_3_3_0_13)
+			{
+				WritePtr32(&(*controlledBlocks[i1].controller), out);
 			}
-		};
-		if ( ( info.version >= 0x0A01006A ) && ( info.version <= 0x0A01006A ) ) {
-			if ( info.version < VER_3_3_0_13 ) {
-				WritePtr32( &(*controlledBlocks[i1].unknownLink2), out );
-			} else {
-				if ( controlledBlocks[i1].unknownLink2 != NULL ) {
-					map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(controlledBlocks[i1].unknownLink2) );
-					if (it != link_map.end()) {
-						NifStream( it->second, out, info );
-						missing_link_stack.push_back( NULL );
-					} else {
-						NifStream( 0xFFFFFFFF, out, info );
-						missing_link_stack.push_back( controlledBlocks[i1].unknownLink2 );
+			else
+			{
+				if(controlledBlocks[i1].controller != NULL)
+				{
+					map<NiObjectRef, unsigned int>::const_iterator it = link_map.find(StaticCast<NiObject>(controlledBlocks[i1].controller));
+					if(it != link_map.end())
+					{
+						NifStream(it->second, out, info);
+						missing_link_stack.push_back(NULL);
 					}
-				} else {
-					NifStream( 0xFFFFFFFF, out, info );
-					missing_link_stack.push_back( NULL );
+					else
+					{
+						NifStream(0xFFFFFFFF, out, info);
+						missing_link_stack.push_back(controlledBlocks[i1].controller);
+					}
 				}
-			}
-			NifStream( controlledBlocks[i1].unknownShort0, out, info );
-		};
-		if ( ( info.version >= 0x0A01006A ) && ( (info.userVersion >= 10) ) ) {
-			NifStream( controlledBlocks[i1].priority, out, info );
-		};
-		if ( ( info.version >= 0x0A020000 ) && ( info.version <= 0x14000005 ) ) {
-			if ( info.version < VER_3_3_0_13 ) {
-				WritePtr32( &(*controlledBlocks[i1].stringPalette), out );
-			} else {
-				if ( controlledBlocks[i1].stringPalette != NULL ) {
-					map<NiObjectRef,unsigned int>::const_iterator it = link_map.find( StaticCast<NiObject>(controlledBlocks[i1].stringPalette) );
-					if (it != link_map.end()) {
-						NifStream( it->second, out, info );
-						missing_link_stack.push_back( NULL );
-					} else {
-						NifStream( 0xFFFFFFFF, out, info );
-						missing_link_stack.push_back( controlledBlocks[i1].stringPalette );
-					}
-				} else {
-					NifStream( 0xFFFFFFFF, out, info );
-					missing_link_stack.push_back( NULL );
+				else
+				{
+					NifStream(0xFFFFFFFF, out, info);
+					missing_link_stack.push_back(NULL);
 				}
 			}
 		};
-		if ( ( info.version >= 0x0A01006A ) && ( info.version <= 0x0A01006A ) ) {
-			NifStream( controlledBlocks[i1].nodeName, out, info );
+		if((info.version >= 0x0A01006A) && (info.version <= 0x0A01006A))
+		{
+			if(info.version < VER_3_3_0_13)
+			{
+				WritePtr32(&(*controlledBlocks[i1].unknownLink2), out);
+			}
+			else
+			{
+				if(controlledBlocks[i1].unknownLink2 != NULL)
+				{
+					map<NiObjectRef, unsigned int>::const_iterator it = link_map.find(StaticCast<NiObject>(controlledBlocks[i1].unknownLink2));
+					if(it != link_map.end())
+					{
+						NifStream(it->second, out, info);
+						missing_link_stack.push_back(NULL);
+					}
+					else
+					{
+						NifStream(0xFFFFFFFF, out, info);
+						missing_link_stack.push_back(controlledBlocks[i1].unknownLink2);
+					}
+				}
+				else
+				{
+					NifStream(0xFFFFFFFF, out, info);
+					missing_link_stack.push_back(NULL);
+				}
+			}
+			NifStream(controlledBlocks[i1].unknownShort0, out, info);
 		};
-		if ( info.version >= 0x14010003 ) {
-			NifStream( controlledBlocks[i1].nodeName, out, info );
+		if((info.version >= 0x0A01006A) && ((info.userVersion >= 10)))
+		{
+			NifStream(controlledBlocks[i1].priority, out, info);
 		};
-		if ( ( info.version >= 0x0A020000 ) && ( info.version <= 0x14000005 ) ) {
-			NifStream( controlledBlocks[i1].nodeNameOffset, out, info );
+		if((info.version >= 0x0A020000) && (info.version <= 0x14000005))
+		{
+			if(info.version < VER_3_3_0_13)
+			{
+				WritePtr32(&(*controlledBlocks[i1].stringPalette), out);
+			}
+			else
+			{
+				if(controlledBlocks[i1].stringPalette != NULL)
+				{
+					map<NiObjectRef, unsigned int>::const_iterator it = link_map.find(StaticCast<NiObject>(controlledBlocks[i1].stringPalette));
+					if(it != link_map.end())
+					{
+						NifStream(it->second, out, info);
+						missing_link_stack.push_back(NULL);
+					}
+					else
+					{
+						NifStream(0xFFFFFFFF, out, info);
+						missing_link_stack.push_back(controlledBlocks[i1].stringPalette);
+					}
+				}
+				else
+				{
+					NifStream(0xFFFFFFFF, out, info);
+					missing_link_stack.push_back(NULL);
+				}
+			}
 		};
-		if ( ( info.version >= 0x0A01006A ) && ( info.version <= 0x0A01006A ) ) {
-			NifStream( controlledBlocks[i1].propertyType, out, info );
+		if((info.version >= 0x0A01006A) && (info.version <= 0x0A01006A))
+		{
+			NifStream(controlledBlocks[i1].nodeName, out, info);
 		};
-		if ( info.version >= 0x14010003 ) {
-			NifStream( controlledBlocks[i1].propertyType, out, info );
+		if(info.version >= 0x14010003)
+		{
+			NifStream(controlledBlocks[i1].nodeName, out, info);
 		};
-		if ( ( info.version >= 0x0A020000 ) && ( info.version <= 0x14000005 ) ) {
-			NifStream( controlledBlocks[i1].propertyTypeOffset, out, info );
+		if((info.version >= 0x0A020000) && (info.version <= 0x14000005))
+		{
+			NifStream(controlledBlocks[i1].nodeNameOffset, out, info);
 		};
-		if ( ( info.version >= 0x0A01006A ) && ( info.version <= 0x0A01006A ) ) {
-			NifStream( controlledBlocks[i1].controllerType, out, info );
+		if((info.version >= 0x0A01006A) && (info.version <= 0x0A01006A))
+		{
+			NifStream(controlledBlocks[i1].propertyType, out, info);
 		};
-		if ( info.version >= 0x14010003 ) {
-			NifStream( controlledBlocks[i1].controllerType, out, info );
+		if(info.version >= 0x14010003)
+		{
+			NifStream(controlledBlocks[i1].propertyType, out, info);
 		};
-		if ( ( info.version >= 0x0A020000 ) && ( info.version <= 0x14000005 ) ) {
-			NifStream( controlledBlocks[i1].controllerTypeOffset, out, info );
+		if((info.version >= 0x0A020000) && (info.version <= 0x14000005))
+		{
+			NifStream(controlledBlocks[i1].propertyTypeOffset, out, info);
 		};
-		if ( ( info.version >= 0x0A01006A ) && ( info.version <= 0x0A01006A ) ) {
-			NifStream( controlledBlocks[i1].variable1, out, info );
+		if((info.version >= 0x0A01006A) && (info.version <= 0x0A01006A))
+		{
+			NifStream(controlledBlocks[i1].controllerType, out, info);
 		};
-		if ( info.version >= 0x14010003 ) {
-			NifStream( controlledBlocks[i1].variable1, out, info );
+		if(info.version >= 0x14010003)
+		{
+			NifStream(controlledBlocks[i1].controllerType, out, info);
 		};
-		if ( ( info.version >= 0x0A020000 ) && ( info.version <= 0x14000005 ) ) {
-			NifStream( controlledBlocks[i1].variable1Offset, out, info );
+		if((info.version >= 0x0A020000) && (info.version <= 0x14000005))
+		{
+			NifStream(controlledBlocks[i1].controllerTypeOffset, out, info);
 		};
-		if ( ( info.version >= 0x0A01006A ) && ( info.version <= 0x0A01006A ) ) {
-			NifStream( controlledBlocks[i1].variable2, out, info );
+		if((info.version >= 0x0A01006A) && (info.version <= 0x0A01006A))
+		{
+			NifStream(controlledBlocks[i1].variable1, out, info);
 		};
-		if ( info.version >= 0x14010003 ) {
-			NifStream( controlledBlocks[i1].variable2, out, info );
+		if(info.version >= 0x14010003)
+		{
+			NifStream(controlledBlocks[i1].variable1, out, info);
 		};
-		if ( ( info.version >= 0x0A020000 ) && ( info.version <= 0x14000005 ) ) {
-			NifStream( controlledBlocks[i1].variable2Offset, out, info );
+		if((info.version >= 0x0A020000) && (info.version <= 0x14000005))
+		{
+			NifStream(controlledBlocks[i1].variable1Offset, out, info);
+		};
+		if((info.version >= 0x0A01006A) && (info.version <= 0x0A01006A))
+		{
+			NifStream(controlledBlocks[i1].variable2, out, info);
+		};
+		if(info.version >= 0x14010003)
+		{
+			NifStream(controlledBlocks[i1].variable2, out, info);
+		};
+		if((info.version >= 0x0A020000) && (info.version <= 0x14000005))
+		{
+			NifStream(controlledBlocks[i1].variable2Offset, out, info);
 		};
 	};
 
@@ -324,14 +432,15 @@ void NiSequence::Write( ostream& out, const map<NiObjectRef,unsigned int> & link
 	//--END CUSTOM CODE--//
 }
 
-std::string NiSequence::asString( bool verbose ) const {
+std::string NiSequence::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiObject::asString();
-	numControlledBlocks = (unsigned int)(controlledBlocks.size());
+	out << NiObject::asString(verbose);
+	numControlledBlocks = (unsigned int) (controlledBlocks.size());
 	out << "  Name:  " << name << endl;
 	out << "  Text Keys Name:  " << textKeysName << endl;
 	out << "  Text Keys:  " << textKeys << endl;
@@ -340,8 +449,10 @@ std::string NiSequence::asString( bool verbose ) const {
 	out << "  Num Controlled Blocks:  " << numControlledBlocks << endl;
 	out << "  Unknown Int 1:  " << unknownInt1 << endl;
 	array_output_count = 0;
-	for (unsigned int i1 = 0; i1 < controlledBlocks.size(); i1++) {
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+	for(unsigned int i1 = 0; i1 < controlledBlocks.size(); i1++)
+	{
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 			break;
 		};
@@ -369,27 +480,34 @@ std::string NiSequence::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void NiSequence::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiSequence::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiObject::FixLinks( objects, link_stack, missing_link_stack, info );
-	if ( info.version <= 0x0A010000 ) {
-		textKeys = FixLink<NiTextKeyExtraData>( objects, link_stack, missing_link_stack, info );
+	NiObject::FixLinks(objects, link_stack, missing_link_stack, info);
+	if(info.version <= 0x0A010000)
+	{
+		textKeys = FixLink<NiTextKeyExtraData>(objects, link_stack, missing_link_stack, info);
 	};
-	for (unsigned int i1 = 0; i1 < controlledBlocks.size(); i1++) {
-		if ( info.version <= 0x0A010000 ) {
-			controlledBlocks[i1].controller = FixLink<NiTimeController>( objects, link_stack, missing_link_stack, info );
+	for(unsigned int i1 = 0; i1 < controlledBlocks.size(); i1++)
+	{
+		if(info.version <= 0x0A010000)
+		{
+			controlledBlocks[i1].controller = FixLink<NiTimeController>(objects, link_stack, missing_link_stack, info);
 		};
-		if ( info.version >= 0x0A01006A ) {
-			controlledBlocks[i1].interpolator = FixLink<NiInterpolator>( objects, link_stack, missing_link_stack, info );
-			controlledBlocks[i1].controller = FixLink<NiTimeController>( objects, link_stack, missing_link_stack, info );
+		if(info.version >= 0x0A01006A)
+		{
+			controlledBlocks[i1].interpolator = FixLink<NiInterpolator>(objects, link_stack, missing_link_stack, info);
+			controlledBlocks[i1].controller = FixLink<NiTimeController>(objects, link_stack, missing_link_stack, info);
 		};
-		if ( ( info.version >= 0x0A01006A ) && ( info.version <= 0x0A01006A ) ) {
-			controlledBlocks[i1].unknownLink2 = FixLink<NiObject>( objects, link_stack, missing_link_stack, info );
+		if((info.version >= 0x0A01006A) && (info.version <= 0x0A01006A))
+		{
+			controlledBlocks[i1].unknownLink2 = FixLink<NiObject>(objects, link_stack, missing_link_stack, info);
 		};
-		if ( ( info.version >= 0x0A020000 ) && ( info.version <= 0x14000005 ) ) {
-			controlledBlocks[i1].stringPalette = FixLink<NiStringPalette>( objects, link_stack, missing_link_stack, info );
+		if((info.version >= 0x0A020000) && (info.version <= 0x14000005))
+		{
+			controlledBlocks[i1].stringPalette = FixLink<NiStringPalette>(objects, link_stack, missing_link_stack, info);
 		};
 	};
 
@@ -397,28 +515,32 @@ void NiSequence::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<u
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiSequence::GetRefs() const {
+std::list<NiObjectRef> NiSequence::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiObject::GetRefs();
-	if ( textKeys != NULL )
+	if(textKeys != NULL)
 		refs.push_back(StaticCast<NiObject>(textKeys));
-	for (unsigned int i1 = 0; i1 < controlledBlocks.size(); i1++) {
-		if ( controlledBlocks[i1].controller != NULL )
+	for(unsigned int i1 = 0; i1 < controlledBlocks.size(); i1++)
+	{
+		if(controlledBlocks[i1].controller != NULL)
 			refs.push_back(StaticCast<NiObject>(controlledBlocks[i1].controller));
-		if ( controlledBlocks[i1].interpolator != NULL )
+		if(controlledBlocks[i1].interpolator != NULL)
 			refs.push_back(StaticCast<NiObject>(controlledBlocks[i1].interpolator));
-		if ( controlledBlocks[i1].unknownLink2 != NULL )
+		if(controlledBlocks[i1].unknownLink2 != NULL)
 			refs.push_back(StaticCast<NiObject>(controlledBlocks[i1].unknownLink2));
-		if ( controlledBlocks[i1].stringPalette != NULL )
+		if(controlledBlocks[i1].stringPalette != NULL)
 			refs.push_back(StaticCast<NiObject>(controlledBlocks[i1].stringPalette));
 	};
 	return refs;
 }
 
-std::list<NiObject *> NiSequence::GetPtrs() const {
+std::list<NiObject *> NiSequence::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiObject::GetPtrs();
-	for (unsigned int i1 = 0; i1 < controlledBlocks.size(); i1++) {
+	for(unsigned int i1 = 0; i1 < controlledBlocks.size(); i1++)
+	{
 	};
 	return ptrs;
 }
@@ -426,70 +548,78 @@ std::list<NiObject *> NiSequence::GetPtrs() const {
 /***Begin Example Naive Implementation****
 
 IndexString NiSequence::GetName() const {
-	return name;
+return name;
 }
 
 void NiSequence::SetName( const IndexString & value ) {
-	name = value;
+name = value;
 }
 
 IndexString NiSequence::GetTextKeysName() const {
-	return textKeysName;
+return textKeysName;
 }
 
 void NiSequence::SetTextKeysName( const IndexString & value ) {
-	textKeysName = value;
+textKeysName = value;
 }
 
 Ref<NiTextKeyExtraData > NiSequence::GetTextKeys() const {
-	return textKeys;
+return textKeys;
 }
 
 void NiSequence::SetTextKeys( Ref<NiTextKeyExtraData > value ) {
-	textKeys = value;
+textKeys = value;
 }
 
 vector<ControllerLink > NiSequence::GetControlledBlocks() const {
-	return controlledBlocks;
+return controlledBlocks;
 }
 
 void NiSequence::SetControlledBlocks( const vector<ControllerLink >& value ) {
-	controlledBlocks = value;
+controlledBlocks = value;
 }
 
 ****End Example Naive Implementation***/
 
 //--BEGIN MISC CUSTOM CODE--//
-string NiSequence::GetName() const {
-   return name;
+string NiSequence::GetName() const
+{
+	return name;
 }
 
-void NiSequence::SetName( const string & value ) {
-   name = value;
+void NiSequence::SetName(const string & value)
+{
+	name = value;
 }
 
-string NiSequence::GetTextKeysName() const {
-   return textKeysName;
+string NiSequence::GetTextKeysName() const
+{
+	return textKeysName;
 }
 
-void NiSequence::SetTextKeysName( const string & value ) {
-   textKeysName = value;
+void NiSequence::SetTextKeysName(const string & value)
+{
+	textKeysName = value;
 }
 
-Ref<NiTextKeyExtraData > NiSequence::GetTextKeys() const {
-   return textKeys;
+Ref<NiTextKeyExtraData > NiSequence::GetTextKeys() const
+{
+	return textKeys;
 }
 
-void NiSequence::SetTextKeys( Ref<NiTextKeyExtraData > value ) {
-   textKeys = value;
+void NiSequence::SetTextKeys(Ref<NiTextKeyExtraData > value)
+{
+	textKeys = value;
 }
 
-vector<ControllerLink > NiSequence::GetControlledBlocks() const {
-   return controlledBlocks;
+vector<ControllerLink > NiSequence::GetControlledBlocks() const
+{
+	return controlledBlocks;
 }
 
-void NiSequence::SetControlledBlocks( const vector<ControllerLink >& value ) {
-   controlledBlocks = value;
+void NiSequence::SetControlledBlocks(const vector<ControllerLink >& value)
+{
+	controlledBlocks = value;
 }
 
 //--END CUSTOM CODE--//

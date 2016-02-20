@@ -18,36 +18,42 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type Ni3dsColorAnimator::TYPE("Ni3dsColorAnimator", &NiObject::TYPE );
+const Type Ni3dsColorAnimator::TYPE("Ni3dsColorAnimator", &NiObject::TYPE);
 
-Ni3dsColorAnimator::Ni3dsColorAnimator() {
+Ni3dsColorAnimator::Ni3dsColorAnimator()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-Ni3dsColorAnimator::~Ni3dsColorAnimator() {
+Ni3dsColorAnimator::~Ni3dsColorAnimator()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-const Type & Ni3dsColorAnimator::GetType() const {
+const Type & Ni3dsColorAnimator::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * Ni3dsColorAnimator::Create() {
+NiObject * Ni3dsColorAnimator::Create()
+{
 	return new Ni3dsColorAnimator;
 }
 
-void Ni3dsColorAnimator::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void Ni3dsColorAnimator::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiObject::Read( in, link_stack, info );
-	for (unsigned int i1 = 0; i1 < 184; i1++) {
-		NifStream( unknown1[i1], in, info );
+	NiObject::Read(in, link_stack, info);
+	for(unsigned int i1 = 0; i1 < 184; i1++)
+	{
+		NifStream(unknown1[i1], in, info);
 	};
 
 	//--BEGIN POST-READ CUSTOM CODE--//
@@ -55,14 +61,16 @@ void Ni3dsColorAnimator::Read( istream& in, list<unsigned int> & link_stack, con
 	//--END CUSTOM CODE--//
 }
 
-void Ni3dsColorAnimator::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void Ni3dsColorAnimator::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiObject::Write( out, link_map, missing_link_stack, info );
-	for (unsigned int i1 = 0; i1 < 184; i1++) {
-		NifStream( unknown1[i1], out, info );
+	NiObject::Write(out, link_map, missing_link_stack, info);
+	for(unsigned int i1 = 0; i1 < 184; i1++)
+	{
+		NifStream(unknown1[i1], out, info);
 	};
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
@@ -70,21 +78,25 @@ void Ni3dsColorAnimator::Write( ostream& out, const map<NiObjectRef,unsigned int
 	//--END CUSTOM CODE--//
 }
 
-std::string Ni3dsColorAnimator::asString( bool verbose ) const {
+std::string Ni3dsColorAnimator::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
 	stringstream out;
 	unsigned int array_output_count = 0;
-	out << NiObject::asString();
+	out << NiObject::asString(verbose);
 	array_output_count = 0;
-	for (unsigned int i1 = 0; i1 < 184; i1++) {
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+	for(unsigned int i1 = 0; i1 < 184; i1++)
+	{
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			out << "<Data Truncated. Use verbose mode to see complete listing.>" << endl;
 			break;
 		};
-		if ( !verbose && ( array_output_count > MAXARRAYDUMP ) ) {
+		if(!verbose && (array_output_count > MAXARRAYDUMP))
+		{
 			break;
 		};
 		out << "    Unknown 1[" << i1 << "]:  " << unknown1[i1] << endl;
@@ -97,25 +109,28 @@ std::string Ni3dsColorAnimator::asString( bool verbose ) const {
 	//--END CUSTOM CODE--//
 }
 
-void Ni3dsColorAnimator::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void Ni3dsColorAnimator::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 
-	NiObject::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiObject::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> Ni3dsColorAnimator::GetRefs() const {
+std::list<NiObjectRef> Ni3dsColorAnimator::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiObject::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> Ni3dsColorAnimator::GetPtrs() const {
+std::list<NiObject *> Ni3dsColorAnimator::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiObject::GetPtrs();
 	return ptrs;

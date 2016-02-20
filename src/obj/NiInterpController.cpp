@@ -17,75 +17,85 @@ All rights reserved.  Please see niflib.h for license. */
 using namespace Niflib;
 
 //Definition of TYPE constant
-const Type NiInterpController::TYPE("NiInterpController", &NiTimeController::TYPE );
+const Type NiInterpController::TYPE("NiInterpController", &NiTimeController::TYPE);
 
-NiInterpController::NiInterpController() {
+NiInterpController::NiInterpController()
+{
 	//--BEGIN CONSTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-NiInterpController::~NiInterpController() {
+NiInterpController::~NiInterpController()
+{
 	//--BEGIN DESTRUCTOR CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-const Type & NiInterpController::GetType() const {
+const Type & NiInterpController::GetType() const
+{
 	return TYPE;
 }
 
-NiObject * NiInterpController::Create() {
+NiObject * NiInterpController::Create()
+{
 	return new NiInterpController;
 }
 
-void NiInterpController::Read( istream& in, list<unsigned int> & link_stack, const NifInfo & info ) {
+void NiInterpController::Read(istream& in, list<unsigned int> & link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiTimeController::Read( in, link_stack, info );
+	NiTimeController::Read(in, link_stack, info);
 
 	//--BEGIN POST-READ CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void NiInterpController::Write( ostream& out, const map<NiObjectRef,unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info ) const {
+void NiInterpController::Write(ostream& out, const map<NiObjectRef, unsigned int> & link_map, list<NiObject *> & missing_link_stack, const NifInfo & info) const
+{
 	//--BEGIN PRE-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiTimeController::Write( out, link_map, missing_link_stack, info );
+	NiTimeController::Write(out, link_map, missing_link_stack, info);
 
 	//--BEGIN POST-WRITE CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::string NiInterpController::asString( bool verbose ) const {
+std::string NiInterpController::asString(bool verbose) const
+{
 	//--BEGIN PRE-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
 	stringstream out;
-	out << NiTimeController::asString();
+	out << NiTimeController::asString(verbose);
 	return out.str();
 
 	//--BEGIN POST-STRING CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-void NiInterpController::FixLinks( const map<unsigned int,NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info ) {
+void NiInterpController::FixLinks(const map<unsigned int, NiObjectRef> & objects, list<unsigned int> & link_stack, list<NiObjectRef> & missing_link_stack, const NifInfo & info)
+{
 	//--BEGIN PRE-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 
-	NiTimeController::FixLinks( objects, link_stack, missing_link_stack, info );
+	NiTimeController::FixLinks(objects, link_stack, missing_link_stack, info);
 
 	//--BEGIN POST-FIXLINKS CUSTOM CODE--//
 	//--END CUSTOM CODE--//
 }
 
-std::list<NiObjectRef> NiInterpController::GetRefs() const {
+std::list<NiObjectRef> NiInterpController::GetRefs() const
+{
 	list<Ref<NiObject> > refs;
 	refs = NiTimeController::GetRefs();
 	return refs;
 }
 
-std::list<NiObject *> NiInterpController::GetPtrs() const {
+std::list<NiObject *> NiInterpController::GetPtrs() const
+{
 	list<NiObject *> ptrs;
 	ptrs = NiTimeController::GetPtrs();
 	return ptrs;
